@@ -7,7 +7,7 @@ using UnityEngine.Tilemaps;
 public class TileGenerator : MonoBehaviour
 {
     [SerializeField]
-    private Tilemap _tilemap;
+    private Tilemap _backGroundTileMap, _obstaclesTileMap, _animaionTileMap;
 
     [SerializeField]
     private RuleTile _backGroundTiles, _obstacleTiles;
@@ -15,33 +15,36 @@ public class TileGenerator : MonoBehaviour
     [SerializeField]
     private AnimatedTile _animationTile;
 
-    public void PlaceColliderTile(Vector3Int position)
+    private void Start()
     {
-        TileBase tileToPlace = GetRandomTile();
-        _tilemap.SetTile(position, tileToPlace);
+        GenerateTile();
     }
 
-    private TileBase GetRandomTile()
+    private void PlaceColliderTile(Vector3Int position)
     {
         int randomValue = UnityEngine.Random.Range(1, 6);
 
         if (randomValue < 5)
         {
-            return _obstacleTiles;
+            _obstaclesTileMap.SetTile(position, _obstacleTiles);
         }
         else
         {
-            return _animationTile;
+            _animaionTileMap.SetTile(position, _animationTile);
         }
     }
 
     private void GenerateTile()
     {
-        for (int i = 0; i < 15; i++)
+        Vector3 pivot = transform.position;
+        for (int i = -10; i < 10; i++)
         {
-            for(int j = 0; j < 15; j++)
+            for(int j = 9; j > -11; j--)
             {
-                
+                Vector3Int tilePos = new Vector3Int((int)pivot.x + i, (int)pivot.y + j, 0);
+                _backGroundTileMap.SetTile(tilePos, _backGroundTiles);
+
+                if (Random.CalculateProbability(10)) { PlaceColliderTile(tilePos); }
             }
         }
     }
