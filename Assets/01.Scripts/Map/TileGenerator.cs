@@ -44,7 +44,7 @@ public class TileGenerator : MonoBehaviour
                 Vector3Int tilePos = new Vector3Int((int)pivot.x + i, (int)pivot.y + j, 0);
                 _backGroundTileMap.SetTile(tilePos, _backGroundTiles);
 
-                if (Random.CalculateProbability(10)) { PlaceColliderTile(tilePos); }
+                if (CustomRandom.CalculateProbability(10)) { PlaceColliderTile(tilePos); }
             }
         }
     }

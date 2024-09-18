@@ -12,4 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c5e5ac319066b24282ae591475d6015, type: 3}
   m_Name: Pool Objects SO
   m_EditorClassIdentifier: 
-  Objects: []
+  <Enemies>k__BackingField:
+  - <PoolObject>k__BackingField: {fileID: 4294444919396659624, guid: f649035b089c02740a5dd9861e08b5ff, type: 3}
+    <PoolCount>k__BackingField: 5
+  <Items>k__BackingField: []
+  <ETC>k__BackingField: []

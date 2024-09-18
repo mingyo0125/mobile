@@ -9,14 +9,15 @@ public class ObjectPool<T> where T : PoolableMono
     private T _poolPrefab;
     private Transform _parentTrm;
 
-    public ObjectPool(T poolprefab, int Poolcount, Transform parentTrm)
+    public ObjectPool(T poolprefab, int poolcount, Transform parentTrm)
     {
         _poolPrefab = poolprefab;
         _parentTrm = parentTrm;
         poolprefab.transform.SetParent(parentTrm);
         poolprefab.gameObject.SetActive(false);
 
-        for (int i = 0; i < Poolcount; i++)
+        Debug.Log(poolcount);
+        for (int i = 0; i < poolcount; i++)
         {
             Instantiate();
         }

@@ -2,16 +2,58 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class EntityFactory<T> : MonoBehaviour
+public abstract class EntityFactory<T> : MonoBehaviour where T : PoolableMono
 {
-    public PoolableMono SpawnObject(T type, Vector3 spawnTrm)
+    [SerializeField]
+    private SpawnEntityTypes _spawnEntityTypes;
+
+    protected T[] _spawnEntitys; // 이 팩토리에서 소환할 엔티티들
+
+    public PoolableMono SpawnObject(string crateEntityName, Vector3 spawnTrm)
     {
-        PoolableMono entity = Create(type);
+        PoolableMono entity = Create(crateEntityName);
         entity.transform.position = spawnTrm;
         entity.transform.rotation = Quaternion.identity;
 
         return entity;
     }
 
-    protected abstract PoolableMono Create(T _type); //각각의 팩토리에서 재정의 한다.
+    private void Awake()
+    {
+        SetSpawnEntityByType();
+    }
+
+    private void SetSpawnEntityByType()
+    {
+        switch (_spawnEntityTypes)
+        {
+            case SpawnEntityTypes.Enemies:
+                SetSpawnEntities(PoolManager.Instance.PoolObjSO.Enemies);
+                break;
+            case SpawnEntityTypes.Items:
+                SetSpawnEntities(PoolManager.Instance.PoolObjSO.ETC);
+                break;
+            case SpawnEntityTypes.ETC:
+                SetSpawnEntities(PoolManager.Instance.PoolObjSO.Items);
+                break;
+            default:
+                Debug.LogError($"{_spawnEntityTypes} Type is not set");
+                break;
+        }
+    }
+
+    private void SetSpawnEntities(List<PoolObjectsInfo> poolObjects)
+    {
+        _spawnEntitys = new T[poolObjects.Count];
+
+        for (int i = 0; i < poolObjects.Count; i++)
+        {
+            _spawnEntitys[i] = poolObjects[i].PoolObject as T;
+        }
+    }
+
+    protected virtual PoolableMono Create(string crateEntityName)
+    {
+        return PoolManager.Instance.CreateObject(crateEntityName);
+    }
 }

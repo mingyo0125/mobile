@@ -1,31 +1,42 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Pool;
 
 public class PoolManager : MonoBehaviour
 {
-    private PoolObjectsSO _poolObjectsSO;
+    public static PoolManager Instance; // Temp SingleTon
+
+    public PoolObjectsSO PoolObjSO { get; private set; }
 
     public Dictionary<string, ObjectPool<PoolableMono>> PoolObjects { get; private set; } = new();
 
     private void Awake()
     {
-        _poolObjectsSO = new PoolObjectsSO();
-        _poolObjectsSO.UpdatePoolObjects();
+        if (Instance == null)  // Temp SingleTon
+        {
+            Instance = this;
+        }
 
-        foreach(PoolObjectsInfo poolObject in _poolObjectsSO.PoolObjects)
+        PoolObjSO = new PoolObjectsSO();
+        PoolObjSO.UpdatePoolObjects();
+
+        foreach(PoolObjectsInfo poolObject in PoolObjSO.PoolObjects)
         {
             PoolableMono PoolObject = poolObject.PoolObject;
             int poolCount = poolObject.PoolCount;
 
-            PoolObjects.Add(PoolObject.name, new ObjectPool<PoolableMono>(PoolObject, poolCount, transform));
+            ObjectPool<PoolableMono> objectPool = new ObjectPool<PoolableMono>(PoolObject, poolCount, transform);
+
+            PoolObjects.Add(PoolObject.name, objectPool);
         }
     }
 
-    public void CreateObject(string name)
+    public PoolableMono CreateObject(string name)
     {
-        PoolObjects[name].Create();
+        return PoolObjects[name].Create();
     }
 
     public void DestroyObject(PoolableMono obj)

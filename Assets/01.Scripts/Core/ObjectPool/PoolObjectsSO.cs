@@ -3,10 +3,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum SpawnEntityTypes
+{
+    ETC,
+    Enemies,
+    Items
+}
+
 [Serializable]
 public struct PoolObjectsInfo
 {
-    [field:SerializeField]
+    [field: SerializeField]
     public PoolableMono PoolObject { get; private set; }
     [field: SerializeField]
     public int PoolCount { get; private set; }
@@ -15,20 +22,20 @@ public struct PoolObjectsInfo
 [CreateAssetMenu(menuName = "SO/PoolObjects")]
 public class PoolObjectsSO : ScriptableObject
 {
-    public List<PoolObjectsInfo> PoolObjects { get; private set; }
+    public List<PoolObjectsInfo> PoolObjects { get; private set; } = new List<PoolObjectsInfo>();
     [field: SerializeField]
-    public List<PoolObjectsInfo> Entitys { get; private set; }
+    public List<PoolObjectsInfo> Enemies { get; private set; } = new();
 
     [field: SerializeField]
-    public List<PoolObjectsInfo> Items { get; private set; }
+    public List<PoolObjectsInfo> Items { get; private set; } = new();
 
     [field: SerializeField]
-    public List<PoolObjectsInfo> ETC { get; private set; }
+    public List<PoolObjectsInfo> ETC { get; private set; } = new();
 
     public void UpdatePoolObjects()
     {
         PoolObjects.Clear();
-        PoolObjects.AddRange(Entitys);
+        PoolObjects.AddRange(Enemies);
         PoolObjects.AddRange(Items);
         PoolObjects.AddRange(ETC);
     }

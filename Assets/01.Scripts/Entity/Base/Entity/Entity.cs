@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UIElements;
 
-public abstract partial class Entity<T, G> : MonoBehaviour where T : Enum where G : Entity<T, G>
+public abstract partial class Entity<T, G> : PoolableMono where T : Enum where G : Entity<T, G>
 {
     public EntityStateMachine<T, G> StateMachine { get; private set; }
 
