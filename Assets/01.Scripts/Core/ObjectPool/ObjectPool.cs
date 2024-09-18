@@ -13,7 +13,6 @@ public class ObjectPool<T> where T : PoolableMono
     {
         _poolPrefab = poolprefab;
         _parentTrm = parentTrm;
-        poolprefab.transform.SetParent(parentTrm);
         poolprefab.gameObject.SetActive(false);
 
         Debug.Log(poolcount);
@@ -31,6 +30,7 @@ public class ObjectPool<T> where T : PoolableMono
         }
 
         T poolObj = _poolObjs.Dequeue();
+        poolObj.transform.SetParent(_parentTrm);
         poolObj.gameObject.SetActive(true);
         return poolObj;
     }
@@ -47,6 +47,7 @@ public class ObjectPool<T> where T : PoolableMono
     {
         T obj = GameObject.Instantiate(_poolPrefab, _parentTrm.position, Quaternion.identity);
         obj.transform.SetParent(_parentTrm);
+        obj.name = _poolPrefab.name;
         _poolObjs.Enqueue(obj);
 
         return obj;

@@ -9,9 +9,10 @@ public class PoolManager : MonoBehaviour
 {
     public static PoolManager Instance; // Temp SingleTon
 
+    [field: SerializeField]
     public PoolObjectsSO PoolObjSO { get; private set; }
 
-    public Dictionary<string, ObjectPool<PoolableMono>> PoolObjects { get; private set; } = new();
+    private Dictionary<string, ObjectPool<PoolableMono>> _poolObjects = new();
 
     private void Awake()
     {
@@ -20,28 +21,34 @@ public class PoolManager : MonoBehaviour
             Instance = this;
         }
 
-        PoolObjSO = new PoolObjectsSO();
         PoolObjSO.UpdatePoolObjects();
 
-        foreach(PoolObjectsInfo poolObject in PoolObjSO.PoolObjects)
+        foreach(PoolObjectsInfo poolObjectInfo in PoolObjSO.PoolObjects)
         {
-            PoolableMono PoolObject = poolObject.PoolObject;
-            int poolCount = poolObject.PoolCount;
+            PoolableMono poolObject = poolObjectInfo.PoolObject;
+            int poolCount = poolObjectInfo.PoolCount;
 
-            ObjectPool<PoolableMono> objectPool = new ObjectPool<PoolableMono>(PoolObject, poolCount, transform);
+            ObjectPool<PoolableMono> objectPool = new ObjectPool<PoolableMono>(poolObject, poolCount, transform);
 
-            PoolObjects.Add(PoolObject.name, objectPool);
+            _poolObjects.Add(poolObject.name, objectPool);
         }
     }
 
     public PoolableMono CreateObject(string name)
     {
-        return PoolObjects[name].Create();
+        return _poolObjects[name].Create();
     }
 
     public void DestroyObject(PoolableMono obj)
     {
-        PoolObjects[name].Destroy(obj);
+        try
+        {
+            _poolObjects[obj.name].Destroy(obj);
+        }
+        catch(Exception ex)
+        {
+            Debug.LogException(ex);
+        }
     }
 
     //private void Awake()
