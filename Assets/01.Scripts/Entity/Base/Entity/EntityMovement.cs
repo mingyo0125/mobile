@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody2D))]
 public abstract partial class Entity<T, G> : IMoveable
 {
     public Rigidbody2D Rb { get; set; }

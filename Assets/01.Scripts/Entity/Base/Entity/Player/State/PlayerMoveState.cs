@@ -8,4 +8,9 @@ public class PlayerMoveState<T, G> : EntityMoveState<T, G> where T : Enum where 
     public PlayerMoveState(Entity<T, G> entity, EntityStateMachine<T, G> entityStateMachine) : base(entity, entityStateMachine)
     {
     }
+
+    public override void UpdateState()
+    {
+        base.UpdateState();
+    }
 }

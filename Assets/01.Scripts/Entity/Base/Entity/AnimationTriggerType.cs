@@ -4,12 +4,6 @@ using UnityEngine;
 
 public enum AnimationTriggerType
 {
-    Enter,
-    Exit,
-
-}
-
-public class EntityAnimator : MonoBehaviour
-{
-    
+    Hit,
+    Die
 }
