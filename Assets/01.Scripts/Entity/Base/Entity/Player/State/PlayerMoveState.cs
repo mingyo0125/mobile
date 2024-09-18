@@ -12,5 +12,7 @@ public class PlayerMoveState<T, G> : EntityMoveState<T, G> where T : Enum where 
     public override void UpdateState()
     {
         base.UpdateState();
+
+
     }
 }
