@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -10,22 +11,23 @@ public abstract partial class Entity<T, G> : IMoveable
     public bool IsFacingRight { get; set; } = true;
 
     [field: SerializeField]
-    public float Speed { get; set; }
+    public float Speed { get; set; } // 나중에 SO로
 
     private void InitializeMoveable()
     {
         Rb = GetComponent<Rigidbody2D>();
     }
 
-    public void Move(Vector2 moveVelocity)
+    public void Move(Vector2 targetPos)
     {
-        Vector2 newPosition = moveVelocity.normalized * Speed * Time.fixedDeltaTime;
+        Vector2 newPosition = Vector2.MoveTowards(transform.position, targetPos, Speed * Time.fixedDeltaTime);
         Rb.MovePosition(newPosition);
-        CheckFacingDir(moveVelocity);
+        CheckFacingDir(targetPos);
     }
 
     public void CheckFacingDir(Vector2 moveDir)
     {
+        
         // isFacingRight면 right랑 계산, 아니면 left랑 계산
         float dotProduct = Vector2.Dot(moveDir, IsFacingRight ? Vector2.right : Vector2.left);
 
