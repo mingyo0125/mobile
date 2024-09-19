@@ -5,10 +5,8 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.Pool;
 
-public class PoolManager : MonoBehaviour
+public class PoolManager : MonoSingleTon<PoolManager>
 {
-    public static PoolManager Instance; // Temp SingleTon
-
     [field: SerializeField]
     public PoolObjectsSO PoolObjSO { get; private set; }
 
@@ -16,11 +14,6 @@ public class PoolManager : MonoBehaviour
 
     private void Awake()
     {
-        if (Instance == null)  // Temp SingleTon
-        {
-            Instance = this;
-        }
-
         PoolObjSO.UpdatePoolObjects();
 
         foreach(PoolObjectsInfo poolObjectInfo in PoolObjSO.PoolObjects)

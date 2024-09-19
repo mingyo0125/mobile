@@ -10,8 +10,6 @@ public class EnemyFactory : EntityFactory<Enemy>
     [SerializeField]
     private float spawnTime;
 
-    private Queue<Enemy> _spawnedEnemies = new();
-
     private void Start()
     {
         StartCoroutine(SpawnEnemyCorou()); // Test
