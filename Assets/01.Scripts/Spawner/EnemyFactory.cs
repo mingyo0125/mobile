@@ -4,20 +4,35 @@ using UnityEngine;
 
 public class EnemyFactory : EntityFactory<Enemy>
 {
-    private Queue<Enemy> _spawnedEnemies = new(); // Test
+    [SerializeField]
+    private Transform _minBound, _maxBound;
 
-    private void Update()
+    [SerializeField]
+    private float spawnTime;
+
+    private Queue<Enemy> _spawnedEnemies = new();
+
+    private void Start()
     {
-        if (Input.GetKeyDown(KeyCode.S)) // Test
+        StartCoroutine(SpawnEnemyCorou()); // Test
+    }
+
+    private IEnumerator SpawnEnemyCorou()
+    {
+        while (true)
         {
             Enemy enemy = CustomRandom.GetRandomElement(_spawnEntitys);
-            _spawnedEnemies.Enqueue(enemy);
-            SpawnObject(enemy.name, transform.position);
-        }
+            SpawnObject(enemy.name, GetRandomSpawnPos());
 
-        if (Input.GetKeyDown(KeyCode.D)) // Test
-        {
-            PoolManager.Instance.DestroyObject(FindAnyObjectByType<Enemy>());
+            yield return new WaitForSeconds(spawnTime);
         }
+    }
+
+    private Vector2 GetRandomSpawnPos()
+    {
+        float randomX = Random.Range(_minBound.position.x, _maxBound.position.x);
+        float randomY = Random.Range(_minBound.position.y, _maxBound.position.y);
+
+        return new Vector2(randomX, randomY);
     }
 }
