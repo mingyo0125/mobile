@@ -17,7 +17,7 @@ public class MonoSingleTon<T> : MonoBehaviour where T : MonoBehaviour
                 if(instance == null)
                 {
                     GameObject singleTonObj = new GameObject();
-                    singleTonObj.transform.SetParent(GameObject.Find("Manager").transform);
+                    singleTonObj.transform.SetParent(GameObject.Find("Managers").transform);
                     singleTonObj.name = typeof(T).Name;
                     singleTonObj.AddComponent<T>();
                 }

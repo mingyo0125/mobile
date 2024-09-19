@@ -3,9 +3,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyMoveState<T, G> : EntityMoveState<T, G> where T : Enum where G : Entity<T, G>
+public class EnemyMoveState : EntityMoveState<EnemyStateType, Enemy>
 {
-    public EnemyMoveState(Entity<T, G> entity, EntityStateMachine<T, G> entityStateMachine) : base(entity, entityStateMachine)
+    public EnemyMoveState(Enemy enemy, EntityStateMachine<EnemyStateType, Enemy> entityStateMachine):
+                          base(enemy, entityStateMachine)
     {
+    }
+
+    public override void FixedUpdateState()
+    {
+        base.FixedUpdateState();
+
+        _entity.Move(GameManager.Instance.GetPlayerTrm().position);
     }
 }

@@ -3,9 +3,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyIdleState<T, G> : EntityIdleState<T, G> where T : Enum where G : Entity<T, G>
+public class EnemyIdleState : EntityIdleState<EnemyStateType, Enemy>
 {
-    public EnemyIdleState(Entity<T, G> entity, EntityStateMachine<T, G> entityStateMachine) : base(entity, entityStateMachine)
+    public EnemyIdleState(Enemy enemy, EntityStateMachine<EnemyStateType, Enemy> entityStateMachine):
+                          base(enemy, entityStateMachine)
     {
+    }
+
+    public override void EnterState()
+    {
+        base.EnterState();
+
+        _entityStateMachine.ChangeState(EnemyStateType.Move);
     }
 }

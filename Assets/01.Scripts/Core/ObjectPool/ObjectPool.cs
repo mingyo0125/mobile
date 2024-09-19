@@ -15,7 +15,6 @@ public class ObjectPool<T> where T : PoolableMono
         _parentTrm = parentTrm;
         poolprefab.gameObject.SetActive(false);
 
-        Debug.Log(poolcount);
         for (int i = 0; i < poolcount; i++)
         {
             Instantiate();

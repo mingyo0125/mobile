@@ -9,7 +9,7 @@ public enum PlayerStateType
     Attack
 }
 
-public enum EnemyStateType
+public enum EnemyStateType : uint
 {
     Idle,
     Move,

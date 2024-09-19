@@ -3,9 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerIdleState<T, G> : EntityIdleState<T, G> where T : Enum where G : Entity<T, G>
+public class PlayerIdleState : EntityIdleState<PlayerStateType, Player>
 {
-    public PlayerIdleState(Entity<T, G> entity, EntityStateMachine<T, G> entityStateMachine) : base(entity, entityStateMachine)
+    public PlayerIdleState(Player player, EntityStateMachine<PlayerStateType, Player> stateMachine):
+                           base(player, stateMachine)
     {
     }
 }

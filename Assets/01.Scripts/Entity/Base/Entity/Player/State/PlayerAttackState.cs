@@ -3,9 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerAttackState<T, G> : EntityAttackState<T, G> where T : Enum where G : Entity<T, G>
+public class PlayerAttackState : EntityAttackState<PlayerStateType, Player>
 {
-    public PlayerAttackState(Entity<T, G> entity, EntityStateMachine<T, G> entityStateMachine) : base(entity, entityStateMachine)
+    public PlayerAttackState(Player player, EntityStateMachine<PlayerStateType, Player> entityStateMachine):
+                             base(player, entityStateMachine)
     {
+
     }
 }

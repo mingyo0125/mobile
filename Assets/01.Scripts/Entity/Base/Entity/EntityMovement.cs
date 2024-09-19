@@ -1,12 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public abstract partial class Entity<T, G> : IMoveable
 {
     public Rigidbody2D Rb { get; set; }
-    public bool isFacingRight { get; set; } = true;
+    public bool IsFacingRight { get; set; } = true;
+
+    [field: SerializeField]
+    public float Speed { get; set; }
 
     private void InitializeMoveable()
     {
@@ -15,14 +19,15 @@ public abstract partial class Entity<T, G> : IMoveable
 
     public void Move(Vector2 moveVelocity)
     {
-        Rb.velocity = moveVelocity;
+        Vector2 newPosition = moveVelocity.normalized * Speed * Time.fixedDeltaTime;
+        Rb.MovePosition(newPosition);
         CheckFacingDir(moveVelocity);
     }
 
     public void CheckFacingDir(Vector2 moveDir)
     {
         // isFacingRight면 right랑 계산, 아니면 left랑 계산
-        float dotProduct = Vector2.Dot(moveDir, isFacingRight ? Vector2.right : Vector2.left);
+        float dotProduct = Vector2.Dot(moveDir, IsFacingRight ? Vector2.right : Vector2.left);
 
         // 내적 결과가 음수이면 방향을 반전해야 함
         if (dotProduct < 0f) { Flip(); }
@@ -30,7 +35,7 @@ public abstract partial class Entity<T, G> : IMoveable
 
     private void Flip()
     {
-        isFacingRight = !isFacingRight;
+        IsFacingRight = !IsFacingRight;
 
         // 일단 이렇게 회전
         transform.localScale *= -1;

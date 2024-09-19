@@ -7,11 +7,11 @@ using UnityEngine.UIElements;
 
 public abstract partial class Entity<T, G> : PoolableMono where T : Enum where G : Entity<T, G>
 {
-    public EntityStateMachine<T, G> StateMachine { get; private set; }
+    public EntityStateMachine<T, G> StateMachine { get; protected set; }
 
     protected virtual void Awake()
     {
-        StateMachine = new EntityStateMachine<T, G>(this as G); // G를 사용하여 상태머신을 초기화
+        CreateStateMachine();
         InitializeMoveable();
 
         StateMachine.Initialize(default);
@@ -26,4 +26,6 @@ public abstract partial class Entity<T, G> : PoolableMono where T : Enum where G
     {
         StateMachine.CurrentState?.FixedUpdateState();
     }
+
+    protected abstract void CreateStateMachine();
 }
