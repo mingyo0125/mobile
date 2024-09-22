@@ -14,13 +14,13 @@ public class EntityIdleState<T,G> : EntityState<T,G> where T: Enum where G: Enti
     {
         base.UpdateState();
 
-        Debug.Log($"{_entity}: UpdateState");
+        //Debug.Log($"{_entity}: UpdateState");
     }
 
     public override void FixedUpdateState()
     {
         base.FixedUpdateState();
 
-        Debug.Log($"{_entity}: FixedUpdateState");
+        //Debug.Log($"{_entity}: FixedUpdateState");
     }
 }
