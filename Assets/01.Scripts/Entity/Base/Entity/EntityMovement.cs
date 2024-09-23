@@ -10,14 +10,13 @@ public abstract partial class Entity<T, G> : IMoveable
     public Rigidbody2D Rb { get; set; }
     public bool IsFacingRight { get; set; } = true;
 
-
-
-    [field: SerializeField]
     public float Speed { get; set; } // 나중에 SO로
 
     private void InitializeMoveable()
     {
         Rb = GetComponent<Rigidbody2D>();
+
+        Speed = _entityStatSO.EntityStat.Speed;
     }
 
     public void Move(Vector2 targetPos)

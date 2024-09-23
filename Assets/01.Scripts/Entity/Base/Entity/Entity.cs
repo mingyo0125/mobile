@@ -7,12 +7,19 @@ public abstract partial class Entity<T, G> : PoolableMono where T : Enum where G
 
     public EntityAnimator EntityAnimatorCompo { get; private set; }
 
+    [SerializeField]
+    private EntityStatSO _entityStatSO;
+
+    public Stat EntityStat { get; private set; }
+
     protected virtual void Awake()
     {
         CreateStateMachine();
         InitializeMoveable();
+        InitializeHealth();
 
         EntityAnimatorCompo = transform.Find("Visual").GetComponent<EntityAnimator>();
+        EntityStat = _entityStatSO.EntityStat;
     }
 
     public override void Initialize()

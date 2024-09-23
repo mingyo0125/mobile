@@ -74,6 +74,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6b6a2a4135bf1f4db88881beb5fc63a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _entityStatSO: {fileID: 11400000, guid: cb5380d624bc08e41b4e277d4ee41c4a, type: 2}
   <MaxHP>k__BackingField: 0
   <OnDieEvent>k__BackingField:
     m_PersistentCalls:

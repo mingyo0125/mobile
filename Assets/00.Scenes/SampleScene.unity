@@ -762,11 +762,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80b98a11dfa09794380b6367d3f0030d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <MaxHP>k__BackingField: 0
+  _entityStatSO: {fileID: 11400000, guid: f63223664cb116b49a608451d66dd15c, type: 2}
   <OnDieEvent>k__BackingField:
     m_PersistentCalls:
       m_Calls: []
-  <Speed>k__BackingField: 5
 --- !u!50 &936682777
 Rigidbody2D:
   serializedVersion: 4
