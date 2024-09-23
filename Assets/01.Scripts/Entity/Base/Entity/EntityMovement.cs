@@ -10,6 +10,8 @@ public abstract partial class Entity<T, G> : IMoveable
     public Rigidbody2D Rb { get; set; }
     public bool IsFacingRight { get; set; } = true;
 
+
+
     [field: SerializeField]
     public float Speed { get; set; } // 나중에 SO로
 

@@ -1,8 +1,5 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Security.Cryptography.X509Certificates;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class EntityStateMachine<T, G> where T : Enum where G : Entity<T, G>
@@ -11,7 +8,7 @@ public class EntityStateMachine<T, G> where T : Enum where G : Entity<T, G>
 
     public Dictionary<T, EntityState<T, G>> StateDictionary
         = new Dictionary<T, EntityState<T, G>>();
-
+    
     public EntityStateMachine(Entity<T, G> entity)
     {
         foreach (T state in Enum.GetValues(typeof(T)))

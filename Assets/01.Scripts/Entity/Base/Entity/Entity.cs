@@ -1,19 +1,22 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
-using UnityEngine.UIElements;
 
 public abstract partial class Entity<T, G> : PoolableMono where T : Enum where G : Entity<T, G>
 {
     public EntityStateMachine<T, G> StateMachine { get; protected set; }
+
+    public EntityAnimator EntityAnimatorCompo { get; private set; }
 
     protected virtual void Awake()
     {
         CreateStateMachine();
         InitializeMoveable();
 
+        EntityAnimatorCompo = transform.Find("Visual").GetComponent<EntityAnimator>();
+    }
+
+    public override void Initialize()
+    {
         StateMachine.Initialize(default);
     }
 

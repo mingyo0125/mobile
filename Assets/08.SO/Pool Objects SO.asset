@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Pool Objects SO
   m_EditorClassIdentifier: 
   <Enemies>k__BackingField:
-  - <PoolObject>k__BackingField: {fileID: 4294444919396659624, guid: f649035b089c02740a5dd9861e08b5ff, type: 3}
-    <PoolCount>k__BackingField: 5
+  - <PoolObject>k__BackingField: {fileID: 6527612484934499272, guid: bd876e3e69e1fc9488f6adb89939a092, type: 3}
+    <PoolCount>k__BackingField: 10
   <Items>k__BackingField: []
   <ETC>k__BackingField: []
