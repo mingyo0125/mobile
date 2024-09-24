@@ -10,9 +10,6 @@ public class EnemyMoveState : EntityMoveState<EnemyStateType, Enemy>
     public override void EnterState()
     {
         base.EnterState();
-
-        Debug.Log(_entity.gameObject.name);
-        _entity.EntityAnimatorCompo.SetFloat("Speed", _entity.Speed);
     }
 
     public override void FixedUpdateState()

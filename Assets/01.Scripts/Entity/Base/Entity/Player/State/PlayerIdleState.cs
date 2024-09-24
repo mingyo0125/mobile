@@ -9,4 +9,11 @@ public class PlayerIdleState : EntityIdleState<PlayerStateType, Player>
                            base(player, stateMachine)
     {
     }
+
+    public override void EnterState()
+    {
+        base.EnterState();
+
+        _entityStateMachine.ChangeState(PlayerStateType.Move);
+    }
 }

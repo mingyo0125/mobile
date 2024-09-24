@@ -13,7 +13,10 @@ public class PlayerMoveState : EntityMoveState<PlayerStateType, Player>
     public override void UpdateState()
     {
         base.UpdateState();
+    }
 
-
+    public override void EnterState()
+    {
+        base.EnterState();
     }
 }

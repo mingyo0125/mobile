@@ -9,4 +9,11 @@ public class EntityMoveState<T, G> : EntityState<T, G> where T : Enum where G : 
                            base(entity, entityStateMachine)
     {
     }
+
+    public override void EnterState()
+    {
+        base.EnterState();
+
+        _entity.EntityAnimatorCompo.SetFloat("Speed", _entity.Speed);
+    }
 }
