@@ -603,6 +603,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 433829578}
+  - component: {fileID: 433829579}
   m_Layer: 0
   m_Name: Weapon
   m_TagString: Untagged
@@ -626,6 +627,19 @@ Transform:
   - {fileID: 1413764254}
   m_Father: {fileID: 936682778}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
+--- !u!114 &433829579
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 433829577}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69dd2ff61f808eb4480db10374f1eef4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _weaponStatSO: {fileID: 11400000, guid: ce70b50aaf4bed84ebe849d5f21c2b6c, type: 2}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -794,15 +808,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80b98a11dfa09794380b6367d3f0030d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _entityStatSO: {fileID: 11400000, guid: f63223664cb116b49a608451d66dd15c, type: 2}
-  <CheckLayer>k__BackingField:
-    serializedVersion: 2
-    m_Bits: 128
-  isDrawRangeGizmo: 1
-  _gizmoColor: {r: 0, g: 1, b: 0, a: 1}
-  <OnDieEvent>k__BackingField:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!50 &936682777
 Rigidbody2D:
   serializedVersion: 4
