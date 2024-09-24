@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Player : Entity<PlayerStateType, Player>
 {
+
+
     private void Start()
     {
         StateMachine.Initialize(default);

@@ -21,9 +21,11 @@ public class PlayerMoveState : EntityMoveState<PlayerStateType, Player>
 
     public override void UpdateState()
     {
-        if(_entity.GetInRange().Item1)
+        bool isInRange = _entity.GetInRange().Item1;
+        if (isInRange)
         {
-            Debug.Log(_entity.GetInRange().Item2.Length);
+            _entityStateMachine.ChangeState(PlayerStateType.Attack);
         }
+        
     }
 }

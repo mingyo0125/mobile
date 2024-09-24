@@ -18,4 +18,13 @@ public class EnemyMoveState : EntityMoveState<EnemyStateType, Enemy>
 
         _entity.Move(GameManager.Instance.GetPlayerTrm().position);
     }
+
+    public override void UpdateState()
+    {
+        bool isInRange = _entity.GetInRange().Item1;
+        if (isInRange)
+        {
+            _entityStateMachine.ChangeState(EnemyStateType.Attack);
+        }
+    }
 }
