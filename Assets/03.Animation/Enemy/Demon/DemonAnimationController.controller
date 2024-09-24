@@ -109,7 +109,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: DemonIdle
-  m_Speed: 1
+  m_Speed: 100
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 3683849585757347898}
@@ -122,12 +122,12 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 0cd4858f1d402e74283d7d8e51d2ca62, type: 2}
+  m_Motion: {fileID: 0}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
-  m_TimeParameter: 
+  m_TimeParameter: Speed
 --- !u!1107 &-3811225308658329613
 AnimatorStateMachine:
   serializedVersion: 6
@@ -139,7 +139,7 @@ AnimatorStateMachine:
   m_ChildStates:
   - serializedVersion: 1
     m_State: {fileID: -4156876353319265480}
-    m_Position: {x: 376.29614, y: 52.37787, z: 0}
+    m_Position: {x: 380, y: 50, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -7848854629576873632}
     m_Position: {x: 380, y: 110, z: 0}
