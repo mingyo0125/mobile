@@ -15,4 +15,4 @@ MonoBehaviour:
   <EntityStat>k__BackingField:
     <Speed>k__BackingField: 1
     <MaxHP>k__BackingField: 10
-    <CheckAttackRange>k__BackingField: 3
+    <CheckAttackRange>k__BackingField: 0.5

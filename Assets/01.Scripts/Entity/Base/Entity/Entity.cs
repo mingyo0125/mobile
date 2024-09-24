@@ -7,6 +7,7 @@ public abstract partial class Entity<T, G> : PoolableMono where T : Enum where G
 
     public EntityAnimator EntityAnimatorCompo { get; private set; }
 
+    [Header("Stat")]
     [SerializeField]
     private EntityStatSO _entityStatSO;
 

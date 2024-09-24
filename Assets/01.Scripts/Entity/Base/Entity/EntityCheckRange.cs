@@ -9,6 +9,13 @@ public abstract partial class Entity<T, G> : IRangeCheckable
     [field: SerializeField]
     public LayerMask CheckLayer { get; set; }
 
+
+    [Header("CheckRange")]
+    [SerializeField]
+    private bool isDrawRangeGizmo = false;
+    [SerializeField]
+    private Color _gizmoColor;
+
     private void InitializeRangeCheckable()
     {
         CheckRange = _entityStatSO.EntityStat.CheckAttackRange;
@@ -18,5 +25,14 @@ public abstract partial class Entity<T, G> : IRangeCheckable
     {
         Collider2D[] inRangeColliders = Physics2D.OverlapCircleAll(transform.position, CheckRange, CheckLayer);
         return (inRangeColliders.Length > 0, inRangeColliders);
+    }
+
+    private void OnDrawGizmos()
+    {
+        if (isDrawRangeGizmo)
+        {
+            Gizmos.color = _gizmoColor;
+            Gizmos.DrawWireSphere(transform.position, CheckRange);
+        }
     }
 }

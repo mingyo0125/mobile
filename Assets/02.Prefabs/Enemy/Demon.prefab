@@ -78,6 +78,8 @@ MonoBehaviour:
   <CheckLayer>k__BackingField:
     serializedVersion: 2
     m_Bits: 64
+  isDrawRangeGizmo: 1
+  _gizmoColor: {r: 1, g: 0, b: 0, a: 1}
   <OnDieEvent>k__BackingField:
     m_PersistentCalls:
       m_Calls: []
