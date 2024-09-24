@@ -10,8 +10,13 @@ public class PlayerMoveState : EntityMoveState<PlayerStateType, Player>
     {
     }
 
+    public override void EnterState()
+    {
+        base.EnterState();
+    }
+
     public override void FixedUpdateState()
     {
-        // _entity.Move();
+        _entity.Move(new Vector2(100, 100));
     }
 }

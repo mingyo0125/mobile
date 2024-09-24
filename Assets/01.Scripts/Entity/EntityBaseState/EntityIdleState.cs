@@ -6,18 +6,4 @@ public class EntityIdleState<T,G> : EntityState<T,G> where T: Enum where G: Enti
                            base(entity, entityStateMachine)
     {
     }
-
-    public override void UpdateState()
-    {
-        base.UpdateState();
-
-        //Debug.Log($"{_entity}: UpdateState");
-    }
-
-    public override void FixedUpdateState()
-    {
-        base.FixedUpdateState();
-
-        //Debug.Log($"{_entity}: FixedUpdateState");
-    }
 }

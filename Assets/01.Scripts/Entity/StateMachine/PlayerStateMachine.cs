@@ -7,9 +7,4 @@ public class PlayerStateMachine : EntityStateMachine<PlayerStateType, Player>
     public PlayerStateMachine(Player player) : base(player)
     {
     }
-
-    private void ASDSA(Player player)
-    {
-
-    }
 }
