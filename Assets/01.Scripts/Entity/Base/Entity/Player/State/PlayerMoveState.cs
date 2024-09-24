@@ -10,13 +10,8 @@ public class PlayerMoveState : EntityMoveState<PlayerStateType, Player>
     {
     }
 
-    public override void UpdateState()
+    public override void FixedUpdateState()
     {
-        base.UpdateState();
-    }
-
-    public override void EnterState()
-    {
-        base.EnterState();
+        // _entity.Move();
     }
 }
