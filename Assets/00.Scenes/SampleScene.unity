@@ -324,7 +324,7 @@ Rigidbody2D:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 286393796}
   m_BodyType: 2
-  m_Simulated: 1
+  m_Simulated: 0
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
@@ -730,7 +730,7 @@ GameObject:
   - component: {fileID: 936682777}
   - component: {fileID: 936682776}
   - component: {fileID: 936682775}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -795,6 +795,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _entityStatSO: {fileID: 11400000, guid: f63223664cb116b49a608451d66dd15c, type: 2}
+  <CheckLayer>k__BackingField:
+    serializedVersion: 2
+    m_Bits: 128
   <OnDieEvent>k__BackingField:
     m_PersistentCalls:
       m_Calls: []
@@ -824,7 +827,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!4 &936682778
 Transform:
   m_ObjectHideFlags: 0
@@ -9049,8 +9052,8 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2033812560}
-  m_BodyType: 0
-  m_Simulated: 1
+  m_BodyType: 2
+  m_Simulated: 0
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1

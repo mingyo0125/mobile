@@ -11,4 +11,7 @@ public class Stat
 
     [field: SerializeField]
     public float MaxHP { get; private set; }
+
+    [field: SerializeField]
+    public float CheckAttackRange { get; private set;}
 }

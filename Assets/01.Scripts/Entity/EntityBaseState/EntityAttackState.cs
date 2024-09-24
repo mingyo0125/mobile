@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class EntityAttackState<T, G> : EntityState<T, G> where T : Enum where G : Entity<T, G>
@@ -8,5 +6,6 @@ public class EntityAttackState<T, G> : EntityState<T, G> where T : Enum where G 
     public EntityAttackState(G entity, EntityStateMachine<T, G> entityStateMachine):
                              base(entity, entityStateMachine)
     {
+
     }
 }

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4513990318210608940}
   - component: {fileID: 6527612484934499272}
   - component: {fileID: 8792103034932909251}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Demon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -75,11 +75,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _entityStatSO: {fileID: 11400000, guid: cb5380d624bc08e41b4e277d4ee41c4a, type: 2}
-  <MaxHP>k__BackingField: 0
+  <CheckLayer>k__BackingField:
+    serializedVersion: 2
+    m_Bits: 64
   <OnDieEvent>k__BackingField:
     m_PersistentCalls:
       m_Calls: []
-  <Speed>k__BackingField: 1
 --- !u!61 &8792103034932909251
 BoxCollider2D:
   m_ObjectHideFlags: 0

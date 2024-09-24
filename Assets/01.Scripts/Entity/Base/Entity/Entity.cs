@@ -17,6 +17,7 @@ public abstract partial class Entity<T, G> : PoolableMono where T : Enum where G
         CreateStateMachine();
         InitializeMoveable();
         InitializeHealth();
+        InitializeRangeCheckable();
 
         EntityAnimatorCompo = transform.Find("Visual").GetComponent<EntityAnimator>();
         EntityStat = _entityStatSO.EntityStat;

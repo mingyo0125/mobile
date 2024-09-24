@@ -17,6 +17,13 @@ public class PlayerMoveState : EntityMoveState<PlayerStateType, Player>
 
     public override void FixedUpdateState()
     {
-        _entity.Move(new Vector2(100, 100));
+    }
+
+    public override void UpdateState()
+    {
+        if(_entity.GetInRange().Item1)
+        {
+            Debug.Log(_entity.GetInRange().Item2.Length);
+        }
     }
 }
