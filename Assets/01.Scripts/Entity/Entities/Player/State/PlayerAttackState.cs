@@ -10,4 +10,17 @@ public class PlayerAttackState : EntityAttackState<PlayerStateType, Player>
     {
 
     }
+
+	public override void EnterState()
+	{
+		Debug.Log("Attack");
+		Debug.Log(_entity.EquipWeapon);
+		Debug.Log(_entity);
+        _entity.EquipWeapon?.Attack();
+	}
+
+	public override void UpdateState()
+	{
+		base.UpdateState();
+	}
 }
