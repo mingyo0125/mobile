@@ -14,4 +14,7 @@ public class Stat
 
     [field: SerializeField]
     public float CheckAttackRange { get; private set;}
+
+	[field: SerializeField]
+	public float Damage { get; private set; }
 }
