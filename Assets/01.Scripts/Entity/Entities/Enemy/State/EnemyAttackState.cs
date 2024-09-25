@@ -9,4 +9,9 @@ public class EnemyAttackState : EntityAttackState<EnemyStateType, Enemy>
                             base(enemy, entityStateMachine)
     {
     }
+
+	public override void ChangeMoveState()
+	{
+		_entityStateMachine.ChangeState(EnemyStateType.Move);
+	}
 }

@@ -11,16 +11,8 @@ public class PlayerAttackState : EntityAttackState<PlayerStateType, Player>
 
     }
 
-	public override void EnterState()
+	public override void ChangeMoveState()
 	{
-		Debug.Log("Attack");
-		Debug.Log(_entity.EquipWeapon);
-		Debug.Log(_entity);
-        _entity.EquipWeapon?.Attack();
-	}
-
-	public override void UpdateState()
-	{
-		base.UpdateState();
+		_entityStateMachine.ChangeState(PlayerStateType.Move);
 	}
 }

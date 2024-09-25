@@ -9,10 +9,16 @@ public class Player : Entity<PlayerStateType, Player>
         EquipWeapon = weapon;
 	}
 
+	protected override void Awake()
+    {
+		UpdateWeapon(transform.Find("EquipWeapon/WoodSword").GetComponent<Weapon>()); // 처음에는 일단 이것
+
+		base.Awake();
+	}
+
 	private void Start()
     {
         StateMachine.Initialize(default);
-        UpdateWeapon(transform.Find("Weapon").GetComponent<Weapon>());
 	}
 
     protected override void CreateStateMachine()
