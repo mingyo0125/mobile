@@ -7,6 +7,7 @@ using UnityEngine.Events;
 public class WeaponAnimator : MonoBehaviour
 {
 	public event Action OnEndAttackEvent;
+	public event Action OnAttackEvent;
 
     private Animator _animator;
 
@@ -23,5 +24,10 @@ public class WeaponAnimator : MonoBehaviour
 	public void EndAttackTrigger()
 	{
 		OnEndAttackEvent?.Invoke();
+	}
+
+	public void OnAttackTrigger()
+	{
+		OnAttackEvent?.Invoke();
 	}
 }

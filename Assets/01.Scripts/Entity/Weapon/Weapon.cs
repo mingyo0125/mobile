@@ -28,4 +28,10 @@ public class Weapon : MonoBehaviour
     {
         _weaponAnimator.OnEndAttackEvent += endAnimationEvent;
 	}
+
+    public void SubscribeAttackEvent(Action attackEvent)
+    {
+		_weaponAnimator.OnAttackEvent += attackEvent;
+	}
+    
 }
