@@ -4,7 +4,7 @@ using UnityEngine;
 
 public abstract partial class Entity<T, G> : IRangeCheckable
 {
-    public float CheckRange { get; set; }
+    public float CheckRangeDistance { get; set; }
 
     [field: SerializeField]
     public LayerMask CheckLayer { get; set; }
@@ -18,12 +18,12 @@ public abstract partial class Entity<T, G> : IRangeCheckable
 
     private void InitializeRangeCheckable()
     {
-        CheckRange = _entityStatSO.EntityStat.CheckAttackRange;
+        CheckRangeDistance = _entityStatSO.EntityStat.CheckAttackRange;
     }
 
-    public (bool, Collider2D[]) GetInRange()
+    public (bool, Collider2D[]) GetInRange(float checkRange)
     {
-        Collider2D[] inRangeColliders = Physics2D.OverlapCircleAll(transform.position, CheckRange, CheckLayer);
+        Collider2D[] inRangeColliders = Physics2D.OverlapCircleAll(transform.position, checkRange, CheckLayer);
         return (inRangeColliders.Length > 0, inRangeColliders);
     }
 
@@ -32,7 +32,7 @@ public abstract partial class Entity<T, G> : IRangeCheckable
         if (isDrawRangeGizmo)
         {
             Gizmos.color = _gizmoColor;
-            Gizmos.DrawWireSphere(transform.position, CheckRange);
+            Gizmos.DrawWireSphere(transform.position, CheckRangeDistance);
         }
     }
 }

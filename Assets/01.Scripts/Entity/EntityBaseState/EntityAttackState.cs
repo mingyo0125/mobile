@@ -28,12 +28,12 @@ public abstract class EntityAttackState<T, G> : EntityState<T, G> where T : Enum
 
 	private bool GetAttackable()
 	{
-		return _entity.GetInRange().Item1;
+		return _entity.GetInRange(_entity.CheckRangeDistance).Item1;
 	}
 
 	private void TakeDamage()
 	{
-		foreach(Collider2D item in _entity.GetInRange().Item2)
+		foreach(Collider2D item in _entity.GetInRange(_entity.CheckRangeDistance).Item2)
 		{
 			if (item.TryGetComponent(out IDamageable component))
 			{

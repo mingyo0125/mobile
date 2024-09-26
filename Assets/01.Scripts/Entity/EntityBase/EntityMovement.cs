@@ -12,7 +12,7 @@ public abstract partial class Entity<T, G> : IMoveable
 
     public float Speed { get; set; } // 나중에 SO로
 
-    private void InitializeMoveable()
+    private void InitializeMovement()
     {
         Rb = GetComponent<Rigidbody2D>();
 

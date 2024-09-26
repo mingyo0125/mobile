@@ -16,7 +16,7 @@ public abstract partial class Entity<T, G> : PoolableMono where T : Enum where G
     protected virtual void Awake()
     {
         CreateStateMachine();
-        InitializeMoveable();
+        InitializeMovement();
         InitializeHealth();
         InitializeRangeCheckable();
 

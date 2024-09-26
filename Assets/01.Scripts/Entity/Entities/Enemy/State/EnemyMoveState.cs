@@ -21,7 +21,7 @@ public class EnemyMoveState : EntityMoveState<EnemyStateType, Enemy>
 
     public override void UpdateState()
     {
-        bool isInRange = _entity.GetInRange().Item1;
+        bool isInRange = _entity.GetInRange(_entity.CheckRangeDistance).Item1;
         if (isInRange)
         {
             _entityStateMachine.ChangeState(EnemyStateType.Attack);
