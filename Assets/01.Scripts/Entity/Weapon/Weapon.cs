@@ -1,7 +1,6 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class Weapon : MonoBehaviour
 {
@@ -21,6 +20,9 @@ public class Weapon : MonoBehaviour
 
     public virtual void Attack()
     {
+        Sequence sequence = DOTween.Sequence();
+        sequence.
+            Append(transform.DORotate(new Vector3(0, 0, -360), 0.6f, RotateMode.FastBeyond360).SetEase(Ease.Linear));
         _weaponAnimator.Attack();
 	}
 
