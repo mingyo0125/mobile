@@ -20,7 +20,10 @@ public abstract partial class Entity<T, G> : IDamageable
     public virtual void TakeDamage(float damage)
     {
         CurrentHP -= damage;
-        Debug.Log($"{gameObject}: TakeDamage:{damage}, CurHp:{CurrentHP}");
+		EntityAnimatorCompo.SetFloat("Speed", -1f);
+        EntityAnimatorCompo.SetTrigger("HitTrigger");
+
+		Debug.Log($"{gameObject}: TakeDamage:{damage}, CurHp:{CurrentHP}");
         if (CurrentHP <= 0) { Die(); }
     }
 

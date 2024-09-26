@@ -15,14 +15,14 @@ public abstract partial class Entity<T, G> : PoolableMono where T : Enum where G
 
     protected virtual void Awake()
     {
-        CreateStateMachine();
-        InitializeMovement();
-        InitializeHealth();
-        InitializeRangeCheckable();
-
         EntityAnimatorCompo = transform.Find("Visual").GetComponent<EntityAnimator>();
         EntityStat = _entityStatSO.EntityStat;
-    }
+
+		CreateStateMachine();
+		InitializeMovement();
+		InitializeHealth();
+		InitializeRangeCheckable();
+	}
 
     public override void Initialize()
     {

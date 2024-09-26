@@ -15,9 +15,12 @@ public abstract partial class Entity<T, G> : IMoveable
     private void InitializeMovement()
     {
         Rb = GetComponent<Rigidbody2D>();
-
+          
         Speed = _entityStatSO.EntityStat.Speed;
-    }
+
+        EntityAnimatorCompo.OnHitAnimationEndEvent += EndHitAnimationEvent;
+
+	}
 
     public void Move(Vector2 targetPos)
     {
@@ -43,4 +46,9 @@ public abstract partial class Entity<T, G> : IMoveable
         // 일단 이렇게 회전
         transform.Rotate(new Vector2(0, 180f));
     }
+
+    private void EndHitAnimationEvent()
+    {
+		EntityAnimatorCompo.SetFloat("Speed", Speed);
+	}
 }

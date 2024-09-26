@@ -12,23 +12,20 @@ public abstract class EntityAttackState<T, G> : EntityState<T, G> where T : Enum
 
 	public override void EnterState()
 	{
-		PlayAttackAnimaion();
-	}
-
-	public void PlayAttackAnimaion()
-    {
-		if (!GetAttackable())
-		{
-			ChangeMoveState();
-			return;
-		}
-
 		_entity.EquipWeapon?.Attack();
 	}
 
 	private bool GetAttackable()
 	{
 		return _entity.GetInRange(_entity.CheckRangeDistance).Item1;
+	}
+
+	public override void UpdateState()
+	{
+		if (!GetAttackable())
+		{
+			ChangeMoveState();
+		}
 	}
 
 	private void TakeDamage()
@@ -44,7 +41,6 @@ public abstract class EntityAttackState<T, G> : EntityState<T, G> where T : Enum
 				Debug.Log($"{component} not have IDamageable");
 			}
 		}
-		
 	}
 
 	public abstract void ChangeMoveState();
