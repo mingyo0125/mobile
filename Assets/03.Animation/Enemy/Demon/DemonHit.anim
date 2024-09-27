@@ -80,8 +80,8 @@ AnimationClip:
   m_HasMotionFloatCurves: 0
   m_Events:
   - time: 0.33333334
-    functionName: SetFloatAnimationEvent
-    data: Speed
+    functionName: EndHitEventTrigger
+    data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 1
     intParameter: 0

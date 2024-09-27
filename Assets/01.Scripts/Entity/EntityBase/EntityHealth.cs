@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,10 +9,10 @@ public abstract partial class Entity<T, G> : IDamageable
     public float MaxHP { get; set; }      //나중에 SO로 빼기
     public float CurrentHP { get; set; }
 
-    [field: SerializeField]
-    public UnityEvent OnDieEvent { get; set; }
+    public event Action<float> OnTaKeDamagedEvent = null;
+	public event Action OnDieEvent = null;
 
-    private void InitializeHealth()
+	private void InitializeHealth()
     {
         MaxHP = _entityStatSO.EntityStat.MaxHP;
         CurrentHP = MaxHP;
@@ -25,11 +26,14 @@ public abstract partial class Entity<T, G> : IDamageable
 
 		Debug.Log($"{gameObject}: TakeDamage:{damage}, CurHp:{CurrentHP}");
         if (CurrentHP <= 0) { Die(); }
+        else { OnTaKeDamagedEvent?.Invoke(damage); }
     }
 
     public virtual void Die()
     {
         Debug.Log($"{gameObject} Die");
-        // DoSomething
-    }
+        OnDieEvent?.Invoke();
+
+		// DoSomething
+	}
 }
