@@ -19,7 +19,6 @@ public abstract partial class Entity<T, G> : IMoveable
         Speed = _entityStatSO.EntityStat.Speed;
 
         EntityAnimatorCompo.OnHitAnimationEndEvent += EndHitAnimationEvent;
-
 	}
 
     public void Move(Vector2 targetPos)
