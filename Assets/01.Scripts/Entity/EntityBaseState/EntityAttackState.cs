@@ -12,7 +12,7 @@ public abstract class EntityAttackState<T, G> : EntityState<T, G> where T : Enum
 
 	public override void EnterState()
 	{
-		_entity.EquipWeapon?.Attack();
+		_entity.EquipWeapon?.SetAttack();
 	}
 
 	private bool GetAttackable()
@@ -24,8 +24,13 @@ public abstract class EntityAttackState<T, G> : EntityState<T, G> where T : Enum
 	{
 		if (!GetAttackable())
 		{
-			ChangeMoveState();
+			ChangeIdleState();
 		}
+	}
+
+	public override void ExitState()
+	{
+		_entity.EquipWeapon?.SetIdle();
 	}
 
 	private void TakeDamage()
@@ -43,5 +48,5 @@ public abstract class EntityAttackState<T, G> : EntityState<T, G> where T : Enum
 		}
 	}
 
-	public abstract void ChangeMoveState();
+	public abstract void ChangeIdleState();
 }

@@ -18,12 +18,19 @@ public class Weapon : MonoBehaviour
 		_weaponAnimator = transform.Find("Visual").GetComponent<WeaponAnimator>();
     }
 
-    public virtual void Attack()
+    public virtual void SetAttack()
     {
         Sequence sequence = DOTween.Sequence();
         sequence.
             Append(transform.DORotate(new Vector3(0, 0, -360), 0.6f, RotateMode.FastBeyond360).SetEase(Ease.Linear));
-        _weaponAnimator.Attack();
+        _weaponAnimator.SetAttackAnimation();
+	}
+
+    public virtual void SetIdle()
+    {
+        transform.DOKill();
+        transform.rotation = Quaternion.identity;
+        _weaponAnimator.SetIdleAnimation();
 	}
 
     public void SubscribeEndAnimationEvent(Action endAnimationEvent)

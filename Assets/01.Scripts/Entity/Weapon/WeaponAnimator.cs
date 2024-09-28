@@ -16,9 +16,14 @@ public class WeaponAnimator : MonoBehaviour
 		_animator = GetComponent<Animator>();
 	}
 
-	public void Attack()
+	public void SetAttackAnimation()
 	{
-		_animator.SetTrigger("AttackTrigger");
+		_animator.SetBool("AttackTrigger", true);
+	}
+
+	public void SetIdleAnimation()
+	{
+		_animator.SetBool("AttackTrigger", false);
 	}
 
 	public void EndAttackTrigger()

@@ -11,8 +11,8 @@ public class PlayerAttackState : EntityAttackState<PlayerStateType, Player>
 
     }
 
-	public override void ChangeMoveState()
+	public override void ChangeIdleState()
 	{
-		_entityStateMachine.ChangeState(PlayerStateType.Move);
+		_entityStateMachine.ChangeState(PlayerStateType.Idle);
 	}
 }
