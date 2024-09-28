@@ -31,6 +31,6 @@ public class EntityAnimator : MonoBehaviour
 
 	public void EndDieEventTrigger()
 	{
-		OnHitAnimationEndEvent?.Invoke();
+		OnDieAnimationEndEvent?.Invoke();
 	}
 }

@@ -26,12 +26,16 @@ public abstract partial class Entity<T, G> : IDamageable
         if (CurrentHP <= 0) { return; } // 나중에 콜라이더를 꺼는걸로 바꾸셈
 
         CurrentHP -= damage;
-		EntityAnimatorCompo.SetFloat("Speed", -1f);
-        EntityAnimatorCompo.SetTrigger("HitTrigger");
 
 		Debug.Log($"{gameObject}: TakeDamage:{damage}, CurHp:{CurrentHP}");
         if (CurrentHP <= 0) { Die(); }
-        else { OnTaKeDamagedEvent?.Invoke(damage); }
+        else
+        {
+			EntityAnimatorCompo.SetFloat("Speed", -1f);
+			EntityAnimatorCompo.SetTrigger("HitTrigger");
+
+			OnTaKeDamagedEvent?.Invoke(damage);
+        }
     }
 
     public virtual void Die()
