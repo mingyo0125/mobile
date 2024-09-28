@@ -19,15 +19,18 @@ public abstract partial class Entity<T, G> : PoolableMono where T : Enum where G
         EntityStat = _entityStatSO.EntityStat;
 
 		CreateStateMachine();
-		InitializeMovement();
-		InitializeHealth();
-		InitializeRangeCheckable();
+		MovementAwake();
+		HealthAwake();
+		RangeCheckableAwake();
 	}
 
-    public override void Initialize()
+	public override void Initialize()
     {
-        StateMachine.Initialize(default);
-    }
+		InitializeHealth();
+		InitializeMovement();
+
+		StateMachine.Initialize(default);
+	}
 
     private void Update()
     {
@@ -40,4 +43,10 @@ public abstract partial class Entity<T, G> : PoolableMono where T : Enum where G
     }
 
     protected abstract void CreateStateMachine();
+
+	private void OnDisable()
+	{
+		HealthDisable();
+        MovemetDisable();
+	}
 }

@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Enemies>k__BackingField:
   - <PoolObject>k__BackingField: {fileID: 6527612484934499272, guid: bd876e3e69e1fc9488f6adb89939a092, type: 3}
-    <PoolCount>k__BackingField: 10
+    <PoolCount>k__BackingField: 0
   <Items>k__BackingField: []
   <ETC>k__BackingField: []

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -12,16 +13,23 @@ public abstract partial class Entity<T, G> : IMoveable
 
     public float Speed { get; set; } // 나중에 SO로
 
-    private void InitializeMovement()
+    private Action _endHitAnimationEvent;
+
+	private void MovementAwake()
     {
         Rb = GetComponent<Rigidbody2D>();
-          
-        Speed = _entityStatSO.EntityStat.Speed;
-
-        EntityAnimatorCompo.OnHitAnimationEndEvent += EndHitAnimationEvent;
+		_endHitAnimationEvent = EndHitAnimationEvent;
 	}
 
-    public void Move(Vector2 targetPos)
+	private void InitializeMovement()
+    {
+        IsFacingRight = true;
+		Speed = _entityStatSO.EntityStat.Speed;
+
+		EntityAnimatorCompo.OnHitAnimationEndEvent += _endHitAnimationEvent;
+	}
+
+	public void Move(Vector2 targetPos)
     {
         Vector2 newPosition = Vector2.MoveTowards(transform.position, targetPos, Speed * Time.fixedDeltaTime);
         Rb.MovePosition(newPosition);
@@ -49,5 +57,10 @@ public abstract partial class Entity<T, G> : IMoveable
     private void EndHitAnimationEvent()
     {
 		EntityAnimatorCompo.SetFloat("Speed", Speed);
+	}
+
+    private void MovemetDisable()
+    {
+		EntityAnimatorCompo.OnHitAnimationEndEvent -= _endHitAnimationEvent;
 	}
 }

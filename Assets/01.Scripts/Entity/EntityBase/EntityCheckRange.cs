@@ -16,7 +16,7 @@ public abstract partial class Entity<T, G> : IRangeCheckable
     [SerializeField]
     private Color _gizmoColor;
 
-    private void InitializeRangeCheckable()
+    private void RangeCheckableAwake()
     {
         CheckRangeDistance = _entityStatSO.EntityStat.CheckAttackRange;
     }

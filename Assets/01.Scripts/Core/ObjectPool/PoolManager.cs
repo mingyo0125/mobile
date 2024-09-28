@@ -34,7 +34,6 @@ public class PoolManager : MonoSingleTon<PoolManager>
 
     public void DestroyObject(PoolableMono obj)
     {
-        Debug.Log(obj);
         try
         {
             _poolObjects[obj.name].Destroy(obj);
