@@ -10,10 +10,13 @@ public class PlayerIdleState : EntityIdleState<PlayerStateType, Player>
     {
     }
 
-    public override void EnterState()
-    {
-        base.EnterState();
+	public override void UpdateState()
+	{
+		base.UpdateState();
 
-        _entityStateMachine.ChangeState(PlayerStateType.Move);
-    }
+        if(_entity.GetInRange(100f).Item1)
+        {
+			_entityStateMachine.ChangeState(PlayerStateType.Move);
+		}
+	}
 }

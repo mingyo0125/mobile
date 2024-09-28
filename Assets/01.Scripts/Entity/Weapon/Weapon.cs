@@ -22,14 +22,13 @@ public class Weapon : MonoBehaviour
     {
         Sequence sequence = DOTween.Sequence();
         sequence.
-            Append(transform.DORotate(new Vector3(0, 0, -360), 0.6f, RotateMode.FastBeyond360).SetEase(Ease.Linear));
+            Append(transform.DORotate(new Vector3(0.0f, 0.0f, -360), 0.4f, RotateMode.LocalAxisAdd).SetEase(Ease.Linear));
         _weaponAnimator.SetAttackAnimation();
 	}
 
     public virtual void SetIdle()
     {
         transform.DOKill();
-        transform.rotation = Quaternion.identity;
         _weaponAnimator.SetIdleAnimation();
 	}
 
