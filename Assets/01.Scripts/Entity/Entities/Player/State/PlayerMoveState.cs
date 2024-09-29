@@ -11,11 +11,6 @@ public class PlayerMoveState : EntityMoveState<PlayerStateType, Player>
     {
     }
 
-    public override void EnterState()
-    {
-        base.EnterState();
-    }
-
     public override void FixedUpdateState()
     {
 		bool isInRange = _entity.GetInRange(100f).Item1; // 있기만 하면 어디에 있던 쫓아감

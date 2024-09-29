@@ -29,6 +29,7 @@ public class Weapon : MonoBehaviour
     public virtual void SetIdle()
     {
         transform.DOKill();
+        transform.rotation = Quaternion.identity;
         _weaponAnimator.SetIdleAnimation();
 	}
 
@@ -41,5 +42,5 @@ public class Weapon : MonoBehaviour
     {
 		_weaponAnimator.OnAttackEvent += attackEvent;
 	}
-    
+
 }

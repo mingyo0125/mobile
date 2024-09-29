@@ -47,7 +47,6 @@ public abstract partial class Entity<T, G> : IDamageable
 
     public virtual void Die()
     {
-        Debug.Log($"{gameObject} Die");
 		OnDieEvent?.Invoke();
 		EntityAnimatorCompo.SetFloat("Speed", -1f);
 		EntityAnimatorCompo.SetTrigger("DieTrigger");

@@ -1,5 +1,4 @@
 using System;
-using System.Linq;
 using UnityEngine;
 
 public abstract class EntityAttackState<T, G> : EntityState<T, G> where T : Enum where G : Entity<T, G>
@@ -13,6 +12,10 @@ public abstract class EntityAttackState<T, G> : EntityState<T, G> where T : Enum
 
 	public override void EnterState()
 	{
+		base.EnterState();
+
+		//Debug.Log(_entity.StateMachine.PrevState);
+		//Debug.Log(this);	
 		_entity.EquipWeapon?.SetAttack();
 	}
 

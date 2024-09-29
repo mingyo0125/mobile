@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class EntityStateMachine<T, G> where T : Enum where G : Entity<T, G>
@@ -8,8 +9,10 @@ public class EntityStateMachine<T, G> where T : Enum where G : Entity<T, G>
 
     public Dictionary<T, EntityState<T, G>> StateDictionary
         = new Dictionary<T, EntityState<T, G>>();
-    
-    public EntityStateMachine(Entity<T, G> entity)
+
+	public EntityState<T, G> PrevState { get; private set; }
+
+	public EntityStateMachine(Entity<T, G> entity)
     {
         foreach (T state in Enum.GetValues(typeof(T)))
         {
@@ -49,8 +52,21 @@ public class EntityStateMachine<T, G> where T : Enum where G : Entity<T, G>
 
     public void ChangeState(T nextState)
     {
-        CurrentState.ExitState();
+        if(CurrentState != null && typeof(G) == typeof(Player))
+        {
+			PrevState = CurrentState;
+			PrevState.ExitState();
+
+			Debug.Log($"PrevState: {PrevState}");
+		}
+
         CurrentState = StateDictionary[nextState];
-        CurrentState.EnterState();
+
+        if(typeof(G) == typeof(Player))
+        {
+			Debug.Log($"CurrentState: {CurrentState}");
+		}
+
+		CurrentState.EnterState();
     }
 }

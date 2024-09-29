@@ -7,11 +7,6 @@ public class EnemyMoveState : EntityMoveState<EnemyStateType, Enemy>
     {
     }
 
-    public override void EnterState()
-    {
-        base.EnterState();
-    }
-
     public override void FixedUpdateState()
     {
         base.FixedUpdateState();
