@@ -24,7 +24,6 @@ public abstract partial class Entity<T, G> : IDamageable
     private void InitializeHealth()
     {
 		CurrentHP = MaxHP;
-        Debug.Log(CurrentHP);
 		EntityAnimatorCompo.OnDieAnimationEndEvent += DieAnimationEndEvent;
 	}
 

@@ -16,20 +16,19 @@ public abstract class EntityAttackState<T, G> : EntityState<T, G> where T : Enum
 
 		//Debug.Log(_entity.StateMachine.PrevState);
 		//Debug.Log(this);	
+
+		if (!GetAttackable())
+		{
+			ChangeIdleState();
+			return;
+		}
+
 		_entity.EquipWeapon?.SetAttack();
 	}
 
 	private bool GetAttackable()
 	{
 		return _entity.GetInRange(_entity.CheckRangeDistance).Item1;
-	}
-
-	public override void UpdateState()
-	{
-		if (!GetAttackable())
-		{
-			ChangeIdleState();
-		}
 	}
 
 	public override void ExitState()

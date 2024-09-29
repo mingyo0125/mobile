@@ -17,7 +17,7 @@ public class EntityState<T, G> where T : Enum where G : Entity<T, G>
 
     public virtual void EnterState()
     {
-		if (_entity.StateMachine.PrevState == this)
+		if (_entity.StateMachine.PrevState?.GetType() == GetType())
 		{
 			return;
 		}

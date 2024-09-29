@@ -52,21 +52,13 @@ public class EntityStateMachine<T, G> where T : Enum where G : Entity<T, G>
 
     public void ChangeState(T nextState)
     {
-        if(CurrentState != null && typeof(G) == typeof(Player))
+        if(CurrentState != null)
         {
 			PrevState = CurrentState;
 			PrevState.ExitState();
-
-			Debug.Log($"PrevState: {PrevState}");
 		}
 
         CurrentState = StateDictionary[nextState];
-
-        if(typeof(G) == typeof(Player))
-        {
-			Debug.Log($"CurrentState: {CurrentState}");
-		}
-
 		CurrentState.EnterState();
     }
 }
