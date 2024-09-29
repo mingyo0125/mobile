@@ -14,26 +14,25 @@ public abstract class EntityAttackState<T, G> : EntityState<T, G> where T : Enum
 	{
 		base.EnterState();
 
-		//Debug.Log(_entity.StateMachine.PrevState);
-		//Debug.Log(this);	
-
 		if (!GetAttackable())
 		{
 			ChangeIdleState();
 			return;
 		}
 
+		Vector2 shortestPos = _entity.GetShortestTargetPos(_entity.GetInRange(100f).Item2);
+		_entity.CheckFacingDir(shortestPos);
 		_entity.EquipWeapon?.SetAttack();
-	}
-
-	private bool GetAttackable()
-	{
-		return _entity.GetInRange(_entity.CheckRangeDistance).Item1;
 	}
 
 	public override void ExitState()
 	{
 		_entity.EquipWeapon?.SetIdle();
+	}
+
+	private bool GetAttackable()
+	{
+		return _entity.GetInRange(_entity.CheckRangeDistance).Item1;
 	}
 
 	private void TakeDamage()

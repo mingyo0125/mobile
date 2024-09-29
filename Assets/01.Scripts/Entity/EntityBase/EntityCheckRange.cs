@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public abstract partial class Entity<T, G> : IRangeCheckable
@@ -35,4 +36,22 @@ public abstract partial class Entity<T, G> : IRangeCheckable
             Gizmos.DrawWireSphere(transform.position, CheckRangeDistance);
         }
     }
+
+	public Vector2 GetShortestTargetPos(Collider2D[] inRangeTargets)
+	{
+		Collider2D shortestCollider = inRangeTargets.FirstOrDefault();
+
+		foreach (Collider2D collider in inRangeTargets)
+		{
+			bool isShortestDistance = Vector3.Distance(transform.position, collider.transform.position) <
+									  Vector3.Distance(transform.position, shortestCollider.transform.position);
+
+			if (isShortestDistance)
+			{
+				shortestCollider = collider;
+			}
+		}
+
+        return shortestCollider.transform.position;
+	}
 }

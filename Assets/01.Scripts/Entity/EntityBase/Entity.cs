@@ -13,6 +13,8 @@ public abstract partial class Entity<T, G> : PoolableMono where T : Enum where G
 
     public Stat EntityStat { get; private set; }
 
+    public Vector2 TargetPos { get; private set; }
+
     protected virtual void Awake()
     {
         EntityAnimatorCompo = transform.Find("Visual").GetComponent<EntityAnimator>();
@@ -32,6 +34,11 @@ public abstract partial class Entity<T, G> : PoolableMono where T : Enum where G
 		StateMachine.Initialize(default);
 	}
 
+    public void SetTargetTrm(Vector3 targetPos)
+    {
+        TargetPos = targetPos;
+	}
+
     private void Update()
     {
         StateMachine.CurrentState?.UpdateState();
@@ -40,7 +47,7 @@ public abstract partial class Entity<T, G> : PoolableMono where T : Enum where G
     private void FixedUpdate()
     {
         StateMachine.CurrentState?.FixedUpdateState();
-    }
+	}
 
     protected abstract void CreateStateMachine();
 

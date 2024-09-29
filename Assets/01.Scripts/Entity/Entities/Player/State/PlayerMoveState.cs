@@ -13,26 +13,15 @@ public class PlayerMoveState : EntityMoveState<PlayerStateType, Player>
 
     public override void FixedUpdateState()
     {
-		bool isInRange = _entity.GetInRange(100f).Item1; // 있기만 하면 어디에 있던 쫓아감
-		if (isInRange)
-		{
-            Collider2D[] inRangeEntities = _entity.GetInRange(100f).Item2;
+		bool isInRange = _entity.GetInRange(100f).Item1;
 
-			Collider2D shortestCollider = inRangeEntities.FirstOrDefault();
+        if (isInRange)
+        {
+            Vector2 shortestPos = _entity.GetShortestTargetPos(_entity.GetInRange(100f).Item2); // 있기만 하면 어디에 있던 쫓아감
 
-            foreach(Collider2D collider in inRangeEntities)
-            {
-                bool isShortestDistance = Vector3.Distance(_entity.transform.position, collider.transform.position) <
-                                          Vector3.Distance(_entity.transform.position, shortestCollider.transform.position);
-
-				if (isShortestDistance)
-				{
-                    shortestCollider = collider;
-				}
-            }
-			_entity.Move(shortestCollider.transform.position);
-		}
-
+            _entity.SetTargetTrm(shortestPos);
+            _entity.Move(shortestPos);
+        }
     }
 
     public override void UpdateState()
@@ -42,6 +31,12 @@ public class PlayerMoveState : EntityMoveState<PlayerStateType, Player>
         {
             _entityStateMachine.ChangeState(PlayerStateType.Attack);
         }
-        
     }
+
+	public override void ExitState()
+	{
+		base.ExitState();
+
+        _entity.EntityAnimatorCompo.SetFloat("Speed", -1f);
+	}
 }

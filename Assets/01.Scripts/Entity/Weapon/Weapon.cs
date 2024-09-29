@@ -20,8 +20,6 @@ public class Weapon : MonoBehaviour
 
     public virtual void SetAttack()
     {
-        Debug.Log("Attack");
-
         Sequence sequence = DOTween.Sequence();
         sequence.
             Append(transform.DORotate(new Vector3(0.0f, 0.0f, -360), 0.4f, RotateMode.LocalAxisAdd).SetEase(Ease.Linear));

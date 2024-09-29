@@ -9,7 +9,7 @@ public class GameManager : MonoSingleTon<GameManager>
     {
         if(_playerTrm == null)
         {
-            _playerTrm = GameObject.Find("Player").transform;
+            _playerTrm = FindAnyObjectByType<Player>().transform;
         }
         return _playerTrm;
     }
