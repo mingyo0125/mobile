@@ -22,7 +22,7 @@ public class Weapon : MonoBehaviour
     {
         Sequence sequence = DOTween.Sequence();
         sequence.
-            Append(transform.DORotate(new Vector3(0.0f, 0.0f, -360), 0.4f, RotateMode.LocalAxisAdd).SetEase(Ease.Linear));
+            Append(transform.DOLocalRotate(new Vector3(0.0f, 0.0f, -360), 0.4f, RotateMode.LocalAxisAdd).SetEase(Ease.Linear));
         _weaponAnimator.SetAttackAnimation();
 	}
 

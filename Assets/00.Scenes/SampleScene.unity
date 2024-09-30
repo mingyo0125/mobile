@@ -9091,7 +9091,7 @@ MonoBehaviour:
   _spawnEntityTypes: 1
   _minBound: {fileID: 1160370147}
   _maxBound: {fileID: 192518449}
-  spawnTime: 5
+  spawnTime: 1
 --- !u!4 &1964096601
 Transform:
   m_ObjectHideFlags: 0

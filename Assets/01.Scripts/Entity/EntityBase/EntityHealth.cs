@@ -29,7 +29,7 @@ public abstract partial class Entity<T, G> : IDamageable
 
 	public virtual void TakeDamage(float damage)
     {
-        if (CurrentHP <= 0) { return; } // 나중에 콜라이더를 꺼는걸로 바꾸셈
+        //if (CurrentHP <= 0) { return; } // 나중에 콜라이더를 꺼는걸로 바꾸셈
 
         CurrentHP -= damage;
 
