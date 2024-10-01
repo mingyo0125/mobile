@@ -24,7 +24,9 @@ public abstract partial class Entity<T, G> : PoolableMono where T : Enum where G
 		MovementAwake();
 		HealthAwake();
 		RangeCheckableAwake();
-	}
+        FeedbackAwake();
+
+    }
 
 	public override void Initialize()
     {

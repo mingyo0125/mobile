@@ -41,13 +41,16 @@ public abstract partial class Entity<T, G> : IDamageable
 			EntityAnimatorCompo.SetTrigger("HitTrigger");
 
 			OnTaKeDamagedEvent?.Invoke(damage);
+
+            FeedbackPlayerCompo.PlayFeedback(FeedbackTypes.Hit);
         }
     }
 
     public virtual void Die()
     {
 		OnDieEvent?.Invoke();
-		EntityAnimatorCompo.SetFloat("Speed", -1f);
+        FeedbackPlayerCompo.PlayFeedback(FeedbackTypes.Die);
+        EntityAnimatorCompo.SetFloat("Speed", -1f);
 		EntityAnimatorCompo.SetTrigger("DieTrigger");
 
 		// DoSomething

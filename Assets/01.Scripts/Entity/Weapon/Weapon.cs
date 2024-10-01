@@ -11,6 +11,8 @@ public class Weapon : MonoBehaviour
 
     private WeaponAnimator _weaponAnimator;
 
+    private Action OnAttackEvent;
+
     private void Awake() // 업그레이드 하려면 사야하고, 사면 무조건 장착. 장착하면 이 오브젝트 생성해서 바꿔끼는 형식으로
     {
 		WeaponStat = new WeaponStat(_weaponStatSO.WeaponStat);
@@ -20,11 +22,13 @@ public class Weapon : MonoBehaviour
 
     public virtual void SetAttack()
     {
+        OnAttackEvent?.Invoke();
         Sequence sequence = DOTween.Sequence();
         sequence.
             Append(transform.DOLocalRotate(new Vector3(0.0f, 0.0f, -360), 0.4f, RotateMode.LocalAxisAdd).SetEase(Ease.Linear));
         _weaponAnimator.SetAttackAnimation();
-	}
+
+    }
 
     public virtual void SetIdle()
     {
@@ -40,7 +44,8 @@ public class Weapon : MonoBehaviour
 
     public void SubscribeAttackEvent(Action attackEvent)
     {
-		_weaponAnimator.OnAttackEvent += attackEvent;
+        OnAttackEvent = attackEvent;
+        //_weaponAnimator.OnAttackEvent += attackEvent;
 	}
 
 }
