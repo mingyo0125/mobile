@@ -1,9 +1,13 @@
 using DG.Tweening;
 using TMPro;
 using UnityEngine;
+using static UnityEngine.RuleTile.TilingRuleOutput;
 
 public class HudText : TextMeshPro
 {
+    [SerializeField]
+    private float hudDuration = 0.5f;
+
     private Vector3 _originPos;
 
     protected override void Awake()
@@ -13,21 +17,25 @@ public class HudText : TextMeshPro
         _originPos = transform.localPosition;
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            SpawnHudText(Random.Range(10, 999));
-        }
-    }
-
     public void SpawnHudText(float damageValue)
     {
-        transform.localPosition = _originPos;
-        color = new Color(255, 255, 255, 255);
+        transform.DOKill();
+
+        color = Color.white;
+        transform.localScale = Vector3.one;
+
         SetText(damageValue.ToString());
-        Vector2 targetPos = new Vector2(Random.Range(-2, 2f), 3f);
-        transform.DOLocalJump(targetPos, 5f, 1, 1f);
-        color = new Color(0,0,0,0);
+
+        float randomX = Random.value < 0.5f
+        ? Random.Range(-0.5f, -0.3f)
+        : Random.Range(0.5f, 0.3f);
+
+        Vector2 targetPos = new Vector2(randomX, -0.25f);
+        transform.DOLocalJump(targetPos, 1f, 1, hudDuration);
+
+        transform.DOScale(Vector3.one * 0.5f, hudDuration).OnComplete(() =>
+        {
+            color = new Color(0, 0, 0, 0);
+        });
     }
 }

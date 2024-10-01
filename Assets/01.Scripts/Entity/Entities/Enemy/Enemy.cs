@@ -11,6 +11,8 @@ public class Enemy : Entity<EnemyStateType, Enemy>
         base.Awake();
 
         _hudText = transform.Find("HudText").GetComponent<HudText>();
+
+        OnTaKeDamagedEvent += _hudText.SpawnHudText;
     }
 
     protected override void CreateStateMachine()
