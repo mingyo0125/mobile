@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -8,6 +9,7 @@ public abstract partial class Entity<T, G> : IDamageable
 {
     public float MaxHP { get; set; }      //나중에 SO로 빼기
     public float CurrentHP { get; set; }
+    public HudText HudText { get; set; }
 
     public event Action<float> OnTaKeDamagedEvent = null;
 	public event Action OnDieEvent = null;
@@ -17,6 +19,7 @@ public abstract partial class Entity<T, G> : IDamageable
 	private void HealthAwake()
     {
         MaxHP = _entityStatSO.EntityStat.MaxHP;
+        HudText = GetComponent<HudText>();
 
         DieAnimationEndEvent = () => PoolManager.Instance.DestroyObject(this);
 	}
