@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5388307612112794335}
   - component: {fileID: 6173353607167977563}
   - component: {fileID: 3333587537493525993}
+  - component: {fileID: 237710408165443151}
   m_Layer: 0
   m_Name: HudText
   m_TagString: Untagged
@@ -92,6 +93,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c8b5c0ddaae10a43b0b31649ce8f62f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hudDuration: 0.5
+--- !u!210 &3333587537493525993
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5934983060448177945}
+  m_Enabled: 1
+  m_SortingLayerID: 1147182301
+  m_SortingLayer: 3
+  m_SortingOrder: 0
+  m_SortAtRoot: 0
+--- !u!114 &237710408165443151
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5934983060448177945}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9541d86e2fd84c1d9990edf0852d74ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
@@ -100,7 +126,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: asdasdasdasd
+  m_text: 123123
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -127,8 +153,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 1
-  m_fontSizeBase: 1
+  m_fontSize: 3
+  m_fontSizeBase: 3
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -172,15 +198,3 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_renderer: {fileID: 5388307612112794335}
   m_maskType: 0
---- !u!210 &3333587537493525993
-SortingGroup:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5934983060448177945}
-  m_Enabled: 1
-  m_SortingLayerID: 1147182301
-  m_SortingLayer: 3
-  m_SortingOrder: 0
-  m_SortAtRoot: 0

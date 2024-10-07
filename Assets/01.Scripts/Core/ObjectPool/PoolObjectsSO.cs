@@ -32,11 +32,15 @@ public class PoolObjectsSO : ScriptableObject
     [field: SerializeField]
     public List<PoolObjectsInfo> ETC { get; private set; } = new();
 
+    [field: SerializeField]
+    public List<PoolObjectsInfo> UI { get; private set; } = new();
+
     public void UpdatePoolObjects()
     {
         PoolObjects.Clear();
         PoolObjects.AddRange(Enemies);
         PoolObjects.AddRange(Items);
         PoolObjects.AddRange(ETC);
+        PoolObjects.AddRange(UI);
     }
 }

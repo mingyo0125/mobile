@@ -23,13 +23,12 @@ public class Weapon : MonoBehaviour
 
     public virtual void SetAttack()
     {
-        Debug.Log("SetAttack");
         OnAttackEvent?.Invoke();
         _weaponAnimator.SetAttackAnimation();
 
         Sequence sequence = DOTween.Sequence();
         sequence.
-            Append(transform.DOLocalRotate(new Vector3(0.0f, 0.0f, -360), 0.4f, RotateMode.LocalAxisAdd).SetEase(Ease.Linear))
+            Append(transform.DOLocalRotate(new Vector3(0.0f, 0.0f, -360), 0.4f, RotateMode.WorldAxisAdd).SetEase(Ease.Linear))
             .OnComplete(() => OnEndAttackEvent?.Invoke());
 
     }

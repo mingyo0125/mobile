@@ -4,15 +4,19 @@ using UnityEngine;
 
 public class Enemy : Entity<EnemyStateType, Enemy>
 {
-    private HudText _hudText;
-
     protected override void Awake()
     {
         base.Awake();
 
-        _hudText = transform.Find("HudText").GetComponent<HudText>();
+        OnTakeDamagedEvent += SpawnHudText;
+    }
 
-        OnTakeDamagedEvent += _hudText.SpawnHudText;
+    private void SpawnHudText(float damageValue)
+    {
+        HudText _hudText = PoolManager.Instance.CreateObject("HudText") as HudText;
+        _hudText.transform.SetParent(transform);
+        _hudText.SetPosition(transform.position + new Vector3(0, 0.1f, 0));
+        _hudText.SpawnHudText(damageValue);
     }
 
     protected override void CreateStateMachine()

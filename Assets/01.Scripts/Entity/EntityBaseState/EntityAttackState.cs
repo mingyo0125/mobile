@@ -12,7 +12,6 @@ public abstract class EntityAttackState<T, G> : EntityState<T, G> where T : Enum
 
 	public override void EnterState()
 	{
-		Debug.Log("EnterState");
 		base.EnterState();
 
         if (!GetAttackable())

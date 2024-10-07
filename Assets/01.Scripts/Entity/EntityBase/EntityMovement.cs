@@ -50,7 +50,6 @@ public abstract partial class Entity<T, G> : IMoveable
     {
         IsFacingRight = !IsFacingRight;
 
-        // 일단 이렇게 회전
         transform.Rotate(new Vector2(0, 180f));
     }
 

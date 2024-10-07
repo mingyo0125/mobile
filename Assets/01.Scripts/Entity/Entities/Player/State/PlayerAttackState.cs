@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using static UnityEditor.Progress;
 
 public class PlayerAttackState : EntityAttackState<PlayerStateType, Player>
 {
@@ -20,22 +19,20 @@ public class PlayerAttackState : EntityAttackState<PlayerStateType, Player>
 
     protected override void TakeDamage()
     {
-        Debug.Log("TakgeDamage");
-
         Collider2D[] inRangeColliders = GetInRange(_owner.EntityStat.AttackRange).Item2;
         List<float> inRangeEntitiesAngle = new List<float>();
-        Dictionary<float , Collider2D> keyValuePairs = new Dictionary<float , Collider2D>();
+        Dictionary<float , Collider2D> inRangeEntitesDic = new Dictionary<float , Collider2D>();
 
         foreach(Collider2D collider in inRangeColliders)
         {
             float angle = GetAngle(_owner.EquipWeapon.transform.position, collider.transform.position);
             inRangeEntitiesAngle.Add(angle);
-            keyValuePairs.Add(angle, collider);
+            inRangeEntitesDic.Add(angle, collider);
         }
 
         inRangeEntitiesAngle.Sort();
 
-        _owner.StartCoroutine(TakeDamageCorou(inRangeEntitiesAngle, keyValuePairs));
+        _owner.StartCoroutine(TakeDamageCorou(inRangeEntitiesAngle, inRangeEntitesDic));
     }
 
     public float GetAngle(Vector3 startVec, Vector3 endVec)
@@ -45,17 +42,17 @@ public class PlayerAttackState : EntityAttackState<PlayerStateType, Player>
         return Mathf.Atan2(v.y, v.x) * Mathf.Rad2Deg;
     }
 
-    private IEnumerator TakeDamageCorou(List<float>sortedAngles, Dictionary<float, Collider2D> keyValuePairs)
+    private IEnumerator TakeDamageCorou(List<float>sortedAngles, Dictionary<float, Collider2D> inRangeEntitesDic)
     {
         foreach (float angle in sortedAngles)
         {
-            if (keyValuePairs[angle].TryGetComponent(out IDamageable component))
+            if (inRangeEntitesDic[angle].TryGetComponent(out IDamageable component))
             {
                 component.TakeDamage(_owner.GetDamage());
             }
             else
             {
-                Debug.Log($"{keyValuePairs[angle]} not have IDamageable");
+                Debug.Log($"{inRangeEntitesDic[angle]} not have IDamageable");
             }
             yield return new WaitForSeconds(0.3f); // 나중에 공속
         }
