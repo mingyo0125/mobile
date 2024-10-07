@@ -7,7 +7,7 @@ using UnityEngine.Events;
 
 public interface IDamageable
 {
-	public event Action<float> OnTaKeDamagedEvent;
+	public event Action<float> OnTakeDamagedEvent;
 	public event Action OnDieEvent;
 
 	public void TakeDamage(float damage);

@@ -6,8 +6,8 @@ public abstract class EntityAttackState<T, G> : EntityState<T, G> where T : Enum
     public EntityAttackState(G entity, EntityStateMachine<T, G> entityStateMachine):
                              base(entity, entityStateMachine)
     {
-        _entity.EquipWeapon?.SubscribeEndAnimationEvent(EnterState);
-        _entity.EquipWeapon?.SubscribeAttackEvent(TakeDamage);
+        _owner.EquipWeapon?.SubscribeEndAnimationEvent(EnterState);
+        _owner.EquipWeapon?.SubscribeAttackEvent(TakeDamage);
 	}
 
 	public override void EnterState()
@@ -20,28 +20,23 @@ public abstract class EntityAttackState<T, G> : EntityState<T, G> where T : Enum
 			return;
 		}
 
-		Vector2 shortestPos = _entity.GetShortestTargetPos(_entity.GetInRange(100f).Item2);
-		_entity.CheckFacingDir(shortestPos);
-		_entity.EquipWeapon?.SetAttack();
+		Vector2 shortestPos = GetShortestTargetPos(GetInRange(100f).Item2);
+		_owner.CheckFacingDir(shortestPos);
+		_owner.EquipWeapon?.SetAttack();
 	}
 
 	public override void ExitState()
 	{
-		_entity.EquipWeapon?.SetIdle();
-	}
-
-	private bool GetAttackable()
-	{
-		return _entity.GetInRange(_entity.CheckRangeDistance).Item1;
+		_owner.EquipWeapon?.SetIdle();
 	}
 
 	private void TakeDamage()
 	{
-		foreach (Collider2D item in _entity.GetInRange(_entity.CheckRangeDistance).Item2)
+		foreach (Collider2D item in GetInRange(_owner.EntityStat.AttackRange).Item2)
 		{
 			if (item.TryGetComponent(out IDamageable component))
 			{
-				component.TakeDamage(_entity.GetDamage());
+				component.TakeDamage(_owner.GetDamage());
 			}
 			else
 			{

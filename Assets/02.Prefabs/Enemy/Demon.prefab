@@ -121,7 +121,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _entityStatSO: {fileID: 11400000, guid: cb5380d624bc08e41b4e277d4ee41c4a, type: 2}
-  <CheckLayer>k__BackingField:
+  _checkLayer:
     serializedVersion: 2
     m_Bits: 64
   isDrawRangeGizmo: 1

@@ -18,12 +18,11 @@ public abstract partial class Entity<T, G> : PoolableMono where T : Enum where G
     protected virtual void Awake()
     {
         EntityAnimatorCompo = transform.Find("Visual").GetComponent<EntityAnimator>();
-        EntityStat = _entityStatSO.EntityStat;
+        EntityStat = new Stat(_entityStatSO.EntityStat);
 
 		CreateStateMachine();
 		MovementAwake();
 		HealthAwake();
-		RangeCheckableAwake();
         FeedbackAwake();
 
     }

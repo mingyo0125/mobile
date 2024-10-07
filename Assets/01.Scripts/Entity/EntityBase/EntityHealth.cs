@@ -10,7 +10,7 @@ public abstract partial class Entity<T, G> : IDamageable
     public float MaxHP { get; set; }      //나중에 SO로 빼기
     public float CurrentHP { get; set; }
 
-    public event Action<float> OnTaKeDamagedEvent = null;
+    public event Action<float> OnTakeDamagedEvent = null;
 	public event Action OnDieEvent = null;
 
     private Action DieAnimationEndEvent = null;
@@ -41,7 +41,7 @@ public abstract partial class Entity<T, G> : IDamageable
 			EntityAnimatorCompo.SetFloat("Speed", -1f);
 			EntityAnimatorCompo.SetTrigger("HitTrigger");
 
-			OnTaKeDamagedEvent?.Invoke(damage);
+			OnTakeDamagedEvent?.Invoke(damage);
 
             FeedbackPlayerCompo.PlayFeedback(FeedbackTypes.Hit);
         }

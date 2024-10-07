@@ -14,6 +14,6 @@ public class EnemyIdleState : EntityIdleState<EnemyStateType, Enemy>
     {
         base.EnterState();
 
-        _entityStateMachine.ChangeState(EnemyStateType.Move);
+        _stateMachine.ChangeState(EnemyStateType.Move);
     }
 }

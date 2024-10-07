@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public partial class Entity<T, G> : IFeedbackPlayableEntity
+public abstract partial class Entity<T, G> : IFeedbackPlayableEntity
 {
     public FeedbackPlayer FeedbackPlayerCompo { get; set; }
 

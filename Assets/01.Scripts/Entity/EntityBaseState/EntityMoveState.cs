@@ -14,6 +14,6 @@ public class EntityMoveState<T, G> : EntityState<T, G> where T : Enum where G : 
     {
         base.EnterState();
 
-        _entity.EntityAnimatorCompo.SetFloat("Speed", _entity.Speed);
+        _owner.EntityAnimatorCompo.SetFloat("Speed", _owner.Speed);
     }
 }

@@ -7,6 +7,6 @@ public class EnemyAttackState : EntityAttackState<EnemyStateType, Enemy>
 
 	public override void ChangeIdleState()
 	{
-		_entityStateMachine.ChangeState(EnemyStateType.Idle);
+		_stateMachine.ChangeState(EnemyStateType.Idle);
 	}
 }

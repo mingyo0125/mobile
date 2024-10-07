@@ -13,6 +13,6 @@ public class PlayerAttackState : EntityAttackState<PlayerStateType, Player>
 
 	public override void ChangeIdleState()
 	{
-		_entityStateMachine.ChangeState(PlayerStateType.Idle);
+		_stateMachine.ChangeState(PlayerStateType.Idle);
 	}
 }

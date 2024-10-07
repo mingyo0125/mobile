@@ -11,15 +11,14 @@ public class EnemyMoveState : EntityMoveState<EnemyStateType, Enemy>
     {
         base.FixedUpdateState();
 
-        _entity.Move(GameManager.Instance.GetPlayerTrm().position);
+        _owner.Move(GameManager.Instance.GetPlayerTrm().position);
     }
 
     public override void UpdateState()
     {
-        bool isInRange = _entity.GetInRange(_entity.CheckRangeDistance).Item1;
-        if (isInRange)
+        if (GetAttackable())
         {
-            _entityStateMachine.ChangeState(EnemyStateType.Attack);
+            _stateMachine.ChangeState(EnemyStateType.Attack);
         }
     }
 }

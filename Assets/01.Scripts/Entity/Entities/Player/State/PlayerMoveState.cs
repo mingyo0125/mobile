@@ -13,23 +13,22 @@ public class PlayerMoveState : EntityMoveState<PlayerStateType, Player>
 
     public override void FixedUpdateState()
     {
-		bool isInRange = _entity.GetInRange(100f).Item1;
+		bool isInRange = GetInRange(100f).Item1;
 
         if (isInRange)
         {
-            Vector2 shortestPos = _entity.GetShortestTargetPos(_entity.GetInRange(100f).Item2); // 있기만 하면 어디에 있던 쫓아감
+            Vector2 shortestPos = GetShortestTargetPos(GetInRange(100f).Item2); // 있기만 하면 어디에 있던 쫓아감
 
-            _entity.SetTargetTrm(shortestPos);
-            _entity.Move(shortestPos);
+            _owner.SetTargetTrm(shortestPos);
+            _owner.Move(shortestPos);
         }
     }
 
     public override void UpdateState()
     {
-        bool isInRange = _entity.GetInRange(_entity.CheckRangeDistance).Item1;
-        if (isInRange)
+        if (GetAttackable())
         {
-            _entityStateMachine.ChangeState(PlayerStateType.Attack);
+            _stateMachine.ChangeState(PlayerStateType.Attack);
         }
     }
 
@@ -37,6 +36,6 @@ public class PlayerMoveState : EntityMoveState<PlayerStateType, Player>
 	{
 		base.ExitState();
 
-        _entity.EntityAnimatorCompo.SetFloat("Speed", -1f);
+        _owner.EntityAnimatorCompo.SetFloat("Speed", -1f);
 	}
 }

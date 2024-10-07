@@ -12,7 +12,7 @@ public class Enemy : Entity<EnemyStateType, Enemy>
 
         _hudText = transform.Find("HudText").GetComponent<HudText>();
 
-        OnTaKeDamagedEvent += _hudText.SpawnHudText;
+        OnTakeDamagedEvent += _hudText.SpawnHudText;
     }
 
     protected override void CreateStateMachine()

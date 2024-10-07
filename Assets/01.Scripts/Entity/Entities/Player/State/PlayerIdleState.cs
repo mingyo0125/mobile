@@ -14,9 +14,9 @@ public class PlayerIdleState : EntityIdleState<PlayerStateType, Player>
 	{
 		base.UpdateState();
 
-        if(_entity.GetInRange(100f).Item1)
+        if(GetInRange(100f).Item1)
         {
-			_entityStateMachine.ChangeState(PlayerStateType.Move);
+			_stateMachine.ChangeState(PlayerStateType.Move);
 		}
 	}
 }
