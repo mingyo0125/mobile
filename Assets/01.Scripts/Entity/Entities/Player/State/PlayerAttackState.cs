@@ -1,7 +1,9 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
+using static UnityEditor.Progress;
 
 public class PlayerAttackState : EntityAttackState<PlayerStateType, Player>
 {
@@ -15,4 +17,47 @@ public class PlayerAttackState : EntityAttackState<PlayerStateType, Player>
 	{
 		_stateMachine.ChangeState(PlayerStateType.Idle);
 	}
+
+    protected override void TakeDamage()
+    {
+        Debug.Log("TakgeDamage");
+
+        Collider2D[] inRangeColliders = GetInRange(_owner.EntityStat.AttackRange).Item2;
+        List<float> inRangeEntitiesAngle = new List<float>();
+        Dictionary<float , Collider2D> keyValuePairs = new Dictionary<float , Collider2D>();
+
+        foreach(Collider2D collider in inRangeColliders)
+        {
+            float angle = GetAngle(_owner.EquipWeapon.transform.position, collider.transform.position);
+            inRangeEntitiesAngle.Add(angle);
+            keyValuePairs.Add(angle, collider);
+        }
+
+        inRangeEntitiesAngle.Sort();
+
+        _owner.StartCoroutine(TakeDamageCorou(inRangeEntitiesAngle, keyValuePairs));
+    }
+
+    public float GetAngle(Vector3 startVec, Vector3 endVec)
+    {
+        Vector3 v = endVec - startVec;
+
+        return Mathf.Atan2(v.y, v.x) * Mathf.Rad2Deg;
+    }
+
+    private IEnumerator TakeDamageCorou(List<float>sortedAngles, Dictionary<float, Collider2D> keyValuePairs)
+    {
+        foreach (float angle in sortedAngles)
+        {
+            if (keyValuePairs[angle].TryGetComponent(out IDamageable component))
+            {
+                component.TakeDamage(_owner.GetDamage());
+            }
+            else
+            {
+                Debug.Log($"{keyValuePairs[angle]} not have IDamageable");
+            }
+            yield return new WaitForSeconds(0.3f); // 나중에 공속
+        }
+    }
 }

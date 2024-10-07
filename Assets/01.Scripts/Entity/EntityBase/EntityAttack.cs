@@ -30,6 +30,7 @@ public abstract partial class Entity<T, G>
 
     public virtual float GetDamage() // 무기가 있으면(플레이어) 무기 데미지까지 더해서 데미지 반환
     {
-        return _entityStatSO.EntityStat.Damage + (float)EquipWeapon?.WeaponStat.Damage;
+        float totalDamage = EntityStat.Damage + EquipWeapon?.WeaponStat.Damage ?? 0f;
+        return totalDamage;
     }
 }

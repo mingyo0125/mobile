@@ -7,20 +7,22 @@ public abstract class EntityAttackState<T, G> : EntityState<T, G> where T : Enum
                              base(entity, entityStateMachine)
     {
         _owner.EquipWeapon?.SubscribeEndAnimationEvent(EnterState);
-        _owner.EquipWeapon?.SubscribeAttackEvent(TakeDamage);
+        //_owner.EquipWeapon?.SubscribeAttackEvent(TakeDamage);
 	}
 
 	public override void EnterState()
 	{
+		Debug.Log("EnterState");
 		base.EnterState();
 
-		if (!GetAttackable())
+        if (!GetAttackable())
 		{
 			ChangeIdleState();
 			return;
 		}
 
-		Vector2 shortestPos = GetShortestTargetPos(GetInRange(100f).Item2);
+        TakeDamage();
+        Vector2 shortestPos = GetShortestTargetPos(GetInRange(100f).Item2);
 		_owner.CheckFacingDir(shortestPos);
 		_owner.EquipWeapon?.SetAttack();
 	}
@@ -30,7 +32,7 @@ public abstract class EntityAttackState<T, G> : EntityState<T, G> where T : Enum
 		_owner.EquipWeapon?.SetIdle();
 	}
 
-	private void TakeDamage()
+	protected virtual void TakeDamage()
 	{
 		foreach (Collider2D item in GetInRange(_owner.EntityStat.AttackRange).Item2)
 		{
@@ -43,6 +45,11 @@ public abstract class EntityAttackState<T, G> : EntityState<T, G> where T : Enum
 				Debug.Log($"{component} not have IDamageable");
 			}
 		}
+	}
+
+	protected virtual void EndAttack()
+	{
+
 	}
 
 	public abstract void ChangeIdleState();
