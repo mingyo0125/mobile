@@ -30,7 +30,15 @@ public abstract partial class Entity<T, G>
 
     public virtual float GetDamage() // 무기가 있으면(플레이어) 무기 데미지까지 더해서 데미지 반환
     {
-        float totalDamage = EntityStat.Damage + EquipWeapon?.WeaponStat.Damage ?? 0f;
+        float entityDamage = EntityStat.Damage;
+        bool isCritical = CustomRandom.CalculateProbability(EntityStat.CriticalProbability);
+
+        if(isCritical)
+        {
+            entityDamage += (EntityStat.CriticalDamageIncreasePercent * 0.01f * EntityStat.Damage);
+        }
+
+        float totalDamage = entityDamage + EquipWeapon?.WeaponStat.Damage ?? 0f;
         return totalDamage;
     }
 }
