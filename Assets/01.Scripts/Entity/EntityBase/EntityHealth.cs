@@ -31,17 +31,15 @@ public abstract partial class Entity<T, G> : IDamageable
 	public virtual void TakedDamage(bool isCritical, float damage)
     {
         //if (CurrentHP <= 0) { return; } // 나중에 콜라이더를 꺼는걸로 바꾸셈
-
+        OnTakeDamagedEvent?.Invoke(isCritical, damage);
+        // 넉백하면서 스피드 0 하고 잠시동안 무적
         CurrentHP -= damage;
 
-		//Debug.Log($"{gameObject}: TakeDamage:{damage}, CurHp:{CurrentHP}");
         if (CurrentHP <= 0) { Die(); }
         else
         {
 			EntityAnimatorCompo.SetFloat("Speed", -1f);
 			EntityAnimatorCompo.SetTrigger("HitTrigger");
-
-            OnTakeDamagedEvent?.Invoke(isCritical, damage);
 
             FeedbackPlayerCompo.PlayFeedback(FeedbackTypes.Hit);
         }

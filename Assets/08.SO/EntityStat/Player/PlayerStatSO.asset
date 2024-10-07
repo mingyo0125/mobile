@@ -16,6 +16,6 @@ MonoBehaviour:
     <Speed>k__BackingField: 1.5
     <MaxHP>k__BackingField: 10
     <AttackRange>k__BackingField: 1
-    <Damage>k__BackingField: 5
-    <CriticalProbability>k__BackingField: 50
+    <Damage>k__BackingField: 10
+    <CriticalProbability>k__BackingField: 10
     <CriticalDamageIncreasePercent>k__BackingField: 100
