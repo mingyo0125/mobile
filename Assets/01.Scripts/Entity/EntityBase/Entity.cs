@@ -27,6 +27,11 @@ public abstract partial class Entity<T, G> : PoolableMono where T : Enum where G
 
     }
 
+    protected virtual void OnEnable()
+    {
+
+    }
+
 	public override void Initialize()
     {
 		InitializeHealth();
@@ -52,7 +57,7 @@ public abstract partial class Entity<T, G> : PoolableMono where T : Enum where G
 
     protected abstract void CreateStateMachine();
 
-	private void OnDisable()
+	protected virtual void OnDisable()
 	{
 		HealthDisable();
         MovemetDisable();

@@ -1,26 +1,30 @@
 using DG.Tweening;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
+using static UnityEngine.RuleTile.TilingRuleOutput;
 
 public class HudText : PoolableMono
 {
     [SerializeField]
     private float hudDuration = 0.5f;
 
-    private Vector3 _originPos;
-
     private TextMeshPro _text;
 
     private void Awake()
     {
         _text = GetComponent<TextMeshPro>();
-
-        _originPos = transform.localPosition;
     }
 
-    public void SpawnHudText(float damageValue)
+    public void SpawnHudText(bool isCritical, float damageValue)
     {
         _text.SetText(damageValue.ToString());
+
+        if (isCritical)
+        {
+            _text.color = Color.red;
+            transform.localScale = Vector3.one * 1.5f;
+        }
 
         float randomX = Random.value < 0.5f
         ? Random.Range(-0.5f, -0.3f)
@@ -31,9 +35,8 @@ public class HudText : PoolableMono
 
         transform.DOScale(Vector3.one * 0.5f, hudDuration).OnComplete(() =>
         {
-            _text.color = new Color(0, 0, 0, 0);
-            transform.DOKill();
             _text.color = Color.white;
+            transform.localScale = Vector3.one;
             transform.SetParent(null);  
             PoolManager.Instance.DestroyObject(this);
         });

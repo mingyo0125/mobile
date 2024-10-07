@@ -7,10 +7,10 @@ using UnityEngine.Events;
 
 public interface IDamageable
 {
-	public event Action<float> OnTakeDamagedEvent;
+	public event Action<bool, float> OnTakeDamagedEvent;
 	public event Action OnDieEvent;
 
-	public void TakeDamage(float damage);
+	public void TakedDamage(bool isCritical, float damage);
     public void Die();
 
     public float MaxHP { get; set; }

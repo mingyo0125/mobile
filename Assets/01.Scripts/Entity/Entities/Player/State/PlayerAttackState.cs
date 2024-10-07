@@ -48,13 +48,17 @@ public class PlayerAttackState : EntityAttackState<PlayerStateType, Player>
         {
             if (inRangeEntitesDic[angle].TryGetComponent(out IDamageable component))
             {
-                component.TakeDamage(_owner.GetDamage());
+                var calcuDamage = _owner.GetDamage();
+                bool isCritical = calcuDamage.Item1;
+                float damage = calcuDamage.Item2;
+
+                component.TakedDamage(isCritical, damage);
             }
             else
             {
                 Debug.Log($"{inRangeEntitesDic[angle]} not have IDamageable");
             }
-            yield return new WaitForSeconds(0.3f); // 나중에 공속
+            yield return new WaitForSeconds(0.1f); // 나중에 공속
         }
     }
 }

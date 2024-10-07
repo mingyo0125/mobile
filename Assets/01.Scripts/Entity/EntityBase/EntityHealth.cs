@@ -10,7 +10,7 @@ public abstract partial class Entity<T, G> : IDamageable
     public float MaxHP { get; set; }      //나중에 SO로 빼기
     public float CurrentHP { get; set; }
 
-    public event Action<float> OnTakeDamagedEvent = null;
+    public event Action<bool, float> OnTakeDamagedEvent = null;
 	public event Action OnDieEvent = null;
 
     private Action DieAnimationEndEvent = null;
@@ -28,7 +28,7 @@ public abstract partial class Entity<T, G> : IDamageable
 		EntityAnimatorCompo.OnDieAnimationEndEvent += DieAnimationEndEvent;
 	}
 
-	public virtual void TakeDamage(float damage)
+	public virtual void TakedDamage(bool isCritical, float damage)
     {
         //if (CurrentHP <= 0) { return; } // 나중에 콜라이더를 꺼는걸로 바꾸셈
 
@@ -41,7 +41,7 @@ public abstract partial class Entity<T, G> : IDamageable
 			EntityAnimatorCompo.SetFloat("Speed", -1f);
 			EntityAnimatorCompo.SetTrigger("HitTrigger");
 
-			OnTakeDamagedEvent?.Invoke(damage);
+            OnTakeDamagedEvent?.Invoke(isCritical, damage);
 
             FeedbackPlayerCompo.PlayFeedback(FeedbackTypes.Hit);
         }

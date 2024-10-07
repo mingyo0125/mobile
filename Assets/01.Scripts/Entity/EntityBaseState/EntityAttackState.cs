@@ -36,9 +36,12 @@ public abstract class EntityAttackState<T, G> : EntityState<T, G> where T : Enum
 		foreach (Collider2D item in GetInRange(_owner.EntityStat.AttackRange).Item2)
 		{
 			if (item.TryGetComponent(out IDamageable component))
-			{
-				component.TakeDamage(_owner.GetDamage());
-			}
+			{	
+                var calcuDamage = _owner.GetDamage();
+                bool isCritical = calcuDamage.Item1;
+                float damage = calcuDamage.Item2;
+                component.TakedDamage(isCritical, damage);
+            }
 			else
 			{
 				Debug.Log($"{component} not have IDamageable");
