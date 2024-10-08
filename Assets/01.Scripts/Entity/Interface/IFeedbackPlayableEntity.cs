@@ -4,6 +4,5 @@ using UnityEngine;
 
 public interface IFeedbackPlayableEntity
 {
-    public FeedbackPlayer FeedbackPlayerCompo { get; set; }
 
 }

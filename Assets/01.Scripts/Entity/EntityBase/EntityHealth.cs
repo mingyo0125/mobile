@@ -28,11 +28,15 @@ public abstract partial class Entity<T, G> : IDamageable
 		EntityAnimatorCompo.OnDieAnimationEndEvent += DieAnimationEndEvent;
 	}
 
+
 	public virtual void TakedDamage(bool isCritical, float damage)
     {
         //if (CurrentHP <= 0) { return; } // 나중에 콜라이더를 꺼는걸로 바꾸셈
         OnTakeDamagedEvent?.Invoke(isCritical, damage);
         // 넉백하면서 스피드 0 하고 잠시동안 무적
+
+
+
         CurrentHP -= damage;
 
         if (CurrentHP <= 0) { Die(); }

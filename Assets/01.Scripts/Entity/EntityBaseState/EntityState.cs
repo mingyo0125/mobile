@@ -3,8 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using UnityEngine.Windows;
-using static UnityEngine.RuleTile.TilingRuleOutput;
 
 public class EntityState<T, G> : IRangeCheckable where T : Enum where G : Entity<T, G>
 {

@@ -1,11 +1,12 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FeedbackPlayer : MonoBehaviour
+public class FeedbackPlayer<T, G> : MonoBehaviour where T : Enum where G : Entity<T, G>
 {
     public Dictionary<FeedbackTypes, Feedback> Feedbacks { get; private set; } = new Dictionary<FeedbackTypes, Feedback>();
+
+    protected IFeedbackPlayable<T,G> _owner;
 
     private void Awake()
     {
@@ -22,6 +23,8 @@ public class FeedbackPlayer : MonoBehaviour
                 Debug.LogError($"FeedbackTypes: {feedbackType} is not Setting");
             }
         }
+
+        _owner = transform.parent.GetComponent<IFeedbackPlayable<T,G>>();
     }
 
     public void PlayFeedback(FeedbackTypes feedbackType)
