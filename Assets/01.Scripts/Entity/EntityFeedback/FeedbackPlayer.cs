@@ -31,7 +31,7 @@ public class FeedbackPlayer<T, G> : MonoBehaviour where T : Enum where G : Entit
     {
         if(Feedbacks.TryGetValue(feedbackType, out Feedback feedback))
         {
-            feedback.PlayFeedback();
+            feedback.PlayFeedback(_owner);
         }
     }
 
@@ -39,7 +39,7 @@ public class FeedbackPlayer<T, G> : MonoBehaviour where T : Enum where G : Entit
     {
         if (Feedbacks.TryGetValue(feedbackType, out Feedback feedback))
         {
-            feedback.StopFeedback();
+            feedback.StopFeedback(_owner);
         }
     }
 }
