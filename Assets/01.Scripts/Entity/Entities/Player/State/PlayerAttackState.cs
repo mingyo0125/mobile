@@ -44,6 +44,8 @@ public class PlayerAttackState : EntityAttackState<PlayerStateType, Player>
 
     private IEnumerator TakeDamageCorou(List<float>sortedAngles, Dictionary<float, Collider2D> inRangeEntitesDic)
     {
+        float delayTime = _owner.EquipWeapon.WeaponStat.AttackDelay * (1f / sortedAngles.Count);
+
         foreach (float angle in sortedAngles)
         {
             if (inRangeEntitesDic[angle].TryGetComponent(out IDamageable component))
@@ -54,7 +56,8 @@ public class PlayerAttackState : EntityAttackState<PlayerStateType, Player>
             {
                 Debug.Log($"{inRangeEntitesDic[angle]} not have IDamageable");
             }
-            yield return new WaitForSeconds(0.1f); // 나중에 공속
+
+            yield return new WaitForSeconds(delayTime);
         }
     }
 }

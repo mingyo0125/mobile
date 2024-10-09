@@ -41,16 +41,6 @@ public abstract class EntityAttackState<T, G> : EntityState<T, G> where T : Enum
 		_owner.EquipWeapon?.SetIdle();
 	}
 
-    public override void UpdateState()
-    {
-        base.UpdateState();
-
-		if (_owner is Enemy)
-		{
-			Debug.Log("Attack");
-		}
-    }
-
     protected virtual void TakeDamage()
 	{
 		foreach (Collider2D item in GetInRange(_owner.EntityStat.AttackRange).Item2)

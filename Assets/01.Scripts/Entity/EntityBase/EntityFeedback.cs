@@ -5,12 +5,11 @@ public abstract partial class Entity<T, G> : IFeedbackPlayable
 {
     public FeedbackPlayer FeedbackPlayerCompo { get; set; }
 
-
-    public Entity<T, G> GetEntity<T, G>()
-        where T : Enum
-        where G : Entity<T, G>
+    public Entity<T1, G1> GetEntity<T1, G1>()
+        where T1 : Enum
+        where G1 : Entity<T1, G1>
     {
-        return this as G;
+        return this as G1;
     }
 
     private void FeedbackAwake()

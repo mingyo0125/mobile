@@ -15,6 +15,8 @@ public abstract partial class Entity<T, G> : IMoveable
 
     private Action _endHitAnimationEvent;
 
+    public bool IsMove { get; private set; } = true;
+
 	private void MovementAwake()
     {
         Rb = GetComponent<Rigidbody2D>();
@@ -31,14 +33,11 @@ public abstract partial class Entity<T, G> : IMoveable
 
 	public void Move(Vector2 targetPos)
     {
+        if (!IsMove) { return; }
+
         Vector2 newPosition = Vector2.MoveTowards(transform.position, targetPos, Speed * Time.fixedDeltaTime);
         Rb.MovePosition(newPosition);
         CheckFacingDir(targetPos);
-        
-        if(this is Enemy)
-        {
-            Debug.Log("Move");
-        }
     }
 
     public void CheckFacingDir(Vector2 targetPos)
@@ -56,6 +55,16 @@ public abstract partial class Entity<T, G> : IMoveable
         IsFacingRight = !IsFacingRight;
 
         transform.Rotate(new Vector2(0, 180f));
+    }
+
+    public void StopImmediatetly()
+    {
+        IsMove = false;
+    }
+
+    public void SetMove()
+    {
+        IsMove = true;
     }
 
     private void EndHitAnimationEvent()
