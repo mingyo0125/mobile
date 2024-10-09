@@ -7,7 +7,7 @@ public class FeedbackPlayer : MonoBehaviour
 {
     public Dictionary<FeedbackTypes, Feedback> Feedbacks { get; private set; } = new Dictionary<FeedbackTypes, Feedback>();
 
-    protected IFeedbackPlayable _owner;
+    protected IEntityHandler _owner;
 
     private void Awake()
     {
@@ -27,7 +27,7 @@ public class FeedbackPlayer : MonoBehaviour
             }
         }
 
-        _owner = transform.parent.GetComponent<IFeedbackPlayable>();
+        _owner = transform.parent.GetComponent<IEntityHandler>();
     }
 
     public void PlayFeedback<T, G>(FeedbackTypes feedbackType, TakeDamageInfo takeDamageInfo)

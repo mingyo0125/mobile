@@ -22,7 +22,6 @@ public abstract class EntityAttackState<T, G> : EntityState<T, G> where T : Enum
 			return;
 		}
 
-        TakeDamage();
         Vector2 shortestPos = GetShortestTargetPos(GetInRange(100f).Item2);
 		_owner.CheckFacingDir(shortestPos);
 
@@ -32,7 +31,8 @@ public abstract class EntityAttackState<T, G> : EntityState<T, G> where T : Enum
         }
 		else
 		{
-			CoroutineUtil.CallWaitForSeconds(_owner.EntityStat.AttackDelay, EnterState);
+            TakeDamage();
+            CoroutineUtil.CallWaitForSeconds(_owner.EntityStat.AttackDelay, EnterState);
 		}
     }
 
@@ -41,20 +41,7 @@ public abstract class EntityAttackState<T, G> : EntityState<T, G> where T : Enum
 		_owner.EquipWeapon?.SetIdle();
 	}
 
-    protected virtual void TakeDamage()
-	{
-		foreach (Collider2D item in GetInRange(_owner.EntityStat.AttackRange).Item2)
-		{
-			if (item.TryGetComponent(out IDamageable component))
-			{	
-                component.TakedDamage(_owner.GetTakeDamageInfo());
-            }
-			else
-			{
-				Debug.Log($"{component} not have IDamageable");
-			}
-		}
-	}
+	protected virtual void TakeDamage() { }
 
 	protected virtual void EndAttack()
 	{

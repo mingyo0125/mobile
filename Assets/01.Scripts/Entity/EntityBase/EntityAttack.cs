@@ -19,7 +19,7 @@ public abstract partial class Entity<T, G>
 
     public Weapon EquipWeapon { get; protected set; }
 
-    private TakeDamageInfo _takeDamageInfo;
+    public TakeDamageInfo EntityTakeDamageInfo { get; private set; }
 
     private void OnDrawGizmos()
     {
@@ -45,22 +45,22 @@ public abstract partial class Entity<T, G>
         return (isCritical, totalDamage);
     }
 
-    public TakeDamageInfo GetTakeDamageInfo()
+    public void UpadteTakeDamageInfo()
     {
         var calculateDamage = GetDamage();
 
-        if (_takeDamageInfo == null)
+        if (EntityTakeDamageInfo == null)
         {
-            _takeDamageInfo = new TakeDamageInfo(calculateDamage.Item2,
+            EntityTakeDamageInfo = new TakeDamageInfo(calculateDamage.Item2,
                                                  calculateDamage.Item2 * 0.1f,
                                                  calculateDamage.Item1,
                                                  transform.position);
         }
         else
         {
-            _takeDamageInfo.UpdateTakeDamageInfo(calculateDamage.Item2, calculateDamage.Item1, transform.position);
+            EntityTakeDamageInfo.UpdateTakeDamageInfo(calculateDamage.Item2, calculateDamage.Item1, transform.position);
         }
 
-        return _takeDamageInfo;
+        EquipWeapon?.SetTakeDamageInfo(EntityTakeDamageInfo);
     }
 }
