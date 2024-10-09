@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public abstract partial class Entity<T, G> : PoolableMono where T : Enum where G : Entity<T, G>
+public abstract partial class Entity<T, G> : PoolableMono where T : Enum where G : Entity<T, G> 
 {
     public EntityStateMachine<T, G> StateMachine { get; protected set; }
 
@@ -24,7 +24,7 @@ public abstract partial class Entity<T, G> : PoolableMono where T : Enum where G
 		MovementAwake();
 		HealthAwake();
         FeedbackAwake();
-
+        GetTakeDamageInfo();
     }
 
     protected virtual void OnEnable()

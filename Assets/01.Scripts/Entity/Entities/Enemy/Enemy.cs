@@ -8,13 +8,13 @@ public class Enemy : Entity<EnemyStateType, Enemy>
         OnTakeDamagedEvent += SpawnHudText;
     }
 
-    private void SpawnHudText(bool isCritical, float damageValue)
+    private void SpawnHudText(TakeDamageInfo takeDamageInfo)
     {
         HudText _hudText = PoolManager.Instance.CreateObject("HudText") as HudText;
         _hudText.transform.SetParent(transform);
         _hudText.SetPosition(transform.position + new Vector3(0, 0.1f, 0));
-        _hudText.SpawnHudText(isCritical, damageValue);
-    }
+        _hudText.SpawnHudText(takeDamageInfo.IsCritical, takeDamageInfo.Damage);
+    } 
 
     protected override void CreateStateMachine()
     {

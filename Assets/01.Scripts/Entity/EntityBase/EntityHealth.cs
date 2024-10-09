@@ -10,7 +10,7 @@ public abstract partial class Entity<T, G> : IDamageable
     public float MaxHP { get; set; }      //나중에 SO로 빼기
     public float CurrentHP { get; set; }
 
-    public event Action<bool, float> OnTakeDamagedEvent = null;
+    public event Action<TakeDamageInfo> OnTakeDamagedEvent = null;
 	public event Action OnDieEvent = null;
 
     private Action DieAnimationEndEvent = null;
@@ -29,15 +29,15 @@ public abstract partial class Entity<T, G> : IDamageable
 	}
 
 
-	public virtual void TakedDamage(bool isCritical, float damage)
+	public virtual void TakedDamage(TakeDamageInfo takeDamageInfo)
     {
         //if (CurrentHP <= 0) { return; } // 나중에 콜라이더를 꺼는걸로 바꾸셈
-        OnTakeDamagedEvent?.Invoke(isCritical, damage);
+        OnTakeDamagedEvent?.Invoke(takeDamageInfo);
         // 넉백하면서 스피드 0 하고 잠시동안 무적
 
 
 
-        CurrentHP -= damage;
+        CurrentHP -= takeDamageInfo.Damage;
 
         if (CurrentHP <= 0) { Die(); }
         else
@@ -45,14 +45,14 @@ public abstract partial class Entity<T, G> : IDamageable
 			EntityAnimatorCompo.SetFloat("Speed", -1f);
 			EntityAnimatorCompo.SetTrigger("HitTrigger");
 
-            FeedbackPlayerCompo.PlayFeedback(FeedbackTypes.Hit);
+            FeedbackPlayerCompo.PlayFeedback<T, G>(FeedbackTypes.Hit, takeDamageInfo);
         }
     }
 
     public virtual void Die()
     {
 		OnDieEvent?.Invoke();
-        FeedbackPlayerCompo.PlayFeedback(FeedbackTypes.Die);
+        FeedbackPlayerCompo.PlayFeedback<T, G>(FeedbackTypes.Die);
         EntityAnimatorCompo.SetFloat("Speed", -1f);
 		EntityAnimatorCompo.SetTrigger("DieTrigger");
 

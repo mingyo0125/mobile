@@ -19,6 +19,8 @@ public abstract partial class Entity<T, G>
 
     public Weapon EquipWeapon { get; protected set; }
 
+    private TakeDamageInfo _takeDamageInfo;
+
     private void OnDrawGizmos()
     {
         if (isDrawRangeGizmo)
@@ -28,7 +30,7 @@ public abstract partial class Entity<T, G>
         }
     }
 
-    public virtual (bool, float) GetDamage() // 무기가 있으면(플레이어) 무기 데미지까지 더해서 데미지 반환
+    protected virtual (bool, float) GetDamage() // 무기가 있으면(플레이어) 무기 데미지까지 더해서 데미지 반환
     {
         float entityDamage = EntityStat.Damage;
         bool isCritical = CustomRandom.CalculateProbability(EntityStat.CriticalProbability);
@@ -41,5 +43,24 @@ public abstract partial class Entity<T, G>
 
         float totalDamage = entityDamage + EquipWeapon?.WeaponStat.Damage ?? 0f;
         return (isCritical, totalDamage);
+    }
+
+    public TakeDamageInfo GetTakeDamageInfo()
+    {
+        var calculateDamage = GetDamage();
+
+        if (_takeDamageInfo == null)
+        {
+            _takeDamageInfo = new TakeDamageInfo(calculateDamage.Item2,
+                                                 calculateDamage.Item2 * 0.1f,
+                                                 calculateDamage.Item1,
+                                                 transform.position);
+        }
+        else
+        {
+            _takeDamageInfo.UpdateTakeDamageInfo(calculateDamage.Item2, calculateDamage.Item1, transform.position);
+        }
+
+        return _takeDamageInfo;
     }
 }

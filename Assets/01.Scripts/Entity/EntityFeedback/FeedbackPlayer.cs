@@ -1,45 +1,59 @@
 using System;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
-public class FeedbackPlayer<T, G> : MonoBehaviour where T : Enum where G : Entity<T, G>
+public class FeedbackPlayer : MonoBehaviour
 {
     public Dictionary<FeedbackTypes, Feedback> Feedbacks { get; private set; } = new Dictionary<FeedbackTypes, Feedback>();
 
-    protected IFeedbackPlayable<T,G> _owner;
+    protected IFeedbackPlayable _owner;
 
     private void Awake()
     {
         foreach(FeedbackTypes feedbackType in Enum.GetValues(typeof(FeedbackTypes)))
         {
-            Transform feedbackTrm = transform.Find($"{feedbackType}Feedback").transform;
+            Type type = Type.GetType($"{feedbackType}Feedback");
 
-            if(feedbackTrm != null)
+            for (int i = 0; i < transform.childCount; i++)
             {
-                Feedbacks.Add(feedbackType, feedbackTrm.GetComponent<Feedback>());
-            }
-            else
-            {
-                Debug.LogError($"FeedbackTypes: {feedbackType} is not Setting");
+                Transform child = transform.GetChild(i);
+                Component feedbackComponent = child.GetComponent(type);
+
+                if (feedbackComponent != null)
+                {
+                    Feedbacks.Add(feedbackType, feedbackComponent as Feedback);
+                }
             }
         }
 
-        _owner = transform.parent.GetComponent<IFeedbackPlayable<T,G>>();
+        _owner = transform.parent.GetComponent<IFeedbackPlayable>();
     }
 
-    public void PlayFeedback(FeedbackTypes feedbackType)
+    public void PlayFeedback<T, G>(FeedbackTypes feedbackType, TakeDamageInfo takeDamageInfo)
+        where T : Enum where G : Entity<T, G>
     {
         if(Feedbacks.TryGetValue(feedbackType, out Feedback feedback))
         {
-            feedback.PlayFeedback(_owner);
+            feedback.PlayFeedback<T, G>(_owner, takeDamageInfo);
         }
     }
 
-    public void StopFeedback(FeedbackTypes feedbackType)
+    public void PlayFeedback<T,G>(FeedbackTypes feedbackType)
+        where T : Enum where G : Entity<T, G>
     {
         if (Feedbacks.TryGetValue(feedbackType, out Feedback feedback))
         {
-            feedback.StopFeedback(_owner);
+            feedback.PlayFeedback<T, G>(_owner);
+        }
+    }
+
+    public void StopFeedback<T,G>(FeedbackTypes feedbackType)
+        where T : Enum where G : Entity<T, G>
+    {
+        if (Feedbacks.TryGetValue(feedbackType, out Feedback feedback))
+        {
+            feedback.StopFeedback<T,G>(_owner);
         }
     }
 }

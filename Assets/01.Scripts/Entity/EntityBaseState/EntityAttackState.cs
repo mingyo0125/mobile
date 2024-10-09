@@ -37,10 +37,7 @@ public abstract class EntityAttackState<T, G> : EntityState<T, G> where T : Enum
 		{
 			if (item.TryGetComponent(out IDamageable component))
 			{	
-                var calcuDamage = _owner.GetDamage();
-                bool isCritical = calcuDamage.Item1;
-                float damage = calcuDamage.Item2;
-                component.TakedDamage(isCritical, damage);
+                component.TakedDamage(_owner.GetTakeDamageInfo());
             }
 			else
 			{
