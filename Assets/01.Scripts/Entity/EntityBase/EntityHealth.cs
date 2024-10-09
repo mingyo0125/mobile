@@ -33,9 +33,7 @@ public abstract partial class Entity<T, G> : IDamageable
     {
         //if (CurrentHP <= 0) { return; } // 나중에 콜라이더를 꺼는걸로 바꾸셈
         OnTakeDamagedEvent?.Invoke(takeDamageInfo);
-        // 넉백하면서 스피드 0 하고 잠시동안 무적
-
-
+        FeedbackPlayerCompo.PlayFeedback<T, G>(FeedbackTypes.Hit, takeDamageInfo);
 
         CurrentHP -= takeDamageInfo.Damage;
 
@@ -44,8 +42,6 @@ public abstract partial class Entity<T, G> : IDamageable
         {
 			EntityAnimatorCompo.SetFloat("Speed", -1f);
 			EntityAnimatorCompo.SetTrigger("HitTrigger");
-
-            FeedbackPlayerCompo.PlayFeedback<T, G>(FeedbackTypes.Hit, takeDamageInfo);
         }
     }
 

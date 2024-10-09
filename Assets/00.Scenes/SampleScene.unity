@@ -268,6 +268,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 244147114}
+  - component: {fileID: 244147115}
   m_Layer: 6
   m_Name: FeedbackPlayer
   m_TagString: Untagged
@@ -292,6 +293,18 @@ Transform:
   - {fileID: 1261190839}
   m_Father: {fileID: 936682778}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &244147115
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 244147113}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00a964f9d52a7af49a7165634d39f1d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &245134588
 GameObject:
   m_ObjectHideFlags: 0
@@ -9213,7 +9226,7 @@ MonoBehaviour:
   _spawnEntityTypes: 1
   _minBound: {fileID: 1160370147}
   _maxBound: {fileID: 192518449}
-  spawnTime: 1
+  spawnTime: 100
 --- !u!4 &1964096601
 Transform:
   m_ObjectHideFlags: 0

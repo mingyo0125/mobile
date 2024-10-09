@@ -28,7 +28,7 @@ public class Weapon : MonoBehaviour
 
         Sequence sequence = DOTween.Sequence();
         sequence.
-            Append(transform.DOLocalRotate(new Vector3(0.0f, 0.0f, -360), 0.4f, RotateMode.WorldAxisAdd).SetEase(Ease.Linear))
+            Append(transform.DOLocalRotate(new Vector3(0.0f, 0.0f, -360), WeaponStat.AttackDelay, RotateMode.WorldAxisAdd).SetEase(Ease.Linear))
             .OnComplete(() => OnEndAttackEvent?.Invoke());
 
     }

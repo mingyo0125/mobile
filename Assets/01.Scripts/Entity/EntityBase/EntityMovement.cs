@@ -34,6 +34,11 @@ public abstract partial class Entity<T, G> : IMoveable
         Vector2 newPosition = Vector2.MoveTowards(transform.position, targetPos, Speed * Time.fixedDeltaTime);
         Rb.MovePosition(newPosition);
         CheckFacingDir(targetPos);
+        
+        if(this is Enemy)
+        {
+            Debug.Log("Move");
+        }
     }
 
     public void CheckFacingDir(Vector2 targetPos)

@@ -6,9 +6,11 @@ public abstract class EntityAttackState<T, G> : EntityState<T, G> where T : Enum
     public EntityAttackState(G entity, EntityStateMachine<T, G> entityStateMachine):
                              base(entity, entityStateMachine)
     {
-        _owner.EquipWeapon?.SubscribeEndAnimationEvent(EnterState);
-        //_owner.EquipWeapon?.SubscribeAttackEvent(TakeDamage);
-	}
+		if (_owner.EquipWeapon != null)
+		{
+            _owner.EquipWeapon?.SubscribeEndAnimationEvent(EnterState);
+        }
+    }
 
 	public override void EnterState()
 	{
@@ -23,15 +25,33 @@ public abstract class EntityAttackState<T, G> : EntityState<T, G> where T : Enum
         TakeDamage();
         Vector2 shortestPos = GetShortestTargetPos(GetInRange(100f).Item2);
 		_owner.CheckFacingDir(shortestPos);
-		_owner.EquipWeapon?.SetAttack();
-	}
+
+		if(_owner.EquipWeapon != null)
+		{
+            _owner.EquipWeapon?.SetAttack();
+        }
+		else
+		{
+			CoroutineUtil.CallWaitForSeconds(_owner.EntityStat.AttackDelay, EnterState);
+		}
+    }
 
 	public override void ExitState()
 	{
 		_owner.EquipWeapon?.SetIdle();
 	}
 
-	protected virtual void TakeDamage()
+    public override void UpdateState()
+    {
+        base.UpdateState();
+
+		if (_owner is Enemy)
+		{
+			Debug.Log("Attack");
+		}
+    }
+
+    protected virtual void TakeDamage()
 	{
 		foreach (Collider2D item in GetInRange(_owner.EntityStat.AttackRange).Item2)
 		{
