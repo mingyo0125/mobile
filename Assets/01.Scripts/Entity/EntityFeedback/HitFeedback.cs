@@ -15,7 +15,7 @@ public class HitFeedback : Feedback
         Vector2 knockbackVec = (Vector2)(transform.position - takeDamageInfo.TriggerEntityPos).normalized;
         entity.StopImmediatetly();
         entity.Rb.AddForce(knockbackVec * takeDamageInfo.KnockbackPower, ForceMode2D.Impulse);
-        CoroutineUtil.CallWaitForSeconds(0.5f, () => StopFeedback<T, G>(owner));
+        CoroutineUtil.CallWaitForSeconds(0.1f, () => StopFeedback<T, G>(owner));
     }
 
     public override void StopFeedback<T, G>(IEntityHandler owner)

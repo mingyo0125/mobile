@@ -9,12 +9,14 @@ public class Player : Entity<PlayerStateType, Player>
         EquipWeapon = weapon;
 	}
 
-	private void Start()
-	{
-		Initialize();
-	}
+    protected override void OnEnable()
+    {
+        base.OnEnable();
 
-	protected override void Awake()
+        Initialize();
+    }
+
+    protected override void Awake()
     {
 		UpdateWeapon(transform.Find("EquipWeapon/WoodSword").GetComponent<Weapon>()); // 처음에는 일단 이것
 

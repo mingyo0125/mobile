@@ -41,7 +41,27 @@ public abstract class EntityAttackState<T, G> : EntityState<T, G> where T : Enum
 		_owner.EquipWeapon?.SetIdle();
 	}
 
-	protected virtual void TakeDamage() { }
+	protected virtual void TakeDamage()
+	{
+        if (_owner.EquipWeapon != null)
+        {
+            _owner.UpdateTakeDamageInfo();
+        }
+        else
+        {
+            foreach (Collider2D item in GetInRange(_owner.EntityStat.AttackRange).Item2)
+            {
+                if (item.TryGetComponent(out IDamageable component))
+                {
+                    component.TakedDamage(_owner.GetTakeDamageInfo());
+                }
+                else
+                {
+                    Debug.Log($"{component} not have IDamageable");
+                }
+            }
+        }
+    }
 
 	protected virtual void EndAttack()
 	{

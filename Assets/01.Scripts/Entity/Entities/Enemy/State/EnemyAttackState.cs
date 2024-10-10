@@ -12,22 +12,4 @@ public class EnemyAttackState : EntityAttackState<EnemyStateType, Enemy>
 	{
 		_stateMachine.ChangeState(EnemyStateType.Idle);
 	}
-
-    protected override void TakeDamage()
-    {
-        base.TakeDamage();
-
-        foreach (Collider2D item in GetInRange(_owner.EntityStat.AttackRange).Item2)
-        {
-            if (item.TryGetComponent(out IDamageable component))
-            {
-
-                component.TakedDamage(_owner.GetTakeDamageInfo());
-            }
-            else
-            {
-                Debug.Log($"{component} not have IDamageable");
-            }
-        }
-    }
 }

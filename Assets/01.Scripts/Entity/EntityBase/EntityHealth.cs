@@ -23,10 +23,11 @@ public abstract partial class Entity<T, G> : IDamageable
     private void InitializeHealth()
     {
 		CurrentHP = MaxHP;
-		EntityAnimatorCompo.OnDieAnimationEndEvent += DieAnimationEndEvent;
+        EnableCollider();
+        OnTakeDamagedEvent += SpawnHudText;
+        EntityAnimatorCompo.OnDieAnimationEndEvent += DieAnimationEndEvent;
         EntityAnimatorCompo.OnHitAnimationEndEvent += EnableCollider;
     }
-
 
     public virtual void TakedDamage(TakeDamageInfo takeDamageInfo)
     {
@@ -34,7 +35,6 @@ public abstract partial class Entity<T, G> : IDamageable
         FeedbackPlayerCompo.PlayFeedback<T, G>(FeedbackTypes.Hit, takeDamageInfo);
         EntityCollider.enabled = false;
         CurrentHP -= takeDamageInfo.Damage;
-
         if (CurrentHP <= 0) { Die(); }
         else
         {
@@ -51,15 +51,28 @@ public abstract partial class Entity<T, G> : IDamageable
 		EntityAnimatorCompo.SetTrigger("DieTrigger");
 	}
 
+    private void SpawnHudText(TakeDamageInfo takeDamageInfo)
+    {
+        HudText _hudText = PoolManager.Instance.CreateObject("HudText") as HudText;
+        _hudText.transform.SetParent(transform);
+        _hudText.SetPosition(transform.position + new Vector3(0, 0.1f, 0));
+        _hudText.SpawnHudText(takeDamageInfo.IsCritical, takeDamageInfo.Damage);
+    }
+
     private void EnableCollider()
     {
-        Debug.Log("A");
+        if (this is Player)
+        {
+            Debug.Log("EnableCollider");
+        }
+
         EntityCollider.enabled = true;
     }
 
     private void HealthDisable()
     {
-		EntityAnimatorCompo.OnDieAnimationEndEvent -= DieAnimationEndEvent;
+        OnTakeDamagedEvent -= SpawnHudText;
+        EntityAnimatorCompo.OnDieAnimationEndEvent -= DieAnimationEndEvent;
         EntityAnimatorCompo.OnHitAnimationEndEvent -= EnableCollider;
     }
 }

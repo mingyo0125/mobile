@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <EntityStat>k__BackingField:
     <Speed>k__BackingField: 1
-    <MaxHP>k__BackingField: 1000
+    <MaxHP>k__BackingField: 50
     <AttackRange>k__BackingField: 0.3
     <AttackDelay>k__BackingField: 0.5
-    <Damage>k__BackingField: 0
-    <CriticalProbability>k__BackingField: 0
-    <CriticalDamageIncreasePercent>k__BackingField: 0
+    <Damage>k__BackingField: 5
+    <CriticalProbability>k__BackingField: 10
+    <CriticalDamageIncreasePercent>k__BackingField: 100
