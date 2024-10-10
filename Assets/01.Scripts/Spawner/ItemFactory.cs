@@ -8,6 +8,8 @@ public class ItemFactory : EntityFactory<Item>
     {
         bool canSpawnItem = Utils.CalculateProbability(100f); // ³ªÁß¿¡ SO
 
+        if (!canSpawnItem) { return; }
+
         Item item = Utils.GetRandomElement(_spawnEntitys);
         SpawnObject(item.name, spawnPos);
     }

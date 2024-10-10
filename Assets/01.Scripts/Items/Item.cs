@@ -21,10 +21,8 @@ public abstract class Item : PoolableMono
 
             Sequence sequence = DOTween.Sequence();
             sequence
-                .Append(transform.DOLocalMoveY(originPos.y + 0.05f, 0.5f)).SetRelative().SetEase(Ease.Linear)
-                .Append(transform.DOLocalMoveY(originPos.y - 0.05f, 0.5f)).SetEase(Ease.Linear)
-                //.Append(transform.DOLocalMoveY(originPos.y, 0.25f)).SetEase(Ease.Linear)
-                .SetLoops(-1);
+                .Append(transform.DOLocalMoveY(originPos.y + 0.05f, 0.5f)).SetEase(Ease.Linear)
+                .SetLoops(-1, LoopType.Yoyo);
         }
     }
 
