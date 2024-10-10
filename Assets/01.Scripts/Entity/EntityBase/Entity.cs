@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System;
 using UnityEngine;
 
@@ -16,9 +17,14 @@ public abstract partial class Entity<T, G> : PoolableMono, IEntityHandler
 
     public Vector2 TargetPos { get; private set; }
 
+    private SpriteRenderer _spriteRenderer;
+
     protected virtual void Awake()
     {
-        EntityAnimatorCompo = transform.Find("Visual").GetComponent<EntityAnimator>();
+        Transform visual = transform.Find("Visual");
+
+        EntityAnimatorCompo = visual.GetComponent<EntityAnimator>();
+        _spriteRenderer = visual.GetComponent<SpriteRenderer>();
         EntityStat = new Stat(_entityStatSO.EntityStat);
 
 		CreateStateMachine();
@@ -38,7 +44,9 @@ public abstract partial class Entity<T, G> : PoolableMono, IEntityHandler
 		InitializeHealth();
 		InitializeMovement();
 
-		StateMachine.Initialize(default);
+        _spriteRenderer.color = Color.white;
+
+        StateMachine.Initialize(default);
 	}
 
     public void SetTargetTrm(Vector3 targetPos)
@@ -70,4 +78,10 @@ public abstract partial class Entity<T, G> : PoolableMono, IEntityHandler
 		HealthDisable();
         MovemetDisable();
 	}
+
+    private void FadeOut()
+    {
+        _spriteRenderer.DOFade(0f, 0.2f)
+            .OnComplete(() => PoolManager.Instance.DestroyObject(this));
+    }
 }

@@ -16,7 +16,7 @@ public abstract partial class Entity<T, G> : IDamageable
     {
         MaxHP = _entityStatSO.EntityStat.MaxHP;
 
-        DieAnimationEndEvent = () => PoolManager.Instance.DestroyObject(this);
+        DieAnimationEndEvent = FadeOut;
         EntityCollider = GetComponent<Collider2D>();
     }
 
