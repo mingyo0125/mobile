@@ -10,18 +10,28 @@ public class EnemyFactory : EntityFactory<Enemy>
     [SerializeField]
     private float spawnTime;
 
+    private ItemFactory _itemFactory;
+
+    protected override void Awake()
+    {
+        base.Awake();
+
+        _itemFactory = FindAnyObjectByType<ItemFactory>();
+    }
+
     private void Start()
     {
-        StartCoroutine(SpawnEnemyCorou()); // Test
+        StartCoroutine(SpawnEnemyCorou());
     }
 
     private IEnumerator SpawnEnemyCorou()
     {
         while (true)
         {
-            Enemy enemy = Utils.GetRandomElement(_spawnEntitys);
-            SpawnObject(enemy.name, Utils.GetRandomSpawnPos(_minBound.position, _maxBound.position));
+            Enemy enemyPrefab = Utils.GetRandomElement(_spawnEntitys);
+            Enemy spawnedEnemy = SpawnObject(enemyPrefab.name, Utils.GetRandomSpawnPos(_minBound.position, _maxBound.position)) as Enemy;
 
+            spawnedEnemy.OnDieEvent += _itemFactory.SpawnItem;
             yield return new WaitForSeconds(spawnTime);
         }
     }

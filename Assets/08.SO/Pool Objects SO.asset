@@ -15,7 +15,9 @@ MonoBehaviour:
   <Enemies>k__BackingField:
   - <PoolObject>k__BackingField: {fileID: 6527612484934499272, guid: bd876e3e69e1fc9488f6adb89939a092, type: 3}
     <PoolCount>k__BackingField: 50
-  <Items>k__BackingField: []
+  <Items>k__BackingField:
+  - <PoolObject>k__BackingField: {fileID: 267274606704855692, guid: 7e2577c52ef52994eb51386b14c687db, type: 3}
+    <PoolCount>k__BackingField: 10
   <ETC>k__BackingField:
   - <PoolObject>k__BackingField: {fileID: 4686568748919089775, guid: 69f5b8970399bf945b1011c9c599e82a, type: 3}
     <PoolCount>k__BackingField: 10

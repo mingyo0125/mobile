@@ -18,7 +18,7 @@ public abstract class EntityFactory<T> : MonoBehaviour where T : PoolableMono
         return entity;
     }
 
-    private void Awake()
+    protected virtual void Awake()
     {
         SetSpawnEntityByType();
     }
@@ -31,10 +31,10 @@ public abstract class EntityFactory<T> : MonoBehaviour where T : PoolableMono
                 SetSpawnEntities(PoolManager.Instance.PoolObjSO.Enemies);
                 break;
             case SpawnEntityTypes.Items:
-                SetSpawnEntities(PoolManager.Instance.PoolObjSO.ETC);
+                SetSpawnEntities(PoolManager.Instance.PoolObjSO.Items);
                 break;
             case SpawnEntityTypes.ETC:
-                SetSpawnEntities(PoolManager.Instance.PoolObjSO.Items);
+                SetSpawnEntities(PoolManager.Instance.PoolObjSO.ETC);
                 break;
             default:
                 Debug.LogError($"{_spawnEntityTypes} Type is not set");

@@ -3,9 +3,8 @@ using UnityEngine;
 
 public interface IDamageable
 {
-    // HitableÀÌ¶û DamageableÀÌ¶û ³ª´©¼À
 	public event Action<TakeDamageInfo> OnTakeDamagedEvent;
-	public event Action OnDieEvent;
+	public Action<Vector2> OnDieEvent { get; set; }
 
 	public void TakedDamage(TakeDamageInfo takeDamageInfo);
     public void Die();

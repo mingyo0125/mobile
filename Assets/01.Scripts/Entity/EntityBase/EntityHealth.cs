@@ -7,7 +7,7 @@ public abstract partial class Entity<T, G> : IDamageable
     public float MaxHP { get; set; }      //나중에 SO로 빼기
 
     private float currentHp;
-    
+
     public float HP
     {
         get => currentHp;
@@ -20,15 +20,14 @@ public abstract partial class Entity<T, G> : IDamageable
 
     public event Action<TakeDamageInfo> OnTakeDamagedEvent = null;
     public event Action<float, Color> OnHpChangedEvent = null;
-	public event Action OnDieEvent = null;
+    public Action<Vector2> OnDieEvent {get; set;}
 
-    private Action DieAnimationEndEvent = null;
+    public event Action OnDieAnimationEndEvent = null;
 
 	private void HealthAwake()
     {
         MaxHP = _entityStatSO.EntityStat.MaxHP;
 
-        DieAnimationEndEvent = FadeOut;
         EntityCollider = GetComponent<Collider2D>();
     }
 
@@ -37,8 +36,10 @@ public abstract partial class Entity<T, G> : IDamageable
 		HP = MaxHP;
         EnableCollider();
 
+        //OnDieEvent = null;
         OnHpChangedEvent += SpawnHudText;
-        EntityAnimatorCompo.OnDieAnimationEndEvent += DieAnimationEndEvent;
+        OnDieAnimationEndEvent += FadeOut;
+        EntityAnimatorCompo.OnDieAnimationEndEvent += OnDieAnimationEndEvent;
         EntityAnimatorCompo.OnHitAnimationEndEvent += EnableCollider;
     }
 
@@ -61,7 +62,7 @@ public abstract partial class Entity<T, G> : IDamageable
 
     public virtual void Die()
     {
-		OnDieEvent?.Invoke();
+		OnDieEvent?.Invoke(transform.position);
         FeedbackPlayerCompo.PlayFeedback<T, G>(FeedbackTypes.Die);
         EntityAnimatorCompo.SetFloat("Speed", -1f);
 		EntityAnimatorCompo.SetTrigger("DieTrigger");
@@ -91,7 +92,8 @@ public abstract partial class Entity<T, G> : IDamageable
     private void HealthDisable()
     {
         OnHpChangedEvent -= SpawnHudText;
-        EntityAnimatorCompo.OnDieAnimationEndEvent -= DieAnimationEndEvent;
+        OnDieAnimationEndEvent = null;
+        EntityAnimatorCompo.OnDieAnimationEndEvent -= OnDieAnimationEndEvent;
         EntityAnimatorCompo.OnHitAnimationEndEvent -= EnableCollider;
     }
 }

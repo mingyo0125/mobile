@@ -1,4 +1,3 @@
-using UnityEngine;
 
 public class Enemy : Entity<EnemyStateType, Enemy>
 {
