@@ -5,7 +5,17 @@ using UnityEngine;
 public abstract partial class Entity<T, G> : IDamageable
 {
     public float MaxHP { get; set; }      //나중에 SO로 빼기
-    public float CurrentHP { get; set; }
+
+    private float currentHp;
+    
+    public float HP
+    {
+        get => currentHp;
+        set
+        {
+            currentHp = Mathf.Clamp(value, 0, MaxHP);
+        }
+    }
     public Collider2D EntityCollider { get; set; }
 
     public event Action<TakeDamageInfo> OnTakeDamagedEvent = null;
@@ -24,7 +34,7 @@ public abstract partial class Entity<T, G> : IDamageable
 
     private void InitializeHealth()
     {
-		CurrentHP = MaxHP;
+		HP = MaxHP;
         EnableCollider();
 
         OnHpChangedEvent += SpawnHudText;
@@ -41,7 +51,7 @@ public abstract partial class Entity<T, G> : IDamageable
         FeedbackPlayerCompo.PlayFeedback<T, G>(FeedbackTypes.Hit, takeDamageInfo);
         EntityCollider.enabled = false;
 
-        if (CurrentHP <= 0) { Die(); }
+        if (HP <= 0) { Die(); }
         else
         {
 			EntityAnimatorCompo.SetFloat("Speed", -1f);
@@ -68,7 +78,7 @@ public abstract partial class Entity<T, G> : IDamageable
 
     public void SetHp(float value, Color hudTextColor)
     {
-        CurrentHP += value;
+        HP += value;
 
         OnHpChangedEvent?.Invoke(value, hudTextColor);
     }

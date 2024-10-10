@@ -11,6 +11,6 @@ public interface IDamageable
     public void Die();
 
     public float MaxHP { get; set; }
-    public float CurrentHP { get; set; }
+    public float HP { get; set; }
     public Collider2D EntityCollider { get; set;}
 }

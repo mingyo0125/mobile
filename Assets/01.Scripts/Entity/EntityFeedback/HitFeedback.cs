@@ -29,7 +29,7 @@ public class HitFeedback : Feedback
 
         entity.Rb.velocity = Vector2.zero;
         
-        if(entity.CurrentHP > 0)
+        if(entity.HP > 0)
         {
             entity.SetMove();
         }
