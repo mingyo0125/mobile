@@ -26,7 +26,6 @@ public class EntityAnimator : MonoBehaviour
 
     public void EndHitEventTrigger()
     {
-        Debug.Log(transform.parent);
 		OnHitAnimationEndEvent?.Invoke();
 	}
 

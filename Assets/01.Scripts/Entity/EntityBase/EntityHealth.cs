@@ -31,10 +31,11 @@ public abstract partial class Entity<T, G> : IDamageable
 
     public virtual void TakedDamage(TakeDamageInfo takeDamageInfo)
     {
+        CurrentHP -= takeDamageInfo.Damage;
         OnTakeDamagedEvent?.Invoke(takeDamageInfo);
         FeedbackPlayerCompo.PlayFeedback<T, G>(FeedbackTypes.Hit, takeDamageInfo);
         EntityCollider.enabled = false;
-        CurrentHP -= takeDamageInfo.Damage;
+
         if (CurrentHP <= 0) { Die(); }
         else
         {

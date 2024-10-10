@@ -23,6 +23,10 @@ public class HitFeedback : Feedback
         Entity<T, G> entity = owner.GetEntity<T, G>();
 
         entity.Rb.velocity = Vector2.zero;
-        entity.SetMove();
+
+        if(entity.CurrentHP != 0)
+        {
+            entity.SetMove();
+        }
     }
 }
