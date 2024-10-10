@@ -16,7 +16,9 @@ MonoBehaviour:
   - <PoolObject>k__BackingField: {fileID: 6527612484934499272, guid: bd876e3e69e1fc9488f6adb89939a092, type: 3}
     <PoolCount>k__BackingField: 50
   <Items>k__BackingField: []
-  <ETC>k__BackingField: []
+  <ETC>k__BackingField:
+  - <PoolObject>k__BackingField: {fileID: 4686568748919089775, guid: 69f5b8970399bf945b1011c9c599e82a, type: 3}
+    <PoolCount>k__BackingField: 10
   <UI>k__BackingField:
   - <PoolObject>k__BackingField: {fileID: 6173353607167977563, guid: b4fabfb12245af84ea80c2b4c091c1be, type: 3}
     <PoolCount>k__BackingField: 10

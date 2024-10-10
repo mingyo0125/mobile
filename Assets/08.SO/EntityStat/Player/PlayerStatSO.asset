@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: PlayerStatSO
   m_EditorClassIdentifier: 
   <EntityStat>k__BackingField:
-    <Speed>k__BackingField: 1.5
+    <Speed>k__BackingField: 0
     <MaxHP>k__BackingField: 1000
     <AttackRange>k__BackingField: 0.75
     <AttackDelay>k__BackingField: 0
