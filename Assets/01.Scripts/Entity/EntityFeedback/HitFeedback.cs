@@ -28,8 +28,8 @@ public class HitFeedback : Feedback
         Entity<T, G> entity = owner.GetEntity<T, G>();
 
         entity.Rb.velocity = Vector2.zero;
-
-        if(entity.CurrentHP != 0)
+        
+        if(entity.CurrentHP > 0)
         {
             entity.SetMove();
         }
