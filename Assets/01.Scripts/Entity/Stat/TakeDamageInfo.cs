@@ -10,15 +10,10 @@ public class TakeDamageInfo
 
     public Vector3 TriggerEntityPos { get; private set; }
 
-    public TakeDamageInfo(float damage, float knockbackPower, bool isCritical, Vector2 triggerEntityPos)
-    {
-        KnockbackPower = knockbackPower;
-        UpdateTakeDamageInfo(damage, isCritical, triggerEntityPos);
-    }
-
-    public void UpdateTakeDamageInfo(float damage, bool isCritical, Vector2 triggerEntityPos)
+    public void UpdateTakeDamageInfo(float damage,float knockbackPower, bool isCritical, Vector2 triggerEntityPos)
     {
         this.Damage = damage;
+        this.KnockbackPower = knockbackPower;
         this.IsCritical = isCritical;
         this.TriggerEntityPos = triggerEntityPos;
     }

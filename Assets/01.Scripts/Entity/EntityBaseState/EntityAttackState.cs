@@ -22,6 +22,7 @@ public abstract class EntityAttackState<T, G> : EntityState<T, G> where T : Enum
 			return;
 		}
 
+        TakeDamage();
         Vector2 shortestPos = GetShortestTargetPos(GetInRange(100f).Item2);
 		_owner.CheckFacingDir(shortestPos);
 
@@ -31,7 +32,6 @@ public abstract class EntityAttackState<T, G> : EntityState<T, G> where T : Enum
         }
 		else
 		{
-            TakeDamage();
             CoroutineUtil.CallWaitForSeconds(_owner.EntityStat.AttackDelay, EnterState);
 		}
     }

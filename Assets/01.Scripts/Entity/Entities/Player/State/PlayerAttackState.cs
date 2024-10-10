@@ -16,4 +16,9 @@ public class PlayerAttackState : EntityAttackState<PlayerStateType, Player>
 	{
 		_stateMachine.ChangeState(PlayerStateType.Idle);
 	}
+
+    protected override void TakeDamage()
+    {
+        _owner.UpdateTakeDamageInfo();
+    }
 }

@@ -25,7 +25,7 @@ public abstract partial class Entity<T, G> : PoolableMono, IEntityHandler
 		MovementAwake();
 		HealthAwake();
         FeedbackAwake();
-        UpadteTakeDamageInfo();
+        GetTakeDamageInfo();
     }
 
     protected virtual void OnEnable()

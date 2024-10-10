@@ -53,7 +53,12 @@ public class EntityState<T, G> : IRangeCheckable where T : Enum where G : Entity
             }
         }
 
-        return shortestCollider.transform.position;
+        if(shortestCollider != null)
+        {
+            return shortestCollider.transform.position;
+        }
+
+        return Vector2.zero;
     }
 
     public bool GetAttackable()

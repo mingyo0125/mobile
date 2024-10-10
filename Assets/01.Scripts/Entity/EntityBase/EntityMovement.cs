@@ -13,14 +13,11 @@ public abstract partial class Entity<T, G> : IMoveable
 
     public float Speed { get; set; } // 나중에 SO로
 
-    private Action _endHitAnimationEvent;
-
     public bool IsMove { get; private set; } = true;
 
 	private void MovementAwake()
     {
         Rb = GetComponent<Rigidbody2D>();
-		_endHitAnimationEvent = EndHitAnimationEvent;
 	}
 
 	private void InitializeMovement()
@@ -28,7 +25,7 @@ public abstract partial class Entity<T, G> : IMoveable
         IsFacingRight = true;
 		Speed = _entityStatSO.EntityStat.Speed;
 
-		EntityAnimatorCompo.OnHitAnimationEndEvent += _endHitAnimationEvent;
+		EntityAnimatorCompo.OnHitAnimationEndEvent += ResetMoveAnimationSpeed;
 	}
 
 	public void Move(Vector2 targetPos)
@@ -67,13 +64,13 @@ public abstract partial class Entity<T, G> : IMoveable
         IsMove = true;
     }
 
-    private void EndHitAnimationEvent()
+    private void ResetMoveAnimationSpeed()
     {
 		EntityAnimatorCompo.SetFloat("Speed", Speed);
 	}
 
     private void MovemetDisable()
     {
-		EntityAnimatorCompo.OnHitAnimationEndEvent -= _endHitAnimationEvent;
+		EntityAnimatorCompo.OnHitAnimationEndEvent -= ResetMoveAnimationSpeed;
 	}
 }

@@ -22,7 +22,7 @@ public class EnemyAttackState : EntityAttackState<EnemyStateType, Enemy>
             if (item.TryGetComponent(out IDamageable component))
             {
 
-                component.TakedDamage(_owner.EntityTakeDamageInfo);
+                component.TakedDamage(_owner.GetTakeDamageInfo());
             }
             else
             {
