@@ -25,6 +25,8 @@ public class Stat
     [field: SerializeField]
     public float CriticalDamageIncreasePercent { get; private set; }
 
+    [field: SerializeField]
+    public float ResistancePercent { get; private set; }
 
     public Stat(Stat stat)
     {
@@ -35,6 +37,7 @@ public class Stat
         this.Damage = stat.Damage;
         this.CriticalProbability = stat.CriticalProbability;
         this.CriticalDamageIncreasePercent = stat.CriticalDamageIncreasePercent;
+        this.ResistancePercent = stat.ResistancePercent;
     }
 
 }

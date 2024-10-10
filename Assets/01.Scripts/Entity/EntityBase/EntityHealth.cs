@@ -16,7 +16,7 @@ public abstract partial class Entity<T, G> : IDamageable
     {
         MaxHP = _entityStatSO.EntityStat.MaxHP;
 
-        DieAnimationEndEvent = () => PoolManager.Instance.DestroyObject(this);
+        //DieAnimationEndEvent = () => PoolManager.Instance.DestroyObject(this);
         EntityCollider = GetComponent<Collider2D>();
     }
 
@@ -46,6 +46,7 @@ public abstract partial class Entity<T, G> : IDamageable
 
     public virtual void Die()
     {
+        StopImmediatetly();
 		OnDieEvent?.Invoke();
         FeedbackPlayerCompo.PlayFeedback<T, G>(FeedbackTypes.Die);
         EntityAnimatorCompo.SetFloat("Speed", -1f);
@@ -62,11 +63,6 @@ public abstract partial class Entity<T, G> : IDamageable
 
     private void EnableCollider()
     {
-        if (this is Player)
-        {
-            Debug.Log("EnableCollider");
-        }
-
         EntityCollider.enabled = true;
     }
 

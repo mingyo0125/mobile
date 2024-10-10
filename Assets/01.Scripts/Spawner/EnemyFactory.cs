@@ -19,7 +19,7 @@ public class EnemyFactory : EntityFactory<Enemy>
     {
         while (true)
         {
-            Enemy enemy = CustomRandom.GetRandomElement(_spawnEntitys);
+            Enemy enemy = Calculator.GetRandomElement(_spawnEntitys);
             SpawnObject(enemy.name, GetRandomSpawnPos());
 
             yield return new WaitForSeconds(spawnTime);

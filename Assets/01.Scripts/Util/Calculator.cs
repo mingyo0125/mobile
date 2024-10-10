@@ -1,8 +1,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public static class CustomRandom
+public static class Calculator
 {
+    public static float CalculatePercent(float value, float percentvalue)
+    {
+        return value * (percentvalue * 0.01f);
+    }
+
     public static bool CalculateProbability(float probability)
     {
         float randomValue = Random.Range(0f, 100f);

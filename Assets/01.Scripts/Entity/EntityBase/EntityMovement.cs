@@ -32,7 +32,7 @@ public abstract partial class Entity<T, G> : IMoveable
 
 	public void Move(Vector2 targetPos)
     {
-        if (!IsMove) { return; }
+        if (!IsMove) { Debug.Log("CantMOve"); return; }
 
         Vector2 newPosition = Vector2.MoveTowards(transform.position, targetPos, Speed * Time.fixedDeltaTime);
         Rb.MovePosition(newPosition);
@@ -58,11 +58,13 @@ public abstract partial class Entity<T, G> : IMoveable
 
     public void StopImmediatetly()
     {
+        Debug.Log("멈추거라");
         IsMove = false;
     }
 
     public void SetMove()
     {
+        Debug.Log("움직이거라");
         IsMove = true;
     }
 
