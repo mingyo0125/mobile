@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public static class Calculator
+public static class Utils
 {
     public static float CalculatePercent(float value, float percentvalue)
     {
@@ -26,5 +26,13 @@ public static class Calculator
     {
         int randomIdx = Random.Range(0, list.Count);
         return list[randomIdx];
+    }
+
+    public static Vector2 GetRandomSpawnPos(Vector3 minBound, Vector3 maxBound)
+    {
+        float randomX = Random.Range(minBound.x, maxBound.x);
+        float randomY = Random.Range(minBound.y, maxBound.y);
+
+        return new Vector2(randomX, randomY);
     }
 }

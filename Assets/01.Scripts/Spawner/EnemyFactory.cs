@@ -19,18 +19,10 @@ public class EnemyFactory : EntityFactory<Enemy>
     {
         while (true)
         {
-            Enemy enemy = Calculator.GetRandomElement(_spawnEntitys);
-            SpawnObject(enemy.name, GetRandomSpawnPos());
+            Enemy enemy = Utils.GetRandomElement(_spawnEntitys);
+            SpawnObject(enemy.name, Utils.GetRandomSpawnPos(_minBound.position, _maxBound.position));
 
             yield return new WaitForSeconds(spawnTime);
         }
-    }
-
-    private Vector2 GetRandomSpawnPos()
-    {
-        float randomX = Random.Range(_minBound.position.x, _maxBound.position.x);
-        float randomY = Random.Range(_minBound.position.y, _maxBound.position.y);
-
-        return new Vector2(randomX, randomY);
     }
 }

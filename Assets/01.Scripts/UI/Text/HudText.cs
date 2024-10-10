@@ -16,13 +16,14 @@ public class HudText : PoolableMono
         _text = GetComponent<TextMeshPro>();
     }
 
-    public void SpawnHudText(bool isCritical, float damageValue)
+    public void SpawnHudText(float value, Color textColor)
     {
-        _text.SetText(damageValue.ToString());
+        _text.SetText(Mathf.Abs(value).ToString());
 
-        if (isCritical)
+        _text.color = textColor;
+
+        if (textColor == Color.red) // 크리티컬이면
         {
-            _text.color = Color.red;
             transform.localScale = Vector3.one * 1.5f;
         }
 

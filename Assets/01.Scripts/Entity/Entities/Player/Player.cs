@@ -23,6 +23,11 @@ public class Player : Entity<PlayerStateType, Player>
 		base.Awake();
 	}
 
+    public void GetItem(Item item)
+    {
+
+    }
+
     protected override void CreateStateMachine()
     {
         StateMachine = new PlayerStateMachine(this);

@@ -17,7 +17,7 @@ public class HitFeedback : Feedback
 
         float knockbackPower =
             takeDamageInfo.KnockbackPower -
-            Calculator.CalculatePercent(takeDamageInfo.KnockbackPower, entity.EntityStat.ResistancePercent);
+            Utils.CalculatePercent(takeDamageInfo.KnockbackPower, entity.EntityStat.ResistancePercent);
 
         entity.Rb.AddForce(knockbackVec * knockbackPower, ForceMode2D.Impulse);
         CoroutineUtil.CallWaitForSeconds(0.1f, () => StopFeedback<T, G>(owner));

@@ -1,4 +1,5 @@
 using System;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public abstract partial class Entity<T, G> : IDamageable
@@ -8,6 +9,7 @@ public abstract partial class Entity<T, G> : IDamageable
     public Collider2D EntityCollider { get; set; }
 
     public event Action<TakeDamageInfo> OnTakeDamagedEvent = null;
+    public event Action<float, Color> OnHpChangedEvent = null;
 	public event Action OnDieEvent = null;
 
     private Action DieAnimationEndEvent = null;
@@ -24,14 +26,17 @@ public abstract partial class Entity<T, G> : IDamageable
     {
 		CurrentHP = MaxHP;
         EnableCollider();
-        OnTakeDamagedEvent += SpawnHudText;
+
+        OnHpChangedEvent += SpawnHudText;
         EntityAnimatorCompo.OnDieAnimationEndEvent += DieAnimationEndEvent;
         EntityAnimatorCompo.OnHitAnimationEndEvent += EnableCollider;
     }
 
     public virtual void TakedDamage(TakeDamageInfo takeDamageInfo)
     {
-        CurrentHP -= takeDamageInfo.Damage;
+        Color hudTextColor = takeDamageInfo.IsCritical ? Color.red : Color.white;
+        SetHp(-takeDamageInfo.Damage, hudTextColor);
+
         OnTakeDamagedEvent?.Invoke(takeDamageInfo);
         FeedbackPlayerCompo.PlayFeedback<T, G>(FeedbackTypes.Hit, takeDamageInfo);
         EntityCollider.enabled = false;
@@ -53,12 +58,19 @@ public abstract partial class Entity<T, G> : IDamageable
         StopImmediatetly();
     }
 
-    private void SpawnHudText(TakeDamageInfo takeDamageInfo)
+    public void SpawnHudText(float value, Color textColor)
     {
         HudText _hudText = PoolManager.Instance.CreateObject("HudText") as HudText;
         _hudText.transform.SetParent(transform);
         _hudText.SetPosition(transform.position + new Vector3(0, 0.1f, 0));
-        _hudText.SpawnHudText(takeDamageInfo.IsCritical, takeDamageInfo.Damage);
+        _hudText.SpawnHudText(value, textColor);
+    }
+
+    public void SetHp(float value, Color hudTextColor)
+    {
+        CurrentHP += value;
+
+        OnHpChangedEvent?.Invoke(value, hudTextColor);
     }
 
     private void EnableCollider()
@@ -68,7 +80,7 @@ public abstract partial class Entity<T, G> : IDamageable
 
     private void HealthDisable()
     {
-        OnTakeDamagedEvent -= SpawnHudText;
+        OnHpChangedEvent -= SpawnHudText;
         EntityAnimatorCompo.OnDieAnimationEndEvent -= DieAnimationEndEvent;
         EntityAnimatorCompo.OnHitAnimationEndEvent -= EnableCollider;
     }
