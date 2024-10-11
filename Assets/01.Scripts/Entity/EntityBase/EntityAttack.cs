@@ -23,10 +23,18 @@ public abstract partial class Entity<T, G>
 
     private void OnDrawGizmos()
     {
+
         if (isDrawRangeGizmo)
         {
-            Gizmos.color = _gizmoColor;
-            Gizmos.DrawWireSphere(transform.position, _entityStatSO.EntityStat.AttackRange);
+            try
+            {
+                Gizmos.color = _gizmoColor;
+                Gizmos.DrawWireSphere(transform.position, GetStat().AttackRange);
+            }
+            catch
+            {
+                Debug.LogWarning($"{gameObject} Stat is Not Setting");
+            }
         }
     }
 

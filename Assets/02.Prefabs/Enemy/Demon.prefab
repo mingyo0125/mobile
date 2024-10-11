@@ -119,12 +119,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6b6a2a4135bf1f4db88881beb5fc63a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _entityStatSO: {fileID: 11400000, guid: cb5380d624bc08e41b4e277d4ee41c4a, type: 2}
   _checkLayer:
     serializedVersion: 2
     m_Bits: 64
   isDrawRangeGizmo: 1
   _gizmoColor: {r: 1, g: 0, b: 0, a: 1}
+  _enemyStatSO: {fileID: 11400000, guid: 77ed30b99f94ee9408763ee0d078fcb1, type: 2}
 --- !u!61 &8792103034932909251
 BoxCollider2D:
   m_ObjectHideFlags: 0

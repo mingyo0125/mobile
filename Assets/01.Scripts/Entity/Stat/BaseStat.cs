@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 
 [Serializable]
-public class Stat
+public class BaseStat
 {
     [field: SerializeField]
     public float Speed { get; private set; }
@@ -28,7 +28,7 @@ public class Stat
     [field: SerializeField]
     public float ResistancePercent { get; private set; }
 
-    public Stat(Stat stat)
+    public BaseStat(BaseStat stat)
     {
         this.Speed = stat.Speed;
         this.MaxHP = stat.MaxHP;

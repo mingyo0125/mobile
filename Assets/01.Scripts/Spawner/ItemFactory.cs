@@ -4,9 +4,20 @@ using UnityEngine;
 
 public class ItemFactory : EntityFactory<Item>
 {
+    private PlayerStat _playerStat;
+
+    private void Start()
+    {
+        _playerStat = GameManager.Instance.GetPlayerTrm().GetComponent<Player>().EntityStat as PlayerStat;
+    }
+
     public void SpawnItem(Vector2 spawnPos)
     {
-        bool canSpawnItem = Utils.CalculateProbability(100f); // 나중에 SO
+        float itemDropProbabiltiy = 15f + Utils.CalculatePercent(15f, _playerStat.ItemDropRate); // 아이템 생성 확률 기본 15
+
+        Debug.Log(itemDropProbabiltiy);
+
+        bool canSpawnItem = Utils.CalculateProbability(itemDropProbabiltiy);
 
         if (!canSpawnItem) { return; }
 

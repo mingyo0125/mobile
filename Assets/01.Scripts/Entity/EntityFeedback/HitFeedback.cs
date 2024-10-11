@@ -3,12 +3,12 @@ using UnityEngine.Assertions.Must;
 
 public class HitFeedback : Feedback
 {
-    public override void PlayFeedback<T, G>(IEntityHandler owner)
+    public override void PlayFeedback<T, G>(IEntity owner)
     {
         
     }
 
-    public override void PlayFeedback<T, G>(IEntityHandler owner, TakeDamageInfo takeDamageInfo)
+    public override void PlayFeedback<T, G>(IEntity owner, TakeDamageInfo takeDamageInfo)
     {
         Entity<T, G> entity = owner.GetEntity<T,G>();
         
@@ -23,7 +23,7 @@ public class HitFeedback : Feedback
         CoroutineUtil.CallWaitForSeconds(0.1f, () => StopFeedback<T, G>(owner));
     }
 
-    public override void StopFeedback<T, G>(IEntityHandler owner)
+    public override void StopFeedback<T, G>(IEntity owner)
     {
         Entity<T, G> entity = owner.GetEntity<T, G>();
 

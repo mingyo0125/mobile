@@ -2,21 +2,20 @@ using DG.Tweening;
 using System;
 using UnityEngine;
 
-public abstract partial class Entity<T, G> : PoolableMono, IEntityHandler
+public abstract partial class Entity<T, G> : PoolableMono, IEntity
     where T : Enum where G : Entity<T, G> 
 {
     public EntityStateMachine<T, G> StateMachine { get; protected set; }
 
     public EntityAnimator EntityAnimatorCompo { get; private set; }
 
-    [Header("Stat")]
-    [SerializeField]
-    private EntityStatSO _entityStatSO;
+    //[Header("Stat")]
+    //[SerializeField]
+    //private EntityStatSO _entityStatSO;
 
-    public Stat EntityStat { get; private set; }
+    public BaseStat EntityStat { get; protected set; }
 
     public Vector2 TargetPos { get; private set; }
-
     private SpriteRenderer _spriteRenderer;
 
     protected virtual void Awake()
@@ -25,9 +24,10 @@ public abstract partial class Entity<T, G> : PoolableMono, IEntityHandler
 
         EntityAnimatorCompo = visual.GetComponent<EntityAnimator>();
         _spriteRenderer = visual.GetComponent<SpriteRenderer>();
-        EntityStat = new Stat(_entityStatSO.EntityStat);
+        //EntityStat = new BaseStat(_entityStatSO.EntityStat);
+        SetStat();
 
-		CreateStateMachine();
+        CreateStateMachine();
 		MovementAwake();
 		HealthAwake();
         FeedbackAwake();
@@ -84,4 +84,7 @@ public abstract partial class Entity<T, G> : PoolableMono, IEntityHandler
         _spriteRenderer.DOFade(0f, 0.2f)
             .OnComplete(() => PoolManager.Instance.DestroyObject(this));
     }
+
+    protected abstract void SetStat();
+    protected abstract BaseStat GetStat();
 }

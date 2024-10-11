@@ -23,7 +23,7 @@ public abstract partial class Entity<T, G> : IMoveable
 	private void InitializeMovement()
     {
         IsFacingRight = true;
-		Speed = _entityStatSO.EntityStat.Speed;
+		Speed = EntityStat.Speed;
         SetMove();
 
 
