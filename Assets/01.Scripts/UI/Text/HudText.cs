@@ -16,9 +16,9 @@ public class HudText : PoolableMono
         _text = GetComponent<TextMeshPro>();
     }
 
-    public void SpawnHudText(float value, Color textColor)
+    public void SpawnHudText(string value, Color textColor)
     {
-        _text.SetText(Mathf.Abs(value).ToString());
+        _text.SetText(value.ToString());
 
         _text.color = textColor;
 

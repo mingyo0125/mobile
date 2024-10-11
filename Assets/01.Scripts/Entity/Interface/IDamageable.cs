@@ -4,7 +4,8 @@ using UnityEngine;
 public interface IDamageable
 {
 	public event Action<TakeDamageInfo> OnTakeDamagedEvent;
-	public Action<Vector2> OnDieEvent { get; set; }
+    public event Action<Transform, string, Color> OnHpChangedEvent;
+    public Action<Vector2> OnDieEvent { get; set; }
 
 	public void TakedDamage(TakeDamageInfo takeDamageInfo);
     public void Die();

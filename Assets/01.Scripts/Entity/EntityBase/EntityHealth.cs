@@ -19,7 +19,7 @@ public abstract partial class Entity<T, G> : IDamageable
     public Collider2D EntityCollider { get; set; }
 
     public event Action<TakeDamageInfo> OnTakeDamagedEvent = null;
-    public event Action<float, Color> OnHpChangedEvent = null;
+    public event Action<Transform, string, Color> OnHpChangedEvent = null;
     public Action<Vector2> OnDieEvent {get; set;}
 
     public event Action OnDieAnimationEndEvent = null;
@@ -37,7 +37,7 @@ public abstract partial class Entity<T, G> : IDamageable
         EnableCollider();
 
         //OnDieEvent = null;
-        OnHpChangedEvent += SpawnHudText;
+        OnHpChangedEvent += UIManager.Instance.SpawnHudText;
         OnDieAnimationEndEvent += FadeOut;
         EntityAnimatorCompo.OnDieAnimationEndEvent += OnDieAnimationEndEvent;
         EntityAnimatorCompo.OnHitAnimationEndEvent += EnableCollider;
@@ -69,20 +69,16 @@ public abstract partial class Entity<T, G> : IDamageable
         StopImmediatetly();
     }
 
-    public void SpawnHudText(float value, Color textColor)
-    {
-        HudText _hudText = PoolManager.Instance.CreateObject("HudText") as HudText;
-        _hudText.transform.SetParent(transform);
-        _hudText.SetPosition(transform.position + new Vector3(0, 0.1f, 0));
-        _hudText.SpawnHudText(value, textColor);
-    }
+    
 
     public void SetHp(float value, Color hudTextColor)
     {
         HP += value;
 
-        OnHpChangedEvent?.Invoke(value, hudTextColor);
+        OnHpChangedEvent?.Invoke(transform, GetHudTextValue(value), hudTextColor);
     }
+
+    protected abstract string GetHudTextValue(float value);
 
     private void EnableCollider()
     {
@@ -91,7 +87,7 @@ public abstract partial class Entity<T, G> : IDamageable
 
     private void HealthDisable()
     {
-        OnHpChangedEvent -= SpawnHudText;
+        OnHpChangedEvent = null;
         OnDieAnimationEndEvent = null;
         EntityAnimatorCompo.OnDieAnimationEndEvent -= OnDieAnimationEndEvent;
         EntityAnimatorCompo.OnHitAnimationEndEvent -= EnableCollider;

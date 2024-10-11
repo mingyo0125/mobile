@@ -49,4 +49,9 @@ public class Player : Entity<PlayerStateType, Player>
         }
         return null;
     }
+
+    protected override string GetHudTextValue(float value)
+    {
+        return value.ToString();
+    }
 }

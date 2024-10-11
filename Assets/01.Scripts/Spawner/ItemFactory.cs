@@ -15,8 +15,6 @@ public class ItemFactory : EntityFactory<Item>
     {
         float itemDropProbabiltiy = 15f + Utils.CalculatePercent(15f, _playerStat.ItemDropRate); // 아이템 생성 확률 기본 15
 
-        Debug.Log(itemDropProbabiltiy);
-
         bool canSpawnItem = Utils.CalculateProbability(itemDropProbabiltiy);
 
         if (!canSpawnItem) { return; }

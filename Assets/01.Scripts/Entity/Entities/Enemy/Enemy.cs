@@ -23,4 +23,9 @@ public class Enemy : Entity<EnemyStateType, Enemy>
     {
         EntityStat = _enemyStatSO.EnemyStat;
     }
+
+    protected override string GetHudTextValue(float value)
+    {
+        return $"{-value}";
+    }
 }
