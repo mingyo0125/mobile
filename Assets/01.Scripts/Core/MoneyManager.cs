@@ -41,7 +41,6 @@ public class MoneyManager : MonoSingleTon<MoneyManager>
     public void GetMoney(Transform trm, int value)
     {
         money += value;
-        Debug.Log(trm);
         OnMoneyChangedEvent?.Invoke(trm, $"{value}", Color.yellow);
     }
 
