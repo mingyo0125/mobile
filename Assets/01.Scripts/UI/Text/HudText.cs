@@ -18,6 +18,8 @@ public class HudText : PoolableMono
 
     public void SpawnHudText(string value, Color textColor)
     {
+        transform.SetParent(null);
+
         _text.SetText(value.ToString());
 
         _text.color = textColor;
@@ -31,14 +33,13 @@ public class HudText : PoolableMono
         ? Random.Range(-0.5f, -0.3f)
         : Random.Range(0.5f, 0.3f);
 
-        Vector2 targetPos = new Vector2(randomX, -0.25f);
+        Vector2 targetPos = (Vector2)transform.position + new Vector2(randomX, -0.25f);
         transform.DOLocalJump(targetPos, 1f, 1, hudDuration);
 
         transform.DOScale(Vector3.one * 0.5f, hudDuration).OnComplete(() =>
         {
             _text.color = Color.white;
             transform.localScale = Vector3.one;
-            transform.SetParent(null);  
             PoolManager.Instance.DestroyObject(this);
         });
     }
