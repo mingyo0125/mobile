@@ -21,4 +21,5 @@ MonoBehaviour:
     <CriticalProbability>k__BackingField: 10
     <CriticalDamageIncreasePercent>k__BackingField: 100
     <ResistancePercent>k__BackingField: 50
-    <ItemDropRate>k__BackingField: 50
+    <ItemDropRate>k__BackingField: 10
+    <DropCoinValue>k__BackingField: 0

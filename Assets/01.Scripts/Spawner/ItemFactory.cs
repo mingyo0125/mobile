@@ -22,4 +22,5 @@ public class ItemFactory : EntityFactory<Item>
         Item item = Utils.GetRandomElement(_spawnEntitys);
         SpawnObject(item.name, spawnPos);
     }
+
 }

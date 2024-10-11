@@ -36,6 +36,9 @@ public abstract class EntityFactory<T> : MonoBehaviour where T : PoolableMono
             case SpawnEntityTypes.ETC:
                 SetSpawnEntities(PoolManager.Instance.PoolObjSO.ETC);
                 break;
+            case SpawnEntityTypes.Coins:
+                SetSpawnEntities(PoolManager.Instance.PoolObjSO.Coins);
+                break;
             default:
                 Debug.LogError($"{_spawnEntityTypes} Type is not set");
                 break;

@@ -7,7 +7,8 @@ public enum SpawnEntityTypes
 {
     ETC,
     Enemies,
-    Items
+    Items,
+    Coins
 }
 
 [Serializable]
@@ -30,6 +31,9 @@ public class PoolObjectsSO : ScriptableObject
     public List<PoolObjectsInfo> Items { get; private set; } = new();
 
     [field: SerializeField]
+    public List<PoolObjectsInfo> Coins { get; private set; } = new();
+
+    [field: SerializeField]
     public List<PoolObjectsInfo> ETC { get; private set; } = new();
 
     [field: SerializeField]
@@ -41,6 +45,7 @@ public class PoolObjectsSO : ScriptableObject
         PoolObjects.AddRange(Enemies);
         PoolObjects.AddRange(Items);
         PoolObjects.AddRange(ETC);
+        PoolObjects.AddRange(Coins);
         PoolObjects.AddRange(UI);
     }
 }

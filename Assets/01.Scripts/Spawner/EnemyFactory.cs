@@ -11,12 +11,14 @@ public class EnemyFactory : EntityFactory<Enemy>
     private float spawnTime;
 
     private ItemFactory _itemFactory;
+    private CoinFactory _coinFactory;
 
     protected override void Awake()
     {
         base.Awake();
 
         _itemFactory = FindAnyObjectByType<ItemFactory>();
+        _coinFactory = FindAnyObjectByType<CoinFactory>();
     }
 
     private void Start()
@@ -32,6 +34,8 @@ public class EnemyFactory : EntityFactory<Enemy>
             Enemy spawnedEnemy = SpawnObject(enemyPrefab.name, Utils.GetRandomSpawnPos(_minBound.position, _maxBound.position)) as Enemy;
 
             spawnedEnemy.OnDieEvent += _itemFactory.SpawnItem;
+            spawnedEnemy.OnDieEvent += _coinFactory.SpawnCoin;
+
             yield return new WaitForSeconds(spawnTime);
         }
     }

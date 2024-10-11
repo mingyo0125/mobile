@@ -14,7 +14,6 @@ public abstract class Item : PoolableMono
     {
         StartCoroutine(SpawnTwinkleCorou());
 
-
         if(isBouncing)
         {
             Vector3 originPos = transform.position;
@@ -26,7 +25,7 @@ public abstract class Item : PoolableMono
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    protected virtual void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.TryGetComponent(out Player player))
         {

@@ -18,6 +18,7 @@ MonoBehaviour:
   <Items>k__BackingField:
   - <PoolObject>k__BackingField: {fileID: 267274606704855692, guid: 7e2577c52ef52994eb51386b14c687db, type: 3}
     <PoolCount>k__BackingField: 10
+  <Coins>k__BackingField:
   - <PoolObject>k__BackingField: {fileID: 4218524884277873236, guid: da8fc9b9b2f6adb4296f4cd5bd5f03d4, type: 3}
     <PoolCount>k__BackingField: 10
   <ETC>k__BackingField:
