@@ -11,7 +11,7 @@ public abstract class UIComponent : PoolableMono, IGUI
     {
         if (generateType == UIGenerateType.CLEAR_PANEL)
         {
-            //UIManager.Instance.ClearPanel();
+            UIManager.Instance.ClearPanel();
         }
 
         transform.SetParent(parent);
