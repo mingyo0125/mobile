@@ -22,7 +22,7 @@ public abstract class UIComponent : PoolableMono, IGUI
             ((RectTransform)transform).offsetMax = Vector2.zero;
         }
 
-        IsActive = false;
+        IsActive = true;
         Parent = parent;
         GenerateType = generateType;
     }

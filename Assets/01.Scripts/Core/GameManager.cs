@@ -13,4 +13,14 @@ public class GameManager : MonoSingleTon<GameManager>
         }
         return _playerTrm;
     }
+
+    private PlayerStat _playerStat;
+    public PlayerStat GetPlayerStat()
+    {
+        if (_playerStat == null)
+        {
+            _playerStat = GetPlayerTrm().GetComponent<Player>().EntityStatController.EntityStat as PlayerStat;
+        }
+        return _playerStat;
+    }
 }

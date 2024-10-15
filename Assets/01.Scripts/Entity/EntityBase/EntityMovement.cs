@@ -23,15 +23,19 @@ public abstract partial class Entity<T, G> : IMoveable
 	private void InitializeMovement()
     {
         IsFacingRight = true;
-		Speed = EntityStat.Speed;
+		Speed = EntityStatController.GetStatValue(StatType.Speed);
         SetMove();
-
 
         EntityAnimatorCompo.OnHitAnimationEndEvent += ResetMoveAnimationSpeed;
 	}
 
 	public void Move(Vector2 targetPos)
     {
+        if(this is Player)
+        {
+            Debug.Log(IsMove);
+            Debug.Log(Speed);
+        }
         if (!IsMove) { return; }
 
         Vector2 newPosition = Vector2.MoveTowards(transform.position, targetPos, Speed * Time.fixedDeltaTime);

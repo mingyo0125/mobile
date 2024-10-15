@@ -32,7 +32,7 @@ public abstract class EntityAttackState<T, G> : EntityState<T, G> where T : Enum
         }
 		else
 		{
-            CoroutineUtil.CallWaitForSeconds(_owner.EntityStat.AttackDelay, EnterState);
+            CoroutineUtil.CallWaitForSeconds(_owner.EntityStatController.GetStatValue(StatType.AttackDelay), EnterState);
 		}
     }
 
@@ -49,7 +49,7 @@ public abstract class EntityAttackState<T, G> : EntityState<T, G> where T : Enum
         }
         else
         {
-            foreach (Collider2D item in GetInRange(_owner.EntityStat.AttackRange).Item2)
+            foreach (Collider2D item in GetInRange(_owner.EntityStatController.GetStatValue(StatType.AttackRange)).Item2)
             {
                 if (item.TryGetComponent(out IDamageable component))
                 {

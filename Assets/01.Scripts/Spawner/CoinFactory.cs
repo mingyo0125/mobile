@@ -6,7 +6,7 @@ public class CoinFactory : EntityFactory<Coin>
 
     private void Start()
     {
-        _playerStat = GameManager.Instance.GetPlayerTrm().GetComponent<Player>().EntityStat as PlayerStat;
+        _playerStat = GameManager.Instance.GetPlayerStat();
     }
 
     public void SpawnCoin(Vector2 spawnPos)

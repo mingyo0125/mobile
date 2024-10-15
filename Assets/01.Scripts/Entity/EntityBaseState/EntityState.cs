@@ -63,7 +63,7 @@ public class EntityState<T, G> : IRangeCheckable where T : Enum where G : Entity
 
     public bool GetAttackable()
     {
-        return GetInRange(_owner.EntityStat.AttackRange).Item1;
+        return GetInRange(_owner.EntityStatController.GetStatValue(StatType.AttackRange)).Item1;
     }
 
     #endregion

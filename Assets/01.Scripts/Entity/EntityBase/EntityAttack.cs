@@ -40,8 +40,8 @@ public abstract partial class Entity<T, G>
 
     protected virtual (bool, float) GetDamage() // 무기가 있으면(플레이어) 무기 데미지까지 더해서 데미지 반환
     {
-        float damage = EntityStat.Damage;
-        bool isCritical = Utils.CalculateProbability(EntityStat.CriticalProbability);
+        float damage = EntityStatController.GetStatValue(StatType.Damage);
+        bool isCritical = Utils.CalculateProbability(EntityStatController.GetStatValue(StatType.CriticalProbability));
 
         if (EquipWeapon != null)
         {
@@ -50,7 +50,7 @@ public abstract partial class Entity<T, G>
 
         if (isCritical)
         {
-            damage += (EntityStat.CriticalDamageIncreasePercent * 0.01f * EntityStat.Damage);
+            damage += EntityStatController.GetStatValue(StatType.CriticalDamageIncreasePercent) * 0.01f * damage;
         }
 
         return (isCritical, damage);

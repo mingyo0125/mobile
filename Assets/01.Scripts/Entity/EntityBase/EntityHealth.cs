@@ -26,7 +26,7 @@ public abstract partial class Entity<T, G> : IDamageable
 
 	private void HealthAwake()
     {
-        MaxHP = EntityStat.MaxHP;
+        MaxHP = EntityStatController.GetStatValue(StatType.MaxHp);
 
         EntityCollider = GetComponent<Collider2D>();
     }

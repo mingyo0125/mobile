@@ -13,7 +13,7 @@ public abstract partial class Entity<T, G> : PoolableMono, IEntity
     //[SerializeField]
     //private EntityStatSO _entityStatSO;
 
-    public BaseStat EntityStat { get; protected set; }
+    public StatController EntityStatController { get; protected set; }
 
     public Vector2 TargetPos { get; private set; }
     private SpriteRenderer _spriteRenderer;
@@ -47,7 +47,7 @@ public abstract partial class Entity<T, G> : PoolableMono, IEntity
         _spriteRenderer.color = Color.white;
 
         StateMachine.Initialize(default);
-	}
+    }
 
     public void SetTargetTrm(Vector3 targetPos)
     {
@@ -61,7 +61,7 @@ public abstract partial class Entity<T, G> : PoolableMono, IEntity
         return this as G1;
     }
 
-    private void Update()
+    protected virtual void Update()
     {
         StateMachine.CurrentState?.UpdateState();
     }
@@ -86,5 +86,5 @@ public abstract partial class Entity<T, G> : PoolableMono, IEntity
     }
 
     protected abstract void SetStat();
-    protected abstract BaseStat GetStat();
+    protected abstract BaseStat GetStat(); // 이건 실행 안 했을때 기즈모 그릴려고 있는 것.
 }

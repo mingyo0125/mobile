@@ -10,10 +10,9 @@ public class PlayerIdleState : EntityIdleState<PlayerStateType, Player>
     {
     }
 
-	public override void UpdateState()
+    public override void UpdateState()
 	{
 		base.UpdateState();
-
         if(GetInRange(100f).Item1)
         {
 			_stateMachine.ChangeState(PlayerStateType.Move);

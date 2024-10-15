@@ -1,6 +1,26 @@
 using System;
 using UnityEngine;
 
+public enum StatType
+{
+    Speed,
+    MaxHp,
+    AttackRange,
+    AttackDelay,
+    Damage,
+    CriticalProbability,
+    CriticalDamageIncreasePercent,
+    ResistancePercent,
+
+
+    #region Player
+
+    ItemDropRate,
+    DropCoinValue,
+
+    #endregion
+}
+
 [Serializable]
 public class BaseStat
 {
@@ -39,5 +59,4 @@ public class BaseStat
         this.CriticalDamageIncreasePercent = stat.CriticalDamageIncreasePercent;
         this.ResistancePercent = stat.ResistancePercent;
     }
-
 }

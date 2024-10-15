@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,11 +13,22 @@ public class Player : Entity<PlayerStateType, Player>
         EquipWeapon = weapon;
 	}
 
-    protected override void OnEnable()
+    protected override void Update()
     {
-        base.OnEnable();
+        base.Update();
 
-        Initialize();
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+            foreach(StatType a in Enum.GetValues(typeof(StatType)))
+            {
+                Debug.Log($"{a}: {EntityStatController.GetStatValue(a)}");
+            }
+        }
+    }
+
+    private void Start()
+    {
+        base.Initialize();
     }
 
     protected override void Awake()
@@ -28,7 +40,7 @@ public class Player : Entity<PlayerStateType, Player>
 
     public void GetItem(Item item)
     {
-
+        // Dosomething
     }
 
     protected override void CreateStateMachine()
@@ -38,10 +50,11 @@ public class Player : Entity<PlayerStateType, Player>
 
     protected override void SetStat()
     {
-        EntityStat = _playerStatSO.PlayerStat;
+        EntityStatController = new PlayerStatController();
+        EntityStatController.Initialize(_playerStatSO.PlayerStat);
     }
 
-    protected override BaseStat GetStat()
+    protected sealed override BaseStat GetStat()
     {
         if(_playerStatSO.PlayerStat != null)
         {
