@@ -1793,6 +1793,7 @@ GameObject:
   - component: {fileID: 705487907}
   - component: {fileID: 705487909}
   - component: {fileID: 705487908}
+  - component: {fileID: 705487910}
   m_Layer: 5
   m_Name: UpgradeStatContainer_v2
   m_TagString: Untagged
@@ -1861,6 +1862,24 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 705487906}
   m_CullTransparentMesh: 1
+--- !u!114 &705487910
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 705487906}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd212e51fa4c136478a16d60ca22cf47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _statImage: {fileID: 1137356010}
+  _level: {fileID: 1553025416}
+  _name: {fileID: 1518121431}
+  _value: {fileID: 2113996135}
+  _cost: {fileID: 1787637880}
+  _statType: 4
 --- !u!1 &754006292
 GameObject:
   m_ObjectHideFlags: 0
@@ -2759,6 +2778,7 @@ GameObject:
   - component: {fileID: 1002059756}
   - component: {fileID: 1002059758}
   - component: {fileID: 1002059757}
+  - component: {fileID: 1002059759}
   m_Layer: 5
   m_Name: UpgradeStatContainer_v1
   m_TagString: Untagged
@@ -2827,6 +2847,24 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1002059755}
   m_CullTransparentMesh: 1
+--- !u!114 &1002059759
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1002059755}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd212e51fa4c136478a16d60ca22cf47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _statImage: {fileID: 1164096581}
+  _level: {fileID: 1441612012}
+  _name: {fileID: 1194485167}
+  _value: {fileID: 1613611337}
+  _cost: {fileID: 940535486}
+  _statType: 1
 --- !u!1 &1053329982
 GameObject:
   m_ObjectHideFlags: 0
