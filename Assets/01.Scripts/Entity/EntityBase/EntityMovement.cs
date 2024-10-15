@@ -31,11 +31,6 @@ public abstract partial class Entity<T, G> : IMoveable
 
 	public void Move(Vector2 targetPos)
     {
-        if(this is Player)
-        {
-            Debug.Log(IsMove);
-            Debug.Log(Speed);
-        }
         if (!IsMove) { return; }
 
         Vector2 newPosition = Vector2.MoveTowards(transform.position, targetPos, Speed * Time.fixedDeltaTime);

@@ -41,15 +41,17 @@ public abstract class StatController
         }
     }
 
-    public void IncreaseStat(StatType statType, float increasePercent)
+    public void IncreaseStat(StatType statType, float increaseValue)
     {
-        float value = GetStatValue(statType) + Utils.CalculatePercent(GetStatValue(statType), increasePercent);
+        //float value = GetStatValue(statType) + Utils.CalculatePercent(GetStatValue(statType), increasePercent);
+        float value = GetStatValue(statType) + increaseValue;
         UpdateStatValue(statType, value);
     }
 
-    public void DecreaseStat(StatType statType, float increasePercent)
+    public void DecreaseStat(StatType statType, float decreasePercent)
     {
-        float value = GetStatValue(statType) - Utils.CalculatePercent(GetStatValue(statType), increasePercent);
+        //float value = GetStatValue(statType) - Utils.CalculatePercent(GetStatValue(statType), decreasePercent);
+        float value = GetStatValue(statType) - decreasePercent;
         UpdateStatValue(statType, value);
     }
 

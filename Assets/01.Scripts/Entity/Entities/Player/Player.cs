@@ -24,6 +24,19 @@ public class Player : Entity<PlayerStateType, Player>
                 Debug.Log($"{a}: {EntityStatController.GetStatValue(a)}");
             }
         }
+
+
+        if (Input.GetKeyDown(KeyCode.D))
+        {
+            EntityStatController.IncreaseStat(StatType.Damage, 10);
+            Debug.Log($"{EntityStatController.GetStatValue(StatType.Damage)}");
+        }
+
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            EntityStatController.DecreaseStat(StatType.Damage, 10);
+            Debug.Log($"{EntityStatController.GetStatValue(StatType.Damage)}");
+        }
     }
 
     private void Start()
