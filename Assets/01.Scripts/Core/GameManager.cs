@@ -14,6 +14,16 @@ public class GameManager : MonoSingleTon<GameManager>
         return _playerTrm;
     }
 
+    private Player _player;
+    public Player GetPlayer()
+    {
+        if (_playerTrm == null)
+        {
+            _player = GetPlayerTrm().GetComponent<Player>();
+        }
+        return _player;
+    }
+
     private PlayerStat _playerStat;
     public PlayerStat GetPlayerStat()
     {

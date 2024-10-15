@@ -33,5 +33,5 @@ public abstract class UIComponent : PoolableMono, IGUI
         PoolManager.Instance.DestroyObject(this);
     }
 
-    public abstract void UpdateUI();
+    public abstract void UpdateUI(StatUpgradeUIInfo statUpgradeUIInfo);
 }

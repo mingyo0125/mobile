@@ -1,4 +1,5 @@
 using System;
+using Unity.VisualScripting.Antlr3.Runtime.Tree;
 using UnityEngine;
 
 public enum StatType
@@ -22,31 +23,49 @@ public enum StatType
 }
 
 [Serializable]
+public struct StatPair
+{
+    public int Level { get; private set; }
+    public float Value { get; private set; }
+
+    public StatPair(int level, float value)
+    {
+        this.Level = level;
+        this.Value = value;
+    }
+
+    public void SetValue(float value)
+    {
+        Value = value;
+    }
+}
+
+[Serializable]
 public class BaseStat
 {
     [field: SerializeField]
-    public float Speed { get; private set; }
+    public StatPair Speed { get; private set; }
 
     [field: SerializeField]
-    public float MaxHP { get; private set; }
+    public StatPair MaxHP { get; private set; }
 
     [field: SerializeField]
-    public float AttackRange { get; private set;}
+    public StatPair AttackRange { get; private set;}
 
     [field: SerializeField]
-    public float AttackDelay { get; private set; }
+    public StatPair AttackDelay { get; private set; }
 
     [field: SerializeField]
-	public float Damage { get; private set; }
+	public StatPair Damage { get; private set; }
 
     [field: SerializeField]
-    public float CriticalProbability { get; private set; }
+    public StatPair CriticalProbability { get; private set; }
 
     [field: SerializeField]
-    public float CriticalDamageIncreasePercent { get; private set; }
+    public StatPair CriticalDamageIncreasePercent { get; private set; }
 
     [field: SerializeField]
-    public float ResistancePercent { get; private set; }
+    public StatPair ResistancePercent { get; private set; }
 
     public BaseStat(BaseStat stat)
     {

@@ -5,39 +5,53 @@ using UnityEngine;
 
 public abstract class StatController
 {
-    protected Dictionary<StatType, float> _stats = new Dictionary<StatType, float>();
+    protected Dictionary<StatType, StatPair> _stats = new Dictionary<StatType, StatPair>();
 
     public BaseStat EntityStat { get; private set; }
 
     public void Initialize(BaseStat stat)
     {
         EntityStat = stat;
-        SetStat(EntityStat);
+        SetStat(EntityStat, 1);
     }
 
-    protected virtual void SetStat(BaseStat stat)
+    protected virtual void SetStat(BaseStat stat, int level) // 일단 1로 하는데 나중에 구조체던 뭐던 한번에 저장해서 하는 식으로
     {
-        _stats.Add(StatType.Speed, stat.Speed);
-        _stats.Add(StatType.MaxHp, stat.MaxHP);
-        _stats.Add(StatType.AttackRange, stat.AttackRange);
-        _stats.Add(StatType.AttackDelay, stat.AttackDelay);
-        _stats.Add(StatType.Damage, stat.Damage);
-        _stats.Add(StatType.CriticalProbability, stat.CriticalProbability);
-        _stats.Add(StatType.CriticalDamageIncreasePercent, stat.CriticalDamageIncreasePercent);
-        _stats.Add(StatType.ResistancePercent, stat.ResistancePercent);
+        _stats.Add(StatType.Speed, new StatPair(level, stat.Speed.Value));
+        _stats.Add(StatType.MaxHp, new StatPair(level, stat.MaxHP.Value));
+        _stats.Add(StatType.AttackRange, new StatPair(level, stat.AttackRange.Value));
+        _stats.Add(StatType.AttackDelay, new StatPair(level, stat.AttackDelay.Value));
+        _stats.Add(StatType.Damage, new StatPair(level, stat.Damage.Value));
+        _stats.Add(StatType.CriticalProbability, new StatPair(level, stat.CriticalProbability.Value));
+        _stats.Add(StatType.CriticalDamageIncreasePercent, new StatPair(level, stat.CriticalDamageIncreasePercent.Value));
+        _stats.Add(StatType.ResistancePercent, new StatPair(level, stat.ResistancePercent.Value));
     }
 
     public float GetStatValue(StatType statType)
     {
-        if (_stats.TryGetValue(statType, out float value))
+        if (_stats.TryGetValue(statType, out StatPair stat))
         {
-            return value;
+            return stat.Value;
         }
         else
         {
             Debug.LogError($"{statType} is not defined");
 
             return 0f;
+        }
+    }
+
+    public int GetStatLevel(StatType statType)
+    {
+        if (_stats.TryGetValue(statType, out StatPair stat))
+        {
+            return stat.Level;
+        }
+        else
+        {
+            Debug.LogError($"{statType} is not defined");
+
+            return 0;
         }
     }
 
@@ -57,6 +71,15 @@ public abstract class StatController
 
     public void UpdateStatValue(StatType statType, float value)
     {
-        _stats[statType] = value;
+        _stats[statType].SetValue(value);
+    }
+
+    public StatUpgradeUIInfo GetStatUpgradeUIInfo(StatType statType)
+    {
+        return new StatUpgradeUIInfo(GetStatLevel(statType),
+                                     statType.ToString(),
+                                     GetStatValue(statType),
+                                     10 * GetStatLevel(statType));
+        // cost는 나중에 수학 그걸로
     }
 }

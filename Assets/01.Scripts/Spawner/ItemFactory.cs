@@ -6,7 +6,7 @@ public class ItemFactory : EntityFactory<Item>
 {
     public void SpawnItem(Vector2 spawnPos)
     {
-        float itemDropProbabiltiy = GameManager.Instance.GetPlayerStat().ItemDropRate;
+        float itemDropProbabiltiy = GameManager.Instance.GetPlayerStat().ItemDropRate.Value;
 
         bool canSpawnItem = Utils.CalculateProbability(itemDropProbabiltiy);
 

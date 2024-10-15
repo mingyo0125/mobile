@@ -7,10 +7,10 @@ using UnityEngine;
 public class PlayerStat : BaseStat
 {
     [field: SerializeField]
-    public float ItemDropRate { get; private set; }
+    public StatPair ItemDropRate { get; private set; }
 
     [field: SerializeField]
-    public float DropCoinValue { get; private set; }
+    public StatPair DropCoinValue { get; private set; }
 
     public PlayerStat(PlayerStat stat) : base(stat)
     {

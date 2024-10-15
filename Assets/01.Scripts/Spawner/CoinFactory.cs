@@ -15,7 +15,7 @@ public class CoinFactory : EntityFactory<Coin>
 
         Coin spawnedCoin = SpawnObject("Coin", spawnPos) as Coin;
 
-        float coinValue = 10f + Utils.CalculatePercent(10, _playerStat.DropCoinValue); // 기본적으로 10
+        float coinValue = 10f + Utils.CalculatePercent(10, _playerStat.DropCoinValue.Value); // 기본적으로 10
 
         spawnedCoin.SetCoinValue((int)coinValue);
     }

@@ -11,11 +11,11 @@ public class UIManager : MonoSingleTon<UIManager>
 
     private void Update()
     {
-        if(_uiComponentsStack.Count > 0 &&
-           TopUI.IsActive)
-        {
-            TopUI.UpdateUI();
-        }
+        //if(_uiComponentsStack.Count > 0 &&
+        //   TopUI.IsActive)
+        //{
+        //    TopUI.UpdateUI();
+        //}
     }
 
     public UIComponent GenerateUI(string name, Transform parent = null, UIGenerateType generateType = UIGenerateType.NONE)
