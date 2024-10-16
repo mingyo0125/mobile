@@ -12,11 +12,10 @@ public abstract partial class Entity<T, G> : PoolableMono, IEntity
     //[Header("Stat")]
     //[SerializeField]
     //private EntityStatSO _entityStatSO;
-
-    public StatController EntityStatController { get; protected set; }
-
     public Vector2 TargetPos { get; private set; }
     private SpriteRenderer _spriteRenderer;
+
+    public StatController EntityStatController { get; private set;}
 
     protected virtual void Awake()
     {
@@ -24,6 +23,8 @@ public abstract partial class Entity<T, G> : PoolableMono, IEntity
 
         EntityAnimatorCompo = visual.GetComponent<EntityAnimator>();
         _spriteRenderer = visual.GetComponent<SpriteRenderer>();
+        EntityStatController = new StatController();
+
         //EntityStat = new BaseStat(_entityStatSO.EntityStat);
         SetStat();
 
@@ -86,5 +87,5 @@ public abstract partial class Entity<T, G> : PoolableMono, IEntity
     }
 
     protected abstract void SetStat();
-    protected abstract BaseStat GetStat(); // 이건 실행 안 했을때 기즈모 그릴려고 있는 것.
+    protected abstract BaseStat GetStatSO(); // 이건 실행 안 했을때 기즈모 그릴려고 있는 것.
 }

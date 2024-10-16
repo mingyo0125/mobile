@@ -13,13 +13,33 @@ MonoBehaviour:
   m_Name: PlayerStatSO
   m_EditorClassIdentifier: 
   <PlayerStat>k__BackingField:
-    <Speed>k__BackingField: 1.5
-    <MaxHP>k__BackingField: 1000
-    <AttackRange>k__BackingField: 1
-    <AttackDelay>k__BackingField: 0
-    <Damage>k__BackingField: 10
-    <CriticalProbability>k__BackingField: 10
-    <CriticalDamageIncreasePercent>k__BackingField: 100
-    <ResistancePercent>k__BackingField: 50
-    <ItemDropRate>k__BackingField: 10
-    <DropCoinValue>k__BackingField: 0
+    <Speed>k__BackingField:
+      Level: 1
+      Value: 1
+    <MaxHP>k__BackingField:
+      Level: 1
+      Value: 1
+    <AttackRange>k__BackingField:
+      Level: 1
+      Value: 1
+    <AttackDelay>k__BackingField:
+      Level: 1
+      Value: 1
+    <Damage>k__BackingField:
+      Level: 1
+      Value: 1
+    <CriticalProbability>k__BackingField:
+      Level: 1
+      Value: 1
+    <CriticalDamageIncreasePercent>k__BackingField:
+      Level: 1
+      Value: 1
+    <ResistancePercent>k__BackingField:
+      Level: 1
+      Value: 1
+    <ItemDropRate>k__BackingField:
+      Level: 1
+      Value: 1
+    <DropCoinValue>k__BackingField:
+      Level: 1
+      Value: 1

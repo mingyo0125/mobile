@@ -7,14 +7,19 @@ using UnityEngine;
 public class PlayerStat : BaseStat
 {
     [field: SerializeField]
-    public StatPair ItemDropRate { get; private set; }
+    public StatInfo ItemDropRate { get; private set; }
 
     [field: SerializeField]
-    public StatPair DropCoinValue { get; private set; }
+    public StatInfo DropCoinValue { get; private set; }
 
     public PlayerStat(PlayerStat stat) : base(stat)
     {
         this.ItemDropRate = stat.ItemDropRate;
         this.DropCoinValue = stat.DropCoinValue;
+
+        Stats.Add(StatType.ItemDropRate, ItemDropRate);
+        Stats.Add(StatType.DropCoinValue, DropCoinValue);
+
+        Debug.Log("ADd");
     }
 }

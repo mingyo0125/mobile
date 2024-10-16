@@ -29,7 +29,7 @@ public abstract partial class Entity<T, G>
             try
             {
                 Gizmos.color = _gizmoColor;
-                Gizmos.DrawWireSphere(transform.position, GetStat().AttackRange.Value);
+                Gizmos.DrawWireSphere(transform.position, GetStatSO().AttackRange.Value);
             }
             catch
             {

@@ -5,7 +5,7 @@ public class Enemy : Entity<EnemyStateType, Enemy>
     [SerializeField]
     private EnemyStatSO _enemyStatSO;
 
-    protected sealed override BaseStat GetStat()
+    protected sealed override BaseStat GetStatSO()
     {
         if (_enemyStatSO.EnemyStat != null)
         {
@@ -21,8 +21,7 @@ public class Enemy : Entity<EnemyStateType, Enemy>
 
     protected override void SetStat()
     {
-        EntityStatController = new EnemyStatController();
-        EntityStatController.Initialize(_enemyStatSO.EnemyStat);
+        EntityStatController.Initialize<EnemyStat>(_enemyStatSO.EnemyStat);
     }
 
     protected override string GetHudTextValue(float value)

@@ -63,11 +63,10 @@ public class Player : Entity<PlayerStateType, Player>
 
     protected override void SetStat()
     {
-        EntityStatController = new PlayerStatController();
-        EntityStatController.Initialize(_playerStatSO.PlayerStat);
+        EntityStatController.Initialize<PlayerStat>(_playerStatSO.PlayerStat);
     }
 
-    protected sealed override BaseStat GetStat()
+    protected sealed override BaseStat GetStatSO()
     {
         if(_playerStatSO.PlayerStat != null)
         {

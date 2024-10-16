@@ -4,5 +4,5 @@ public interface IGUI
 {
     void GenerateUI(Transform parent, UIGenerateType generateType);
     void RemoveUI();
-    void UpdateUI(StatUpgradeUIInfo statUpgradeUIInfo);
+    void UpdateUI();
 }

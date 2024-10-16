@@ -1,6 +1,10 @@
 using System;
+using System.Collections.Generic;
+using System.Reflection;
+using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using Unity.VisualScripting.Antlr3.Runtime.Tree;
 using UnityEngine;
+using static UnityEngine.EventSystems.EventTrigger;
 
 public enum StatType
 {
@@ -23,49 +27,46 @@ public enum StatType
 }
 
 [Serializable]
-public struct StatPair
+public struct StatInfo
 {
-    public int Level { get; private set; }
-    public float Value { get; private set; }
+    public int Level;
+    public float Value;
 
-    public StatPair(int level, float value)
+    public StatInfo(int level, float value)
     {
         this.Level = level;
         this.Value = value;
-    }
-
-    public void SetValue(float value)
-    {
-        Value = value;
     }
 }
 
 [Serializable]
 public class BaseStat
 {
-    [field: SerializeField]
-    public StatPair Speed { get; private set; }
+    public Dictionary<StatType, StatInfo> Stats { get; private set; }
 
     [field: SerializeField]
-    public StatPair MaxHP { get; private set; }
+    public StatInfo Speed { get; private set; }
 
     [field: SerializeField]
-    public StatPair AttackRange { get; private set;}
+    public StatInfo MaxHP { get; private set; }
 
     [field: SerializeField]
-    public StatPair AttackDelay { get; private set; }
+    public StatInfo AttackRange { get; private set;}
 
     [field: SerializeField]
-	public StatPair Damage { get; private set; }
+    public StatInfo AttackDelay { get; private set; }
 
     [field: SerializeField]
-    public StatPair CriticalProbability { get; private set; }
+	public StatInfo Damage { get; private set; }
 
     [field: SerializeField]
-    public StatPair CriticalDamageIncreasePercent { get; private set; }
+    public StatInfo CriticalProbability { get; private set; }
 
     [field: SerializeField]
-    public StatPair ResistancePercent { get; private set; }
+    public StatInfo CriticalDamageIncreasePercent { get; private set; }
+
+    [field: SerializeField]
+    public StatInfo ResistancePercent { get; private set; }
 
     public BaseStat(BaseStat stat)
     {
@@ -77,5 +78,44 @@ public class BaseStat
         this.CriticalProbability = stat.CriticalProbability;
         this.CriticalDamageIncreasePercent = stat.CriticalDamageIncreasePercent;
         this.ResistancePercent = stat.ResistancePercent;
+
+        Stats = new Dictionary<StatType, StatInfo>()
+        {
+            { StatType.Speed, Speed },
+            { StatType.MaxHp, MaxHP },
+            { StatType.AttackRange, AttackRange },
+            { StatType.AttackDelay, AttackDelay },
+            { StatType.Damage, Damage },
+            { StatType.CriticalProbability, CriticalProbability },
+            { StatType.CriticalDamageIncreasePercent, CriticalDamageIncreasePercent },
+            { StatType.ResistancePercent, ResistancePercent },
+        };
+
+        Debug.Log("Add");
     }
+
+    public void SetValue(StatType statType, float value)
+    {
+        if(Stats.TryGetValue(statType, out StatInfo statInfo))
+        {
+            statInfo.Value = value;
+        }
+        else
+        {
+            Debug.LogError($"{GetType()}'s {statType} is Not Defined");
+        }
+    }
+
+    //public float GetValue(StatType statType)
+    //{
+    //    if (Stats.TryGetValue(statType, out StatInfo statInfo))
+    //    {
+    //        return statInfo.Value;
+    //    }
+    //    else
+    //    {
+    //        Debug.LogError($"{GetType()}'s {statType} is Not Defined");
+    //        return 0.0f;
+    //    }
+    //}
 }

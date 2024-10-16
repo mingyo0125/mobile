@@ -9,7 +9,7 @@ public class GameManager : MonoSingleTon<GameManager>
     {
         if(_playerTrm == null)
         {
-            _playerTrm = FindAnyObjectByType<Player>().transform;
+            _playerTrm = GetPlayer().transform;
         }
         return _playerTrm;
     }
@@ -19,7 +19,7 @@ public class GameManager : MonoSingleTon<GameManager>
     {
         if (_playerTrm == null)
         {
-            _player = GetPlayerTrm().GetComponent<Player>();
+            _player = FindAnyObjectByType<Player>();
         }
         return _player;
     }
@@ -29,7 +29,7 @@ public class GameManager : MonoSingleTon<GameManager>
     {
         if (_playerStat == null)
         {
-            _playerStat = GetPlayerTrm().GetComponent<Player>().EntityStatController.EntityStat as PlayerStat;
+            _playerStat = GetPlayer().EntityStatController.EntityStat as PlayerStat;
         }
         return _playerStat;
     }

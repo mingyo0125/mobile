@@ -33,16 +33,17 @@ public class UpgradeStatContainer : UIComponent
 
     public void Start()
     {
-        UpdateUI(GameManager.Instance.GetPlayer().EntityStatController.GetStatUpgradeUIInfo(_statType));
+        UpdateUI();
     }
 
-    public override void UpdateUI(StatUpgradeUIInfo statUpgradeUIInfo)
+    public override void UpdateUI()
     {
+        StatUpgradeUIInfo statUpgradeUIInfo = GameManager.Instance.GetPlayer().EntityStatController.GetStatUpgradeUIInfo(_statType);
         //_level.SetText(palyerStat.GetStatLevel(_statType).ToString());
         //_name.SetText(_statType.ToString());
         //_value.SetText(palyerStat.GetStatValue(_statType).ToString());
 
-        _level.SetText(statUpgradeUIInfo.Level.ToString());
+        _level.SetText($"Lv {statUpgradeUIInfo.Level.ToString()}");
         _name.SetText(statUpgradeUIInfo.Name);
         _value.SetText(statUpgradeUIInfo.Value.ToString());
         _cost.SetText(statUpgradeUIInfo.Cost.ToString());
