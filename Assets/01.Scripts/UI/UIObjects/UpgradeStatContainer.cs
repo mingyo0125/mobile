@@ -11,12 +11,16 @@ public struct StatUpgradeUIInfo
     public float Value { get; private set; }
     public int Cost { get; private set; }
 
-    public StatUpgradeUIInfo(int level, string name, float value, int cost)
+    public Sprite StatSprite { get; private set; }
+
+    public StatUpgradeUIInfo(int level, string name, float value, int cost, Sprite sprite)
     {
         Level = level;
         Name = name;
         Value = value;
         Cost = cost;
+
+        StatSprite = sprite;
     }
 }
 
@@ -43,9 +47,11 @@ public class UpgradeStatContainer : UIComponent
         //_name.SetText(_statType.ToString());
         //_value.SetText(palyerStat.GetStatValue(_statType).ToString());
 
-        _level.SetText($"Lv {statUpgradeUIInfo.Level.ToString()}");
+        _level.SetText($"Lv {statUpgradeUIInfo.Level}");
         _name.SetText(statUpgradeUIInfo.Name);
         _value.SetText(statUpgradeUIInfo.Value.ToString());
         _cost.SetText(statUpgradeUIInfo.Cost.ToString());
+
+        _statImage.sprite = statUpgradeUIInfo.StatSprite;
     }
 }

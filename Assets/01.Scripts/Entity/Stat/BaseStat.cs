@@ -1,10 +1,6 @@
 using System;
 using System.Collections.Generic;
-using System.Reflection;
-using Unity.VisualScripting.Antlr3.Runtime.Misc;
-using Unity.VisualScripting.Antlr3.Runtime.Tree;
 using UnityEngine;
-using static UnityEngine.EventSystems.EventTrigger;
 
 public enum StatType
 {
@@ -24,19 +20,6 @@ public enum StatType
     DropCoinValue,
 
     #endregion
-}
-
-[Serializable]
-public struct StatInfo
-{
-    public int Level;
-    public float Value;
-
-    public StatInfo(int level, float value)
-    {
-        this.Level = level;
-        this.Value = value;
-    }
 }
 
 [Serializable]
@@ -90,8 +73,6 @@ public class BaseStat
             { StatType.CriticalDamageIncreasePercent, CriticalDamageIncreasePercent },
             { StatType.ResistancePercent, ResistancePercent },
         };
-
-        Debug.Log("Add");
     }
 
     public void SetValue(StatType statType, float value)

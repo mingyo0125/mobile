@@ -62,10 +62,13 @@ public class StatController
     public StatUpgradeUIInfo GetStatUpgradeUIInfo(StatType statType)
     {
         int statLevel = GetStatLevel(statType);
+        StatUIInfo statUIInfo = EntityStat.Stats[statType].StatUIInfo;
+
         return new StatUpgradeUIInfo(statLevel,
-                                     statType.ToString(),
+                                     statUIInfo.Name,
                                      GetStatValue(statType),
-                                     10 * statLevel);
+                                     10 * statLevel,
+                                     statUIInfo.StatSprite);
         // cost는 나중에 수학 그걸로
     }
 }
