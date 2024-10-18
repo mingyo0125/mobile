@@ -49,11 +49,6 @@ public abstract partial class Entity<T, G>
         float damage = EntityStatController.GetStatValue(StatType.Damage);
         bool isCritical = Utils.CalculateProbability(EntityStatController.GetStatValue(StatType.CriticalProbability));
 
-        if (EquipWeapon != null)
-        {
-            damage += EquipWeapon.WeaponStat.Damage;
-        }
-
         if (isCritical)
         {
             damage += EntityStatController.GetStatValue(StatType.CriticalDamageIncreasePercent) * 0.01f * damage;

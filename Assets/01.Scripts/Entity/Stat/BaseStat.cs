@@ -36,12 +36,11 @@ public class BaseStat
     [field: SerializeField]
     public StatInfo Speed { get; private set; }
 
-    
+    [field: SerializeField]
+    public StatInfo AttackDelay { get; private set; }
 
     [field: SerializeField]
     public StatInfo AttackRange { get; private set;}
-
-    
 
     [field: SerializeField]
     public StatInfo CriticalProbability { get; private set; }
@@ -57,6 +56,7 @@ public class BaseStat
         this.Speed = stat.Speed;
         this.MaxHP = stat.MaxHP;
         this.AttackRange = stat.AttackRange;
+        this.AttackDelay = stat.AttackDelay;
         this.Damage = stat.Damage;
         this.CriticalProbability = stat.CriticalProbability;
         this.CriticalDamageIncreasePercent = stat.CriticalDamageIncreasePercent;
@@ -67,10 +67,11 @@ public class BaseStat
             { StatType.Damage, Damage },
             { StatType.MaxHp, MaxHP },
             { StatType.Speed, Speed },
+            { StatType.AttackRange, AttackRange },
+            { StatType.AttackDelay, AttackDelay },
             { StatType.CriticalProbability, CriticalProbability },
             { StatType.CriticalDamageIncreasePercent, CriticalDamageIncreasePercent },
             { StatType.ResistancePercent, ResistancePercent },
-            { StatType.AttackRange, AttackRange },
         };
     }
 
