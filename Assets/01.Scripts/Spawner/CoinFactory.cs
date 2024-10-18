@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class CoinFactory : EntityFactory<Coin>
+public class CoinFactory : ObjectFactory<Coin>
 {
     private PlayerStat _playerStat;
 

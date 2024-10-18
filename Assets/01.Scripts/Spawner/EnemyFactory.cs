@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyFactory : EntityFactory<Enemy>
+public class EnemyFactory : ObjectFactory<Enemy>
 {
     [SerializeField]
     private Transform _minBound, _maxBound;

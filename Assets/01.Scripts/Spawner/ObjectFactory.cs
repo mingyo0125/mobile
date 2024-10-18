@@ -2,12 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class EntityFactory<T> : MonoBehaviour where T : PoolableMono
+public abstract class ObjectFactory<T> : MonoBehaviour where T : PoolableMono
 {
     [SerializeField]
     private SpawnEntityTypes _spawnEntityTypes;
 
-    protected T[] _spawnEntitys; // 이 팩토리에서 소환할 엔티티들
+    protected T[] _spawnEntitys; // 이 팩토리에서 소환할 오브젝트들
 
     public PoolableMono SpawnObject(string crateEntityName, Vector3 spawnTrm)
     {
@@ -38,6 +38,9 @@ public abstract class EntityFactory<T> : MonoBehaviour where T : PoolableMono
                 break;
             case SpawnEntityTypes.Coins:
                 SetSpawnEntities(PoolManager.Instance.PoolObjSO.Coins);
+                break;
+            case SpawnEntityTypes.UI:
+                SetSpawnEntities(PoolManager.Instance.PoolObjSO.UI);
                 break;
             default:
                 Debug.LogError($"{_spawnEntityTypes} Type is not set");

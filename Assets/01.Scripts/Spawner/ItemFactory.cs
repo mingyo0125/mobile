@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ItemFactory : EntityFactory<Item>
+public class ItemFactory : ObjectFactory<Item>
 {
     public void SpawnItem(Vector2 spawnPos)
     {

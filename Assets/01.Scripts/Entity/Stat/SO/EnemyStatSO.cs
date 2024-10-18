@@ -7,4 +7,7 @@ public class EnemyStatSO : EntityStatSO
 {
     [field: SerializeField]
     public EnemyStat EnemyStat { get; private set; }
+
+    [field: SerializeField]
+    public StatInfo AttackRange { get; private set; }
 }

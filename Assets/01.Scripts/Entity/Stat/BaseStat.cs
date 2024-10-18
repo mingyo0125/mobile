@@ -28,16 +28,20 @@ public class BaseStat
     public Dictionary<StatType, StatInfo> Stats { get; private set; }
 
     [field: SerializeField]
-    public StatInfo Speed { get; private set; }
+    public StatInfo Damage { get; private set; }
 
     [field: SerializeField]
     public StatInfo MaxHP { get; private set; }
 
     [field: SerializeField]
-    public StatInfo AttackRange { get; private set;}
+    public StatInfo Speed { get; private set; }
+
+    
 
     [field: SerializeField]
-	public StatInfo Damage { get; private set; }
+    public StatInfo AttackRange { get; private set;}
+
+    
 
     [field: SerializeField]
     public StatInfo CriticalProbability { get; private set; }
@@ -60,13 +64,13 @@ public class BaseStat
 
         Stats = new Dictionary<StatType, StatInfo>()
         {
-            { StatType.Speed, Speed },
-            { StatType.MaxHp, MaxHP },
-            { StatType.AttackRange, AttackRange },
             { StatType.Damage, Damage },
+            { StatType.MaxHp, MaxHP },
+            { StatType.Speed, Speed },
             { StatType.CriticalProbability, CriticalProbability },
             { StatType.CriticalDamageIncreasePercent, CriticalDamageIncreasePercent },
             { StatType.ResistancePercent, ResistancePercent },
+            { StatType.AttackRange, AttackRange },
         };
     }
 
@@ -81,17 +85,4 @@ public class BaseStat
             Debug.LogError($"{GetType()}'s {statType} is Not Defined");
         }
     }
-
-    //public float GetValue(StatType statType)
-    //{
-    //    if (Stats.TryGetValue(statType, out StatInfo statInfo))
-    //    {
-    //        return statInfo.Value;
-    //    }
-    //    else
-    //    {
-    //        Debug.LogError($"{GetType()}'s {statType} is Not Defined");
-    //        return 0.0f;
-    //    }
-    //}
 }

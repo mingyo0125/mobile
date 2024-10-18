@@ -43,22 +43,4 @@ public class PoolManager : MonoSingleTon<PoolManager>
             Debug.LogException(ex);
         }
     }
-
-    //private void Awake()
-    //{
-    //    _pool = new ObjectPool();
-    //}
-
-    //public PoolableMono Create(string name)
-    //{
-    //    return _pool.PoolObjects[name].Dequeue();
-    //}
-
-    //public void Destroy(PoolableMono poolObj)
-    //{
-    //    poolObj.gameObject.SetActive(false);
-    //    poolObj.transform.parent = transform;
-
-    //    _pool.PoolObjects[poolObj]  
-    //}
 }

@@ -27,3 +27,7 @@ MonoBehaviour:
   <UI>k__BackingField:
   - <PoolObject>k__BackingField: {fileID: 6173353607167977563, guid: b4fabfb12245af84ea80c2b4c091c1be, type: 3}
     <PoolCount>k__BackingField: 10
+  - <PoolObject>k__BackingField: {fileID: 3231774284391204392, guid: b463c41f355e73447a5fb69ec803e0a1, type: 3}
+    <PoolCount>k__BackingField: 10
+  - <PoolObject>k__BackingField: {fileID: 1302936516726824089, guid: 9156e0776c991f0448b765ed146de5a8, type: 3}
+    <PoolCount>k__BackingField: 10

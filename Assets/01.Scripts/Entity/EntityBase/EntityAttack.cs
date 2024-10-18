@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public abstract partial class Entity<T, G>
@@ -23,17 +24,22 @@ public abstract partial class Entity<T, G>
 
     private void OnDrawGizmos()
     {
-
         if (isDrawRangeGizmo)
         {
-            try
+            if(this is Enemy)
             {
-                Gizmos.color = _gizmoColor;
-                Gizmos.DrawWireSphere(transform.position, GetStatSO().AttackRange.Value);
-            }
-            catch
-            {
-                Debug.LogWarning($"{gameObject} Stat is Not Setting");
+                EnemyStat statSO = GetStatSO() as EnemyStat;
+                float attackRange = statSO.AttackRange.Value;
+
+                try
+                {
+                    Gizmos.color = _gizmoColor;
+                    Gizmos.DrawWireSphere(transform.position, attackRange);
+                }
+                catch
+                {
+                    Debug.LogWarning($"{gameObject} Stat is Not Setting");
+                }
             }
         }
     }

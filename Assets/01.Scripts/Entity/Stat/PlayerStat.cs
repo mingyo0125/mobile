@@ -19,7 +19,5 @@ public class PlayerStat : BaseStat
 
         Stats.Add(StatType.ItemDropRate, ItemDropRate);
         Stats.Add(StatType.DropCoinValue, DropCoinValue);
-
-        Debug.Log("ADd");
     }
 }

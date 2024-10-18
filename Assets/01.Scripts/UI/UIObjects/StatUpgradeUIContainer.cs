@@ -24,19 +24,19 @@ public struct StatUpgradeUIInfo
     }
 }
 
-public class UpgradeStatContainer : UIComponent
+public class StatUpgradeUIContainer : UIComponent
 {
     [SerializeField]
     private Image _statImage;
 
     [SerializeField]
     private TextMeshProUGUI _level, _name, _value, _cost;
-
-    [SerializeField] // Test
+    
     private StatType _statType;
 
-    public void Start()
+    public void SetStatType(StatType statType)
     {
+        _statType = statType;
         UpdateUI();
     }
 

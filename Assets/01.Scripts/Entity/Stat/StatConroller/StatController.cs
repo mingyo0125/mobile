@@ -20,7 +20,7 @@ public class StatController
         }
         else
         {
-            Debug.LogError($"{statType} is not defined");
+            Debug.LogError($"{EntityStat.GetType()}'s {statType} is not defined");
 
             return 0f;
         }

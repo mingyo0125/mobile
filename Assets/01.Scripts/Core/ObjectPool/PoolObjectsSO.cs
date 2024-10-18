@@ -8,7 +8,8 @@ public enum SpawnEntityTypes
     ETC,
     Enemies,
     Items,
-    Coins
+    Coins,
+    UI,
 }
 
 [Serializable]
