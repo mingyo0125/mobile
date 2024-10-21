@@ -3,7 +3,8 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class ScrollButton : MonoBehaviour, IDragHandler, IBeginDragHandler , IEndDragHandler
+public class ScrollButton : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler,
+                            IPointerDownHandler, IPointerUpHandler
 {
     private float slidingHeight;
 
@@ -11,9 +12,15 @@ public class ScrollButton : MonoBehaviour, IDragHandler, IBeginDragHandler , IEn
 
     private bool isDragging;
 
+    private Image _image;
+
+    [SerializeField]
+    private Color _pressedColor;
+
     private void Awake()
     {
         _slidingArea = transform.parent.GetComponent<RectTransform>();
+        _image = GetComponent<Image>();
 
         slidingHeight = _slidingArea.rect.height;
     }
@@ -30,9 +37,9 @@ public class ScrollButton : MonoBehaviour, IDragHandler, IBeginDragHandler , IEn
     public void OnEndDrag(PointerEventData eventData)
     {
         isDragging = false;
-        RectTransform rectransform = (RectTransform)transform;
 
-        if (rectransform.anchoredPosition.y > slidingHeight * 0.5f)
+        RectTransform rectransform = (RectTransform)transform;
+        if (rectransform.anchoredPosition.y > slidingHeight * 0.4f)
         {
             rectransform.anchoredPosition = new Vector2(0, slidingHeight);
         }
@@ -50,5 +57,15 @@ public class ScrollButton : MonoBehaviour, IDragHandler, IBeginDragHandler , IEn
         }
 
         isDragging = true;
+    }
+
+    public void OnPointerDown(PointerEventData eventData)
+    {
+        _image.color = _pressedColor;
+    }
+
+    public void OnPointerUp(PointerEventData eventData)
+    {
+        _image.color = Color.white;
     }
 }
