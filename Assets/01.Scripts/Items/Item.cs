@@ -17,7 +17,7 @@ public abstract class Item : PoolableMono
         if(isBouncing)
         {
             Vector3 originPos = transform.position;
-
+            transform.DOKill();
             Sequence sequence = DOTween.Sequence();
             sequence
                 .Append(transform.DOLocalMoveY(originPos.y + 0.05f, 0.5f)).SetEase(Ease.Linear)
