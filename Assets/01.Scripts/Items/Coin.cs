@@ -17,8 +17,14 @@ public class Coin : Item
 
     public override void Initialize()
     {
-        MoneyManager.Instance.GetMoney(transform, coinValue);
-        PoolManager.Instance.DestroyObject(this);
+        CoroutineUtil.CallWaitForSeconds(1f, () =>
+        {
+            UIManager.Instance.AttractPosition(transform, transform.position, GameManager.Instance.GetPlayerTrm(), 0.7f, 1.5f, () =>
+            {
+                MoneyManager.Instance.GetMoney(transform, coinValue);
+                PoolManager.Instance.DestroyObject(this);
+            });
+        });
     }
 
     public void SetCoinValue(int value)

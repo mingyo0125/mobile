@@ -89,7 +89,7 @@ public class UIManager : MonoSingleTon<UIManager>
 
     //Bezier 
     public void AttractPosition(Transform obj,
-                                Vector2 startPos , Vector2 endPos,
+                                Vector2 startPos , Transform endPos,
                                 float duration, float spreadPower,
                                 params Action[] endActions)
     {
@@ -97,11 +97,10 @@ public class UIManager : MonoSingleTon<UIManager>
     }
 
     private IEnumerator AttractCorou(Transform obj,
-                                     Vector2 startPos, Vector2 endPos,
+                                     Vector2 startPos, Transform endPos,
                                      float duration, float spreadPower,
                                      params Action[] endActions)
     {
-        Debug.Log(spreadPower);
         Vector2 cetnerVec = startPos + Random.insideUnitCircle * spreadPower;
         float elapsedTime = 0f;
 
@@ -111,7 +110,7 @@ public class UIManager : MonoSingleTon<UIManager>
             float t = elapsedTime / duration;
 
             Vector2 v1 = Vector2.Lerp(startPos, cetnerVec, t);
-            Vector2 v2 = Vector2.Lerp(cetnerVec, endPos, t);
+            Vector2 v2 = Vector2.Lerp(cetnerVec, endPos.position, t);
 
             obj.position = Vector2.Lerp(v1, v2, t);
 
