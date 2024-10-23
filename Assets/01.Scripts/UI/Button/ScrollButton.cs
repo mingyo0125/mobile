@@ -12,7 +12,7 @@ public class ScrollButton : MonoBehaviour, IDragHandler, IBeginDragHandler, IEnd
 
     private bool isDragging;
 
-    private Image _image;
+    private Image _scrollHandle;
 
     [SerializeField]
     private Color _pressedColor;
@@ -20,7 +20,7 @@ public class ScrollButton : MonoBehaviour, IDragHandler, IBeginDragHandler, IEnd
     private void Awake()
     {
         _slidingArea = transform.parent.GetComponent<RectTransform>();
-        _image = GetComponent<Image>();
+        _scrollHandle = GetComponent<Image>();
 
         slidingHeight = _slidingArea.rect.height;
     }
@@ -36,17 +36,19 @@ public class ScrollButton : MonoBehaviour, IDragHandler, IBeginDragHandler, IEnd
 
     public void OnEndDrag(PointerEventData eventData)
     {
+        if (!isDragging) { return; }
+
         isDragging = false;
 
         RectTransform rectransform = (RectTransform)transform;
-        if (rectransform.anchoredPosition.y > slidingHeight * 0.4f)
-        {
-            rectransform.anchoredPosition = new Vector2(0, slidingHeight);
-        }
-        else
+
+        bool canOnUI = rectransform.anchoredPosition.y > slidingHeight * 0.4f;
+        if (!canOnUI)
         {
             rectransform.anchoredPosition = new Vector2(0, 0);
+            return;
         }
+        rectransform.anchoredPosition = new Vector2(0, slidingHeight);
     }
 
     public void OnBeginDrag(PointerEventData eventData)
@@ -61,11 +63,11 @@ public class ScrollButton : MonoBehaviour, IDragHandler, IBeginDragHandler, IEnd
             return;
         }
 
-        _image.color = _pressedColor;
+        _scrollHandle.color = _pressedColor;
     }
 
     public void OnPointerUp(PointerEventData eventData)
     {
-        _image.color = Color.white;
+        _scrollHandle.color = Color.white;
     }
 }
