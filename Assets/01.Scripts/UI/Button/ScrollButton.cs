@@ -51,16 +51,16 @@ public class ScrollButton : MonoBehaviour, IDragHandler, IBeginDragHandler, IEnd
 
     public void OnBeginDrag(PointerEventData eventData)
     {
-        if (eventData.pointerEnter != gameObject)
-        {
-            return;
-        }
-
         isDragging = true;
     }
 
     public void OnPointerDown(PointerEventData eventData)
     {
+        if (eventData.pointerEnter != gameObject)
+        {
+            return;
+        }
+
         _image.color = _pressedColor;
     }
 
