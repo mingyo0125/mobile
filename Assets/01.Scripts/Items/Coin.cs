@@ -12,8 +12,13 @@ public class Coin : Item
 
     protected override void GetItem(Player player)
     {
-        // 나중에 생성되자마자 UI 쪽으로 슝 날아가게
+        return;
+    }
+
+    public override void Initialize()
+    {
         MoneyManager.Instance.GetMoney(transform, coinValue);
+        PoolManager.Instance.DestroyObject(this);
     }
 
     public void SetCoinValue(int value)
