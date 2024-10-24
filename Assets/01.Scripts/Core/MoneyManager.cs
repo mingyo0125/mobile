@@ -3,9 +3,17 @@ using UnityEngine;
 
 public class MoneyManager : MonoSingleTon<MoneyManager>
 {
-    private event Action<Transform, string, Color> OnMoneyChangedEvent = null;
+    private Transform _moneyUITrm;
+
+    public event Action<Vector2 ,string, Color> OnMoneyChangedEvent = null;
+    public event Action<int> OnSetMoneyEvent = null;
 
     private int money;
+
+    private void Awake()
+    {
+        _moneyUITrm = FindAnyObjectByType<MoneyUI>().transform;
+    }
 
     private void OnEnable()
     {
@@ -34,13 +42,15 @@ public class MoneyManager : MonoSingleTon<MoneyManager>
         }
 
         money -= value;
-        OnMoneyChangedEvent?.Invoke(trm, $"-{value}", Color.red);
+        OnSetMoneyEvent?.Invoke(money);
+        OnMoneyChangedEvent?.Invoke(Camera.main.ScreenToWorldPoint(_moneyUITrm.position), $"-{value}", Color.red);
     }
 
     public void GetMoney(Transform trm, int value)
     {
         money += value;
-        OnMoneyChangedEvent?.Invoke(trm, $"{value}", Color.yellow);
+        OnSetMoneyEvent?.Invoke(money);
+        OnMoneyChangedEvent?.Invoke(Camera.main.ScreenToWorldPoint(_moneyUITrm.position), $"{value}", Color.yellow);
     }
 
     private void OnDisable()

@@ -2131,7 +2131,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1036329858}
   - component: {fileID: 1036329860}
-  - component: {fileID: 1036329859}
+  - component: {fileID: 1036329861}
   m_Layer: 5
   m_Name: Money_Text
   m_TagString: Untagged
@@ -2158,7 +2158,15 @@ RectTransform:
   m_AnchoredPosition: {x: -17.8, y: 0}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1036329859
+--- !u!222 &1036329860
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1036329857}
+  m_CullTransparentMesh: 1
+--- !u!114 &1036329861
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2167,7 +2175,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1036329857}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Script: {fileID: 11500000, guid: a1e2bc2efb60657489cef65e75f33c0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
@@ -2178,7 +2186,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 999999
+  m_text: 0
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c2c3e0846bb393a459a6899d1a44c77d, type: 2}
   m_sharedMaterial: {fileID: 3645778273491880576, guid: c2c3e0846bb393a459a6899d1a44c77d, type: 2}
@@ -2247,14 +2255,6 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!222 &1036329860
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1036329857}
-  m_CullTransparentMesh: 1
 --- !u!1 &1053329982
 GameObject:
   m_ObjectHideFlags: 0
@@ -11706,7 +11706,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 2135481071
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 1
   m_Sprite: {fileID: -310965140, guid: 44cf3d53541705644acea85f4f48c2cf, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -11792,7 +11792,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 2135481071
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: -1044836087, guid: 36660d9a75856634fbd6a1abc169dfe2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

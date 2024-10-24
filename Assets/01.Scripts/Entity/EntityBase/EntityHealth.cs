@@ -19,7 +19,7 @@ public abstract partial class Entity<T, G> : IDamageable
     public Collider2D EntityCollider { get; set; }
 
     public event Action<TakeDamageInfo> OnTakeDamagedEvent = null;
-    public event Action<Transform, string, Color> OnHpChangedEvent = null;
+    public event Action<Vector2, string, Color> OnHpChangedEvent = null;
     public Action<Vector2> OnDieEvent {get; set;}
 
     public event Action OnDieAnimationEndEvent = null;
@@ -75,7 +75,7 @@ public abstract partial class Entity<T, G> : IDamageable
     {
         HP += value;
 
-        OnHpChangedEvent?.Invoke(transform, GetHudTextValue(value), hudTextColor);
+        OnHpChangedEvent?.Invoke(transform.position, GetHudTextValue(value), hudTextColor);
     }
 
     protected abstract string GetHudTextValue(float value);
