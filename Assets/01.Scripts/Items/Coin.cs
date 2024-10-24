@@ -6,7 +6,6 @@ public class Coin : Item
 
     protected override void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log(coinValue);
         return;
     }
 

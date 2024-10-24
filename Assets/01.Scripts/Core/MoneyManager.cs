@@ -42,6 +42,7 @@ public class MoneyManager : MonoSingleTon<MoneyManager>
         }
 
         money -= value;
+        // 이거는 정해진 위치에서만 하게
         OnSetMoneyEvent?.Invoke(money);
         OnMoneyChangedEvent?.Invoke(Camera.main.ScreenToWorldPoint(_moneyUITrm.position), $"-{value}", Color.red);
     }
