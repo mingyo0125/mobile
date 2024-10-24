@@ -19,6 +19,7 @@ public class Coin : Item
     {
         CoroutineUtil.CallWaitForSeconds(1f, () =>
         {
+            // 플레이어의 반대 방향으로
             UIManager.Instance.AttractPosition(transform, transform.position, GameManager.Instance.GetPlayerTrm(), 0.7f, 1.5f, () =>
             {
                 MoneyManager.Instance.GetMoney(transform, coinValue);
