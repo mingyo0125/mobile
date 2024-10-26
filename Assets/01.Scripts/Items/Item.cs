@@ -10,17 +10,24 @@ public abstract class Item : PoolableMono
     [SerializeField]
     private bool isBouncing;
 
+    Sequence _seq;
+
     private void Start()
     {
+        _seq = DOTween.Sequence();
         StartCoroutine(SpawnTwinkleCorou());
         transform.DOKill();
+    }
+
+    public override void Initialize()
+    {
+        base.Initialize();
 
         if (isBouncing)
         {
             Vector3 originPos = transform.position;
-            
-            Sequence sequence = DOTween.Sequence();
-            sequence
+
+            _seq
                 .Append(transform.DOLocalMoveY(originPos.y + 0.05f, 0.5f)).SetEase(Ease.Linear)
                 .SetLoops(-1, LoopType.Yoyo);
         }
@@ -64,5 +71,10 @@ public abstract class Item : PoolableMono
         }
 
         return _maxBounds.localPosition;
+    }
+
+    private void OnDisable()
+    {
+        _seq.Kill();
     }
 }

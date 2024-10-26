@@ -1,4 +1,5 @@
 using UnityEngine;
+using static UnityEngine.RuleTile.TilingRuleOutput;
 
 public class Coin : Item
 {
@@ -16,9 +17,10 @@ public class Coin : Item
 
     public override void Initialize()
     {
+        base.Initialize();
+
         CoroutineUtil.CallWaitForSeconds(1f, () =>
         {
-            Debug.Log("?!");
             // 플레이어의 반대 방향으로
             this.AttractPosition(transform, transform.position, GameManager.Instance.GetPlayerTrm(), 0.7f, 1.5f, () =>
             {

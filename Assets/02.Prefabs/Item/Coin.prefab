@@ -125,7 +125,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _minBounds: {fileID: 4331315372665328735}
   _maxBounds: {fileID: 690034065599694354}
-  isBouncing: 1
+  isBouncing: 0
 --- !u!58 &3799040784714015976
 CircleCollider2D:
   m_ObjectHideFlags: 0

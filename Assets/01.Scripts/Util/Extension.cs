@@ -36,6 +36,8 @@ public static class Extension
             yield return null;
         }
 
+        obj.position = endPos.position;
+
         foreach (Action action in endActions)
         {
             action?.Invoke();
