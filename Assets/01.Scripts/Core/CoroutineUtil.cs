@@ -5,7 +5,7 @@ using UnityEngine;
 public static class CoroutineUtil
 {
     private static GameObject _coroutineObj;
-    private static CoroutineExecutor _coroutineExecutor;
+    private static MonoExecutor _coroutineExecutor;
 
     static CoroutineUtil()
     {
@@ -21,7 +21,7 @@ public static class CoroutineUtil
 
         _coroutineObj = new GameObject("CoroutineObj");
         UnityEngine.Object.DontDestroyOnLoad(_coroutineObj);
-        _coroutineExecutor = _coroutineObj.AddComponent<CoroutineExecutor>();
+        _coroutineExecutor = _coroutineObj.AddComponent<MonoExecutor>();
     }
 
     private static void EnsureCoroutineExecutor()
@@ -56,5 +56,5 @@ public static class CoroutineUtil
         afterAction?.Invoke();
     }
 
-    private class CoroutineExecutor : MonoBehaviour { }
+    private class MonoExecutor : MonoBehaviour { }
 }

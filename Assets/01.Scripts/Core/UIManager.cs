@@ -87,40 +87,4 @@ public class UIManager : MonoSingleTon<UIManager>
         _hudText.SetPosition(pos + new Vector2(0, 0.1f));
         _hudText.SpawnHudText(value, textColor);
     }
-
-    //Bezier 
-    public void AttractPosition(Transform obj,
-                                Vector2 startPos , Transform endPos,
-                                float duration, float spreadPower,
-                                params Action[] endActions)
-    {
-        StartCoroutine(AttractCorou(obj, startPos, endPos, duration, spreadPower, endActions));
-    }
-
-    private IEnumerator AttractCorou(Transform obj,
-                                     Vector2 startPos, Transform endPos,
-                                     float duration, float spreadPower,
-                                     params Action[] endActions)
-    {
-        Vector2 cetnerVec = startPos + Random.insideUnitCircle * spreadPower;
-        float elapsedTime = 0f;
-
-        while(elapsedTime < duration)
-        {
-            elapsedTime += Time.deltaTime;
-            float t = elapsedTime / duration;
-
-            Vector2 v1 = Vector2.Lerp(startPos, cetnerVec, t);
-            Vector2 v2 = Vector2.Lerp(cetnerVec, endPos.position, t);
-
-            obj.position = Vector2.Lerp(v1, v2, t);
-
-            yield return null;
-        }
-
-        foreach (Action action in endActions)
-        {
-            action?.Invoke();
-        }
-    }
 }
