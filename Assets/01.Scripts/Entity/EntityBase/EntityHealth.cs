@@ -37,7 +37,7 @@ public abstract partial class Entity<T, G> : IDamageable
         EnableCollider();
 
         //OnDieEvent = null;
-        OnHpChangedEvent += UIManager.Instance.SpawnHudText;
+        OnHpChangedEvent += UIManager.Instance.SpawnDamageText;
         OnDieAnimationEndEvent += FadeOut;
         EntityAnimatorCompo.OnDieAnimationEndEvent += OnDieAnimationEndEvent;
         EntityAnimatorCompo.OnHitAnimationEndEvent += EnableCollider;
@@ -75,7 +75,7 @@ public abstract partial class Entity<T, G> : IDamageable
     {
         HP += value;
 
-        OnHpChangedEvent?.Invoke(transform.position, GetHudTextValue(value), hudTextColor);
+        OnHpChangedEvent?.Invoke((Vector2)transform.position + new Vector2(0, 0.1f), GetHudTextValue(value), hudTextColor);
     }
 
     protected abstract string GetHudTextValue(float value);

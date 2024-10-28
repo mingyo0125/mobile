@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 5388307612112794335}
   - component: {fileID: 3333587537493525993}
   - component: {fileID: 237710408165443151}
-  - component: {fileID: 4625199943726896284}
+  - component: {fileID: -1696944752831601780}
   m_Layer: 0
-  m_Name: HudText
+  m_Name: DamageText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -185,7 +185,7 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_renderer: {fileID: 5388307612112794335}
   m_maskType: 0
---- !u!114 &4625199943726896284
+--- !u!114 &-1696944752831601780
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -194,7 +194,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5934983060448177945}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2b5334a97daf16c4980dd17ebe598b44, type: 3}
+  m_Script: {fileID: 11500000, guid: 1e4ade1c88ddd104aa9bfdfc508ee221, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   hudDuration: 0.5

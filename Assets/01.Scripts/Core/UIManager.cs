@@ -84,7 +84,16 @@ public class UIManager : MonoSingleTon<UIManager>
         HudText _hudText = PoolManager.Instance.CreateObject("HudText") as HudText;
         //_hudText.transform.SetParent(parentTrm);
 
-        _hudText.SetPosition(pos + new Vector2(0, 0.1f));
+        _hudText.SetPosition(pos);
+        _hudText.SpawnHudText(value, textColor);
+    }
+
+    public void SpawnDamageText(Vector2 pos, string value, Color textColor)
+    {
+        DamageText _hudText = PoolManager.Instance.CreateObject("DamageText") as DamageText;
+        //_hudText.transform.SetParent(parentTrm);
+
+        _hudText.SetPosition(pos);
         _hudText.SpawnHudText(value, textColor);
     }
 }

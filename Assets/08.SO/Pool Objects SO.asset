@@ -25,7 +25,9 @@ MonoBehaviour:
   - <PoolObject>k__BackingField: {fileID: 4686568748919089775, guid: 69f5b8970399bf945b1011c9c599e82a, type: 3}
     <PoolCount>k__BackingField: 10
   <UI>k__BackingField:
-  - <PoolObject>k__BackingField: {fileID: 6173353607167977563, guid: b4fabfb12245af84ea80c2b4c091c1be, type: 3}
+  - <PoolObject>k__BackingField: {fileID: 4625199943726896284, guid: b4fabfb12245af84ea80c2b4c091c1be, type: 3}
+    <PoolCount>k__BackingField: 10
+  - <PoolObject>k__BackingField: {fileID: -1696944752831601780, guid: 59fc651d719175c42b27ccbcaa714906, type: 3}
     <PoolCount>k__BackingField: 10
   - <PoolObject>k__BackingField: {fileID: 3231774284391204392, guid: b463c41f355e73447a5fb69ec803e0a1, type: 3}
     <PoolCount>k__BackingField: 10

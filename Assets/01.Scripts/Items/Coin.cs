@@ -24,7 +24,7 @@ public class Coin : Item
             // 플레이어의 반대 방향으로
             this.AttractPosition(transform, transform.position, GameManager.Instance.GetPlayerTrm(), 0.7f, 1.5f, () =>
             {
-                MoneyManager.Instance.GetMoney(transform, coinValue);
+                MoneyManager.Instance.GetMoney(coinValue);
                 PoolManager.Instance.DestroyObject(this);
             });
         });
