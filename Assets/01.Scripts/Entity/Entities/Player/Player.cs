@@ -13,32 +13,6 @@ public class Player : Entity<PlayerStateType, Player>
         EquipWeapon = weapon;
 	}
 
-    protected override void Update()
-    {
-        base.Update();
-
-        if (Input.GetKeyDown(KeyCode.S))
-        {
-            foreach(StatType a in Enum.GetValues(typeof(StatType)))
-            {
-                Debug.Log($"{a}: {EntityStatController.GetStatValue(a)}");
-            }
-        }
-
-
-        if (Input.GetKeyDown(KeyCode.D))
-        {
-            EntityStatController.IncreaseStat(StatType.Damage, 10);
-            Debug.Log($"{EntityStatController.GetStatValue(StatType.Damage)}");
-        }
-
-        if (Input.GetKeyDown(KeyCode.F))
-        {
-            EntityStatController.DecreaseStat(StatType.Damage, 10);
-            Debug.Log($"{EntityStatController.GetStatValue(StatType.Damage)}");
-        }
-    }
-
     private void Start()
     {
         base.Initialize();
@@ -63,7 +37,8 @@ public class Player : Entity<PlayerStateType, Player>
 
     protected override void SetStat()
     {
-        EntityStatController.Initialize<PlayerStat>(_playerStatSO.PlayerStat);
+        PlayerStat playerStat = new PlayerStat(_playerStatSO.PlayerStat);
+        EntityStatController.Initialize(playerStat);
     }
 
     protected sealed override BaseStat GetStatSO()

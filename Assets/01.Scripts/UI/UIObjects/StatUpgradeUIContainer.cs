@@ -31,8 +31,31 @@ public class StatUpgradeUIContainer : UIComponent
 
     [SerializeField]
     private TextMeshProUGUI _level, _name, _value, _cost;
+
+    [SerializeField]
+    private Button _upgradeButton;
     
     private StatType _statType;
+
+    private StatController _playerStatController => GameManager.Instance.GetPlayer().EntityStatController;
+
+    private void Awake()
+    {
+        _upgradeButton.onClick.AddListener(Upgrade);
+    }
+
+    public void Upgrade()
+    {
+        StatUpgradeUIInfo statUpgradeUIInfo = _playerStatController.GetStatUpgradeUIInfo(_statType);
+        
+        if(!MoneyManager.Instance.SpendMoney(statUpgradeUIInfo.Cost))
+        {
+            return;
+        }
+
+        _playerStatController.StatLevelUp(_statType);
+        UpdateUI();
+    }
 
     public void SetStatType(StatType statType)
     {
@@ -42,7 +65,8 @@ public class StatUpgradeUIContainer : UIComponent
 
     public override void UpdateUI()
     {
-        StatUpgradeUIInfo statUpgradeUIInfo = GameManager.Instance.GetPlayer().EntityStatController.GetStatUpgradeUIInfo(_statType);
+        StatUpgradeUIInfo statUpgradeUIInfo = _playerStatController.GetStatUpgradeUIInfo(_statType);
+
         //_level.SetText(palyerStat.GetStatLevel(_statType).ToString());
         //_name.SetText(_statType.ToString());
         //_value.SetText(palyerStat.GetStatValue(_statType).ToString());

@@ -541,6 +541,7 @@ MonoBehaviour:
   _name: {fileID: 17389220208574487}
   _value: {fileID: 7529671112760339694}
   _cost: {fileID: 3629519090746838379}
+  _upgradeButton: {fileID: 4413545788958236392}
 --- !u!1 &6002236705092905522
 GameObject:
   m_ObjectHideFlags: 0

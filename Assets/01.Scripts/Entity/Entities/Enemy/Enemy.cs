@@ -21,7 +21,8 @@ public class Enemy : Entity<EnemyStateType, Enemy>
 
     protected override void SetStat()
     {
-        EntityStatController.Initialize<EnemyStat>(_enemyStatSO.EnemyStat);
+        EnemyStat enemyStat = new EnemyStat(_enemyStatSO.EnemyStat);
+        EntityStatController.Initialize(enemyStat);
     }
 
     protected override string GetHudTextValue(float value)

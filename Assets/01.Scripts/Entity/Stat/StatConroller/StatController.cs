@@ -26,6 +26,7 @@ public class StatController
 
     public int GetStatLevel(StatType statType)
     {
+
         if (EntityStat.Stats.TryGetValue(statType, out StatInfo stat))
         {
             return stat.Level;
@@ -36,6 +37,18 @@ public class StatController
 
             return 0;
         }
+    }
+
+    public void StatLevelUp(StatType statType)
+    {
+        if (!EntityStat.Stats.TryGetValue(statType, out StatInfo stat))
+        {
+            Debug.LogError($"Entity doesn't have {statType} Stat");
+            return;
+        }
+
+        EntityStat.StatLevelUp(statType);
+        IncreaseStat(statType, 1);
     }
 
     public void IncreaseStat(StatType statType, float increaseValue)
@@ -54,7 +67,7 @@ public class StatController
 
     public void UpdateStatValue(StatType statType, float value)
     {
-        EntityStat.SetValue(statType, value);
+        EntityStat.SetStatValue(statType, value);
     }
 
     public StatUpgradeUIInfo GetStatUpgradeUIInfo(StatType statType)
@@ -67,6 +80,5 @@ public class StatController
                                      GetStatValue(statType),
                                      10 * statLevel,
                                      statUIInfo.StatSprite);
-        // cost는 나중에 수학 그걸로
     }
 }

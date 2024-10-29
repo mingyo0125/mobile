@@ -20,16 +20,17 @@ public class MoneyManager : MonoSingleTon<MoneyManager>
         }
     }
 
-    public void SpendMoney(int value)
+    public bool SpendMoney(int value)
     {
         if(money < value)
         {
             // 오류 메시지 무언가
-            return;
+            return false;
         }
 
         money -= value;
         OnSetMoneyEvent?.Invoke(money);
+        return true;
 
     }
 

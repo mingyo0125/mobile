@@ -13,30 +13,36 @@ MonoBehaviour:
   m_Name: DemonStatSO
   m_EditorClassIdentifier: 
   <EnemyStat>k__BackingField:
-    <Speed>k__BackingField:
-      Level: 1
-      Value: 1
-      <StatUIInfo>k__BackingField:
-        Name: "\uC774\uB3D9\uC18D\uB3C4"
-        StatSprite: {fileID: 21300000, guid: 15618fc4a6a294143abf8ada0e863971, type: 3}
-    <MaxHP>k__BackingField:
-      Level: 1
-      Value: 1
-      <StatUIInfo>k__BackingField:
-        Name: "\uCD5C\uB300\uCCB4\uB825"
-        StatSprite: {fileID: 21300000, guid: 6eb0a2d56fc687d4f826cd81cf0bf5df, type: 3}
-    <AttackRange>k__BackingField:
-      Level: 1
-      Value: 1
-      <StatUIInfo>k__BackingField:
-        Name: "\uACF5\uACA9 \uC0AC\uAC70\uB9AC"
-        StatSprite: {fileID: 21300000, guid: 7f6fcdd3dd72b5c47acb89b34306c566, type: 3}
     <Damage>k__BackingField:
       Level: 1
       Value: 1
       <StatUIInfo>k__BackingField:
         Name: "\uACF5\uACA9\uB825"
         StatSprite: {fileID: 21300000, guid: 49a48244258261b45a1127dbf6ed958c, type: 3}
+    <MaxHP>k__BackingField:
+      Level: 1
+      Value: 1
+      <StatUIInfo>k__BackingField:
+        Name: "\uCD5C\uB300\uCCB4\uB825"
+        StatSprite: {fileID: 21300000, guid: 6eb0a2d56fc687d4f826cd81cf0bf5df, type: 3}
+    <Speed>k__BackingField:
+      Level: 1
+      Value: 1
+      <StatUIInfo>k__BackingField:
+        Name: "\uC774\uB3D9\uC18D\uB3C4"
+        StatSprite: {fileID: 21300000, guid: 15618fc4a6a294143abf8ada0e863971, type: 3}
+    <AttackDelay>k__BackingField:
+      Level: 1
+      Value: 1
+      <StatUIInfo>k__BackingField:
+        Name: "\uACF5\uACA9 \uB51C\uB808\uC774"
+        StatSprite: {fileID: 21300000, guid: 7f6fcdd3dd72b5c47acb89b34306c566, type: 3}
+    <AttackRange>k__BackingField:
+      Level: 1
+      Value: 0.35
+      <StatUIInfo>k__BackingField:
+        Name: "\uACF5\uACA9 \uC0AC\uAC70\uB9AC"
+        StatSprite: {fileID: 21300000, guid: 7f6fcdd3dd72b5c47acb89b34306c566, type: 3}
     <CriticalProbability>k__BackingField:
       Level: 1
       Value: 1
@@ -55,9 +61,9 @@ MonoBehaviour:
       <StatUIInfo>k__BackingField:
         Name: "\uC800\uD56D"
         StatSprite: {fileID: 21300000, guid: fe7939aec0291eb48b433c4afb339de0, type: 3}
-    <AttackDelay>k__BackingField:
-      Level: 1
-      Value: 1
-      <StatUIInfo>k__BackingField:
-        Name: "\uACF5\uACA9 \uB51C\uB808\uC774"
-        StatSprite: {fileID: 21300000, guid: 7f6fcdd3dd72b5c47acb89b34306c566, type: 3}
+  <AttackRange>k__BackingField:
+    Level: 0
+    Value: 0
+    <StatUIInfo>k__BackingField:
+      Name: 
+      StatSprite: {fileID: 0}

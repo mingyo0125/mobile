@@ -53,14 +53,14 @@ public class BaseStat
 
     public BaseStat(BaseStat stat)
     {
-        this.Speed = stat.Speed;
-        this.MaxHP = stat.MaxHP;
-        this.AttackRange = stat.AttackRange;
-        this.AttackDelay = stat.AttackDelay;
-        this.Damage = stat.Damage;
-        this.CriticalProbability = stat.CriticalProbability;
-        this.CriticalDamageIncreasePercent = stat.CriticalDamageIncreasePercent;
-        this.ResistancePercent = stat.ResistancePercent;
+        this.Speed = new StatInfo(stat.Speed.Level, stat.Speed.Value, stat.Speed.StatUIInfo);
+        this.MaxHP = new StatInfo(stat.MaxHP.Level, stat.MaxHP.Value, stat.MaxHP.StatUIInfo);
+        this.AttackRange = new StatInfo(stat.AttackRange.Level, stat.AttackRange.Value, stat.AttackRange.StatUIInfo);
+        this.AttackDelay = new StatInfo(stat.AttackDelay.Level, stat.AttackDelay.Value, stat.AttackDelay.StatUIInfo);
+        this.Damage = new StatInfo(stat.Damage.Level, stat.Damage.Value, stat.Damage.StatUIInfo);
+        this.CriticalProbability = new StatInfo(stat.CriticalProbability.Level, stat.CriticalProbability.Value, stat.CriticalProbability.StatUIInfo);
+        this.CriticalDamageIncreasePercent = new StatInfo(stat.CriticalDamageIncreasePercent.Level, stat.CriticalDamageIncreasePercent.Value, stat.CriticalDamageIncreasePercent.StatUIInfo);
+        this.ResistancePercent = new StatInfo(stat.ResistancePercent.Level, stat.ResistancePercent.Value, stat.ResistancePercent.StatUIInfo);
 
         Stats = new Dictionary<StatType, StatInfo>()
         {
@@ -75,11 +75,23 @@ public class BaseStat
         };
     }
 
-    public void SetValue(StatType statType, float value)
+    public void SetStatValue(StatType statType, float value)
     {
         if(Stats.TryGetValue(statType, out StatInfo statInfo))
         {
             statInfo.Value = value;
+        }
+        else
+        {
+            Debug.LogError($"{GetType()}'s {statType} is Not Defined");
+        }
+    }
+
+    public void StatLevelUp(StatType statType)
+    {
+        if (Stats.TryGetValue(statType, out StatInfo statInfo))
+        {
+            statInfo.Level++;
         }
         else
         {

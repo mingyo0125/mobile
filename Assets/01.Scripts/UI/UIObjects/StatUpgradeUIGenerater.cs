@@ -1,6 +1,7 @@
 using Cinemachine;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class StatUpgradeUIGenerater : ObjectFactory<UIComponent>, IScrollHandler
 {
@@ -30,6 +31,7 @@ public class StatUpgradeUIGenerater : ObjectFactory<UIComponent>, IScrollHandler
             idx++;
         }
 
+        GetComponent<GridLayoutGroup>().cellSize = new Vector2(Screen.width, 150);
         ((RectTransform)transform).sizeDelta = new Vector2(100, height);
     }
 }

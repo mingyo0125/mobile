@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 
 [Serializable]
-public struct StatInfo
+public class StatInfo
 {
     public int Level;
     public float Value;

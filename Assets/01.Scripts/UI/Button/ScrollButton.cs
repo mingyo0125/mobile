@@ -17,6 +17,9 @@ public class ScrollButton : MonoBehaviour, IDragHandler, IBeginDragHandler, IEnd
     [SerializeField]
     private Color _pressedColor;
 
+    [SerializeField]
+    private Image _arrowImage;
+
     private void Awake()
     {
         _slidingArea = transform.parent.GetComponent<RectTransform>();
@@ -46,8 +49,12 @@ public class ScrollButton : MonoBehaviour, IDragHandler, IBeginDragHandler, IEnd
         if (!canOnUI)
         {
             rectransform.anchoredPosition = new Vector2(0, 0);
+
+            _arrowImage.transform.rotation = Quaternion.Euler(0, 0, -90);
             return;
         }
+
+        _arrowImage.transform.rotation = Quaternion.Euler(0, 0, 90);
         rectransform.anchoredPosition = new Vector2(0, slidingHeight);
     }
 
