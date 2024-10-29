@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class Player : Entity<PlayerStateType, Player>
 {
+    [Space]
     [SerializeField]
     private PlayerStatSO _playerStatSO; 
 

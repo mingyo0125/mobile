@@ -24,7 +24,11 @@ public abstract partial class Entity<T, G> : IDamageable
 
     public event Action OnDieAnimationEndEvent = null;
 
-	private void HealthAwake()
+    [Header("HpUI")]
+    [SerializeField]
+    private EntityHpBar _entityHpBar;
+
+    private void HealthAwake()
     {
         MaxHP = EntityStatController.GetStatValue(StatType.MaxHp);
 
@@ -34,6 +38,8 @@ public abstract partial class Entity<T, G> : IDamageable
     private void InitializeHealth()
     {
 		HP = MaxHP;
+        _entityHpBar.UpdateMaxHp(MaxHP);
+
         EnableCollider();
 
         //OnDieEvent = null;
@@ -41,6 +47,7 @@ public abstract partial class Entity<T, G> : IDamageable
         OnDieAnimationEndEvent += FadeOut;
         EntityAnimatorCompo.OnDieAnimationEndEvent += OnDieAnimationEndEvent;
         EntityAnimatorCompo.OnHitAnimationEndEvent += EnableCollider;
+
     }
 
     public virtual void TakedDamage(TakeDamageInfo takeDamageInfo)
@@ -51,6 +58,8 @@ public abstract partial class Entity<T, G> : IDamageable
         OnTakeDamagedEvent?.Invoke(takeDamageInfo);
         FeedbackPlayerCompo.PlayFeedback<T, G>(FeedbackTypes.Hit, takeDamageInfo);
         EntityCollider.enabled = false;
+
+        _entityHpBar.SetHpbarValue(HP);
 
         if (HP <= 0) { Die(); }
         else
@@ -70,7 +79,6 @@ public abstract partial class Entity<T, G> : IDamageable
     }
 
     
-
     public void SetHp(float value, Color hudTextColor)
     {
         HP += value;

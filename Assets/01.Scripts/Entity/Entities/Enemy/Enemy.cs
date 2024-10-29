@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class Enemy : Entity<EnemyStateType, Enemy>
 {
+    [Space]
     [SerializeField]
     private EnemyStatSO _enemyStatSO;
 
