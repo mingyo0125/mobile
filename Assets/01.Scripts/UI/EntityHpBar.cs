@@ -15,6 +15,5 @@ public class EntityHpBar : Image
     public void SetHpbarValue(float curHp)
     {
         fillAmount = curHp / maxHp;
-        Debug.Log(fillAmount);
     }
 }
