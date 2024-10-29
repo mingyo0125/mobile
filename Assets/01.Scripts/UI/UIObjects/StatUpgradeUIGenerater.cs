@@ -28,6 +28,8 @@ public class StatUpgradeUIGenerater : ObjectFactory<UIComponent>, IScrollHandler
             StatType statType = item.Key;
             statUpgradeUIContainer.SetStatType(statType);
             statUpgradeUIContainer.transform.SetParent(transform);
+
+            //statUpgradeUIContainer.transform.localScale = Vector3.one;
             idx++;
         }
 

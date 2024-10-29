@@ -8,10 +8,12 @@ public class ScrollButton : MonoBehaviour, IDragHandler, IBeginDragHandler, IEnd
 {
     private float slidingHeight;
 
+    [SerializeField]
     private RectTransform _slidingArea;
 
     private bool isDragging;
 
+    [SerializeField]
     private Image _scrollHandle;
 
     [SerializeField]
@@ -22,9 +24,6 @@ public class ScrollButton : MonoBehaviour, IDragHandler, IBeginDragHandler, IEnd
 
     private void Awake()
     {
-        _slidingArea = transform.parent.GetComponent<RectTransform>();
-        _scrollHandle = GetComponent<Image>();
-
         slidingHeight = _slidingArea.rect.height;
     }
 
@@ -33,7 +32,7 @@ public class ScrollButton : MonoBehaviour, IDragHandler, IBeginDragHandler, IEnd
         if (isDragging)
         {
             float dragYPos = Mathf.Clamp(eventData.position.y, 0, slidingHeight);
-            ((RectTransform)transform).anchoredPosition = new Vector3(0, dragYPos, 0);
+            ((RectTransform)transform.parent).anchoredPosition = new Vector3(0, dragYPos, 0);
         }
     }
 
@@ -43,7 +42,7 @@ public class ScrollButton : MonoBehaviour, IDragHandler, IBeginDragHandler, IEnd
 
         isDragging = false;
 
-        RectTransform rectransform = (RectTransform)transform;
+        RectTransform rectransform = (RectTransform)transform.parent;
 
         bool canOnUI = rectransform.anchoredPosition.y > slidingHeight * 0.4f;
         if (!canOnUI)
