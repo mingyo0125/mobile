@@ -48,7 +48,7 @@ public class StatController
         }
 
         EntityStat.StatLevelUp(statType);
-        IncreaseStat(statType, 1);
+        IncreaseStat(statType, 1); // 나중에 스탯별로 증가하는 Value를 다르게 해야함
     }
 
     public void IncreaseStat(StatType statType, float increaseValue)
