@@ -25,8 +25,6 @@ public abstract partial class Entity<T, G> : IMoveable
         IsFacingRight = true;
 		Speed = EntityStatController.GetStatValue(StatType.Speed);
         SetMove();
-
-        EntityAnimatorCompo.OnHitAnimationEndEvent += ResetMoveAnimationSpeed;
 	}
 
 	public void Move(Vector2 targetPos)
@@ -64,14 +62,4 @@ public abstract partial class Entity<T, G> : IMoveable
     {
         IsMove = true;
     }
-
-    private void ResetMoveAnimationSpeed()
-    {
-		EntityAnimatorCompo.SetFloat("Speed", Speed);
-	}
-
-    private void MovemetDisable()
-    {
-		EntityAnimatorCompo.OnHitAnimationEndEvent -= ResetMoveAnimationSpeed;
-	}
 }
