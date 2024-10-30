@@ -6,6 +6,8 @@ using UnityEngine.UI;
 public class ScrollButton : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler,
                             IPointerDownHandler, IPointerUpHandler
 {
+    // 열심히 만들었지만 사용하지 않을 것이니 지우거라
+
     private float slidingHeight;
 
     [SerializeField]
