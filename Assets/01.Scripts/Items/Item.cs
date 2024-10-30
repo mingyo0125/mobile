@@ -4,33 +4,14 @@ using UnityEngine;
 
 public abstract class Item : PoolableMono
 {
-    [SerializeField]
-    private Transform _minBounds, _maxBounds;
-
-    [SerializeField]
-    private bool isBouncing;
-
-    Sequence _seq;
-
-    private void Start()
-    {
-        _seq = DOTween.Sequence();
-        StartCoroutine(SpawnTwinkleCorou());
-        transform.DOKill();
-    }
-
     public override void Initialize()
     {
         base.Initialize();
 
-        if (isBouncing)
+        CoroutineUtil.CallWaitForSeconds(1f, () =>
         {
-            Vector3 originPos = transform.position;
-
-            _seq
-                .Append(transform.DOLocalMoveY(originPos.y + 0.05f, 0.5f)).SetEase(Ease.Linear)
-                .SetLoops(-1, LoopType.Yoyo);
-        }
+            this.AttractPosition(transform, transform.position, GameManager.Instance.GetPlayerTrm(), 0.7f, 1.5f);
+        });
     }
 
     protected virtual void OnTriggerEnter2D(Collider2D collision)
@@ -43,38 +24,4 @@ public abstract class Item : PoolableMono
     }
 
     protected abstract void GetItem(Player player);
-
-    private IEnumerator SpawnTwinkleCorou()
-    {
-        while(true)
-        {
-            for(int i = 0; i < 2; i++)
-            {
-                Vector2 spawnPos = GetTwinklePos(i);
-                PoolableMono twinkle = PoolManager.Instance.CreateObject("Twinkle");
-                twinkle.transform.SetParent(transform);
-                twinkle.transform.localPosition = spawnPos;
-
-                yield return new WaitForSeconds(0.1f);
-            }
-
-            yield return new WaitForSeconds(2f);
-        }
-        
-    }
-
-    private Vector2 GetTwinklePos(int i)
-    {
-        if(i <= 0)
-        {
-            return _minBounds.localPosition;
-        }
-
-        return _maxBounds.localPosition;
-    }
-
-    private void OnDisable()
-    {
-        _seq.Kill();
-    }
 }

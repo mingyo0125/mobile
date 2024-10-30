@@ -63,7 +63,7 @@ MonoBehaviour:
         StatSprite: {fileID: 21300000, guid: fe7939aec0291eb48b433c4afb339de0, type: 3}
     <ItemDropRate>k__BackingField:
       Level: 1
-      Value: 1
+      Value: 100
       <StatUIInfo>k__BackingField:
         Name: "\uC544\uC774\uD15C \uD68D\uB4DD \uD655\uB960"
         StatSprite: {fileID: 21300000, guid: 1bceb719e4016214d82c35dfc23d0787, type: 3}
