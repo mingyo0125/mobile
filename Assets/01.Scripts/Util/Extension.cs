@@ -12,7 +12,10 @@ public static class Extension
                                        float duration, float spreadPower,
                                        params Action[] endActions)
     {
-        monoBehaviour.StartCoroutine(AttractCorou(obj, startPos, endPos, duration, spreadPower, endActions));
+        if(monoBehaviour.isActiveAndEnabled)
+        {
+            monoBehaviour.StartCoroutine(AttractCorou(obj, startPos, endPos, duration, spreadPower, endActions));
+        }
     }
 
     private static IEnumerator AttractCorou(Transform obj,

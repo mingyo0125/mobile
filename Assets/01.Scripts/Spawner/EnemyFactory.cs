@@ -6,10 +6,7 @@ using UnityEngine;
 public class EnemyFactory : ObjectFactory<Enemy>
 {
     [SerializeField]
-    private Transform _bounds, _minBound, _maxBound;
-
-    [SerializeField]
-    private float spawnTime;
+    private Transform _minBound, _maxBound;
 
     private ItemFactory _itemFactory;
     private CoinFactory _coinFactory;
