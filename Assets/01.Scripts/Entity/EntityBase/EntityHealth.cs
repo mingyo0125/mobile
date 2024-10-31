@@ -42,7 +42,6 @@ public abstract partial class Entity<T, G> : IDamageable
 
         EnableCollider();
 
-        //OnDieEvent = null;
         OnHpChangedEvent += UIManager.Instance.SpawnDamageText;
         OnDieAnimationEndEvent += FadeOut;
         EntityAnimatorCompo.OnDieAnimationEndEvent += OnDieAnimationEndEvent;
@@ -97,6 +96,8 @@ public abstract partial class Entity<T, G> : IDamageable
     {
         OnHpChangedEvent = null;
         OnDieAnimationEndEvent = null;
+        OnDieEvent = null;
+
         EntityAnimatorCompo.OnDieAnimationEndEvent -= OnDieAnimationEndEvent;
         EntityAnimatorCompo.OnHitAnimationEndEvent -= EnableCollider;
     }

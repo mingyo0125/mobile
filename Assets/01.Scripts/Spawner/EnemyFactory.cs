@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -21,14 +22,9 @@ public class EnemyFactory : ObjectFactory<Enemy>
         _coinFactory = FindAnyObjectByType<CoinFactory>();
     }
 
-    private void Start()
+    public void SpawnEnemy(int spawnCount, params Action<Vector2>[] onDieEvents)
     {
-        SpawnEnemy(5);
-    }
-
-    private void SpawnEnemy(int SpawnCount)
-    {
-        for(int i = 0; i < SpawnCount; i++)
+        for(int i = 0; i < spawnCount; i++)
         {
             Enemy enemyPrefab = Utils.GetRandomElement(_spawnEntitys);
             Enemy spawnedEnemy = SpawnObject(enemyPrefab.name, Utils.GetRandomSpawnPos(_minBound.position, _maxBound.position)) as Enemy;
@@ -36,6 +32,16 @@ public class EnemyFactory : ObjectFactory<Enemy>
             spawnedEnemy.OnDieEvent += _itemFactory.SpawnItem;
             spawnedEnemy.OnDieEvent += _coinFactory.SpawnCoin;
 
+
+            foreach(Action<Vector2> action in onDieEvents)
+            {
+                spawnedEnemy.OnDieEvent += action;
+            }
         }
+    }
+
+    public void SpawnBoss()
+    {
+
     }
 }
