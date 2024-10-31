@@ -8,8 +8,8 @@ public class EnemyAttackState : EntityAttackState<EnemyStateType, Enemy>
         
     }
 
-	public override void ChangeIdleState()
+	public override void ChangeMoveState()
 	{
-		_stateMachine.ChangeState(EnemyStateType.Idle);
+		_stateMachine.ChangeState(EnemyStateType.Move);
 	}
 }

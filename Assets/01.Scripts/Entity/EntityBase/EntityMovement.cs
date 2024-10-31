@@ -13,6 +13,7 @@ public abstract partial class Entity<T, G> : IMoveable
 
     public float Speed { get; set; } // 나중에 SO로
 
+    [field:SerializeField]
     public bool IsMove { get; private set; } = true;
 
 	private void MovementAwake()
@@ -54,6 +55,7 @@ public abstract partial class Entity<T, G> : IMoveable
 
     public void StopImmediatetly()
     {
+        Rb.velocity = Vector2.zero;
         IsMove = false;
     }
 

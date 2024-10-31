@@ -18,7 +18,7 @@ public abstract class EntityAttackState<T, G> : EntityState<T, G> where T : Enum
 
         if (!GetAttackable())
 		{
-			ChangeIdleState();
+			ChangeMoveState();
 			return;
 		}
 
@@ -67,5 +67,5 @@ public abstract class EntityAttackState<T, G> : EntityState<T, G> where T : Enum
 
 	}
 
-	public abstract void ChangeIdleState();
+	public abstract void ChangeMoveState();
 }
