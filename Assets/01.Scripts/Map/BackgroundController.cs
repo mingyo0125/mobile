@@ -20,18 +20,18 @@ public class BackgroundController : MonoBehaviour
         length = GetComponent<SpriteRenderer>().bounds.size.x;
     }
 
-    private void LateUpdate()
+    private void FixedUpdate()
     {
         float distance = _cam.transform.position.x * parallaxSpeed;
         float movement = _cam.transform.position.x * (1f - parallaxSpeed);
 
         transform.position = new Vector3(startXPos + distance, transform.position.y, transform.position.z);
 
-        if (_cam.transform.position.x > startXPos + length)
+        if (movement > startXPos + length)
         {
             startXPos += length;
         }
-        else if (_cam.transform.position.x < startXPos - length)
+        else if (movement < startXPos - length)
         {
             startXPos -= length;
         }
