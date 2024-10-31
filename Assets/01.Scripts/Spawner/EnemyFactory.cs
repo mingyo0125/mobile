@@ -6,7 +6,7 @@ using UnityEngine;
 public class EnemyFactory : ObjectFactory<Enemy>
 {
     [SerializeField]
-    private Transform _minBound, _maxBound;
+    private Transform _bounds, _minBound, _maxBound;
 
     [SerializeField]
     private float spawnTime;
@@ -20,6 +20,10 @@ public class EnemyFactory : ObjectFactory<Enemy>
 
         _itemFactory = FindAnyObjectByType<ItemFactory>();
         _coinFactory = FindAnyObjectByType<CoinFactory>();
+
+        Vector3 middleRight = Camera.main.ViewportToWorldPoint(new Vector3(1f, 0.5f, Camera.main.nearClipPlane));
+
+        _minBound.parent.position = new Vector3(middleRight.x, 0);
     }
 
     public void SpawnEnemy(int spawnCount, params Action<Vector2>[] onDieEvents)

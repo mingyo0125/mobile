@@ -13,7 +13,6 @@ public class EntityMoveState<T, G> : EntityState<T, G> where T : Enum where G : 
     public override void EnterState()
     {
         base.EnterState();
-        Debug.Log("Enter");
         _owner.SetMove();
         _owner.EntityAnimatorCompo.SetFloat("Speed", _owner.Speed);
     }
