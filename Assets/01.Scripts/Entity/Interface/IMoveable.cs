@@ -8,5 +8,4 @@ public interface IMoveable
     public float Speed { get; set; }
 
     public void Move(Vector2 targetPos);
-    public void CheckFacingDir(Vector2 dir);
 }

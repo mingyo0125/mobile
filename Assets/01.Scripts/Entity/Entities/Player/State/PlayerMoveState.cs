@@ -13,14 +13,7 @@ public class PlayerMoveState : EntityMoveState<PlayerStateType, Player>
 
     public override void FixedUpdateState()
     {
-		bool isInRange = GetInRange(100f).Item1;
-
-        if (isInRange)
-        {
-            Vector2 shortestPos = GetShortestTargetPos(GetInRange(100f).Item2); // 있기만 하면 어디에 있던 쫓아감
-            _owner.SetTargetTrm(shortestPos);
-            _owner.Move(shortestPos);
-        }
+        _owner.Move(Vector2.right);
     }
 
     public override void UpdateState()

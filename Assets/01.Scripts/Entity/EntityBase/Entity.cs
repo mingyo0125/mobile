@@ -12,7 +12,6 @@ public abstract partial class Entity<T, G> : PoolableMono, IEntity
     //[Header("Stat")]
     //[SerializeField]
     //private EntityStatSO _entityStatSO;
-    public Vector2 TargetPos { get; private set; }
     private SpriteRenderer _spriteRenderer;
 
     public StatController EntityStatController { get; private set;}
@@ -49,11 +48,6 @@ public abstract partial class Entity<T, G> : PoolableMono, IEntity
 
         StateMachine.Initialize(default);
     }
-
-    public void SetTargetTrm(Vector3 targetPos)
-    {
-        TargetPos = targetPos;
-	}
 
     public Entity<T1, G1> GetEntity<T1, G1>()
     where T1 : Enum

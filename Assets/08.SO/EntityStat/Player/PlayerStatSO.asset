@@ -27,7 +27,7 @@ MonoBehaviour:
         StatSprite: {fileID: 21300000, guid: 6eb0a2d56fc687d4f826cd81cf0bf5df, type: 3}
     <Speed>k__BackingField:
       Level: 1
-      Value: 3
+      Value: 1
       <StatUIInfo>k__BackingField:
         Name: "\uC774\uB3D9\uC18D\uB3C4"
         StatSprite: {fileID: 21300000, guid: 15618fc4a6a294143abf8ada0e863971, type: 3}

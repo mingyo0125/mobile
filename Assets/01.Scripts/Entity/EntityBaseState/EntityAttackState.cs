@@ -24,7 +24,6 @@ public abstract class EntityAttackState<T, G> : EntityState<T, G> where T : Enum
 
         TakeDamage();
         Vector2 shortestPos = GetShortestTargetPos(GetInRange(100f).Item2);
-		_owner.CheckFacingDir(shortestPos);
 
 		if(_owner.EquipWeapon != null)
 		{

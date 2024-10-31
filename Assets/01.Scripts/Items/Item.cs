@@ -8,7 +8,7 @@ public abstract class Item : PoolableMono
     {
         base.Initialize();
 
-        CoroutineUtil.CallWaitForSeconds(1f, () =>
+        CoroutineUtil.CallWaitForSeconds(0.2f, () =>
         {
             this.AttractPosition(transform, transform.position, GameManager.Instance.GetPlayerTrm(), 0.7f, 1.5f);
         });

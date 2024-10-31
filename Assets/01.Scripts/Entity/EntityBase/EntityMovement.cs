@@ -31,27 +31,26 @@ public abstract partial class Entity<T, G> : IMoveable
     {
         if (!IsMove) { return; }
 
-        Vector2 newPosition = Vector2.MoveTowards(transform.position, targetPos, Speed * Time.fixedDeltaTime);
-        Rb.MovePosition(newPosition);
-        CheckFacingDir(targetPos);
+        Rb.velocity = targetPos * Speed;
+        //CheckFacingDir(targetPos);
     }
 
-    public void CheckFacingDir(Vector2 targetPos)
-    {
-        Vector2 directionToTarget = targetPos - (Vector2)transform.position;
+    //public void CheckFacingDir(Vector2 targetPos)
+    //{
+    //    Vector2 directionToTarget = targetPos - (Vector2)transform.position;
 
-         // isFacingRight면 right랑 계산, 아니면 left랑 계산
-        float dotProduct = Vector2.Dot(directionToTarget, IsFacingRight ? Vector2.right : Vector2.left);
-        // 내적 결과가 음수이면 방향을 반전해야 함
-        if (dotProduct < 0f) { Flip(); }
-    }
+    //     // isFacingRight면 right랑 계산, 아니면 left랑 계산
+    //    float dotProduct = Vector2.Dot(directionToTarget, IsFacingRight ? Vector2.right : Vector2.left);
+    //    // 내적 결과가 음수이면 방향을 반전해야 함
+    //    if (dotProduct < 0f) { Flip(); }
+    //}
 
-    private void Flip()
-    {
-        IsFacingRight = !IsFacingRight;
+    //private void Flip()
+    //{
+    //    IsFacingRight = !IsFacingRight;
 
-        transform.Rotate(new Vector2(0, 180f));
-    }
+    //    transform.Rotate(new Vector2(0, 180f));
+    //}
 
     public void StopImmediatetly()
     {

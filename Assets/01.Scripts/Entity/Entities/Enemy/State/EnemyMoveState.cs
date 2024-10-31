@@ -11,7 +11,7 @@ public class EnemyMoveState : EntityMoveState<EnemyStateType, Enemy>
     {
         base.FixedUpdateState();
 
-        _owner.Move(GameManager.Instance.GetPlayerTrm().position);
+        _owner.Move(Vector2.left);
     }
 
     public override void UpdateState()
