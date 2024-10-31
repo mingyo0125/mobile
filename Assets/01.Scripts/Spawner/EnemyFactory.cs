@@ -23,12 +23,12 @@ public class EnemyFactory : ObjectFactory<Enemy>
 
     private void Start()
     {
-        StartCoroutine(SpawnEnemyCorou());
+        SpawnEnemy(5);
     }
 
-    private IEnumerator SpawnEnemyCorou()
+    private void SpawnEnemy(int SpawnCount)
     {
-        while (true)
+        for(int i = 0; i < SpawnCount; i++)
         {
             Enemy enemyPrefab = Utils.GetRandomElement(_spawnEntitys);
             Enemy spawnedEnemy = SpawnObject(enemyPrefab.name, Utils.GetRandomSpawnPos(_minBound.position, _maxBound.position)) as Enemy;
@@ -36,7 +36,6 @@ public class EnemyFactory : ObjectFactory<Enemy>
             spawnedEnemy.OnDieEvent += _itemFactory.SpawnItem;
             spawnedEnemy.OnDieEvent += _coinFactory.SpawnCoin;
 
-            yield return new WaitForSeconds(spawnTime);
         }
     }
 }

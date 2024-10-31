@@ -23,11 +23,4 @@ public class PlayerMoveState : EntityMoveState<PlayerStateType, Player>
             _stateMachine.ChangeState(PlayerStateType.Attack);
         }
     }
-
-	public override void ExitState()
-	{
-		base.ExitState();
-
-        _owner.EntityAnimatorCompo.SetFloat("Speed", -1f);
-	}
 }

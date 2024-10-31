@@ -16,4 +16,12 @@ public class EntityMoveState<T, G> : EntityState<T, G> where T : Enum where G : 
 
         _owner.EntityAnimatorCompo.SetFloat("Speed", _owner.Speed);
     }
+
+    public override void ExitState()
+    {
+        base.ExitState();
+
+        _owner.EntityAnimatorCompo.SetFloat("Speed", -1f);
+    }
+
 }
