@@ -9,11 +9,6 @@ public class Player : Entity<PlayerStateType, Player>
     [SerializeField]
     private PlayerStatSO _playerStatSO; 
 
-	public void UpdateWeapon(Weapon weapon)
-	{
-        EquipWeapon = weapon;
-	}
-
     private void Start()
     {
         base.Initialize();
@@ -21,7 +16,7 @@ public class Player : Entity<PlayerStateType, Player>
 
     protected override void Awake()
     {
-		UpdateWeapon(transform.Find("EquipWeapon/WoodSword").GetComponent<Weapon>()); // 처음에는 일단 이것
+		SetWeapon(transform.Find("EquipWeapon/WoodSword").GetComponent<Weapon>()); // 처음에는 일단 이것
 
 		base.Awake();
     }
@@ -34,6 +29,11 @@ public class Player : Entity<PlayerStateType, Player>
     protected override void CreateStateMachine()
     {
         StateMachine = new PlayerStateMachine(this);
+    }
+
+    public void SetWeapon(Weapon weapon)
+    {
+        EquipWeapon = weapon;
     }
 
     protected override void SetStat()
