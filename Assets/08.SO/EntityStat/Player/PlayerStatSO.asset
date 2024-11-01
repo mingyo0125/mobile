@@ -15,7 +15,7 @@ MonoBehaviour:
   <PlayerStat>k__BackingField:
     <Damage>k__BackingField:
       Level: 1
-      Value: 5
+      Value: 10
       <StatUIInfo>k__BackingField:
         Name: "\uACF5\uACA9\uB825"
         StatSprite: {fileID: 21300000, guid: 49a48244258261b45a1127dbf6ed958c, type: 3}
@@ -33,7 +33,7 @@ MonoBehaviour:
         StatSprite: {fileID: 21300000, guid: 15618fc4a6a294143abf8ada0e863971, type: 3}
     <AttackDelay>k__BackingField:
       Level: 1
-      Value: 1
+      Value: 3
       <StatUIInfo>k__BackingField:
         Name: "\uACF5\uACA9\uC18D\uB3C4"
         StatSprite: {fileID: 21300000, guid: 9c5c0cafcc16b1b44ab02e5d46873794, type: 3}

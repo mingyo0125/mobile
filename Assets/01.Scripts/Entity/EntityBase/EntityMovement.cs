@@ -9,7 +9,6 @@ using UnityEngine.EventSystems;
 public abstract partial class Entity<T, G> : IMoveable
 {
     public Rigidbody2D Rb { get; set; }
-    public bool IsFacingRight { get; set; } = true;
 
     public float Speed { get; set; } // 나중에 SO로
 
@@ -23,7 +22,6 @@ public abstract partial class Entity<T, G> : IMoveable
 
 	private void InitializeMovement()
     {
-        IsFacingRight = true;
 		Speed = EntityStatController.GetStatValue(StatType.Speed);
         SetMove();
 	}

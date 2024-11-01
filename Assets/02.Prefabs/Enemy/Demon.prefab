@@ -126,6 +126,7 @@ MonoBehaviour:
   isDrawRangeGizmo: 1
   _gizmoColor: {r: 1, g: 0, b: 0, a: 1}
   _entityHpBar: {fileID: 5539690809304211073}
+  <IsMove>k__BackingField: 1
   _enemyStatSO: {fileID: 11400000, guid: 77ed30b99f94ee9408763ee0d078fcb1, type: 2}
 --- !u!61 &8792103034932909251
 BoxCollider2D:
@@ -289,13 +290,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6832329515954855383}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1485715092845393917}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!212 &2397505182358884056
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -472,6 +473,14 @@ PrefabInstance:
     - target: {fileID: 2400255506160508921, guid: d05745a8cbcbe3f448339838cf6a54cb, type: 3}
       propertyPath: m_Name
       value: Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 7733788548751673261, guid: d05745a8cbcbe3f448339838cf6a54cb, type: 3}
+      propertyPath: m_FillAmount
+      value: 0.992
+      objectReference: {fileID: 0}
+    - target: {fileID: 7733788548751673261, guid: d05745a8cbcbe3f448339838cf6a54cb, type: 3}
+      propertyPath: m_FillOrigin
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
