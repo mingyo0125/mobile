@@ -70,7 +70,8 @@ public abstract partial class Entity<T, G> : PoolableMono, IEntity
 
 	protected virtual void OnDisable()
 	{
-		HealthDisable();
+        EntityStatController.ResetStat();
+        HealthDisable();
 	}
 
     private void FadeOut()

@@ -26,6 +26,7 @@ public enum StatType
 public class BaseStat
 {
     public Dictionary<StatType, StatInfo> Stats { get; private set; }
+    private Dictionary<StatType, StatInfo> _initialStats;
 
     [field: SerializeField]
     public StatInfo Damage { get; private set; }
@@ -73,6 +74,12 @@ public class BaseStat
             { StatType.CriticalDamageIncreasePercent, CriticalDamageIncreasePercent },
             { StatType.ResistancePercent, ResistancePercent },
         };
+
+        _initialStats = new Dictionary<StatType, StatInfo>();
+        foreach (var pair in Stats)
+        {
+            _initialStats[pair.Key] = new StatInfo(pair.Value.Level, pair.Value.Value, pair.Value.StatUIInfo);
+        }
     }
 
     public void SetStatValue(StatType statType, float value)
@@ -96,6 +103,18 @@ public class BaseStat
         else
         {
             Debug.LogError($"{GetType()}'s {statType} is Not Defined");
+        }
+    }
+
+    public void ResetStats()
+    {
+        foreach (var pair in _initialStats)
+        {
+            if (Stats.TryGetValue(pair.Key, out var statInfo))
+            {
+                statInfo.Level = pair.Value.Level;
+                statInfo.Value = pair.Value.Value;
+            }
         }
     }
 }

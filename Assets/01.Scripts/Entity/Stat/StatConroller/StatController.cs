@@ -5,6 +5,11 @@ public class StatController
 {
     public BaseStat EntityStat { get; private set; }
 
+    public void ResetStat()
+    {
+        EntityStat.ResetStats();
+    }
+
     public void Initialize<T>(T stat) where T : BaseStat
     {
         EntityStat = Activator.CreateInstance(typeof(T), stat) as T;

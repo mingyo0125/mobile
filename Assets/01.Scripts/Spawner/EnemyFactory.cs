@@ -25,14 +25,15 @@ public class EnemyFactory : ObjectFactory<Enemy>
 
     public void SpawnEnemy(int spawnCount, params Action<Vector2>[] onDieEvents)
     {
-        for(int i = 0; i < spawnCount; i++)
+        for (int i = 0; i < spawnCount; i++)
         {
             Enemy enemyPrefab = Utils.GetRandomElement(_spawnEntitys);
             Enemy spawnedEnemy = SpawnObject(enemyPrefab.name, Utils.GetRandomSpawnPos(_minBound.position, _maxBound.position)) as Enemy;
 
+            spawnedEnemy.OnDieEvent = null;
+
             spawnedEnemy.OnDieEvent += _itemFactory.SpawnItem;
             spawnedEnemy.OnDieEvent += _coinFactory.SpawnCoin;
-
 
             foreach(Action<Vector2> action in onDieEvents)
             {

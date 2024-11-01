@@ -20,7 +20,7 @@ public abstract partial class Entity<T, G> : IDamageable
 
     public event Action<TakeDamageInfo> OnTakeDamagedEvent = null;
     public event Action<Vector2, string, Color> OnHpChangedEvent = null;
-    public Action<Vector2> OnDieEvent {get; set;}
+    public Action<Vector2> OnDieEvent { get; set; }
 
     public event Action OnDieAnimationEndEvent = null;
 
@@ -76,6 +76,7 @@ public abstract partial class Entity<T, G> : IDamageable
         FeedbackPlayerCompo.PlayFeedback<T, G>(FeedbackTypes.Die);
         EntityAnimatorCompo.SetFloat("Speed", -1f);
 		EntityAnimatorCompo.SetTrigger("DieTrigger");
+        WaveManager.Instance.IncreaseDeadEnemyCount();
         StopImmediatetly();
     }
 
@@ -98,9 +99,9 @@ public abstract partial class Entity<T, G> : IDamageable
     {
         OnHpChangedEvent = null;
         OnDieAnimationEndEvent = null;
-        OnDieEvent = null;
+       // OnDieEvent = null;
 
-        EntityAnimatorCompo.OnDieAnimationEndEvent -= OnDieAnimationEndEvent;
-        EntityAnimatorCompo.OnHitAnimationEndEvent -= EnableCollider;
+        EntityAnimatorCompo.OnDieAnimationEndEvent = null;
+        EntityAnimatorCompo.OnHitAnimationEndEvent = null;
     }
 }

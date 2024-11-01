@@ -19,17 +19,11 @@ public class WaveManager : MonoSingleTon<WaveManager>
 
     private void Start()
     {
-        _enemyFactory.SpawnEnemy(spawnedEnmiesCount, IncreaseDeadEnemyCount);
+        _enemyFactory.SpawnEnemy(spawnedEnmiesCount);
     }
 
     private void Update()
     {
-        if (deadEnmiesCount >= spawnedEnmiesCount)
-        {
-            _enemyFactory.SpawnEnemy(spawnedEnmiesCount, IncreaseDeadEnemyCount);
-            deadEnmiesCount = 0;
-        }
-
         if(Input.GetKeyDown(KeyCode.D))
         {
             foreach (var item in FindObjectsByType<Enemy>(FindObjectsSortMode.None))
@@ -39,8 +33,14 @@ public class WaveManager : MonoSingleTon<WaveManager>
         }
     }
 
-    private void IncreaseDeadEnemyCount(Vector2 vector2)
+    public void IncreaseDeadEnemyCount()
     {
         deadEnmiesCount++;
+
+        if (deadEnmiesCount == spawnedEnmiesCount)
+        {
+            _enemyFactory.SpawnEnemy(spawnedEnmiesCount);
+            deadEnmiesCount = 0;
+        }
     }
 }

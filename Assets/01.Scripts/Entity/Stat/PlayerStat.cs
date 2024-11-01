@@ -14,8 +14,8 @@ public class PlayerStat : BaseStat
 
     public PlayerStat(PlayerStat stat) : base(stat)
     {
-        this.ItemDropRate = stat.ItemDropRate;
-        this.DropCoinValue = stat.DropCoinValue;
+        this.ItemDropRate = new StatInfo(stat.ItemDropRate.Level, stat.ItemDropRate.Value, stat.ItemDropRate.StatUIInfo);
+        this.DropCoinValue = new StatInfo(stat.DropCoinValue.Level, stat.DropCoinValue.Value, stat.DropCoinValue.StatUIInfo);
 
         Stats.Add(StatType.ItemDropRate, ItemDropRate);
         Stats.Add(StatType.DropCoinValue, DropCoinValue);

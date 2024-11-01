@@ -12,6 +12,8 @@ public class Weapon : MonoBehaviour
 
     private StatController _playerStatController;
 
+    private float defualtAttackDelay = 3;
+
     private void Start()
     {
         _playerStatController = GameManager.Instance.GetPlayer().EntityStatController;
@@ -21,7 +23,7 @@ public class Weapon : MonoBehaviour
     {
         isAttacking = true;
 
-        float attackTime = _playerStatController.GetStatValue(StatType.AttackDelay);
+        float attackTime = Mathf.Clamp(defualtAttackDelay - _playerStatController.GetStatValue(StatType.AttackDelay), 0.5f, 5f);
         Sequence sequence = DOTween.Sequence();
         sequence.
              Append(transform.DOLocalRotate(new Vector3(0.0f, 0.0f, -360), attackTime, RotateMode.WorldAxisAdd).SetEase(Ease.Linear))

@@ -22,6 +22,8 @@ public abstract partial class Entity<T, G>
 
     private TakeDamageInfo _entityTakeDamageInfo;
 
+    public float DefualtAttackDelay { get; private set; } = 3;
+
     private void OnDrawGizmos()
     {
         if (isDrawRangeGizmo)
@@ -77,5 +79,10 @@ public abstract partial class Entity<T, G>
                                                    calculateDamage.Item2 * 0.25f,
                                                    calculateDamage.Item1,
                                                    transform.position);
+    }
+
+    public float GetAttackDelay()
+    {
+        return DefualtAttackDelay - EntityStatController.GetStatValue(StatType.AttackDelay);
     }
 }
