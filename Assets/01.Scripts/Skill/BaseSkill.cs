@@ -4,7 +4,7 @@ using UnityEngine;
 
 public abstract class BaseSkill
 {
-    private SkillInfo _skillInfo;
+    protected SkillInfo _skillInfo { get; private set; }
 
     public abstract void Execute(Player user);
 

@@ -24,6 +24,14 @@ public class PlayerSkillHolder : MonoBehaviour
             return;
         }
 
-        //skill.Execute();
+        skill.Execute(GameManager.Instance.GetPlayer());
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+            PlayerSkill("Test");
+        }
     }
 }
