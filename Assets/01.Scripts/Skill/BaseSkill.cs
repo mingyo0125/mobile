@@ -9,13 +9,13 @@ public abstract class BaseSkill : PoolableMono
 
     public SkillInfo SkillInfo => _skillInfoSO.SkillInfo;
 
-    private PoolEffect _effect;
+    private SkillVisual _effect;
 
-    private void Awake()
+    protected virtual void Awake()
     {
-        _effect = GetComponent<PoolEffect>();
+        _effect = GetComponent<SkillVisual>();
 
-        _effect.OnDestoryEvent += () => PoolManager.Instance.DestroyObject(this);
+        _effect.OnAnimationEndEvent += () => PoolManager.Instance.DestroyObject(this);
     }
 
     public override void Initialize()
@@ -25,11 +25,6 @@ public abstract class BaseSkill : PoolableMono
     }
 
     public abstract void Execute(Player user, Vector2 pos);
-
-    public virtual bool CanUse()
-    {
-        return true;
-    }
 
     protected virtual void PlayEffect(Vector3 pos)
     {

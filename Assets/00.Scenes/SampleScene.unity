@@ -2034,8 +2034,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c299e9aa284e2d141b46590bb612a22f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _skillListSO: {fileID: 11400000, guid: f99c24302d161ca40b6a9846c83d71d5, type: 2}
-  _skillHolder: {fileID: 0}
+  _skillListSO: {fileID: 11400000, guid: 5201373617cf3ea4a8e5504766089d08, type: 2}
 --- !u!1 &498764649
 GameObject:
   m_ObjectHideFlags: 0

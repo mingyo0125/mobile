@@ -26,11 +26,11 @@ public abstract partial class Entity<T, G> : IMoveable
         SetMove();
 	}
 
-	public void Move(Vector2 targetPos)
+	public void Move(Vector2 dir)
     {
         if (!IsMove) { return; }
 
-        Rb.velocity = targetPos * Speed;
+        Rb.velocity = dir * Speed;
         //CheckFacingDir(targetPos);
     }
 
