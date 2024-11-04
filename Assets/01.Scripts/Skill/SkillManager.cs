@@ -13,15 +13,9 @@ public class SkillManager : MonoSingleTon<SkillManager>
     {
         _skillHolder = FindAnyObjectByType<PlayerSkillHolder>();
 
-        foreach (SkillInfo skillInfoSo in _skillListSO.SkillList)
+        foreach (BaseSkill skill in _skillListSO.SkillLists)
         {
-            SkillInfo skillInfo = new SkillInfo(skillInfoSo);
-            Type skillType = Type.GetType(skillInfo.SkillName);
-
-            BaseSkill skill = Activator.CreateInstance(skillType) as BaseSkill;
-
-            skill.SetSkillInfo(skillInfo);
-            _skillHolder.AddSkill(skillInfo.SkillName, skill);
+            _skillHolder.AddSkill(skill.SkillInfo.SkillName, skill);
         }
 
     }

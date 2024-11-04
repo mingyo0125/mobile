@@ -2,9 +2,27 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class BaseSkill
+public abstract class BaseSkill : PoolableMono
 {
-    protected SkillInfo _skillInfo { get; private set; }
+    [SerializeField]
+    protected SkillInfoSO _skillInfoSO;
+
+    public SkillInfo SkillInfo => _skillInfoSO.SkillInfo;
+
+    private PoolEffect _effect;
+
+    private void Awake()
+    {
+        _effect = GetComponent<PoolEffect>();
+
+        _effect.OnDestoryEvent += () => PoolManager.Instance.DestroyObject(this);
+    }
+
+    public override void Initialize()
+    {
+        base.Initialize();
+        _effect.Initialize();
+    }
 
     public abstract void Execute(Player user, Vector2 pos);
 
@@ -13,15 +31,8 @@ public abstract class BaseSkill
         return true;
     }
 
-    public void SetSkillInfo(SkillInfo skillInfo)
-    {
-        _skillInfo = new SkillInfo(skillInfo);
-    }
-
     protected virtual void PlayEffect(Vector3 pos)
     {
-        PoolEffect poolEffect = PoolManager.Instance.CreateObject(_skillInfo.Effect.name) as PoolEffect;
-        poolEffect.SetPosition(pos);
+        _effect.transform.position = pos;
     }
-
 }
