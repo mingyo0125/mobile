@@ -13,12 +13,16 @@ public class SkillInfo
     [field: SerializeField]
     public float BaseDamage { get; private set; }
 
+    [field: SerializeField]
+    public PoolEffect Effect { get; private set; }
+
     public SkillInfo(SkillInfo skillInfo)
     {
         this.SkillName = skillInfo.SkillName;
         this.Description = skillInfo.Description;
         this.BaseCooldown = skillInfo.BaseCooldown;
         this.BaseDamage = skillInfo.BaseDamage;
-    }
 
+        this.Effect = skillInfo.Effect;
+    }
 }

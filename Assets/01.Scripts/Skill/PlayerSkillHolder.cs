@@ -11,7 +11,7 @@ public class PlayerSkillHolder : MonoBehaviour
         _skills.Add(id, skill);
     }
 
-    public void PlayerSkill(string id)
+    public void PlaySkill(string id)
     {
         if (!_skills.TryGetValue(id, out BaseSkill skill))
         {
@@ -24,14 +24,14 @@ public class PlayerSkillHolder : MonoBehaviour
             return;
         }
 
-        skill.Execute(GameManager.Instance.GetPlayer());
+        skill.Execute(GameManager.Instance.GetPlayer(), transform.position);
     }
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.K))
+        if (Input.GetKeyDown(KeyCode.S))
         {
-            PlayerSkill("Test");
+            PlaySkill("Fireball");
         }
     }
 }

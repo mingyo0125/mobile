@@ -50,6 +50,9 @@ TagManager:
   - name: Entity
     uniqueID: 2135481071
     locked: 0
+  - name: Skill
+    uniqueID: 148688985
+    locked: 0
   - name: UI
     uniqueID: 1147182301
     locked: 0

@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: SkillsList
   m_EditorClassIdentifier: 
   SkillList:
-  - <SkillName>k__BackingField: Test
+  - <SkillName>k__BackingField: Fireball
     <Description>k__BackingField: "\uD14C\uC2A4\uD2B8\uC785\uB2C8\uB2E4."
     <BaseCooldown>k__BackingField: 0
     <BaseDamage>k__BackingField: 0
+    <Effect>k__BackingField: {fileID: 2320280450887755307, guid: 5094d1557b7552c48a113895b688591a, type: 3}
