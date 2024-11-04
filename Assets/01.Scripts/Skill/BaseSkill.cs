@@ -23,4 +23,5 @@ public abstract class BaseSkill
         PoolEffect poolEffect = PoolManager.Instance.CreateObject(_skillInfo.Effect.name) as PoolEffect;
         poolEffect.SetPosition(pos);
     }
+
 }
