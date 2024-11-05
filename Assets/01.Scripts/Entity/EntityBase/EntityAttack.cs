@@ -46,7 +46,7 @@ public abstract partial class Entity<T, G>
         }
     }
 
-    protected virtual (bool, float) GetDamage() // 무기가 있으면(플레이어) 무기 데미지까지 더해서 데미지 반환
+    protected virtual (bool, float) GetDamage()
     {
         float damage = EntityStatController.GetStatValue(StatType.Damage);
         bool isCritical = Utils.CalculateProbability(EntityStatController.GetStatValue(StatType.CriticalProbability));
@@ -59,7 +59,7 @@ public abstract partial class Entity<T, G>
         return (isCritical, damage);
     }
 
-    public TakeDamageInfo GetTakeDamageInfo()
+    public TakeDamageInfo GetTakeDamageInfo(bool isTest = false)
     {
         if (_entityTakeDamageInfo == null)
         {
@@ -68,13 +68,18 @@ public abstract partial class Entity<T, G>
 
         UpdateTakeDamageInfo();
         EquipWeapon?.SetTakeDamageInfo(_entityTakeDamageInfo);
+        if(isTest)
+        {
+            Debug.Log(_entityTakeDamageInfo);
+            Debug.Log(_entityTakeDamageInfo.Damage);
+        }
         return _entityTakeDamageInfo;
     }
 
     public void UpdateTakeDamageInfo()
     {
         var calculateDamage = GetDamage();
-        // 크리티컬이면 뭔가 뭔가
+
         _entityTakeDamageInfo.UpdateTakeDamageInfo(calculateDamage.Item2,
                                                    calculateDamage.Item2 * 0.25f,
                                                    calculateDamage.Item1,

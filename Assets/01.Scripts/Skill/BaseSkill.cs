@@ -9,7 +9,7 @@ public abstract class BaseSkill : PoolableMono
 
     public SkillInfo SkillInfo => _skillInfoSO.SkillInfo;
 
-    private SkillVisual _effect;
+    protected SkillVisual _effect;
 
     protected virtual void Awake()
     {
@@ -29,14 +29,5 @@ public abstract class BaseSkill : PoolableMono
     protected virtual void PlayEffect(Vector3 pos)
     {
         _effect.transform.position = pos;
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        bool isEnemy = collision.TryGetComponent(out IDamageable damageable) && damageable is Enemy;
-        if (isEnemy) { return; }
-
-        _effect.StopImmediately();
-        _effect.AnimationEndEvent();
     }
 }
