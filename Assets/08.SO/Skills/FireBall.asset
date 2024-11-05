@@ -15,5 +15,5 @@ MonoBehaviour:
   <SkillInfo>k__BackingField:
     <SkillName>k__BackingField: Fireball
     <Description>k__BackingField: "\uD30C\uC774\uC5B4\uBCFC\uC774\uB2E4"
-    <BaseCooldown>k__BackingField: 1
+    <BaseCooldown>k__BackingField: 0
     <BaseDamage>k__BackingField: 1

@@ -20,7 +20,9 @@ public class EnemyFactory : ObjectFactory<Enemy>
 
         Vector3 middleRight = Camera.main.ViewportToWorldPoint(new Vector3(1f, 0.5f, Camera.main.nearClipPlane));
 
+        Debug.Log(_minBound.parent.position);
         _minBound.parent.position = middleRight;
+        Debug.Log(_minBound.parent.position);
     }
 
     public void SpawnEnemy(int spawnCount, params Action<Vector2>[] onDieEvents)
