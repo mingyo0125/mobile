@@ -30,4 +30,13 @@ public abstract class BaseSkill : PoolableMono
     {
         _effect.transform.position = pos;
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        bool isEnemy = collision.TryGetComponent(out IDamageable damageable) && damageable is Enemy;
+        if (isEnemy) { return; }
+
+        _effect.StopImmediately();
+        _effect.AnimationEndEvent();
+    }
 }

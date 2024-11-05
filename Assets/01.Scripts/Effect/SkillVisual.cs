@@ -15,6 +15,8 @@ public class SkillVisual : MonoBehaviour, IMoveable
 
     public event Action OnAnimationEndEvent;
 
+    private readonly string IsEnd = "IsEnd";
+
     private void Awake()
     {
         _animator = GetComponent<Animator>();
@@ -22,8 +24,6 @@ public class SkillVisual : MonoBehaviour, IMoveable
 
         Rb = GetComponent<Rigidbody2D>();
     }
-
-
 
     public void Initialize()
     {
