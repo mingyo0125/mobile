@@ -46,7 +46,7 @@ public abstract partial class Entity<T, G>
         }
     }
 
-    protected virtual (bool, float) GetDamage()
+    protected virtual (bool, float) GetDamage(float skillDamagePercent)
     {
         float damage = EntityStatController.GetStatValue(StatType.Damage);
         bool isCritical = Utils.CalculateProbability(EntityStatController.GetStatValue(StatType.CriticalProbability));
@@ -56,29 +56,28 @@ public abstract partial class Entity<T, G>
             damage += EntityStatController.GetStatValue(StatType.CriticalDamageIncreasePercent) * 0.01f * damage;
         }
 
+        damage *= 0.01f * skillDamagePercent;
+
+        Debug.Log(damage);
+
         return (isCritical, damage);
     }
 
-    public TakeDamageInfo GetTakeDamageInfo(bool isTest = false)
+    public TakeDamageInfo GetTakeDamageInfo(float skillDamagePercent = 0)
     {
         if (_entityTakeDamageInfo == null)
         {
             _entityTakeDamageInfo = new TakeDamageInfo();
         }
 
-        UpdateTakeDamageInfo();
+        UpdateTakeDamageInfo(skillDamagePercent);
         EquipWeapon?.SetTakeDamageInfo(_entityTakeDamageInfo);
-        if(isTest)
-        {
-            Debug.Log(_entityTakeDamageInfo);
-            Debug.Log(_entityTakeDamageInfo.Damage);
-        }
         return _entityTakeDamageInfo;
     }
 
-    public void UpdateTakeDamageInfo()
+    public void UpdateTakeDamageInfo(float skillDamagePercent)
     {
-        var calculateDamage = GetDamage();
+        var calculateDamage = GetDamage(skillDamagePercent);
 
         _entityTakeDamageInfo.UpdateTakeDamageInfo(calculateDamage.Item2,
                                                    calculateDamage.Item2 * 0.25f,

@@ -43,7 +43,7 @@ public abstract class EntityAttackState<T, G> : EntityState<T, G> where T : Enum
 	{
         if (_owner.EquipWeapon != null)
         {
-            _owner.UpdateTakeDamageInfo();
+           // _owner.UpdateTakeDamageInfo();
         }
         else
         {

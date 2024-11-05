@@ -11,14 +11,14 @@ public class SkillInfo
     [field: SerializeField]
     public float BaseCooldown { get; private set; }
     [field: SerializeField]
-    public float BaseDamage { get; private set; }
+    public float BaseDamagePercent { get; private set; }
 
     public SkillInfo(SkillInfo skillInfo)
     {
         this.SkillName = skillInfo.SkillName;
         this.Description = skillInfo.Description;
         this.BaseCooldown = skillInfo.BaseCooldown;
-        this.BaseDamage = skillInfo.BaseDamage;
+        this.BaseDamagePercent = skillInfo.BaseDamagePercent;
 
     }
 }
