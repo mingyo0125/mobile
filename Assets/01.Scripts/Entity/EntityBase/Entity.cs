@@ -31,7 +31,7 @@ public abstract partial class Entity<T, G> : PoolableMono, IEntity
 		MovementAwake();
 		HealthAwake();
         FeedbackAwake();
-        GetTakeDamageInfo();
+        GetTakeDamageInfo(Vector2.zero);
     }
 
     protected virtual void OnEnable()

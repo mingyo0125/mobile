@@ -10,15 +10,9 @@ public class Fireball : BaseSkill
         PlayEffect(pos);
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnDrawGizmosSelected()
     {
-        bool isEnemy = collision.TryGetComponent(out IDamageable damageable) && damageable is Enemy;
-
-        if (!isEnemy) { return; }
-
-        damageable.TakedDamage(GameManager.Instance.GetPlayer().GetSkillDamageInfo(_skillInfoSO.SkillInfo));
-
-        _effect.StopImmediately();
-        _effect.AnimationEndEvent();
+        Gizmos.color = Color.green;
+        Gizmos.DrawWireSphere(transform.position, castRadius);
     }
 }

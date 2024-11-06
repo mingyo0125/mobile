@@ -21,11 +21,11 @@ public class HitFeedback : Feedback
 
         entity.Rb.AddForce(knockbackVec * knockbackPower, ForceMode2D.Impulse);
 
-        if(takeDamageInfo.HitFeedbackEffect != null) // TakeDamageInfo를 상속받는 skill 어쩌구를 만드시오
+        if(takeDamageInfo.HitFeedbackEffect != null)
         {
             Debug.Log(takeDamageInfo.HitFeedbackEffect.name);
             FeedbackEffect feedbackEffect = PoolManager.Instance.CreateObject(takeDamageInfo.HitFeedbackEffect.name) as FeedbackEffect;
-            feedbackEffect.SetPosition(entity.transform.position); // 이거 맞은 위치로
+            feedbackEffect.SetPosition(takeDamageInfo.HitPos); // 이거 맞은 위치로
         }
 
         CoroutineUtil.CallWaitForSeconds(0.1f, () => StopFeedback<T, G>(owner));

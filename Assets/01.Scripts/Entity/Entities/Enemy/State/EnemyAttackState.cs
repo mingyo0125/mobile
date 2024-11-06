@@ -19,7 +19,8 @@ public class EnemyAttackState : EntityAttackState<EnemyStateType, Enemy>
         {
             if (item.TryGetComponent(out IDamageable component))
             {
-                component.TakedDamage(_owner.GetTakeDamageInfo());
+                Vector2 hitPoint = component.EntityCollider.ClosestPoint(_owner.transform.position);
+                component.TakedDamage(_owner.GetTakeDamageInfo(hitPoint));
             }
             else
             {

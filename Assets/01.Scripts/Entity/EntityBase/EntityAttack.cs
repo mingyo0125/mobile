@@ -59,46 +59,48 @@ public abstract partial class Entity<T, G>
         return (isCritical, damage);
     }
 
-    public TakeDamageInfo GetTakeDamageInfo()
+    public TakeDamageInfo GetTakeDamageInfo(Vector2 hitPoint)
     {
         if (_entityTakeDamageInfo == null)
         {
             _entityTakeDamageInfo = new TakeDamageInfo();
         }
 
-        UpdateTakeDamageInfo();
+        UpdateTakeDamageInfo(hitPoint);
         return _entityTakeDamageInfo;
     }
 
-    public TakeDamageInfo GetSkillDamageInfo(SkillInfo skillInfo)
+    public TakeDamageInfo GetSkillDamageInfo(SkillInfo skillInfo, Vector2 hitPoint)
     {
         if (_entityTakeDamageInfo == null)
         {
             _entityTakeDamageInfo = new TakeDamageInfo();
         }
 
-        UpdateSkillDamageInfo(skillInfo);
+        UpdateSkillDamageInfo(skillInfo, hitPoint);
         return _entityTakeDamageInfo;
     }
 
-    private void UpdateTakeDamageInfo()
+    private void UpdateTakeDamageInfo(Vector2 hitPoint)
     {
         var calculateDamage = GetDamage(0);
 
         _entityTakeDamageInfo.UpdateTakeDamageInfo(calculateDamage.Item2,
                                                    calculateDamage.Item2 * 0.25f,
                                                    calculateDamage.Item1,
-                                                   transform.position);
+                                                   transform.position,
+                                                   hitPoint);
     }
 
-    private void UpdateSkillDamageInfo(SkillInfo skillInfo)
+    private void UpdateSkillDamageInfo(SkillInfo skillInfo, Vector2 hitPoint)
     {
         var calculateDamage = GetDamage(skillInfo.DamagePercent);
 
         _entityTakeDamageInfo.UpdateTakeDamageInfo(calculateDamage.Item2,
                                                    calculateDamage.Item2 * 0.25f,
                                                    calculateDamage.Item1,
-                                                   transform.position);
+                                                   transform.position,
+                                                   hitPoint);
 
         _entityTakeDamageInfo.UpdateHitFeedbackEffect(skillInfo.HitFeedbackEffect);
     }

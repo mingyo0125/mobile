@@ -15,5 +15,6 @@ MonoBehaviour:
   <SkillInfo>k__BackingField:
     <SkillName>k__BackingField: Fireball
     <Description>k__BackingField: "\uD30C\uC774\uC5B4\uBCFC\uC774\uB2E4"
-    <BaseCooldown>k__BackingField: 0
-    <BaseDamagePercent>k__BackingField: 100
+    <Cooldown>k__BackingField: 0
+    <DamagePercent>k__BackingField: 100
+    <HitFeedbackEffect>k__BackingField: {fileID: 7707854994357197448, guid: 647fb1399372ec9439b21d176cd734e5, type: 3}
