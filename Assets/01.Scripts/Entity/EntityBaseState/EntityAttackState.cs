@@ -6,10 +6,6 @@ public abstract class EntityAttackState<T, G> : EntityState<T, G> where T : Enum
     public EntityAttackState(G entity, EntityStateMachine<T, G> entityStateMachine):
                              base(entity, entityStateMachine)
     {
-		if (_owner.EquipWeapon != null)
-		{
-            _owner.EquipWeapon?.SubscribeEndAnimationEvent(EnterState);
-        }
     }
 
 	public override void EnterState()
@@ -24,42 +20,10 @@ public abstract class EntityAttackState<T, G> : EntityState<T, G> where T : Enum
 
         TakeDamage();
 
-		if(_owner.EquipWeapon != null)
-		{
-            _owner.EquipWeapon?.SetAttack();
-        }
-		else
-		{
-            CoroutineUtil.CallWaitForSeconds(_owner.GetAttackDelay(), EnterState);
-		}
+        CoroutineUtil.CallWaitForSeconds(_owner.GetAttackDelay(), EnterState);
     }
 
-	public override void ExitState()
-	{
-		_owner.EquipWeapon?.SetIdle();
-	}
-
-	protected virtual void TakeDamage()
-	{
-        if (_owner.EquipWeapon != null)
-        {
-           // _owner.UpdateTakeDamageInfo();
-        }
-        else
-        {
-            foreach (Collider2D item in GetInRange(_owner.EntityStatController.GetStatValue(StatType.AttackRange)).Item2)
-            {
-                if (item.TryGetComponent(out IDamageable component))
-                {
-                    component.TakedDamage(_owner.GetTakeDamageInfo());
-                }
-                else
-                {
-                    Debug.Log($"{component} not have IDamageable");
-                }
-            }
-        }
-    }
+	protected abstract void TakeDamage();
 
 	protected virtual void EndAttack()
 	{

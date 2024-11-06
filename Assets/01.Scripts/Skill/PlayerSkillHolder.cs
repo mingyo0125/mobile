@@ -35,10 +35,10 @@ public class PlayerSkillHolder : MonoBehaviour
     private bool CanUse(string id, BaseSkill skill)
     {
         float lastUsedTime = _lastUsedTimes[id];
-        if (Time.time < lastUsedTime + skill.SkillInfo.BaseCooldown)
+        if (Time.time < lastUsedTime + skill.SkillInfo.Cooldown)
         {
             // ÄðÅ¸ÀÓ
-            Debug.Log(lastUsedTime + skill.SkillInfo.BaseCooldown - Time.time);
+            Debug.Log(lastUsedTime + skill.SkillInfo.Cooldown - Time.time);
             return false;
         }
 

@@ -16,7 +16,7 @@ public class Fireball : BaseSkill
 
         if (!isEnemy) { return; }
 
-        damageable.TakedDamage(GameManager.Instance.GetPlayer().GetTakeDamageInfo(_skillInfoSO.SkillInfo.BaseDamagePercent));
+        damageable.TakedDamage(GameManager.Instance.GetPlayer().GetSkillDamageInfo(_skillInfoSO.SkillInfo));
 
         _effect.StopImmediately();
         _effect.AnimationEndEvent();

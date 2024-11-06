@@ -18,8 +18,6 @@ public abstract partial class Entity<T, G>
     private Color _gizmoColor;
     public Color GizmoColor => _gizmoColor;
 
-    public Weapon EquipWeapon { get; protected set; }
-
     private TakeDamageInfo _entityTakeDamageInfo;
 
     public float DefualtAttackDelay { get; private set; } = 3;
@@ -58,31 +56,51 @@ public abstract partial class Entity<T, G>
 
         damage *= 0.01f * skillDamagePercent;
 
-        Debug.Log(damage);
-
         return (isCritical, damage);
     }
 
-    public TakeDamageInfo GetTakeDamageInfo(float skillDamagePercent = 0)
+    public TakeDamageInfo GetTakeDamageInfo()
     {
         if (_entityTakeDamageInfo == null)
         {
             _entityTakeDamageInfo = new TakeDamageInfo();
         }
 
-        UpdateTakeDamageInfo(skillDamagePercent);
-        EquipWeapon?.SetTakeDamageInfo(_entityTakeDamageInfo);
+        UpdateTakeDamageInfo();
         return _entityTakeDamageInfo;
     }
 
-    public void UpdateTakeDamageInfo(float skillDamagePercent)
+    public TakeDamageInfo GetSkillDamageInfo(SkillInfo skillInfo)
     {
-        var calculateDamage = GetDamage(skillDamagePercent);
+        if (_entityTakeDamageInfo == null)
+        {
+            _entityTakeDamageInfo = new TakeDamageInfo();
+        }
+
+        UpdateSkillDamageInfo(skillInfo);
+        return _entityTakeDamageInfo;
+    }
+
+    private void UpdateTakeDamageInfo()
+    {
+        var calculateDamage = GetDamage(0);
 
         _entityTakeDamageInfo.UpdateTakeDamageInfo(calculateDamage.Item2,
                                                    calculateDamage.Item2 * 0.25f,
                                                    calculateDamage.Item1,
                                                    transform.position);
+    }
+
+    private void UpdateSkillDamageInfo(SkillInfo skillInfo)
+    {
+        var calculateDamage = GetDamage(skillInfo.DamagePercent);
+
+        _entityTakeDamageInfo.UpdateTakeDamageInfo(calculateDamage.Item2,
+                                                   calculateDamage.Item2 * 0.25f,
+                                                   calculateDamage.Item1,
+                                                   transform.position);
+
+        _entityTakeDamageInfo.UpdateHitFeedbackEffect(skillInfo.HitFeedbackEffect);
     }
 
     public float GetAttackDelay()

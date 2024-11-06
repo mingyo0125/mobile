@@ -15,8 +15,6 @@ public class SkillVisual : MonoBehaviour, IMoveable
 
     public event Action OnAnimationEndEvent;
 
-    private readonly string IsEnd = "IsEnd";
-
     private void Awake()
     {
         _animator = GetComponent<Animator>();

@@ -14,13 +14,6 @@ public class Player : Entity<PlayerStateType, Player>
         base.Initialize();
     }
 
-    protected override void Awake()
-    {
-		SetWeapon(transform.Find("EquipWeapon/WoodSword").GetComponent<Weapon>()); // 처음에는 일단 이것
-
-		base.Awake();
-    }
-
     public void GetItem(Item item)
     {
         // Dosomething
@@ -29,11 +22,6 @@ public class Player : Entity<PlayerStateType, Player>
     protected override void CreateStateMachine()
     {
         StateMachine = new PlayerStateMachine(this);
-    }
-
-    public void SetWeapon(Weapon weapon)
-    {
-        EquipWeapon = weapon;
     }
 
     protected override void SetStat()
