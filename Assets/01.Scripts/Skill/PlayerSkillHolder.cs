@@ -3,18 +3,20 @@ using UnityEngine;
 
 public class PlayerSkillHolder : MonoBehaviour
 {
-    private Dictionary<string, BaseSkill> _skills = new Dictionary<string, BaseSkill>();
-        private Dictionary<string, float> _lastUsedTimes = new Dictionary<string, float>();
+    public Dictionary<string, BaseSkill> Skills { get; private set; } = new Dictionary<string, BaseSkill>();
+
+
+    private Dictionary<string, float> _lastUsedTimes = new Dictionary<string, float>();
 
     public void AddSkill(string id, BaseSkill skill)
     {
-        _skills.Add(id, skill);
+        Skills.Add(id, skill);
         _lastUsedTimes.Add(id, -Mathf.Infinity);  
     }
 
     public void PlaySkill(string id)
     {
-        if (!_skills.TryGetValue(id, out BaseSkill skill))
+        if (!Skills.TryGetValue(id, out BaseSkill skill))
         {
             Debug.LogError($"Player doesn't have {id} Skill");
             return;
