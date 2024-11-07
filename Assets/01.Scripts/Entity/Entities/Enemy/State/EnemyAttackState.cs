@@ -13,7 +13,7 @@ public class EnemyAttackState : EntityAttackState<EnemyStateType, Enemy>
 		_stateMachine.ChangeState(EnemyStateType.Move);
 	}
 
-    protected override void TakeDamage()
+    protected override void Attack()
     {
         foreach (Collider2D item in GetInRange(_owner.EntityStatController.GetStatValue(StatType.AttackRange)).Item2)
         {

@@ -18,12 +18,12 @@ public abstract class EntityAttackState<T, G> : EntityState<T, G> where T : Enum
 			return;
 		}
 
-        TakeDamage();
+        Attack();
 
         CoroutineUtil.CallWaitForSeconds(_owner.GetAttackDelay(), EnterState);
     }
 
-	protected abstract void TakeDamage();
+	protected abstract void Attack();
 
 	protected virtual void EndAttack()
 	{

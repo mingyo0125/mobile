@@ -17,8 +17,8 @@ public class PlayerAttackState : EntityAttackState<PlayerStateType, Player>
 		_stateMachine.ChangeState(PlayerStateType.Move);
 	}
 
-    protected override void TakeDamage()
+    protected override void Attack()
     {
-        _owner.SkillHolder.PlaySkill("Fireball");
+        //_owner.SkillHolder.PlaySkill("Fireball");
     }
 }

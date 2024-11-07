@@ -149,11 +149,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _skillInfoSO: {fileID: 11400000, guid: 1626ba1fd54c7264889f924fc46af93c, type: 2}
-  castRadius: 0
-  <SpawnDir>k__BackingField: {x: 0, y: 0.7}
+  castRadius: 0.7
+  <SpawnDir>k__BackingField: {x: -0.3, y: 1.3}
   _enemyLayer:
     serializedVersion: 2
     m_Bits: 128
+  isCollisionUpdate: 0
 --- !u!114 &25048371169868749
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -166,5 +167,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da69c4b95d253af4dbb85963b588bb61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <Speed>k__BackingField: 1
+  <Speed>k__BackingField: 1.5
   _moveDir: {x: 1, y: -1}

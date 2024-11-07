@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class SkillVisual : MonoBehaviour, IMoveable
 {
-    private Animator _animator;
-
     private SpriteRenderer _spriteRenderer;
 
     public Rigidbody2D Rb { get; set; }
@@ -14,13 +12,13 @@ public class SkillVisual : MonoBehaviour, IMoveable
     public float Speed { get; set; }
 
     public event Action OnAnimationEndEvent;
+    public event Action OnTakeDamageEvent;
 
     [SerializeField]
     private Vector2 _moveDir;
 
     private void Awake()
     {
-        _animator = GetComponent<Animator>();
         _spriteRenderer = GetComponent<SpriteRenderer>();
 
         Rb = GetComponent<Rigidbody2D>();
@@ -36,6 +34,11 @@ public class SkillVisual : MonoBehaviour, IMoveable
     public void StopImmediately()
     {
         Rb.velocity = Vector2.zero;
+    }
+
+    public void TakeDamageEvent()
+    {
+        OnTakeDamageEvent?.Invoke();
     }
 
     public void AnimationEndEvent()
