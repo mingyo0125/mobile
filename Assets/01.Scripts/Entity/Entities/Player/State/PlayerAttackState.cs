@@ -19,6 +19,6 @@ public class PlayerAttackState : EntityAttackState<PlayerStateType, Player>
 
     protected override void TakeDamage()
     {
-        
+        _owner.SkillHolder.PlaySkill("Fireball");
     }
 }

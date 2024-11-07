@@ -474,12 +474,20 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 3018412360248145406, guid: d05745a8cbcbe3f448339838cf6a54cb, type: 3}
+      propertyPath: m_FillAmount
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7733788548751673261, guid: d05745a8cbcbe3f448339838cf6a54cb, type: 3}
       propertyPath: m_FillAmount
-      value: 0.992
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7733788548751673261, guid: d05745a8cbcbe3f448339838cf6a54cb, type: 3}
       propertyPath: m_FillOrigin
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9026932407117905546, guid: d05745a8cbcbe3f448339838cf6a54cb, type: 3}
+      propertyPath: m_PresetInfoIsWorld
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []

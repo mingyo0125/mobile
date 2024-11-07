@@ -9,6 +9,15 @@ public class Player : Entity<PlayerStateType, Player>
     [SerializeField]
     private PlayerStatSO _playerStatSO; 
 
+    public PlayerSkillHolder SkillHolder { get; private set; }
+
+    protected override void Awake()
+    {
+        base.Awake();
+
+        SkillHolder = transform.Find("SkillHolder").GetComponent<PlayerSkillHolder>();
+    }
+
     private void Start()
     {
         base.Initialize();

@@ -23,7 +23,6 @@ public class HitFeedback : Feedback
 
         if(takeDamageInfo.HitFeedbackEffect != null)
         {
-            Debug.Log(takeDamageInfo.HitFeedbackEffect.name);
             FeedbackEffect feedbackEffect = PoolManager.Instance.CreateObject(takeDamageInfo.HitFeedbackEffect.name) as FeedbackEffect;
             feedbackEffect.SetPosition(takeDamageInfo.HitPos); // 이거 맞은 위치로
         }

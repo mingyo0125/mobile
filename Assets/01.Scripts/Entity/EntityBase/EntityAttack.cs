@@ -26,20 +26,16 @@ public abstract partial class Entity<T, G>
     {
         if (isDrawRangeGizmo)
         {
-            if(this is Enemy)
-            {
-                EnemyStat statSO = GetStatSO() as EnemyStat;
-                float attackRange = statSO.AttackRange.Value;
+            float attackRange = GetStatSO().AttackRange.Value;
 
-                try
-                {
-                    Gizmos.color = _gizmoColor;
-                    Gizmos.DrawWireSphere(transform.position, attackRange);
-                }
-                catch
-                {
-                    Debug.LogWarning($"{gameObject} Stat is Not Setting");
-                }
+            try
+            {
+                Gizmos.color = _gizmoColor;
+                Gizmos.DrawWireSphere(transform.position, attackRange);
+            }
+            catch
+            {
+                Debug.LogWarning($"{gameObject} Stat is Not Setting");
             }
         }
     }
@@ -107,6 +103,10 @@ public abstract partial class Entity<T, G>
 
     public float GetAttackDelay()
     {
-        return DefualtAttackDelay - EntityStatController.GetStatValue(StatType.AttackDelay);
+        float attackDelay = Mathf.Clamp(DefualtAttackDelay - EntityStatController.GetStatValue(StatType.AttackDelay),
+                                        0.5f,
+                                        10);
+
+        return attackDelay;
     }
 }
