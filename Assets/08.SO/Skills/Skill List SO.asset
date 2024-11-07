@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <SkillLists>k__BackingField:
   - {fileID: 6029539073199443005, guid: 5094d1557b7552c48a113895b688591a, type: 3}
+  - {fileID: 5240213190911759195, guid: 3037ce7c3a91c3648a40b0b338daa60c, type: 3}

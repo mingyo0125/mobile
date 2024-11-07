@@ -15,6 +15,9 @@ public abstract class BaseSkill : PoolableMono
 
     protected SkillVisual _effect;
 
+    [field: SerializeField]
+    public Vector2 SpawnDir { get; private set; }
+
     [SerializeField]
     protected LayerMask _enemyLayer;
 
@@ -36,7 +39,6 @@ public abstract class BaseSkill : PoolableMono
         RaycastHit2D hit = Physics2D.CircleCast(transform.position, castRadius, transform.position, 0, _enemyLayer);
         if (hit)
         {
-            Debug.Log(hit.transform.gameObject);
             bool isEnemy = hit.collider.TryGetComponent(out IDamageable damageable) && damageable is Enemy;
             if (!isEnemy) { return; }
 
@@ -54,5 +56,11 @@ public abstract class BaseSkill : PoolableMono
     protected virtual void PlayEffect(Vector3 pos)
     {
         _effect.transform.position = pos;
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.green;
+        Gizmos.DrawWireSphere(transform.position, castRadius);
     }
 }

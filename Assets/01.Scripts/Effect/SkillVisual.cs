@@ -15,6 +15,9 @@ public class SkillVisual : MonoBehaviour, IMoveable
 
     public event Action OnAnimationEndEvent;
 
+    [SerializeField]
+    private Vector2 _moveDir;
+
     private void Awake()
     {
         _animator = GetComponent<Animator>();
@@ -27,7 +30,7 @@ public class SkillVisual : MonoBehaviour, IMoveable
     {
         _spriteRenderer.color = Color.white;
 
-        Move(transform.right);
+        Move(_moveDir);
     }
 
     public void StopImmediately()

@@ -16,7 +16,7 @@ public class SkillButton : UIButton
     {
         _skillHolder = GameManager.Instance.GetPlayer().SkillHolder;
 
-        AddSkill("Fireball");
+        AddSkill("Meteor");
     }
 
     public void AddSkill(string skillID)

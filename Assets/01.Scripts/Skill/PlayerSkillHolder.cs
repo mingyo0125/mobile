@@ -31,7 +31,7 @@ public class PlayerSkillHolder : MonoBehaviour
 
 
         _lastUsedTimes[id] = Time.time;
-        skillInstance.Execute(GameManager.Instance.GetPlayer(), transform.position);
+        skillInstance.Execute(GameManager.Instance.GetPlayer(), (Vector2)transform.position + skillInstance.SpawnDir);
     }
 
     private bool CanUse(string id, BaseSkill skill)
