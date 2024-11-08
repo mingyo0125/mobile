@@ -22,7 +22,7 @@ public class SkillButton : UIButton
 
     public void SubscribeSkill(string skillID)
     {
-        bool isContainsSkill = _skillHolder.CanUseSkills.TryGetValue(skillID, out BaseSkill skill);
+        bool isContainsSkill =  _skillHolder.CanUseSkills.TryGetValue(skillID, out BaseSkill skill);
         if (!isContainsSkill) { return; }
 
         if(_skillButtonInfo == null)

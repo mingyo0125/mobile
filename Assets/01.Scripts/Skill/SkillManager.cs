@@ -30,7 +30,11 @@ public class SkillManager : MonoSingleTon<SkillManager>
     {
         if(Input.GetKeyDown(KeyCode.S))
         {
-            Skills.Values.ToList().ForEach(s => _skillButtonsController.SubscribeSkill(s));
+            foreach(var skill in Skills)
+            {
+                AddSkill(skill.Key);
+                _skillButtonsController.SubscribeSkill(skill.Value);
+            }
         }
     }
 
