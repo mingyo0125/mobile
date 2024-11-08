@@ -17,10 +17,14 @@ public class SkillVisual : MonoBehaviour, IMoveable
     [SerializeField]
     private Vector2 _moveDir;
 
+    [SerializeField]
+    private bool isMoving;
+
     private void Awake()
     {
         _spriteRenderer = GetComponent<SpriteRenderer>();
 
+        if (!isMoving) { return; }
         Rb = GetComponent<Rigidbody2D>();
     }
 
@@ -28,11 +32,13 @@ public class SkillVisual : MonoBehaviour, IMoveable
     {
         _spriteRenderer.color = Color.white;
 
+        if (!isMoving) { return; }
         Move(_moveDir);
     }
 
     public void StopImmediately()
     {
+        if (!isMoving) { return; }
         Rb.velocity = Vector2.zero;
     }
 

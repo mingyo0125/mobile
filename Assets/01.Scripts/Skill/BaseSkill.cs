@@ -22,11 +22,11 @@ public abstract class BaseSkill : PoolableMono
     protected LayerMask _enemyLayer;
 
     [SerializeField]
-    private bool isCollisionUpdate;
+    private bool isCollisionUpdate, shouldDisappearOnCollision;
 
     protected virtual void Awake()
     {
-        _viusal = GetComponent<SkillVisual>();
+        _viusal = transform.Find("Visual").GetComponent<SkillVisual>();
 
         _viusal.OnAnimationEndEvent += () => PoolManager.Instance.DestroyObject(this);
     }
@@ -41,14 +41,17 @@ public abstract class BaseSkill : PoolableMono
     {
         if (!isCollisionUpdate) { return; }
 
-        if(TakeDamage())
+        if(TakeDamage() && shouldDisappearOnCollision)
         {
             _viusal.StopImmediately();
             _viusal.AnimationEndEvent();
         }
     }
 
-    public abstract void Execute(Player user, Vector2 pos);
+    public virtual void Execute(Player user, Vector2 pos)
+    {
+        PlayEffect(pos);
+    }
 
     protected virtual void PlayEffect(Vector3 pos)
     {
@@ -57,7 +60,7 @@ public abstract class BaseSkill : PoolableMono
 
     protected virtual bool TakeDamage()
     {
-        RaycastHit2D hit = Physics2D.CircleCast(transform.position, castRadius, transform.position, 0, _enemyLayer);
+        RaycastHit2D hit = Physics2D.CircleCast(_viusal.transform.position, castRadius, _viusal.transform.position, 0, _enemyLayer);
         if (hit)
         {
             bool isEnemy = hit.collider.TryGetComponent(out IDamageable damageable) && damageable is Enemy;
@@ -73,7 +76,7 @@ public abstract class BaseSkill : PoolableMono
         return false;
     }
 
-    private void OnDrawGizmosSelected()
+    private void OnDrawGizmos()
     {
         Gizmos.color = Color.green;
         Gizmos.DrawWireSphere(transform.position, castRadius);

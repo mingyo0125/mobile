@@ -10,9 +10,4 @@ public class Meteor : BaseSkill
 
         _viusal.OnTakeDamageEvent += TakeDamage;
     }
-
-    public override void Execute(Player user, Vector2 pos)
-    {
-        PlayEffect(pos);
-    }
 }

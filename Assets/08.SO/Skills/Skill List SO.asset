@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: Skill List SO
   m_EditorClassIdentifier: 
   <SkillLists>k__BackingField:
-  - {fileID: 6029539073199443005, guid: 5094d1557b7552c48a113895b688591a, type: 3}
-  - {fileID: 5240213190911759195, guid: 3037ce7c3a91c3648a40b0b338daa60c, type: 3}
+  - {fileID: 1412487375171477168, guid: e59f3b99cf7665a4a9ab8a72ac44908a, type: 3}
+  - {fileID: 7063732720037969284, guid: 0db393315a48d264d983cab74b059a93, type: 3}
+  - {fileID: 421930074360765688, guid: b3e2c36d3db3faa4d84e014fb8edbecc, type: 3}

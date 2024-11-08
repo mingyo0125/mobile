@@ -4,6 +4,9 @@ using UnityEngine.UIElements;
 
 public class SkillButton : UIButton
 {
+    [SerializeField]
+    private string testSkillInput;
+
     private PlayerSkillHolder _skillHolder;
 
     protected override void Awake()
@@ -16,14 +19,12 @@ public class SkillButton : UIButton
     {
         _skillHolder = GameManager.Instance.GetPlayer().SkillHolder;
 
-        AddSkill("Meteor");
+        AddSkill(testSkillInput);
     }
 
     public void AddSkill(string skillID)
     {
-        Debug.Log(_skillHolder);
         bool isContainsSkill = _skillHolder.Skills.ContainsKey(skillID);
-        Debug.Log(isContainsSkill);
         if (!isContainsSkill) { return; }
 
         _button.onClick.RemoveAllListeners();
