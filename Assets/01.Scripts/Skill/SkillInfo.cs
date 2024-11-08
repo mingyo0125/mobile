@@ -14,6 +14,9 @@ public class SkillInfo
     public float DamagePercent { get; private set; }
 
     [field: SerializeField]
+    public Sprite Icon { get; private set; }
+
+    [field: SerializeField]
     public FeedbackEffect HitFeedbackEffect { get; private set; }
 
     public SkillInfo(SkillInfo skillInfo)
@@ -23,5 +26,6 @@ public class SkillInfo
         this.Cooldown = skillInfo.Cooldown;
         this.DamagePercent = skillInfo.DamagePercent;
 
+        this.Icon = skillInfo.Icon;
     }
 }
