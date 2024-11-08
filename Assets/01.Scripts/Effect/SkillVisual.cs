@@ -12,7 +12,7 @@ public class SkillVisual : MonoBehaviour, IMoveable
     public float Speed { get; set; }
 
     public event Action OnAnimationEndEvent;
-    public event Action OnTakeDamageEvent;
+    public event Func<bool> OnTakeDamageEvent;
 
     [SerializeField]
     private Vector2 _moveDir;

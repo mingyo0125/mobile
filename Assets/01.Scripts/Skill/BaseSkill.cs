@@ -41,7 +41,11 @@ public abstract class BaseSkill : PoolableMono
     {
         if (!isCollisionUpdate) { return; }
 
-        TakeDamage();
+        if(TakeDamage())
+        {
+            _viusal.StopImmediately();
+            _viusal.AnimationEndEvent();
+        }
     }
 
     public abstract void Execute(Player user, Vector2 pos);
@@ -51,21 +55,22 @@ public abstract class BaseSkill : PoolableMono
         _viusal.transform.position = pos;
     }
 
-    protected virtual void TakeDamage()
+    protected virtual bool TakeDamage()
     {
         RaycastHit2D hit = Physics2D.CircleCast(transform.position, castRadius, transform.position, 0, _enemyLayer);
         if (hit)
         {
             bool isEnemy = hit.collider.TryGetComponent(out IDamageable damageable) && damageable is Enemy;
-            if (!isEnemy) { return; }
+            if (!isEnemy) { return false; }
 
             Vector2 hitPoint = hit.point;
 
             damageable.TakedDamage(GameManager.Instance.GetPlayer().GetSkillDamageInfo(_skillInfoSO.SkillInfo, hitPoint));
 
-            _viusal.StopImmediately();
-            _viusal.AnimationEndEvent();
+            return true;
         }
+
+        return false;
     }
 
     private void OnDrawGizmosSelected()
