@@ -11,15 +11,13 @@ public class SkillButton : UIButton
 
     private PlayerSkillHolder _skillHolder;
 
-    [SerializeField]
-    private Image _cooldownImage, _iconImage;
+    private Image _cooldownImage;
 
     private SkillButtonInfo _skillButtonInfo;
 
     private void Start()
     {
         _skillHolder = GameManager.Instance.GetPlayer().SkillHolder;
-        _skillButtonInfo = new SkillButtonInfo();
     }
 
     public void SubscribeSkill(string skillID)
@@ -27,22 +25,21 @@ public class SkillButton : UIButton
         bool isContainsSkill =  _skillHolder.CanUseSkills.TryGetValue(skillID, out BaseSkill skill);
         if (!isContainsSkill) { return; }
 
-        _skillButtonInfo.SetInfo(skill.SkillInfo);
+        if(_skillButtonInfo == null)
+        {
+            _skillButtonInfo = new SkillButtonInfo(skill.SkillInfo.SkillName,
+                                                   skill.SkillInfo.Description,
+                                                   skill.SkillInfo.Cooldown);
+        }
 
         _button.onClick.RemoveAllListeners();
         _button.onClick.AddListener(AddPermanentEvent);
         _button.onClick.AddListener(() => _skillHolder.PlaySkill(skillID));
-        SetVisual();
     }
 
     public void UnSubscribeSkill()
     {
         _skillButtonInfo = null;
-    }
-
-    private void SetVisual()
-    {
-        _iconImage.sprite = _skillButtonInfo.Icon;
     }
 
     private void AddPermanentEvent()
