@@ -16,6 +16,9 @@ public class SkillInfo
     [field: SerializeField]
     public FeedbackEffect HitFeedbackEffect { get; private set; }
 
+    [field: SerializeField]
+    public Sprite Icon { get; private set; }
+
     public SkillInfo(SkillInfo skillInfo)
     {
         this.SkillName = skillInfo.SkillName;
@@ -23,5 +26,6 @@ public class SkillInfo
         this.Cooldown = skillInfo.Cooldown;
         this.DamagePercent = skillInfo.DamagePercent;
 
+        this.Icon = skillInfo.Icon;
     }
 }
