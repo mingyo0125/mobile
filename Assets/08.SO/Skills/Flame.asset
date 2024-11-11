@@ -19,3 +19,4 @@ MonoBehaviour:
     <DamagePercent>k__BackingField: 300
     <HitFeedbackEffect>k__BackingField: {fileID: 7707854994357197448, guid: 647fb1399372ec9439b21d176cd734e5, type: 3}
     <Icon>k__BackingField: {fileID: 21300000, guid: 0566e81646bbedd41b1320a47fcafbb1, type: 3}
+    <SummonProbability>k__BackingField: 10
