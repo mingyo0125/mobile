@@ -2,7 +2,8 @@ using System;
 using UnityEngine;
 
 [Serializable]
-public class SkillInfo
+
+public class SkillInfo : ISummonItem
 {
     [field: SerializeField]
     public string SkillName { get; private set; }
@@ -19,6 +20,9 @@ public class SkillInfo
     [field: SerializeField]
     public Sprite Icon { get; private set; }
 
+    [field: SerializeField]
+    public float SummonProbability { get; private set; }
+
     public SkillInfo(SkillInfo skillInfo)
     {
         this.SkillName = skillInfo.SkillName;
@@ -27,5 +31,13 @@ public class SkillInfo
         this.DamagePercent = skillInfo.DamagePercent;
 
         this.Icon = skillInfo.Icon;
+
+        this.SummonProbability = skillInfo.SummonProbability;
+    }
+
+    public float GetSummonProbability()
+    {
+        Debug.Log("등급에 따라 다르게 하셈");
+        return SummonProbability;
     }
 }
