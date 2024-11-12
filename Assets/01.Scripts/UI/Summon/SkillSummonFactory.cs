@@ -5,7 +5,7 @@ using UnityEngine;
 public class SkillSummonFactory : SummonItemFactory<SkillInfo>
 {
     [SerializeField]
-    private SkillListSO _skillListSO; // 스킬 리스트 So로 바꾸셈
+    private SkillListSO _skillListSO;
 
     private List<SkillInfo> _skillInfoList = new List<SkillInfo>();
 
@@ -16,7 +16,7 @@ public class SkillSummonFactory : SummonItemFactory<SkillInfo>
             _skillInfoList.Add(item.SkillInfo);
         }
 
-        SpawnSummonItem(30);
+        SpawnSummonItem(10);
     }
 
     public override List<SkillInfo> GetCanSummonItems()

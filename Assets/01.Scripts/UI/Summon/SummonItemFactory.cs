@@ -22,12 +22,12 @@ public abstract class SummonItemFactory<T> : ObjectFactory<SummonItem> where T :
     {
         List<T> summonedItem = GetSummonItems(GetCanSummonItems(), count);
 
-
         foreach (T item in summonedItem)
         {
             SummonItem summonItem = PoolManager.Instance.CreateObject(SummonItem) as SummonItem;
             summonItem.transform.SetParent(_spawnParentTrm);
             summonItem.UpdateImage(item.GetSummonIcon());
+            item.GetItem();
 
             _spawnParentTrm.DOShakePosition(spawnDelayTime, Vector2.one * 10, 10, 90);
 
