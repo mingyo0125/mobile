@@ -7,17 +7,27 @@ public abstract class SummonItemFactory<T> : ObjectFactory<SummonItem> where T :
     [SerializeField]
     private Transform _spawnParentTrm;
 
+    [SerializeField]
+    private float spawnDelayTime = 0.05f;
+
     private const string SummonItem = "SummonItem_Image";
 
     public virtual void SpawnSummonItem(int count)
     {
+        StartCoroutine(SpawnSummonItemCorou(count));
+    }
+
+    private IEnumerator SpawnSummonItemCorou(int count)
+    {
         List<T> summonedItem = GetSummonItems(GetCanSummonItems(), count);
 
-        foreach(T item in summonedItem)
+        foreach (T item in summonedItem)
         {
             SummonItem summonItem = PoolManager.Instance.CreateObject(SummonItem) as SummonItem;
             summonItem.transform.SetParent(_spawnParentTrm);
             summonItem.UpdateImage(item.GetSummonIcon());
+
+            yield return new WaitForSeconds(spawnDelayTime);
         }
     }
 

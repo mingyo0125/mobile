@@ -13,9 +13,11 @@ public class SummonItem : UIImage
 
         transform.localScale = Vector3.zero;
 
-        _sequence
-               .Prepend(transform.DOScale(1.3f, 0.3f).SetEase(Ease.OutBack))
-               .Append(transform.DOScale(1f, 0.1f).SetEase(Ease.Linear))
-               .Insert(0.1f, ((RectTransform)transform).DOShakeAnchorPos(1f, Vector2.one * 5, 10, 90));
+        //Sequence.Kill();
+
+        Sequence
+            .Prepend(transform.DOScale(1.3f, 0.3f).SetEase(Ease.OutBack))
+            .Append(transform.DOScale(1f, 0.1f).SetEase(Ease.Linear))
+            .Insert(0.05f,transform.DOShakePosition(0.05f, Vector2.one * 10, 10, 90));
     }
 }

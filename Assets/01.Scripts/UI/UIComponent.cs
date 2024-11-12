@@ -8,11 +8,20 @@ public abstract class UIComponent : PoolableMono, IGUI
 
     public bool IsActive { get; private set; }
 
-    protected Sequence _sequence { get; private set; }
+    private Sequence _sequence;
 
-    private void Awake()
+    protected Sequence Sequence
     {
-        _sequence = DOTween.Sequence();
+        get
+        {
+            if (_sequence == null)
+            {
+                _sequence = DOTween.Sequence();
+                return _sequence;
+            }
+            
+            return _sequence;
+        }
     }
 
     public void GenerateUI(Transform parent, UIGenerateType generateType)
@@ -39,6 +48,14 @@ public abstract class UIComponent : PoolableMono, IGUI
     {
         IsActive = false;
         PoolManager.Instance.DestroyObject(this);
+    }
+
+    private void OnDisable()
+    {
+        if (_sequence != null && _sequence.IsActive())
+        {
+            _sequence.Kill();
+        }
     }
 
     public abstract void UpdateUI();
