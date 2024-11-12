@@ -1540,7 +1540,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _spawnEntityTypes: 4
   _spawnParentTrm: {fileID: 2083350232}
-  spawnDelayTime: 0.13
+  spawnDelayTime: 0.1
   _skillListSO: {fileID: 11400000, guid: 5201373617cf3ea4a8e5504766089d08, type: 2}
 --- !u!1 &333000559
 GameObject:
