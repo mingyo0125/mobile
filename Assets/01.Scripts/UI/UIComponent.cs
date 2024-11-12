@@ -1,3 +1,4 @@
+using DG.Tweening;
 using UnityEngine;
 
 public abstract class UIComponent : PoolableMono, IGUI
@@ -6,6 +7,13 @@ public abstract class UIComponent : PoolableMono, IGUI
     public UIGenerateType GenerateType { get; private set; }
 
     public bool IsActive { get; private set; }
+
+    protected Sequence _sequence { get; private set; }
+
+    private void Awake()
+    {
+        _sequence = DOTween.Sequence();
+    }
 
     public void GenerateUI(Transform parent, UIGenerateType generateType)
     {
