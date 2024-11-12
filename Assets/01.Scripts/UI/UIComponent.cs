@@ -14,12 +14,8 @@ public abstract class UIComponent : PoolableMono, IGUI
     {
         get
         {
-            if (_sequence == null)
-            {
-                _sequence = DOTween.Sequence();
-                return _sequence;
-            }
-            
+            _sequence = DOTween.Sequence();
+
             return _sequence;
         }
     }
@@ -54,7 +50,9 @@ public abstract class UIComponent : PoolableMono, IGUI
     {
         if (_sequence != null && _sequence.IsActive())
         {
+            transform.localScale = Vector2.one;
             _sequence.Kill();
+            _sequence = null;
         }
     }
 

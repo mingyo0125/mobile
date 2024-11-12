@@ -14,17 +14,23 @@ public abstract class SummonItemFactory<T> : ObjectFactory<SummonItem> where T :
 
     private const string SummonItem = "SummonItem_Image";
 
+    private const int xDistance = 150, yDistance = -150;
+
+
     public virtual void SpawnSummonItem(int count)
     {
         _prevSpawnItems.ForEach(item => PoolManager.Instance.DestroyObject(item));
+        _prevSpawnItems.Clear();
 
         StartCoroutine(SpawnSummonItemCorou(count));
     }
 
     private IEnumerator SpawnSummonItemCorou(int count)
     {
-        List<T> summonedItem = GetSummonItems(GetCanSummonItems(), count);
+        int xCount = 0, yCount = 0;
 
+        List<T> summonedItem = GetSummonItems(GetCanSummonItems(), count);
+        Debug.Log(summonedItem.Count);
         foreach (T item in summonedItem)
         {
             SummonItem summonItem = PoolManager.Instance.CreateObject(SummonItem) as SummonItem;
@@ -34,7 +40,17 @@ public abstract class SummonItemFactory<T> : ObjectFactory<SummonItem> where T :
 
             _prevSpawnItems.Add(summonItem);
 
-            _spawnParentTrm.DOShakePosition(spawnDelayTime, Vector2.one * 10, 10, 90);
+            //_spawnParentTrm.DOShakePosition(spawnDelayTime, Vector2.one * 10, 10, 90);
+
+            SetSummonItemPos(summonItem, xCount, yCount);
+
+            xCount++;
+
+            if (xCount == 5)
+            {
+                xCount = 0;
+                yCount++;
+            }
 
             yield return new WaitForSeconds(spawnDelayTime);
         }
@@ -66,6 +82,15 @@ public abstract class SummonItemFactory<T> : ObjectFactory<SummonItem> where T :
         }
 
         return results;
+    }
+
+    private void SetSummonItemPos(SummonItem summonItem, int xCount, int yCount)
+    {
+        RectTransform rectTransform = (RectTransform)summonItem.transform;
+
+        rectTransform.anchoredPosition = new Vector2(50, -50);
+
+        rectTransform.anchoredPosition += new Vector2(xDistance * xCount, yDistance * yCount);
     }
 
     public abstract List<T> GetCanSummonItems();

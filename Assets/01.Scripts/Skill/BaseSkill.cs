@@ -30,10 +30,10 @@ public abstract class BaseSkill : PoolableMono
 
         _viusal.OnAnimationEndEvent += () => PoolManager.Instance.DestroyObject(this);
 
-        SetInfo();
+        InitializeSkillInfo();
     }
 
-    public void SetInfo()
+    public void InitializeSkillInfo()
     {
         SkillInfo = new SkillInfo(_skillInfoSO.SkillInfo);
     }
