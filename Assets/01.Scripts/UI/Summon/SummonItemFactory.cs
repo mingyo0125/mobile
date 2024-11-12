@@ -7,6 +7,7 @@ public abstract class SummonItemFactory<T> : ObjectFactory<SummonItem> where T :
 {
     [SerializeField]
     private Transform _spawnParentTrm;
+    private List<SummonItem> _prevSpawnItems = new List<SummonItem>();
 
     [SerializeField]
     private float spawnDelayTime = 0.05f;
@@ -15,6 +16,8 @@ public abstract class SummonItemFactory<T> : ObjectFactory<SummonItem> where T :
 
     public virtual void SpawnSummonItem(int count)
     {
+        _prevSpawnItems.ForEach(item => PoolManager.Instance.DestroyObject(item));
+
         StartCoroutine(SpawnSummonItemCorou(count));
     }
 
@@ -28,6 +31,8 @@ public abstract class SummonItemFactory<T> : ObjectFactory<SummonItem> where T :
             summonItem.transform.SetParent(_spawnParentTrm);
             summonItem.UpdateImage(item.GetSummonIcon());
             item.GetItem();
+
+            _prevSpawnItems.Add(summonItem);
 
             _spawnParentTrm.DOShakePosition(spawnDelayTime, Vector2.one * 10, 10, 90);
 

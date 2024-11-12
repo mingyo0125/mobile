@@ -11,7 +11,7 @@ public abstract class BaseSkill : PoolableMono
     [Range(0f, 5f)]
     protected float castRadius;
 
-    public SkillInfo SkillInfo => _skillInfoSO.SkillInfo;
+    public SkillInfo SkillInfo { get; private set; }
 
     protected SkillVisual _viusal;
 
@@ -29,6 +29,13 @@ public abstract class BaseSkill : PoolableMono
         _viusal = transform.Find("Visual").GetComponent<SkillVisual>();
 
         _viusal.OnAnimationEndEvent += () => PoolManager.Instance.DestroyObject(this);
+
+        SetInfo();
+    }
+
+    public void SetInfo()
+    {
+        SkillInfo = new SkillInfo(_skillInfoSO.SkillInfo);
     }
 
     public override void Initialize()
@@ -68,7 +75,7 @@ public abstract class BaseSkill : PoolableMono
 
             Vector2 hitPoint = hit.point;
 
-            damageable.TakedDamage(GameManager.Instance.GetPlayer().GetSkillDamageInfo(_skillInfoSO.SkillInfo, hitPoint));
+            damageable.TakedDamage(GameManager.Instance.GetPlayer().GetSkillDamageInfo(SkillInfo, hitPoint));
 
             return true;
         }

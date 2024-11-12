@@ -23,6 +23,7 @@ public class SkillManager : MonoSingleTon<SkillManager>
 
         foreach (BaseSkill skill in _skillListSO.SkillLists)
         {
+            skill.SetInfo();
             Skills.Add(skill.SkillInfo.SkillName, skill);
         }
 
