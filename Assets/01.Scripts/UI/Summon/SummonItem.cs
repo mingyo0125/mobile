@@ -1,11 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class SummonItem : PoolableMono
+public class SummonItem : UIImage
 {
-    public override void Initialize()
-    {
-        base.Initialize();
-    }
+
 }

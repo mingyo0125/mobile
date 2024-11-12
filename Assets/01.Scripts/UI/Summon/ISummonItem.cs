@@ -5,4 +5,5 @@ using UnityEngine;
 public interface ISummonItem
 {
     public float GetSummonProbability();
+    public Sprite GetSummonIcon();
 }

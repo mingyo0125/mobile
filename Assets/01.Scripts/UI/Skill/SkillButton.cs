@@ -30,14 +30,16 @@ public class SkillButton : UIButton
 
         _skillButtonInfo.SetInfo(skill.SkillInfo);
 
-        SetVisual();
+        UpdateUI();
         _button.onClick.RemoveAllListeners();
         _button.onClick.AddListener(AddPermanentEvent);
         _button.onClick.AddListener(() => _skillHolder.PlaySkill(skillID));
     }
 
-    private void SetVisual()
+    public override void UpdateUI()
     {
+        base.UpdateUI();
+
         _iconImage.sprite = _skillButtonInfo.Icon;
     }
 

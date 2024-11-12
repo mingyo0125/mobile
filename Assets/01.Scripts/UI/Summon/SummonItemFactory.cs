@@ -4,15 +4,20 @@ using UnityEngine;
 
 public abstract class SummonItemFactory<T> : ObjectFactory<SummonItem> where T : ISummonItem
 {
-    public abstract List<T> GetCanSummonItems();
+    [SerializeField]
+    private Transform _spawnParentTrm;
+
+    private const string SummonItem = "SummonItem_Image";
 
     public virtual void SpawnSummonItem(int count)
     {
-        List<T> summonedItem = GetSummonItems(GetCanSummonItems(), 10);
+        List<T> summonedItem = GetSummonItems(GetCanSummonItems(), count);
 
         foreach(T item in summonedItem)
         {
-            Debug.Log(item.GetSummonProbability());
+            SummonItem summonItem = PoolManager.Instance.CreateObject(SummonItem) as SummonItem;
+            summonItem.transform.SetParent(_spawnParentTrm);
+            summonItem.UpdateImage(item.GetSummonIcon());
         }
     }
 
@@ -43,4 +48,6 @@ public abstract class SummonItemFactory<T> : ObjectFactory<SummonItem> where T :
 
         return results;
     }
+
+    public abstract List<T> GetCanSummonItems();
 }

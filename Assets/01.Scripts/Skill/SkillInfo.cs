@@ -40,4 +40,9 @@ public class SkillInfo : ISummonItem
         Debug.Log("등급에 따라 다르게 하셈");
         return SummonProbability;
     }
+
+    public Sprite GetSummonIcon()
+    {
+        return Icon;
+    }
 }
