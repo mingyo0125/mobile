@@ -29,11 +29,15 @@ public abstract class UIComponent : PoolableMono, IGUI
 
         transform.SetParent(parent);
 
-        if (generateType == UIGenerateType.SETPOS)
-        {
-            ((RectTransform)transform).offsetMin = Vector2.zero;
-            ((RectTransform)transform).offsetMax = Vector2.zero;
-        }
+        transform.localPosition = Vector2.zero;
+        ((RectTransform)transform).anchoredPosition = Vector2.zero;
+        ((RectTransform)transform).sizeDelta = Vector2.zero;
+
+        //if (generateType == UIGenerateType.SETPOS)
+        //{
+        //    ((RectTransform)transform).offsetMin = Vector2.zero;
+        //    ((RectTransform)transform).offsetMax = Vector2.zero;
+        //}
 
         IsActive = true;
         Parent = parent;

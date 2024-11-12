@@ -19,6 +19,11 @@ public class UIManager : MonoSingleTon<UIManager>
         //{
         //    TopUI.UpdateUI();
         //}
+
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            UIManager.Instance.GenerateUI("SummonUI", null, UIGenerateType.STACKING);
+        }
     }
 
     public UIComponent GenerateUI(string name, Transform parent = null, UIGenerateType generateType = UIGenerateType.NONE)

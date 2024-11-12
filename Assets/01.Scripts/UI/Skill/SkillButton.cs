@@ -71,4 +71,5 @@ public class SkillButton : UIButton
         _cooldownImage.fillAmount = 0;
         _button.interactable = true;
     }
+
 }

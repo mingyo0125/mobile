@@ -15,8 +15,6 @@ public class SkillSummonFactory : SummonItemFactory<SkillInfo>
         {
             _skillInfoList.Add(item.SkillInfo);
         }
-
-        SpawnSummonItem(10);
     }
 
     public override List<SkillInfo> GetCanSummonItems()

@@ -5,8 +5,6 @@ using UnityEngine;
 
 public abstract class SummonItemFactory<T> : ObjectFactory<SummonItem> where T : ISummonItem
 {
-    [SerializeField]
-    private Transform _spawnParentTrm;
     private List<SummonItem> _prevSpawnItems = new List<SummonItem>();
 
     [SerializeField]
@@ -17,30 +15,30 @@ public abstract class SummonItemFactory<T> : ObjectFactory<SummonItem> where T :
     private const int xDistance = 150, yDistance = -150;
 
 
-    public virtual void SpawnSummonItem(int count)
+    public virtual void SpawnSummonItem(Transform spawnParentTrm, int count)
     {
         _prevSpawnItems.ForEach(item => PoolManager.Instance.DestroyObject(item));
         _prevSpawnItems.Clear();
 
-        StartCoroutine(SpawnSummonItemCorou(count));
+        StartCoroutine(SpawnSummonItemCorou(spawnParentTrm, count));
     }
 
-    private IEnumerator SpawnSummonItemCorou(int count)
+    private IEnumerator SpawnSummonItemCorou(Transform spawnParentTrm, int count)
     {
         int xCount = 0, yCount = 0;
 
         List<T> summonedItem = GetSummonItems(GetCanSummonItems(), count);
-        Debug.Log(summonedItem.Count);
+
         foreach (T item in summonedItem)
         {
             SummonItem summonItem = PoolManager.Instance.CreateObject(SummonItem) as SummonItem;
-            summonItem.transform.SetParent(_spawnParentTrm);
+            summonItem.transform.SetParent(spawnParentTrm);
             summonItem.UpdateImage(item.GetSummonIcon());
             item.GetItem();
 
             _prevSpawnItems.Add(summonItem);
 
-            //_spawnParentTrm.DOShakePosition(spawnDelayTime, Vector2.one * 10, 10, 90);
+            spawnParentTrm.DOShakePosition(spawnDelayTime, Vector2.one * 10, 10, 90);
 
             SetSummonItemPos(summonItem, xCount, yCount);
 
