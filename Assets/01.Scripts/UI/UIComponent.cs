@@ -32,6 +32,7 @@ public abstract class UIComponent : PoolableMono, IGUI
         transform.localPosition = Vector2.zero;
         ((RectTransform)transform).anchoredPosition = Vector2.zero;
         ((RectTransform)transform).sizeDelta = Vector2.zero;
+        transform.localScale = Vector2.one;
 
         //if (generateType == UIGenerateType.SETPOS)
         //{
