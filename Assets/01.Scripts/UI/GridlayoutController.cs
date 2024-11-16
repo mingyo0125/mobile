@@ -20,7 +20,5 @@ public class GridlayoutController : MonoBehaviour
                                        yValue + Screen.height * iisfullVertical);
 
         GetComponent<GridLayoutGroup>().cellSize = cellSize;
-
-        Debug.Log($"{gameObject}: {cellSize}");
     }
 }

@@ -40,7 +40,7 @@ public class UIManager : MonoSingleTon<UIManager>
     {
         if(_uiComponentsStack.Count > 0)
         {
-            var top = _uiComponentsStack.Pop();
+            UIComponent top = _uiComponentsStack.Pop();
             top.RemoveUI();
         }
     }
