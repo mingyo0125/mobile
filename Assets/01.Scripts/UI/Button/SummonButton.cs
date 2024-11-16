@@ -5,23 +5,22 @@ using UnityEngine;
 public class SummonButton : UIButton
 {
     [SerializeField]
-    private int summonCount;
+    private ReSummonUI _reSummonUI;
 
     [SerializeField]
-    private Transform _spawnParentTrm;
-
-    private SkillSummonFactory _skillSummonFactory;
-
-    protected override void Awake()
-    {
-        base.Awake();
-
-        _skillSummonFactory = FindAnyObjectByType<SkillSummonFactory>();
-    }
+    private int summonCount;
 
     protected override void ButtonEvent()
     {
         base.ButtonEvent();
-        _skillSummonFactory.SpawnSummonItem(_spawnParentTrm, summonCount);
+
+        if(_reSummonUI != null)
+        {
+            _reSummonUI.SpawnSummonItem(summonCount);
+            return;
+        }
+
+        ReSummonUI reSummonUI = UIManager.Instance.GenerateUI("ReSummonUI", null, UIGenerateType.STACKING) as ReSummonUI;
+        reSummonUI.SpawnSummonItem(summonCount);
     }
 }

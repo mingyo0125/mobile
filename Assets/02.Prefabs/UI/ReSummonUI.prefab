@@ -297,8 +297,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9aa9f4aedcd27dd4389894381f914c87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _reSummonUI: {fileID: 463847362282030706}
   summonCount: 10
-  _spawnParentTrm: {fileID: 1012031187367392856}
 --- !u!1 &1649587824353018235
 GameObject:
   m_ObjectHideFlags: 0
@@ -655,8 +655,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9aa9f4aedcd27dd4389894381f914c87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _reSummonUI: {fileID: 463847362282030706}
   summonCount: 35
-  _spawnParentTrm: {fileID: 1012031187367392856}
 --- !u!1 &1880047869352982425
 GameObject:
   m_ObjectHideFlags: 0
@@ -1053,6 +1053,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 568fb5524dd51d442902a019963835b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _spawnParentTrm: {fileID: 1012031187367392856}
 --- !u!1 &4392844652278272104
 GameObject:
   m_ObjectHideFlags: 0
