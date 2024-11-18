@@ -14,7 +14,6 @@ public abstract class SummonItemFactory<T> : ObjectFactory<SummonItem> where T :
 
     private const int xDistance = 150, yDistance = -150;
 
-
     public virtual void SpawnSummonItem(Transform spawnParentTrm, int count)
     {
         _prevSpawnItems.ForEach(item => PoolManager.Instance.DestroyObject(item));
