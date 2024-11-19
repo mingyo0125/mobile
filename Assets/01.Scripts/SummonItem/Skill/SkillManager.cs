@@ -24,7 +24,7 @@ public class SkillManager : MonoSingleTon<SkillManager>
         foreach (BaseSkill skill in _skillListSO.SkillLists)
         {
             skill.InitializeSkillInfo();
-            Skills.Add(skill.SkillInfo.SummonItemInfo.ItemId, skill);
+            Skills.Add(skill.SkillInfo.ItemId, skill);
         }
 
         AddSkill("Fireball");
@@ -44,7 +44,7 @@ public class SkillManager : MonoSingleTon<SkillManager>
         {
             foreach (var skill in Skills)
             {
-                Debug.Log(skill.Value.SkillInfo.SummonItemInfo.ElementsCount);
+                Debug.Log(skill.Value.SkillInfo.ElementsCount);
             }
         }
     }
@@ -53,27 +53,44 @@ public class SkillManager : MonoSingleTon<SkillManager>
     {
         if(!Skills.TryGetValue(skillId, out BaseSkill skill)) { return; }
 
-        if (_skillHolder.CanUseSkills.ContainsKey(skillId))
+        if(!SkillsInventory.ContainsKey(skillId)) // 처음 획득 했으면
         {
             _skillHolder.AddSkill(skillId, skill);
             SkillsInventory.Add(skillId, 0);
+            Skills[skillId].SkillInfo.ItemLevelUp();
         }
 
+        //if (_skillHolder.CanUseSkills.ContainsKey(skillId))
+        //{
+        //    _skillHolder.AddSkill(skillId, skill);
+        //    SkillsInventory.Add(skillId, 0);
+        //    Skills[skillId].SkillInfo.ItemLevelUp();
+        //}
+
+
         // 가지고 있는 스킬의 수를 더한다.
-        Skills[skillId].SkillInfo.SummonItemInfo.AddElementsCount();
+        Skills[skillId].SkillInfo.AddElementsCount();
     }
 
-    public void RemoveSkill(string skillId)
+    public void UnEquipSkill(string skillId)
     {
         if (!Skills.ContainsKey(skillId)) { return; }
 
         _skillHolder.RemoveSkill(skillId);
     }
 
-    public void EquipSkill(string skillId)
+    public bool EquipSkill(string skillId)
     {
-        if (!Skills.TryGetValue(skillId, out BaseSkill skill)) { return; }
+        if(!SkillsInventory.ContainsKey(skillId))
+        {
+            Debug.LogError($"Player doesn't have {skillId}Skill");
+            return false;
+        }
+
+        if (!Skills.TryGetValue(skillId, out BaseSkill skill)) { return false; }
 
         _skillButtonsController.SubscribeSkill(skill);
+
+        return true;
     }
 }

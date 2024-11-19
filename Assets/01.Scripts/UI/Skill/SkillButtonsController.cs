@@ -20,10 +20,13 @@ public class SkillButtonsController : MonoBehaviour
 
     public void SubscribeSkill(BaseSkill skill)
     {
+        Debug.Log($"Subscribe{skill}");
+
         if(_notUsedButtons.Count > 0) // 스킬 칸이 다 안 차있으면
         {
+            Debug.Log($"Subscribe{skill}");
             SkillButton button = _notUsedButtons.Dequeue();
-            button.SubscribeSkill(skill.SkillInfo.SummonItemInfo.ItemId);
+            button.SubscribeSkill(skill.SkillInfo.ItemId);
 
             _usingSkillButtons.Add(button, skill);
             return;

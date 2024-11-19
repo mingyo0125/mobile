@@ -9,6 +9,7 @@ public class PlayerSkillHolder : MonoBehaviour
 
     public void AddSkill(string id, BaseSkill skill)
     {
+        Debug.Log($"Add Skill {id}");
         CanUseSkills.Add(id, skill);
         _lastUsedTimes.Add(id, -Mathf.Infinity);  
     }
@@ -22,7 +23,7 @@ public class PlayerSkillHolder : MonoBehaviour
     {
         if (!CanUseSkills.TryGetValue(id, out BaseSkill skill))
         {
-            Debug.LogError($"Player doesn't have {id} Skill");
+            Debug.LogError($"Player doesn't Equip {id} Skill");
             return;
         }
         

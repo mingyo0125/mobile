@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [Serializable]
-public class SummonItemInfo: ISummonItem
+public class SummonItemInfo : ISummonItem
 {
     [field: SerializeField]
     public string ItemId { get; private set; }
@@ -21,29 +21,41 @@ public class SummonItemInfo: ISummonItem
     [field: SerializeField]
     public int ItemLevel { get; private set; }
 
+    [field: SerializeField]
+    public ItemType ItemType { get; private set; }
 
     // 나중에 직렬화 지우셈 later
     [field: SerializeField]
     public int ElementsCount { get; private set; }
+
+    public SummonItemInfo(SummonItemInfo summonItemInfo)
+    {
+        this.ItemId = summonItemInfo.ItemId;
+        this.ItemName = summonItemInfo.ItemName;
+        this.Icon = summonItemInfo.Icon;
+        this.SummonProbability = summonItemInfo.SummonProbability;
+        this.ItemLevel = summonItemInfo.ItemLevel;
+        this.ItemType = summonItemInfo.ItemType;
+        this.ElementsCount = summonItemInfo.ElementsCount;
+    }
 
     public void AddElementsCount()
     {
         ElementsCount++;
     }
 
-
-    #region
-
-    public void GetItem()
+    public void ItemLevelUp()
     {
-        SkillManager.Instance.AddSkill(ItemId);
+        ItemLevel++;
     }
 
+    public virtual bool EquipItem() { return false; }
 
-    public void EquipSummonItem()
+    public virtual void UnEquipItem()
     {
-        SkillManager.Instance.EquipSkill(ItemId);
     }
 
-    #endregion ISummonItem
+    public virtual void GetItem()
+    {
+    }
 }

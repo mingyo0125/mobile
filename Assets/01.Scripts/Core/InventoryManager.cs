@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEditor.Progress;
 
 public enum ItemType
 {
@@ -12,32 +13,38 @@ public enum ItemType
 
 public class InventoryManager : MonoSingleTon<InventoryManager>
 {
-    private Dictionary<ItemType, Dictionary<string, ISummonItem>> _itemInventory = new ();
+    private Dictionary<ItemType, Dictionary<string, SummonItemInfo>> _equippedInventory = new ();
 
     private void Awake()
     {
         foreach(ItemType itemType in Enum.GetValues(typeof(ItemType)))
         {
-            _itemInventory.Add(itemType, new Dictionary<string, ISummonItem>());
+            _equippedInventory.Add(itemType, new Dictionary<string, SummonItemInfo>());
         }
     }
 
-    public void EquipItem(ItemType itemType, SummonItemInfo summonItem)
+    public void EquipItem(SummonItemInfo summonItem)
     {
-        _itemInventory[itemType].Add(summonItem.ItemId, summonItem);
-        
+        ItemType itemType = summonItem.ItemType;
+
+        if (!summonItem.EquipItem()) { return; }
+
+        _equippedInventory[itemType].Add(summonItem.ItemId, summonItem);
+
         Debug.Log($"{itemType}인벤토리에 {summonItem.ItemId} 장착");
     }
 
     public void UnEquipItem(ItemType itemType, string summonItemName)
     {
-        if (!_itemInventory[itemType].ContainsKey(summonItemName))
+        if (!_equippedInventory[itemType].TryGetValue(summonItemName, out SummonItemInfo summonItem))
         {
             Debug.Log($"{itemType}인벤토리에 {summonItemName} 없어서 장착 해제 불가능");
             return;
         }
 
-        _itemInventory[itemType].Remove(summonItemName);
+        summonItem.UnEquipItem();
+        _equippedInventory[itemType].Remove(summonItemName);
+
         Debug.Log($"{itemType}인벤토리에 {summonItemName} 장착 해제");
     }
 }

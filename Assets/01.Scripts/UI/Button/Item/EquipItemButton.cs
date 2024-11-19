@@ -4,9 +4,6 @@ using UnityEngine;
 
 public class EquipItemButton : UI_Button
 {
-    [SerializeField]
-    private ItemType _itemType;
-
     private SummonItemInfo _item;
 
     public void SetSummonItem(SummonItemInfo summonItem)
@@ -16,6 +13,6 @@ public class EquipItemButton : UI_Button
 
     protected override void ButtonEvent()
     {
-        InventoryManager.Instance.EquipItem(_itemType, _item);
+        InventoryManager.Instance.EquipItem(_item);
     }
 }

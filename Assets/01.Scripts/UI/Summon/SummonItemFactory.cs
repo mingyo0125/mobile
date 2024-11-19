@@ -32,6 +32,7 @@ public abstract class SummonItemFactory : ObjectFactory<SummonItem>
         {
             SummonItem summonItem = PoolManager.Instance.CreateObject(SummonItem) as SummonItem;
             summonItem.transform.SetParent(spawnParentTrm);
+            
             summonItem.UpdateImage(item.Icon);
             item.GetItem();
 

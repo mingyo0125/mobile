@@ -13,7 +13,7 @@ public class SkillSummonFactory : SummonItemFactory
         SummonItemInfo[] summonItemInfos = new SummonItemInfo[_skillListSO.SkillLists.Count];
         for (int i = 0; i < _skillListSO.SkillLists.Count; i++)
         {
-            summonItemInfos[i] = _skillListSO.SkillLists[i].SkillInfo.SummonItemInfo;
+            summonItemInfos[i] = _skillListSO.SkillLists[i].SkillInfo;
         }
 
         return summonItemInfos.ToList();

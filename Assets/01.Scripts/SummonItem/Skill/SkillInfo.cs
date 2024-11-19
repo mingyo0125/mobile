@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 
 [Serializable]
-public class SkillInfo
+public class SkillInfo : SummonItemInfo
 {
     [field: SerializeField]
     public string Description { get; private set; }
@@ -14,15 +14,36 @@ public class SkillInfo
     [field: SerializeField]
     public FeedbackEffect HitFeedbackEffect { get; private set; }
 
-    [field: SerializeField]
-    public SummonItemInfo SummonItemInfo { get; private set; }
+    //[field: SerializeField]
+    //public SummonItemInfo SummonItemInfo;
 
-    public SkillInfo(SkillInfo skillInfo)
+    public SkillInfo(SkillInfo skillInfo) : base(skillInfo)
     {
         this.Description = skillInfo.Description;
         this.Cooldown = skillInfo.Cooldown;
         this.DamagePercent = skillInfo.DamagePercent;
+    }
 
-        this.SummonItemInfo = skillInfo.SummonItemInfo;
+    //public SkillInfo(SkillInfo skillInfo)
+    //{
+    //    this.Description = skillInfo.Description;
+    //    this.Cooldown = skillInfo.Cooldown;
+    //    this.DamagePercent = skillInfo.DamagePercent;
+    //}
+
+    public override bool EquipItem()
+    {
+        return SkillManager.Instance.EquipSkill(ItemId);
+    }
+
+    public override void UnEquipItem()
+    {
+        SkillManager.Instance.UnEquipSkill(ItemId);
+    }
+
+    public override void GetItem()
+    {
+        Debug.Log($"GetItem {ItemId}");
+        SkillManager.Instance.AddSkill(ItemId);
     }
 }
