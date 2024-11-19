@@ -24,13 +24,6 @@ public class SkillInfo : SummonItemInfo
         this.DamagePercent = skillInfo.DamagePercent;
     }
 
-    //public SkillInfo(SkillInfo skillInfo)
-    //{
-    //    this.Description = skillInfo.Description;
-    //    this.Cooldown = skillInfo.Cooldown;
-    //    this.DamagePercent = skillInfo.DamagePercent;
-    //}
-
     public override bool EquipItem()
     {
         return SkillManager.Instance.EquipSkill(ItemId);

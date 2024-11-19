@@ -15,7 +15,7 @@ MonoBehaviour:
   <SkillInfo>k__BackingField:
     <ItemId>k__BackingField: Flame
     <ItemName>k__BackingField: "\uD50C\uB808\uC784"
-    <Icon>k__BackingField: {fileID: 21300000, guid: ecf71879cde63fe4e9c4d52fb0bc038c, type: 3}
+    <Icon>k__BackingField: {fileID: -9022386717482406885, guid: f5246608584596f45a9a22eb0f3cf0a6, type: 3}
     <SummonProbability>k__BackingField: 20
     <ItemLevel>k__BackingField: 0
     <ItemType>k__BackingField: 0

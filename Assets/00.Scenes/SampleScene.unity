@@ -2462,7 +2462,7 @@ MonoBehaviour:
   <_icon>k__BackingField: {fileID: 527673504}
   _levelText: {fileID: 527673503}
   _bgImage: {fileID: 527673505}
-  _equipButton: {fileID: 0}
+  <_equipButton>k__BackingField: {fileID: 0}
 --- !u!1 &541330022
 GameObject:
   m_ObjectHideFlags: 0
@@ -4818,7 +4818,7 @@ MonoBehaviour:
   <_icon>k__BackingField: {fileID: 889138103}
   _levelText: {fileID: 889138102}
   _bgImage: {fileID: 889138104}
-  _equipButton: {fileID: 0}
+  <_equipButton>k__BackingField: {fileID: 0}
 --- !u!1 &908798835
 GameObject:
   m_ObjectHideFlags: 0
@@ -5169,7 +5169,7 @@ MonoBehaviour:
   <_icon>k__BackingField: {fileID: 988461932}
   _levelText: {fileID: 988461931}
   _bgImage: {fileID: 988461933}
-  _equipButton: {fileID: 0}
+  <_equipButton>k__BackingField: {fileID: 0}
 --- !u!1 &1020903294
 GameObject:
   m_ObjectHideFlags: 0
@@ -7235,7 +7235,7 @@ MonoBehaviour:
   <_icon>k__BackingField: {fileID: 1351703218}
   _levelText: {fileID: 1351703217}
   _bgImage: {fileID: 1351703219}
-  _equipButton: {fileID: 0}
+  <_equipButton>k__BackingField: {fileID: 0}
 --- !u!1 &1358150607
 GameObject:
   m_ObjectHideFlags: 0

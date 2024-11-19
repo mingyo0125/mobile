@@ -33,6 +33,13 @@ public class InventoryItem_Icon : SummonItem_Icon
         //_unEquipButton.AddClickEvent(UnEquipItem);
     }
 
+    protected override void Init()
+    {
+        base.Init();
+
+        _icon.sprite = _summonItem.Icon;
+    }
+
     public void EquipItem()
     {
         _equippedIcon.SetActive(true);
