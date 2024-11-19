@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UIImage : UIComponent
+public class UI_Image : UI_Component
 {
     [field: SerializeField]
     protected Image _icon { get; private set; }

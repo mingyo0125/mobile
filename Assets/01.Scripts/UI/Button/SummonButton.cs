@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SummonButton : UIButton
+public class SummonButton : UI_Button
 {
     [SerializeField]
     private ReSummonUI _reSummonUI;

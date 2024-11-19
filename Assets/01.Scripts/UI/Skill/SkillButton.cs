@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 
-public class SkillButton : UIButton
+public class SkillButton : UI_Button
 {
     [SerializeField]
     private string testSkillInput;

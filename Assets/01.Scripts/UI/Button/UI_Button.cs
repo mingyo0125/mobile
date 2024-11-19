@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public abstract class UIButton : UIComponent
+public abstract class UI_Button : UI_Component
 {
     protected Button _button { get; private set; }
 

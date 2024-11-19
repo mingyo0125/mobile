@@ -11,10 +11,10 @@ public class SkillButtonInfo
 
     public void SetInfo(SkillInfo skillInfo)
     {
-        this.Name = skillInfo.SkillName;
+        this.Name = skillInfo.SummonItemInfo.ItemName;
         this.Description = skillInfo.Description;
         this.CoolTime = skillInfo.Cooldown;
 
-        this.Icon = skillInfo.Icon;
+        this.Icon = skillInfo.SummonItemInfo.Icon;
     }
 }

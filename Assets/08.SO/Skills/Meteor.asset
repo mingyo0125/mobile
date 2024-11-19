@@ -13,11 +13,12 @@ MonoBehaviour:
   m_Name: Meteor
   m_EditorClassIdentifier: 
   <SkillInfo>k__BackingField:
-    <SkillName>k__BackingField: Meteor
     <Description>k__BackingField: "\uBA54\uD14C\uC624\uC774\uB2E4"
     <Cooldown>k__BackingField: 5
     <DamagePercent>k__BackingField: 200
     <HitFeedbackEffect>k__BackingField: {fileID: 7707854994357197448, guid: 647fb1399372ec9439b21d176cd734e5, type: 3}
-    <Icon>k__BackingField: {fileID: 21300000, guid: bb4918088fdb1af45aaa738e5d60197f, type: 3}
-    <SummonProbability>k__BackingField: 20
-    <ElementsCount>k__BackingField: 0
+    <SummonItemInfo>k__BackingField:
+      <ItemName>k__BackingField: Meteor
+      <Icon>k__BackingField: {fileID: 21300000, guid: b6353be0312b87a499b5cecaa04f3851, type: 3}
+      <SummonProbability>k__BackingField: 10
+      <ElementsCount>k__BackingField: 0

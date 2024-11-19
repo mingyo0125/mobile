@@ -1,5 +1,5 @@
 
-public class CloseButton : UIButton
+public class CloseButton : UI_Button
 {
     protected override void ButtonEvent()
     {

@@ -5,7 +5,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class SummonItem : UIImage
+public class SummonItem : UI_Image
 {
     public override void Initialize()
     {

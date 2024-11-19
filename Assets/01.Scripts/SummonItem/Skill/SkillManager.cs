@@ -18,13 +18,13 @@ public class SkillManager : MonoSingleTon<SkillManager>
 
     private void Awake()
     {
-        _skillHolder = FindAnyObjectByType<PlayerSkillHolder>();
         _skillButtonsController = FindAnyObjectByType<SkillButtonsController>();
+        _skillHolder = FindAnyObjectByType<PlayerSkillHolder>();
 
         foreach (BaseSkill skill in _skillListSO.SkillLists)
         {
             skill.InitializeSkillInfo();
-            Skills.Add(skill.SkillInfo.SkillName, skill);
+            Skills.Add(skill.SkillInfo.SummonItemInfo.ItemName, skill);
         }
 
         AddSkill("Fireball");
@@ -37,7 +37,6 @@ public class SkillManager : MonoSingleTon<SkillManager>
             foreach(var skill in Skills)
             {
                 AddSkill(skill.Key);
-                _skillButtonsController.SubscribeSkill(skill.Value);
             }
         }
 
@@ -45,7 +44,7 @@ public class SkillManager : MonoSingleTon<SkillManager>
         {
             foreach (var skill in Skills)
             {
-                Debug.Log(skill.Value.SkillInfo.ElementsCount);
+                Debug.Log(skill.Value.SkillInfo.SummonItemInfo.ElementsCount);
             }
         }
     }
@@ -54,7 +53,7 @@ public class SkillManager : MonoSingleTon<SkillManager>
     {
         if(!Skills.TryGetValue(skillId, out BaseSkill skill)) { return; }
 
-        if(!_skillHolder.CanUseSkills.ContainsKey(skillId))
+        if (_skillHolder.CanUseSkills.ContainsKey(skillId))
         {
             _skillHolder.AddSkill(skillId, skill);
             SkillsInventory.Add(skillId, 0);
@@ -69,5 +68,12 @@ public class SkillManager : MonoSingleTon<SkillManager>
         if (!Skills.ContainsKey(skillId)) { return; }
 
         _skillHolder.RemoveSkill(skillId);
+    }
+
+    public void EquipSkill(string skillId)
+    {
+        if (!Skills.TryGetValue(skillId, out BaseSkill skill)) { return; }
+
+        _skillButtonsController.SubscribeSkill(skill);
     }
 }

@@ -9,8 +9,8 @@ public class UIManager : MonoSingleTon<UIManager>
     [SerializeField]
     private Canvas _canvas;
 
-    private Stack<UIComponent> _uiComponentsStack = new Stack<UIComponent>();
-    public UIComponent TopUI => _uiComponentsStack.Peek();
+    private Stack<UI_Component> _uiComponentsStack = new Stack<UI_Component>();
+    public UI_Component TopUI => _uiComponentsStack.Peek();
 
     private void Update()
     {
@@ -21,11 +21,11 @@ public class UIManager : MonoSingleTon<UIManager>
         //}
     }
 
-    public UIComponent GenerateUI(string name, Transform parent = null, UIGenerateType generateType = UIGenerateType.NONE)
+    public UI_Component GenerateUI(string name, Transform parent = null, UIGenerateType generateType = UIGenerateType.NONE)
     {
         if(parent == null) { parent = _canvas.transform; }
 
-        UIComponent ui = PoolManager.Instance.CreateObject(name) as UIComponent;
+        UI_Component ui = PoolManager.Instance.CreateObject(name) as UI_Component;
 
         if (ui is null) { return null; }
 
@@ -40,7 +40,7 @@ public class UIManager : MonoSingleTon<UIManager>
     {
         if(_uiComponentsStack.Count > 0)
         {
-            UIComponent top = _uiComponentsStack.Pop();
+            UI_Component top = _uiComponentsStack.Pop();
             top.RemoveUI();
         }
     }
@@ -69,7 +69,7 @@ public class UIManager : MonoSingleTon<UIManager>
 
     public void ClearPanel()
     {
-        List<UIComponent> generatedComponents = new List<UIComponent>();
+        List<UI_Component> generatedComponents = new List<UI_Component>();
         _canvas.GetComponentsInChildren(generatedComponents);
 
         foreach (var component in generatedComponents)

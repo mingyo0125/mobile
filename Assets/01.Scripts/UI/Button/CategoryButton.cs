@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CategoryButton : UIButton
+public class CategoryButton : UI_Button
 {
     [SerializeField]
     private string categoryName;

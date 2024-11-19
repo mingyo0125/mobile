@@ -24,7 +24,7 @@ public struct StatUpgradeUIInfo
     }
 }
 
-public class StatUpgradeUIContainer : UIComponent
+public class StatUpgradeUIContainer : UI_Component
 {
     [SerializeField]
     private Image _statImage;

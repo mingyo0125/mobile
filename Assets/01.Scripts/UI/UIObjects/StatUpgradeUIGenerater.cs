@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class StatUpgradeUIGenerater : ObjectFactory<UIComponent>, IScrollHandler
+public class StatUpgradeUIGenerater : ObjectFactory<UI_Component>, IScrollHandler
 {
     private readonly string statUpgradeUIContatinerbaseName = "UpgradeStatContainer_v";
 

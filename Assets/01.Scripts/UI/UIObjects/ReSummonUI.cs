@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ReSummonUI : UIComponent
+public class ReSummonUI : UI_Component
 {
     [SerializeField]
     private Transform _spawnParentTrm;
