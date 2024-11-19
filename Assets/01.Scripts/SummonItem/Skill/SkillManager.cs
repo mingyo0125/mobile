@@ -60,7 +60,7 @@ public class SkillManager : MonoSingleTon<SkillManager>
         }
 
         // 가지고 있는 스킬의 수를 더한다.
-        Skills[skillId].SkillInfo.AddElementsCount();
+        Skills[skillId].SkillInfo.SummonItemInfo.AddElementsCount();
     }
 
     public void RemoveSkill(string skillId)

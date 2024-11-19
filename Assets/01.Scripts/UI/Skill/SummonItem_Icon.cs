@@ -19,6 +19,8 @@ public class SummonItem_Icon : UI_Image
     {
         _summonItem = summonItem;
         _equipButton.SetSummonItem(_summonItem);
+
+        UpdateLevelText(_summonItem.GetItemLevel());
     }
 
     public void UpdateLevelText(int level)

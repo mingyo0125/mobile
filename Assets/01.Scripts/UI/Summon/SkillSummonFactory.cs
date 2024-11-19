@@ -1,24 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
-public class SkillSummonFactory : SummonItemFactory<SkillInfo>
+public class SkillSummonFactory : SummonItemFactory
 {
     [SerializeField]
     private SkillListSO _skillListSO;
 
-    private List<SkillInfo> _skillInfoList = new List<SkillInfo>();
-
-    private void Start()
+    public override List<SummonItemInfo> GetCanSummonItems()
     {
-        foreach (BaseSkill item in _skillListSO.SkillLists)
+        SummonItemInfo[] summonItemInfos = new SummonItemInfo[_skillListSO.SkillLists.Count];
+        for (int i = 0; i < _skillListSO.SkillLists.Count; i++)
         {
-            _skillInfoList.Add(item.SkillInfo);
+            summonItemInfos[i] = _skillListSO.SkillLists[i].SkillInfo.SummonItemInfo;
         }
-    }
 
-    public override List<SkillInfo> GetCanSummonItems()
-    {
-        return _skillInfoList;
+        return summonItemInfos.ToList();
     }
 }

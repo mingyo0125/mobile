@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class SummonItemIconFactory<T> : ObjectFactory<InventoryItem_Icon> where T : ISummonItem
+public abstract class SummonItemIconFactory : ObjectFactory<InventoryItem_Icon>
 {
     private const string InventoryItemIcon = "Inventory_ItemIcon";
 
@@ -15,5 +15,5 @@ public abstract class SummonItemIconFactory<T> : ObjectFactory<InventoryItem_Ico
         }
     }
 
-    protected abstract List<T> GetSummonItems();
+    protected abstract List<SummonItemInfo> GetSummonItems();
 }

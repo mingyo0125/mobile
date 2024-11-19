@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 
 [Serializable]
-public class SkillInfo : ISummonItem
+public class SkillInfo
 {
     [field: SerializeField]
     public string Description { get; private set; }
@@ -25,45 +25,4 @@ public class SkillInfo : ISummonItem
 
         this.SummonItemInfo = skillInfo.SummonItemInfo;
     }
-
-    #region
-
-    public float GetSummonProbability()
-    {
-        Debug.Log("등급에 따라 다르게 하셈");
-        return SummonItemInfo.SummonProbability;
-    }
-
-    public Sprite GetSummonIcon()
-    {
-        return SummonItemInfo.Icon;
-    }
-
-    public void GetItem()
-    {
-        SkillManager.Instance.AddSkill(SummonItemInfo.ItemName);
-    }
-
-    public int GetElementsCount()
-    {
-        return SummonItemInfo.ElementsCount;
-    }
-
-    public void AddElementsCount()
-    {
-        SummonItemInfo.AddElementsCount();
-    }
-
-    public string GetName()
-    {
-        return SummonItemInfo.ItemName;
-    }
-
-    public void EquipSummonItem()
-    {
-        SkillManager.Instance.EquipSkill(SummonItemInfo.ItemName);
-    }
-
-    #endregion
-
 }

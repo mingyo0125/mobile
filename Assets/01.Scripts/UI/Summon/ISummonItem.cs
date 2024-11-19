@@ -11,4 +11,5 @@ public interface ISummonItem
     public int GetElementsCount();
     public void AddElementsCount();
     public void EquipSummonItem();
+    public int GetItemLevel();
 }

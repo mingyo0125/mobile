@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class SummonItemFactory<T> : ObjectFactory<SummonItem> where T : ISummonItem
+public abstract class SummonItemFactory : ObjectFactory<SummonItem>
 {
     private List<SummonItem> _prevSpawnItems = new List<SummonItem>();
 
@@ -26,9 +26,9 @@ public abstract class SummonItemFactory<T> : ObjectFactory<SummonItem> where T :
     {
         int xCount = 0, yCount = 0;
 
-        List<T> summonedItem = GetSummonItems(GetCanSummonItems(), count);
+        List<SummonItemInfo> summonedItem = GetSummonItems(GetCanSummonItems(), count);
 
-        foreach (T item in summonedItem)
+        foreach (SummonItemInfo item in summonedItem)
         {
             SummonItem summonItem = PoolManager.Instance.CreateObject(SummonItem) as SummonItem;
             summonItem.transform.SetParent(spawnParentTrm);
@@ -53,9 +53,9 @@ public abstract class SummonItemFactory<T> : ObjectFactory<SummonItem> where T :
         }
     }
 
-    private List<T> GetSummonItems(List<T> cansummonItems, int count)
+    private List<SummonItemInfo> GetSummonItems(List<SummonItemInfo> cansummonItems, int count)
     {
-        List<T> results = new List<T>();
+        List<SummonItemInfo> results = new List<SummonItemInfo>();
 
         float totalProbability = 0f;
         foreach (var equipment in cansummonItems)
@@ -67,7 +67,7 @@ public abstract class SummonItemFactory<T> : ObjectFactory<SummonItem> where T :
         {
             float randomPoint = Random.value * totalProbability;
 
-            foreach (T item in cansummonItems)
+            foreach (SummonItemInfo item in cansummonItems)
             {
                 if (randomPoint < item.GetSummonProbability())
                 {
@@ -90,5 +90,5 @@ public abstract class SummonItemFactory<T> : ObjectFactory<SummonItem> where T :
         rectTransform.anchoredPosition += new Vector2(xDistance * xCount, yDistance * yCount);
     }
 
-    public abstract List<T> GetCanSummonItems();
+    public abstract List<SummonItemInfo> GetCanSummonItems();
 }
