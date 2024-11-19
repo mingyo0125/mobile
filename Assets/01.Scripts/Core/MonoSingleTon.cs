@@ -16,7 +16,7 @@ public class MonoSingleTon<T> : MonoBehaviour where T : MonoBehaviour
 
                 if(instance == null)
                 {
-                    Debug.LogError($"{typeof(T)}is not Founded");
+                    Debug.LogError($"{typeof(T)} is not Founded");
                 }
             }
 
