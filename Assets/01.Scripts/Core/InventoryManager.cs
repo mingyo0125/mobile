@@ -29,6 +29,8 @@ public class InventoryManager : MonoSingleTon<InventoryManager>
 
         if (!summonItem.EquipItem()) { return; }
 
+        summonItem.OnItemEquipEvent?.Invoke();
+
         _equippedInventory[itemType].Add(summonItem.ItemId, summonItem);
 
         Debug.Log($"{itemType}인벤토리에 {summonItem.ItemId} 장착");

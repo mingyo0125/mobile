@@ -28,6 +28,14 @@ public class SummonItemInfo : ISummonItem
     [field: SerializeField]
     public int ElementsCount { get; private set; }
 
+
+    #region Events
+
+    public event Action OnItemUnEquipEvent = null, OnItemGetEvent = null;
+    public Action OnItemEquipEvent = null;
+
+    #endregion
+
     public SummonItemInfo(SummonItemInfo summonItemInfo)
     {
         this.ItemId = summonItemInfo.ItemId;
@@ -49,13 +57,18 @@ public class SummonItemInfo : ISummonItem
         ItemLevel++;
     }
 
-    public virtual bool EquipItem() { return false; }
+    public virtual bool EquipItem()
+    {
+        return false;
+    }
 
     public virtual void UnEquipItem()
     {
+        OnItemUnEquipEvent?.Invoke();
     }
 
     public virtual void GetItem()
     {
+        OnItemGetEvent?.Invoke();
     }
 }

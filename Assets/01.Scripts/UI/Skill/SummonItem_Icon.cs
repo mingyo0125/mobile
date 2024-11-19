@@ -10,10 +10,12 @@ public class SummonItem_Icon : UI_Image
     [SerializeField]
     private Image _bgImage;
 
-    [SerializeField]
-    private EquipItemButton _equipButton;
+    [field: SerializeField]
+    protected EquipItemButton _equipButton { get; private set; }
+    //[SerializeField]
+    //private UnEquipButton _unEquipButton;
 
-    private SummonItemInfo _summonItem;
+    protected SummonItemInfo _summonItem { get; private set; }
 
     public void SetSummonItem(SummonItemInfo summonItem)
     {
