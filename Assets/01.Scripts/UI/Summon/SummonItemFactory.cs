@@ -32,7 +32,7 @@ public abstract class SummonItemFactory : ObjectFactory<SummonItem>
         {
             SummonItem summonItem = PoolManager.Instance.CreateObject(SummonItem) as SummonItem;
             summonItem.transform.SetParent(spawnParentTrm);
-            summonItem.UpdateImage(item.GetSummonIcon());
+            summonItem.UpdateImage(item.Icon);
             item.GetItem();
 
             _prevSpawnItems.Add(summonItem);
@@ -60,7 +60,7 @@ public abstract class SummonItemFactory : ObjectFactory<SummonItem>
         float totalProbability = 0f;
         foreach (var equipment in cansummonItems)
         {
-            totalProbability += equipment.GetSummonProbability();
+            totalProbability += equipment.SummonProbability;
         }
 
         for (int i = 0; i < count; i++)
@@ -69,12 +69,12 @@ public abstract class SummonItemFactory : ObjectFactory<SummonItem>
 
             foreach (SummonItemInfo item in cansummonItems)
             {
-                if (randomPoint < item.GetSummonProbability())
+                if (randomPoint < item.SummonProbability)
                 {
                     results.Add(item);
                     break;
                 }
-                randomPoint -= item.GetSummonProbability();
+                randomPoint -= item.SummonProbability;
             }
         }
 

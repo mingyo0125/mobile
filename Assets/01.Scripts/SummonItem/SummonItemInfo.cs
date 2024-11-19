@@ -7,6 +7,9 @@ using UnityEngine;
 public class SummonItemInfo: ISummonItem
 {
     [field: SerializeField]
+    public string ItemId { get; private set; }
+
+    [field: SerializeField]
     public string ItemName { get; private set; }
 
     [field: SerializeField]
@@ -31,40 +34,15 @@ public class SummonItemInfo: ISummonItem
 
     #region
 
-    public float GetSummonProbability()
-    {
-        Debug.Log("등급에 따라 다르게 하셈");
-        return SummonProbability;
-    }
-
-    public Sprite GetSummonIcon()
-    {
-        return Icon;
-    }
-
     public void GetItem()
     {
-        SkillManager.Instance.AddSkill(ItemName);
+        SkillManager.Instance.AddSkill(ItemId);
     }
 
-    public int GetElementsCount()
-    {
-        return ElementsCount;
-    }
-
-    public string GetName()
-    {
-        return ItemName;
-    }
 
     public void EquipSummonItem()
     {
-        SkillManager.Instance.EquipSkill(ItemName);
-    }
-
-    public int GetItemLevel()
-    {
-        return ItemLevel;
+        SkillManager.Instance.EquipSkill(ItemId);
     }
 
     #endregion ISummonItem

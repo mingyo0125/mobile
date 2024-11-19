@@ -13,14 +13,14 @@ public class SummonItem_Icon : UI_Image
     [SerializeField]
     private EquipItemButton _equipButton;
 
-    private ISummonItem _summonItem;
+    private SummonItemInfo _summonItem;
 
-    public void SetSummonItem(ISummonItem summonItem)
+    public void SetSummonItem(SummonItemInfo summonItem)
     {
         _summonItem = summonItem;
         _equipButton.SetSummonItem(_summonItem);
 
-        UpdateLevelText(_summonItem.GetItemLevel());
+        UpdateLevelText(_summonItem.ItemLevel);
     }
 
     public void UpdateLevelText(int level)

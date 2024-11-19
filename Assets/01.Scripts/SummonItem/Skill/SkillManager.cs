@@ -24,7 +24,7 @@ public class SkillManager : MonoSingleTon<SkillManager>
         foreach (BaseSkill skill in _skillListSO.SkillLists)
         {
             skill.InitializeSkillInfo();
-            Skills.Add(skill.SkillInfo.SummonItemInfo.ItemName, skill);
+            Skills.Add(skill.SkillInfo.SummonItemInfo.ItemId, skill);
         }
 
         AddSkill("Fireball");

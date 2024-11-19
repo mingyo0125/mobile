@@ -18,8 +18,9 @@ MonoBehaviour:
     <DamagePercent>k__BackingField: 100
     <HitFeedbackEffect>k__BackingField: {fileID: 7707854994357197448, guid: 647fb1399372ec9439b21d176cd734e5, type: 3}
     <SummonItemInfo>k__BackingField:
-      <ItemName>k__BackingField: Fireball
-      <Icon>k__BackingField: {fileID: 21300000, guid: 32d90fb72fe735748b99838d4670c390, type: 3}
+      <ItemId>k__BackingField: Fireball
+      <ItemName>k__BackingField: "\uD30C\uC774\uC5B4\uBCFC"
+      <Icon>k__BackingField: {fileID: 21300000, guid: ecf71879cde63fe4e9c4d52fb0bc038c, type: 3}
       <SummonProbability>k__BackingField: 50
-      <ItemLevel>k__BackingField: 1
-      <ElementsCount>k__BackingField: 5
+      <ItemLevel>k__BackingField: 0
+      <ElementsCount>k__BackingField: 0

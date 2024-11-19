@@ -22,11 +22,11 @@ public class InventoryManager : MonoSingleTon<InventoryManager>
         }
     }
 
-    public void EquipItem(ItemType itemType, ISummonItem summonItem)
+    public void EquipItem(ItemType itemType, SummonItemInfo summonItem)
     {
-        _itemInventory[itemType].Add(summonItem.GetName(), summonItem);
+        _itemInventory[itemType].Add(summonItem.ItemId, summonItem);
         
-        Debug.Log($"{itemType}인벤토리에 {summonItem.GetName()} 장착");
+        Debug.Log($"{itemType}인벤토리에 {summonItem.ItemId} 장착");
     }
 
     public void UnEquipItem(ItemType itemType, string summonItemName)

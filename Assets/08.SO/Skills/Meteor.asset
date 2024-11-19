@@ -18,8 +18,9 @@ MonoBehaviour:
     <DamagePercent>k__BackingField: 200
     <HitFeedbackEffect>k__BackingField: {fileID: 7707854994357197448, guid: 647fb1399372ec9439b21d176cd734e5, type: 3}
     <SummonItemInfo>k__BackingField:
-      <ItemName>k__BackingField: Meteor
-      <Icon>k__BackingField: {fileID: 21300000, guid: b6353be0312b87a499b5cecaa04f3851, type: 3}
-      <SummonProbability>k__BackingField: 10
-      <ItemLevel>k__BackingField: 3
+      <ItemId>k__BackingField: Meteor
+      <ItemName>k__BackingField: "\uBA54\uD14C\uC624"
+      <Icon>k__BackingField: {fileID: 21300000, guid: f4e8f1196a4385c4e8c058707354f94a, type: 3}
+      <SummonProbability>k__BackingField: 20
+      <ItemLevel>k__BackingField: 0
       <ElementsCount>k__BackingField: 0

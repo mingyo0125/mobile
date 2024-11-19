@@ -7,9 +7,9 @@ public class EquipItemButton : UI_Button
     [SerializeField]
     private ItemType _itemType;
 
-    private ISummonItem _item;
+    private SummonItemInfo _item;
 
-    public void SetSummonItem(ISummonItem summonItem)
+    public void SetSummonItem(SummonItemInfo summonItem)
     {
         _item = summonItem;
     }

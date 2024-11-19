@@ -11,7 +11,7 @@ public class SkillButtonInfo
 
     public void SetInfo(SkillInfo skillInfo)
     {
-        this.Name = skillInfo.SummonItemInfo.ItemName;
+        this.Name = skillInfo.SummonItemInfo.ItemId;
         this.Description = skillInfo.Description;
         this.CoolTime = skillInfo.Cooldown;
 
