@@ -62,16 +62,32 @@ public class InventoryItem_Icon : SummonItem_Icon
             isLocked = false;
         }
 
-        float fillAmount = Mathf.Clamp(_summonItem.ElementsCount / _summonItem.UpgradableCount,
+        //int로만 하면 int의 나눗셈을 해서 소수점을 버림
+        float fillAmount = Mathf.Clamp((float)_summonItem.ElementsCount / _summonItem.UpgradableCount,
                                        0,
                                        1);
 
         _itemCountFillAmountImage.fillAmount = fillAmount;
         _itemCountText.SetText($"{_summonItem.ElementsCount}/{_summonItem.UpgradableCount}");
+
+        if(_summonItem.ElementsCount > _summonItem.UpgradableCount)
+        {
+            SetCanUpgrade();
+        }
     }
 
     public void UnLockItem()
     {
         _lockPanel.SetActive(false);
+    }
+
+    private void SetCanUpgrade()
+    {
+        _targetAchievedImage.SetActive(true);
+    }
+
+    private void Upgrade()
+    {
+        _targetAchievedImage.SetActive(false);
     }
 }
