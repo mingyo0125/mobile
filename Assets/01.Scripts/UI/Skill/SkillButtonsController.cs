@@ -9,7 +9,7 @@ public class SkillButtonsController : MonoBehaviour
 
     private Queue<SkillButton> _notUsedButtons;
 
-    private Dictionary<SkillButton, BaseSkill> _usingSkillButtons = new Dictionary<SkillButton, BaseSkill>();
+    private Dictionary<BaseSkill, SkillButton> _usingSkillButtons = new Dictionary<BaseSkill, SkillButton>();
 
     private void Awake()
     {
@@ -26,26 +26,20 @@ public class SkillButtonsController : MonoBehaviour
             SkillButton button = _notUsedButtons.Dequeue();
             button.SubscribeSkill(skill.SkillInfo.ItemId);
 
-            _usingSkillButtons.Add(button, skill);
+            _usingSkillButtons.Add(skill, button);
             return;
         }
 
         // 스킬칸이 다 차있으면 할거 무언가
     }
 
-    public void UnSubscribeSkill()
+    public void UnSubscribeSkill(BaseSkill skill)
     {
-        if (_notUsedButtons.Count <= 0) // 스킬 칸에 지워져 있지 않으면
-        {
-            return;
-        }
+        if (!_usingSkillButtons.TryGetValue(skill, out SkillButton button)) { return; }
 
-        // 나중에 지정 해서 지움 later
-
-        SkillButton button = _notUsedButtons.Dequeue();
         button.UnSubscribeSkill();
 
-        _usingSkillButtons.Remove(button);
+        _usingSkillButtons.Remove(skill);
         return;
     }
 }

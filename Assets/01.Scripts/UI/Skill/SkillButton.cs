@@ -45,7 +45,6 @@ public class SkillButton : UI_Button
 
     public void UnSubscribeSkill()
     {
-        // 이미지 같은거 지워야함
         Debug.Log(_iconImage.sprite);
         Debug.Log(_iconImage.gameObject);
         _iconImage.sprite = null;

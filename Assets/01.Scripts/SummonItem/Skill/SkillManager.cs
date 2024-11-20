@@ -74,11 +74,11 @@ public class SkillManager : MonoSingleTon<SkillManager>
 
     public void UnEquipSkill(string skillId)
     {
-        if (!Skills.ContainsKey(skillId)) { return; }
+        if (!Skills.TryGetValue(skillId, out BaseSkill skill)) { return; }
 
         _skillHolder.RemoveSkill(skillId);
 
-        _skillButtonsController.UnSubscribeSkill();
+        _skillButtonsController.UnSubscribeSkill(skill);
     }
 
     public bool EquipSkill(string skillId)
