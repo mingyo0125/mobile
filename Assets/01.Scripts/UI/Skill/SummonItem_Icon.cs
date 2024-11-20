@@ -24,13 +24,13 @@ public class SummonItem_Icon : UI_Image
         _equipButton.SetSummonItem(_summonItem);
         _unEquipItemButton.SetSummonItem(_summonItem);
 
-        UpdateLevelText(_summonItem.ItemLevel);
+        UpdateLevelText();
         Init();
     }
 
-    public void UpdateLevelText(int level)
+    public void UpdateLevelText()
     {
-        _levelText.SetText($"Lv:{level}");
+        _levelText.SetText($"Lv:{_summonItem.ItemLevel}");
     }
 
     public void UpdateBGColor(Color color)
@@ -40,6 +40,7 @@ public class SummonItem_Icon : UI_Image
 
     protected virtual void Init()
     {
+        _summonItem.OnItemLevelUpEvent += UpdateLevelText;
 
     }
 }

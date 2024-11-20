@@ -28,12 +28,14 @@ public class SummonItemInfo : ISummonItem
     [field: SerializeField]
     public int ElementsCount { get; private set; }
 
+    public int UpgradableCount { get; private set; }
 
     #region Events
 
     public event Action OnItemUnEquipEvent = null, OnItemGetEvent = null;
     public Action OnItemEquipEvent = null;
 
+    public event Action OnItemLevelUpEvent = null;
     #endregion
 
     public SummonItemInfo(SummonItemInfo summonItemInfo)
@@ -45,6 +47,13 @@ public class SummonItemInfo : ISummonItem
         this.ItemLevel = summonItemInfo.ItemLevel;
         this.ItemType = summonItemInfo.ItemType;
         this.ElementsCount = summonItemInfo.ElementsCount;
+
+        OnItemUnEquipEvent = null;
+        OnItemGetEvent = null;
+        OnItemEquipEvent = null;
+        OnItemLevelUpEvent = null;
+
+        UpgradableCount = 2;
     }
 
     public void AddElementsCount()
@@ -55,6 +64,8 @@ public class SummonItemInfo : ISummonItem
     public void ItemLevelUp()
     {
         ItemLevel++;
+        UpgradableCount += 2;
+        OnItemLevelUpEvent?.Invoke();
     }
 
     public virtual bool EquipItem()

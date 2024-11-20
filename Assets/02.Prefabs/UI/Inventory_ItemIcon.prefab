@@ -1171,7 +1171,7 @@ MonoBehaviour:
   _lockPanel: {fileID: 2838507559350955497}
   _targetAchievedImage: {fileID: 7533887071121365517}
   _equippedIcon: {fileID: 1359389394768283003}
-  _itemCountFillAmount: {fileID: 4578619636957420425}
+  _itemCountFillAmountImage: {fileID: 4578619636957420425}
   _itemCountText: {fileID: 5683868700302375334}
 --- !u!1 &5874312087882224600
 GameObject:

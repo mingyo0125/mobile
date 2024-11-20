@@ -20,17 +20,16 @@ public class InventoryItem_Icon : SummonItem_Icon
 
     [Header("ItemCount")]
     [SerializeField]
-    private Image _itemCountFillAmount;
+    private Image _itemCountFillAmountImage;
     [SerializeField]
     private TextMeshProUGUI _itemCountText;
+
+    private bool isLocked = true;
 
     private void Start()
     {
         _equipButton.AddClickEvent(EquipItem);
         _unEquipItemButton.AddClickEvent(UnEquipItem);
-
-        _summonItem.OnItemGetEvent += GetItem;
-
     }
 
     protected override void Init()
@@ -38,24 +37,37 @@ public class InventoryItem_Icon : SummonItem_Icon
         base.Init();
 
         _icon.sprite = _summonItem.Icon;
+        _summonItem.OnItemGetEvent += GetItem;
     }
 
     public void EquipItem()
     {
         _equippedIcon.SetActive(true);
         _unEquipItemButton.gameObject.SetActive(true);
+        _equipButton.gameObject.SetActive(false);
     }
 
     private void UnEquipItem()
     {
         _equippedIcon.SetActive(false);
         _unEquipItemButton.gameObject.SetActive(false);
-
+        _equipButton.gameObject.SetActive(true);
     }
 
     public void GetItem()
     {
-        _lockPanel.SetActive(false);
+        if(isLocked)
+        {
+            _lockPanel.SetActive(false);
+            isLocked = false;
+        }
+
+        float fillAmount = Mathf.Clamp(_summonItem.ElementsCount / _summonItem.UpgradableCount,
+                                       0,
+                                       1);
+
+        _itemCountFillAmountImage.fillAmount = fillAmount;
+        _itemCountText.SetText($"{_summonItem.ElementsCount}/{_summonItem.UpgradableCount}");
     }
 
     public void UnLockItem()
