@@ -26,27 +26,6 @@ public class SkillManager : MonoSingleTon<SkillManager>
             skill.InitializeSkillInfo();
             Skills.Add(skill.SkillInfo.ItemId, skill);
         }
-
-        AddSkill("Fireball");
-    }
-
-    private void Update()
-    {
-        if(Input.GetKeyDown(KeyCode.S))
-        {
-            foreach(var skill in Skills)
-            {
-                AddSkill(skill.Key);
-            }
-        }
-
-        if(Input.GetKeyDown(KeyCode.D))
-        {
-            foreach (var skill in Skills)
-            {
-                Debug.Log(skill.Value.SkillInfo.ElementsCount);
-            }
-        }
     }
 
     public void AddSkill(string skillId)
@@ -55,20 +34,11 @@ public class SkillManager : MonoSingleTon<SkillManager>
 
         if(!SkillsInventory.ContainsKey(skillId)) // 처음 획득 했으면
         {
-            _skillHolder.AddSkill(skillId, skill);
             SkillsInventory.Add(skillId, 0);
             Skills[skillId].SkillInfo.ItemLevelUp();
         }
 
-        //if (_skillHolder.CanUseSkills.ContainsKey(skillId))
-        //{
-        //    _skillHolder.AddSkill(skillId, skill);
-        //    SkillsInventory.Add(skillId, 0);
-        //    Skills[skillId].SkillInfo.ItemLevelUp();
-        //}
-
-
-        // 가지고 있는 스킬의 수를 더한다.
+            // 가지고 있는 스킬의 수를 더한다.
         Skills[skillId].SkillInfo.AddElementsCount();
     }
 
@@ -89,8 +59,10 @@ public class SkillManager : MonoSingleTon<SkillManager>
             return false;
         }
 
+
         if (!Skills.TryGetValue(skillId, out BaseSkill skill)) { return false; }
 
+        _skillHolder.AddSkill(skillId, skill);
         _skillButtonsController.SubscribeSkill(skill);
 
         return true;

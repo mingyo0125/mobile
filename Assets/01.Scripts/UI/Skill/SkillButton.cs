@@ -16,6 +16,8 @@ public class SkillButton : UI_Button
 
     private SkillButtonInfo _skillButtonInfo;
 
+    public bool IsUsingButton { get; private set; } = false;
+
     private void Start()
     {
         _skillHolder = GameManager.Instance.GetPlayer().SkillHolder;
@@ -26,9 +28,11 @@ public class SkillButton : UI_Button
     public void SubscribeSkill(string skillID)
     {
         bool isContainsSkill =  _skillHolder.CanUseSkills.TryGetValue(skillID, out BaseSkill skill);
+        Debug.LogFormat($"Subscribe {skillID}");
         if (!isContainsSkill) { return; }
 
         _skillButtonInfo.SetInfo(skill.SkillInfo);
+        IsUsingButton = true;
 
         UpdateUI();
         //_button.onClick.RemoveAllListeners();
@@ -45,11 +49,11 @@ public class SkillButton : UI_Button
 
     public void UnSubscribeSkill()
     {
-        Debug.Log(_iconImage.sprite);
-        Debug.Log(_iconImage.gameObject);
         _iconImage.sprite = null;
         _button.interactable = true;
         _cooldownImage.fillAmount = 0;
+
+        IsUsingButton = false;
 
         _skillButtonInfo.ResetInfo();
         _button.onClick.RemoveAllListeners();

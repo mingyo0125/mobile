@@ -7,26 +7,22 @@ public class SkillButtonsController : MonoBehaviour
 {
     private List<SkillButton> _skillButtons = new List<SkillButton>();
 
-    private Queue<SkillButton> _notUsedButtons;
-
     private Dictionary<BaseSkill, SkillButton> _usingSkillButtons = new Dictionary<BaseSkill, SkillButton>();
 
     private void Awake()
     {
         _skillButtons = GetComponentsInChildren<SkillButton>().ToList();
-
-        _notUsedButtons = new Queue<SkillButton>(_skillButtons);
     }
 
     public void SubscribeSkill(BaseSkill skill)
     {
         // 나중에 지정 해서 저장 later
-        if(_notUsedButtons.Count > 0) // 스킬 칸이 다 안 차있으면
+        SkillButton skillButton = GetEmptyButton();
+        if (skillButton != null) // 스킬 칸이 다 안 차있으면
         {
-            SkillButton button = _notUsedButtons.Dequeue();
-            button.SubscribeSkill(skill.SkillInfo.ItemId);
+            skillButton.SubscribeSkill(skill.SkillInfo.ItemId);
 
-            _usingSkillButtons.Add(skill, button);
+            _usingSkillButtons.Add(skill, skillButton);
             return;
         }
 
@@ -40,6 +36,20 @@ public class SkillButtonsController : MonoBehaviour
         button.UnSubscribeSkill();
 
         _usingSkillButtons.Remove(skill);
+
         return;
+    }
+
+    private SkillButton GetEmptyButton()
+    {
+        foreach(SkillButton button in _skillButtons)
+        {
+            if(!button.IsUsingButton)
+            {
+                return button;
+            }
+        }
+
+        return null;
     }
 }

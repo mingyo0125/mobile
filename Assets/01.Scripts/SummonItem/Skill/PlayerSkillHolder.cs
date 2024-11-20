@@ -17,13 +17,14 @@ public class PlayerSkillHolder : MonoBehaviour
     public void RemoveSkill(string id)
     {
         CanUseSkills.Remove(id);
+        _lastUsedTimes.Remove(id);
     }
 
     public void PlaySkill(string id)
     {
-        if (!CanUseSkills.TryGetValue(id, out BaseSkill skill))
+        if (!CanUseSkills.ContainsKey(id))
         {
-            Debug.LogError($"Player doesn't Equip {id} Skill");
+            Debug.LogError($"Player didn't Equip {id} Skill");
             return;
         }
         
