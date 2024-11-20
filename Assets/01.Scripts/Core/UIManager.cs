@@ -9,6 +9,9 @@ public class UIManager : MonoSingleTon<UIManager>
     [SerializeField]
     private Canvas _canvas;
 
+    [SerializeField]
+    private Transform _deaultUIParentTrm;
+
     private Stack<UI_Component> _uiComponentsStack = new Stack<UI_Component>();
     public UI_Component TopUI => _uiComponentsStack.Peek();
 
@@ -21,9 +24,11 @@ public class UIManager : MonoSingleTon<UIManager>
         //}
     }
 
-    public UI_Component GenerateUI(string name, Transform parent = null, UIGenerateType generateType = UIGenerateType.NONE)
+    public UI_Component GenerateUI(string name, Transform parent = null, UIGenerateType generateType = UIGenerateType.NONE,
+                                                                         UIGenerateSortType sortType = UIGenerateSortType.STACKING)
     {
-        if(parent == null) { parent = _canvas.transform; }
+        if(parent == null) { parent = _deaultUIParentTrm; }
+        if (sortType == UIGenerateSortType.TOP) { parent = _canvas.transform; }
 
         UI_Component ui = PoolManager.Instance.CreateObject(name) as UI_Component;
 

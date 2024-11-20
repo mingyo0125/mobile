@@ -7,15 +7,12 @@ public class CategoryButton : UI_Button
     [SerializeField]
     private string categoryName;
 
-    [SerializeField]
-    private Transform _SpawnUIparentTrm;
-
     protected override void ButtonEvent()
     {
         base.ButtonEvent();
 
         UIManager.Instance.RemoveTopUGUI();
-        UIManager.Instance.GenerateUI(categoryName, _SpawnUIparentTrm, UIGenerateType.STACKING);
+        UIManager.Instance.GenerateUI(categoryName, null, UIGenerateType.STACKING);
     }
 
     private void Start()

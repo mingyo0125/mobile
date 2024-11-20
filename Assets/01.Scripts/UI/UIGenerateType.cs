@@ -4,3 +4,10 @@ public enum UIGenerateType
     CLEAR_PANEL,
     STACKING,
 }
+
+public enum UIGenerateSortType
+{
+    STACKING,
+    TOP
+}
+

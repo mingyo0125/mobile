@@ -20,7 +20,7 @@ public class SummonButton : UI_Button
             return;
         }
 
-        ReSummonUI reSummonUI = UIManager.Instance.GenerateUI("ReSummonUI", null, UIGenerateType.STACKING) as ReSummonUI;
+        ReSummonUI reSummonUI = UIManager.Instance.GenerateUI("ReSummonUI", null, UIGenerateType.STACKING, UIGenerateSortType.TOP) as ReSummonUI;
         reSummonUI.SpawnSummonItem(summonCount);
     }
 }

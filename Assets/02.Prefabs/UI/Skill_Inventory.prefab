@@ -226,6 +226,7 @@ GameObject:
   - component: {fileID: 2810526313357342500}
   - component: {fileID: 7646467225367371757}
   - component: {fileID: 7090389706024837344}
+  - component: {fileID: 1007334353998153934}
   m_Layer: 5
   m_Name: SummonSkill_Button
   m_TagString: Untagged
@@ -348,6 +349,20 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &1007334353998153934
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1240505751328570530}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4cdd94732468838468b250fd58b03204, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  categoryName: SumonCategoryory
+  _SpawnUIparentTrm: {fileID: 0}
 --- !u!1 &1809461596790664231
 GameObject:
   m_ObjectHideFlags: 0
@@ -1755,6 +1770,7 @@ MonoBehaviour:
   _levelText: {fileID: 3222736141314874770}
   _bgImage: {fileID: 3949205639533055468}
   <_equipButton>k__BackingField: {fileID: 0}
+  <_unEquipItemButton>k__BackingField: {fileID: 0}
 --- !u!114 &3222736141314874770 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4143438711761593682, guid: dc2ef53686b0a7747929db12a3c7403a, type: 3}
@@ -1926,6 +1942,7 @@ MonoBehaviour:
   _levelText: {fileID: 3446019198612730328}
   _bgImage: {fileID: 3865681521986265510}
   <_equipButton>k__BackingField: {fileID: 0}
+  <_unEquipItemButton>k__BackingField: {fileID: 0}
 --- !u!114 &3446019198612730328 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4143438711761593682, guid: dc2ef53686b0a7747929db12a3c7403a, type: 3}
@@ -2097,6 +2114,7 @@ MonoBehaviour:
   _levelText: {fileID: 2417049269382331044}
   _bgImage: {fileID: 4322335694129343194}
   <_equipButton>k__BackingField: {fileID: 0}
+  <_unEquipItemButton>k__BackingField: {fileID: 0}
 --- !u!114 &2417049269382331044 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4143438711761593682, guid: dc2ef53686b0a7747929db12a3c7403a, type: 3}
@@ -2290,6 +2308,7 @@ MonoBehaviour:
   _levelText: {fileID: 1282218537808454636}
   _bgImage: {fileID: 845632329539580818}
   <_equipButton>k__BackingField: {fileID: 0}
+  <_unEquipItemButton>k__BackingField: {fileID: 0}
 --- !u!114 &4979690492591127080 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7876869861472746646, guid: dc2ef53686b0a7747929db12a3c7403a, type: 3}
