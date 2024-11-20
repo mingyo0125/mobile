@@ -362,7 +362,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   categoryName: SumonCategoryory
-  _SpawnUIparentTrm: {fileID: 0}
 --- !u!1 &1809461596790664231
 GameObject:
   m_ObjectHideFlags: 0

@@ -24,6 +24,12 @@ public class PoolManager : MonoSingleTon<PoolManager>
             ObjectPool<PoolableMono> objectPool = new ObjectPool<PoolableMono>(poolObject, poolCount, transform);
 
             _poolObjects.Add(poolObject.name, objectPool);
+
+            if(poolObjectInfo.IsStartCreate)
+            {
+                PoolableMono spawnedObj = CreateObject(poolObject.name);
+                CoroutineUtil.CallWaitForOneFrame(() => DestroyObject(spawnedObj));
+            }
         }
     }
 

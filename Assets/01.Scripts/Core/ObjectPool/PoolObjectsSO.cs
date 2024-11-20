@@ -19,6 +19,8 @@ public struct PoolObjectsInfo
     public PoolableMono PoolObject { get; private set; }
     [field: SerializeField]
     public int PoolCount { get; private set; }
+    [field: SerializeField]
+    public bool IsStartCreate { get; private set; }
 }
 
 [CreateAssetMenu(menuName = "SO/PoolObjects")]
