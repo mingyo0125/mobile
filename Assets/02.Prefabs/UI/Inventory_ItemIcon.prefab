@@ -515,7 +515,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &9030485599330702009
 RectTransform:
   m_ObjectHideFlags: 0
@@ -813,6 +813,7 @@ GameObject:
   - component: {fileID: 2330071928923531074}
   - component: {fileID: 8631817986446770692}
   - component: {fileID: 4547128663543752571}
+  - component: {fileID: 5906139006425059144}
   m_Layer: 5
   m_Name: Unequip_Button
   m_TagString: Untagged
@@ -922,6 +923,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &5906139006425059144
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3657829495024216427}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da818b5826ea4e846b5a50e7336efedb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4033397416999061678
 GameObject:
   m_ObjectHideFlags: 0
@@ -1154,6 +1167,7 @@ MonoBehaviour:
   _levelText: {fileID: 6085043168799741260}
   _bgImage: {fileID: 2886824396033091050}
   <_equipButton>k__BackingField: {fileID: 7449119681579640986}
+  <_unEquipItemButton>k__BackingField: {fileID: 5906139006425059144}
   _lockPanel: {fileID: 2838507559350955497}
   _targetAchievedImage: {fileID: 7533887071121365517}
   _equippedIcon: {fileID: 1359389394768283003}

@@ -26,11 +26,13 @@ public class SkillInfo : SummonItemInfo
 
     public override bool EquipItem()
     {
+        base.EquipItem();
         return SkillManager.Instance.EquipSkill(ItemId);
     }
 
     public override void UnEquipItem()
     {
+        base.UnEquipItem();
         SkillManager.Instance.UnEquipSkill(ItemId);
     }
 

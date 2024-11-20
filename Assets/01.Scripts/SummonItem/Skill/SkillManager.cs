@@ -77,6 +77,8 @@ public class SkillManager : MonoSingleTon<SkillManager>
         if (!Skills.ContainsKey(skillId)) { return; }
 
         _skillHolder.RemoveSkill(skillId);
+
+        _skillButtonsController.UnSubscribeSkill();
     }
 
     public bool EquipSkill(string skillId)

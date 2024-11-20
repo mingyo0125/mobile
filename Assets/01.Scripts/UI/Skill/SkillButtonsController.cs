@@ -20,11 +20,9 @@ public class SkillButtonsController : MonoBehaviour
 
     public void SubscribeSkill(BaseSkill skill)
     {
-        Debug.Log($"Subscribe{skill}");
-
+        // 나중에 지정 해서 저장 later
         if(_notUsedButtons.Count > 0) // 스킬 칸이 다 안 차있으면
         {
-            Debug.Log($"Subscribe{skill}");
             SkillButton button = _notUsedButtons.Dequeue();
             button.SubscribeSkill(skill.SkillInfo.ItemId);
 
@@ -33,5 +31,21 @@ public class SkillButtonsController : MonoBehaviour
         }
 
         // 스킬칸이 다 차있으면 할거 무언가
+    }
+
+    public void UnSubscribeSkill()
+    {
+        if (_notUsedButtons.Count <= 0) // 스킬 칸에 지워져 있지 않으면
+        {
+            return;
+        }
+
+        // 나중에 지정 해서 지움 later
+
+        SkillButton button = _notUsedButtons.Dequeue();
+        button.UnSubscribeSkill();
+
+        _usingSkillButtons.Remove(button);
+        return;
     }
 }

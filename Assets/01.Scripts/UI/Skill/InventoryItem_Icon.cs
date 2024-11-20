@@ -27,10 +27,10 @@ public class InventoryItem_Icon : SummonItem_Icon
     private void Start()
     {
         _equipButton.AddClickEvent(EquipItem);
-        _summonItem.OnItemEquipEvent += EquipItem;
+        _unEquipItemButton.AddClickEvent(UnEquipItem);
+
         _summonItem.OnItemGetEvent += GetItem;
 
-        //_unEquipButton.AddClickEvent(UnEquipItem);
     }
 
     protected override void Init()
@@ -43,19 +43,18 @@ public class InventoryItem_Icon : SummonItem_Icon
     public void EquipItem()
     {
         _equippedIcon.SetActive(true);
-        //_unEquipButton.gameObject.SetActive(true);
+        _unEquipItemButton.gameObject.SetActive(true);
     }
 
     private void UnEquipItem()
     {
         _equippedIcon.SetActive(false);
-        //_unEquipButton.gameObject.SetActive(false);
+        _unEquipItemButton.gameObject.SetActive(false);
 
     }
 
     public void GetItem()
     {
-        Debug.Log("°³¾¾¹ß");
         _lockPanel.SetActive(false);
     }
 

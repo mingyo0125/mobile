@@ -12,8 +12,9 @@ public class SummonItem_Icon : UI_Image
 
     [field: SerializeField]
     protected EquipItemButton _equipButton { get; private set; }
-    //[SerializeField]
-    //private UnEquipButton _unEquipButton;
+
+    [field: SerializeField]
+    protected UnEquipItemButton _unEquipItemButton { get; private set; }
 
     protected SummonItemInfo _summonItem { get; private set; }
 
@@ -21,6 +22,7 @@ public class SummonItem_Icon : UI_Image
     {
         _summonItem = summonItem;
         _equipButton.SetSummonItem(_summonItem);
+        _unEquipItemButton.SetSummonItem(_summonItem);
 
         UpdateLevelText(_summonItem.ItemLevel);
         Init();

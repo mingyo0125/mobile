@@ -17,4 +17,13 @@ public class SkillButtonInfo
 
         this.Icon = skillInfo.Icon;
     }
+
+    public void ResetInfo()
+    {
+        this.Name = null;
+        this.Description = null;
+        this.CoolTime = 0.0f;
+
+        this.Icon = null;
+    }
 }
