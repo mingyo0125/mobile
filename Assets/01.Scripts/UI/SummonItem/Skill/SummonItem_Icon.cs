@@ -2,10 +2,13 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class SummonItem_Icon : UI_Image
+public class SummonItem_Icon : UI_Button
 {
     [SerializeField]
     private TextMeshProUGUI _levelText;
+
+    [field: SerializeField]
+    protected Image _icon { get; private set; }
 
     [SerializeField]
     private Image _bgImage;
@@ -41,6 +44,13 @@ public class SummonItem_Icon : UI_Image
     protected virtual void Init()
     {
         _summonItem.OnItemLevelUpEvent += UpdateLevelText;
+
+    }
+
+    protected override void ButtonEvent()
+    {
+        base.ButtonEvent();
+
 
     }
 }

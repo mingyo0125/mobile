@@ -11,7 +11,7 @@ public class SkillButtonsController : MonoBehaviour
 
     private void Awake()
     {
-        _skillButtons = GetComponentsInChildren<SkillButton>().ToList();
+        _skillButtons = new List<SkillButton>(GetComponentsInChildren<SkillButton>());
     }
 
     public void SubscribeSkill(BaseSkill skill)

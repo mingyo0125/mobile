@@ -34,6 +34,8 @@ public class InventoryManager : MonoSingleTon<InventoryManager>
         _equippedInventory[itemType].Add(summonItem.ItemId, summonItem);
 
         Debug.Log($"{itemType}인벤토리에 {summonItem.ItemId} 장착");
+        Debug.Log($"{itemType}인벤토리에 {summonItem.ItemId} 장착");
+
     }
 
     public void UnEquipItem(ItemType itemType, string summonItemName)

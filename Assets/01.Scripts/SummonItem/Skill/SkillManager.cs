@@ -19,6 +19,7 @@ public class SkillManager : MonoSingleTon<SkillManager>
     private void Awake()
     {
         _skillButtonsController = FindAnyObjectByType<SkillButtonsController>();
+
         _skillHolder = FindAnyObjectByType<PlayerSkillHolder>();
 
         foreach (BaseSkill skill in _skillListSO.SkillLists)
