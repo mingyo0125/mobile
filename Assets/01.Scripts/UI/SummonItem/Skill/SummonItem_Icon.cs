@@ -21,6 +21,8 @@ public class SummonItem_Icon : UI_Button
 
     protected SummonItemInfo _summonItem { get; private set; }
 
+    private const string Skill_InfoName = "Skill_Info";
+
     public void SetSummonItem(SummonItemInfo summonItem)
     {
         _summonItem = summonItem;
@@ -44,13 +46,12 @@ public class SummonItem_Icon : UI_Button
     protected virtual void Init()
     {
         _summonItem.OnItemLevelUpEvent += UpdateLevelText;
-
     }
 
     protected override void ButtonEvent()
     {
         base.ButtonEvent();
 
-
+        UIManager.Instance.GenerateUI(Skill_InfoName, null, UIGenerateType.STACKING, UIGenerateSortType.TOP);
     }
 }
