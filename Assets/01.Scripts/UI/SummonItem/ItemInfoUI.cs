@@ -19,6 +19,8 @@ public class ItemInfoUI<T> : UI_Image where T : SummonItemInfo
 
     [SerializeField]
     private Image _bgImage;
+    [SerializeField]
+    private GameObject _lockPanel;
 
     protected T _itemInfo { get; private set; }
 
@@ -35,6 +37,8 @@ public class ItemInfoUI<T> : UI_Image where T : SummonItemInfo
         _icon.sprite = _itemInfo.Icon;
         _skillNameText.SetText(_itemInfo.ItemName);
         _bgImage.color = _itemInfo.GradeInfo.ColorByGrade;
+
+        _lockPanel.SetActive(!_itemInfo.IsLock);
 
         UpdateUI();
     }

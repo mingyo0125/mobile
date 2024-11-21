@@ -24,15 +24,10 @@ public class SummonItemInfo : ISummonItem
     [field: SerializeField]
     public ItemGradeInfo GradeInfo { get; private set; }
 
-    private int legendaryCount = 0; // 레전더리 누적 카운트
-    private const float legendaryIncrement = 0.01f; // 누적될 때마다 확률 증가량
-
-
     // 나중에 직렬화 지우셈 later
     [field: SerializeField]
     public int ElementsCount { get; private set; }
 
-    public int UpgradableCount { get; private set; }
 
     #region Events
 
@@ -41,6 +36,14 @@ public class SummonItemInfo : ISummonItem
 
     public event Action OnItemLevelUpEvent = null;
     #endregion
+
+    public int UpgradableCount { get; private set; }
+
+
+    private int legendaryCount = 0; // 레전더리 누적 카운트
+    private const float legendaryIncrement = 0.01f; // 누적될 때마다 확률 증가량
+
+    public bool IsLock { get; private set; }
 
     public SummonItemInfo(SummonItemInfo summonItemInfo)
     {
@@ -58,6 +61,8 @@ public class SummonItemInfo : ISummonItem
         OnItemLevelUpEvent = null;
 
         UpgradableCount = 2;
+
+        IsLock = true;
     }
 
     public void AddElementsCount()
@@ -86,6 +91,11 @@ public class SummonItemInfo : ISummonItem
     public virtual void GetItem()
     {
         if (GradeInfo.ItemGradeType == SummonItemGradeType.Legendary) { legendaryCount = 0; }
+
+        if(IsLock)
+        {
+            IsLock = false;
+        }
 
         OnItemGetEvent?.Invoke();
     }
