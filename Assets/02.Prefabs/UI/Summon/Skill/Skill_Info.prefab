@@ -127,10 +127,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <_icon>k__BackingField: {fileID: 7227658696344409965}
+  <_skillNameText>k__BackingField: {fileID: 48351993646384333}
+  <_levelText>k__BackingField: {fileID: 6279182631573396147}
+  <_countText>k__BackingField: {fileID: 2574080627773980601}
   _descriptionText: {fileID: 8833117316773179418}
-  _skillNameText: {fileID: 48351993646384333}
-  _levelText: {fileID: 6279182631573396147}
-  _countText: {fileID: 2574080627773980601}
 --- !u!1 &1088642414405377123
 GameObject:
   m_ObjectHideFlags: 0

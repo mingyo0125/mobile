@@ -1,4 +1,5 @@
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -51,6 +52,24 @@ public class SummonItem_Icon : UI_Button, ISummonItemUI
     {
         base.ButtonEvent();
         Debug.Log("A");
-        UIManager.Instance.GenerateUI(Skill_InfoName, null, UIGenerateType.STACKING, UIGenerateSortType.TOP);
+
+        SpawnItemInfoUI();
+    }
+
+    private void SpawnItemInfoUI()
+    {
+        switch (_summonItem.ItemType)
+        {
+            case ItemType.Skill:
+                Skill_InfoUI itemInfoUI = UIManager.Instance.GenerateUI(Skill_InfoName,
+                                                                        null,
+                                                                        UIGenerateType.STACKING,
+                                                                        UIGenerateSortType.TOP) as Skill_InfoUI;
+                itemInfoUI.SetSkillInfo(_summonItem as SkillInfo);
+                break;
+
+            default:
+                break;
+        }
     }
 }
