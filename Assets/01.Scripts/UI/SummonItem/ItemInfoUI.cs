@@ -38,7 +38,8 @@ public class ItemInfoUI<T> : UI_Image where T : SummonItemInfo
         _skillNameText.SetText(_itemInfo.ItemName);
         _bgImage.color = _itemInfo.GradeInfo.ColorByGrade;
 
-        _lockPanel.SetActive(!_itemInfo.IsLock);
+        _lockPanel.SetActive(_itemInfo.IsLock);
+        Debug.Log($"{_itemInfo.ItemName} : {_itemInfo.IsLock}");
 
         UpdateUI();
     }
