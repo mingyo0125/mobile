@@ -63,6 +63,7 @@ public class SummonItemInfo : ISummonItem
     public void AddElementsCount()
     {
         ElementsCount++;
+        Debug.Log($"{ItemName}: {ElementsCount}");
     }
 
     public void ItemLevelUp()

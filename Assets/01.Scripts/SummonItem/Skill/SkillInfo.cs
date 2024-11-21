@@ -38,8 +38,8 @@ public class SkillInfo : SummonItemInfo
 
     public override void GetItem()
     {
-        base.GetItem();
         Debug.Log($"GetItem {ItemId}");
         SkillManager.Instance.AddSkill(ItemId);
+        base.GetItem();
     }
 }
