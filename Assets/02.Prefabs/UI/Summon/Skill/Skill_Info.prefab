@@ -130,6 +130,7 @@ MonoBehaviour:
   <_skillNameText>k__BackingField: {fileID: 48351993646384333}
   <_levelText>k__BackingField: {fileID: 6279182631573396147}
   <_countText>k__BackingField: {fileID: 2574080627773980601}
+  _bgImage: {fileID: 2154009898861702497}
   _descriptionText: {fileID: 8833117316773179418}
 --- !u!1 &1088642414405377123
 GameObject:

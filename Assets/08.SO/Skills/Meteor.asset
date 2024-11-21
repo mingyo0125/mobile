@@ -16,9 +16,11 @@ MonoBehaviour:
     <ItemId>k__BackingField: Meteor
     <ItemName>k__BackingField: "\uBA54\uD14C\uC624"
     <Icon>k__BackingField: {fileID: 8484420937763450943, guid: ea1dd78cd8e18384aac49e23a3858d05, type: 3}
-    <SummonProbability>k__BackingField: 30
     <ItemLevel>k__BackingField: 0
     <ItemType>k__BackingField: 0
+    <GradeInfo>k__BackingField:
+      <ItemGradeType>k__BackingField: 25
+      <ColorByGrade>k__BackingField: {r: 0.15686275, g: 0.7294118, b: 0.92156863, a: 1}
     <ElementsCount>k__BackingField: 0
     <Description>k__BackingField: "\uBA54\uD14C\uC624\uC774\uB2E4"
     <Cooldown>k__BackingField: 5

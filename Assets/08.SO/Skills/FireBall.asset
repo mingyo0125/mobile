@@ -16,9 +16,11 @@ MonoBehaviour:
     <ItemId>k__BackingField: Fireball
     <ItemName>k__BackingField: "\uD30C\uC774\uC5B4\uBCFC"
     <Icon>k__BackingField: {fileID: 7216427962035263248, guid: 9d6eca86a6d53eb49bfe9eb3c425230a, type: 3}
-    <SummonProbability>k__BackingField: 50
     <ItemLevel>k__BackingField: 0
     <ItemType>k__BackingField: 0
+    <GradeInfo>k__BackingField:
+      <ItemGradeType>k__BackingField: 100
+      <ColorByGrade>k__BackingField: {r: 0.89019614, g: 0.87843144, b: 0.8117648, a: 1}
     <ElementsCount>k__BackingField: 0
     <Description>k__BackingField: "\uD30C\uC774\uC5B4\uBCFC\uC774\uB2E4"
     <Cooldown>k__BackingField: 0

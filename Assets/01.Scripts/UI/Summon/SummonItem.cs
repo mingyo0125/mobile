@@ -7,6 +7,9 @@ using UnityEngine.UI;
 
 public class SummonItem : UI_Image
 {
+    [SerializeField]
+    private Image _bgImage;
+
     public override void Initialize()
     {
         base.Initialize();
@@ -18,5 +21,10 @@ public class SummonItem : UI_Image
         Sequence
             .Prepend(transform.DOScale(1.3f, 0.3f).SetEase(Ease.OutBack))
             .Append(transform.DOScale(1f, 0.1f).SetEase(Ease.Linear));
+    }
+
+    public void SetBGImage(Color color)
+    {
+        _bgImage.color = color;
     }
 }

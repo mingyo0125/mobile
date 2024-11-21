@@ -29,6 +29,7 @@ public class InventoryItem_Icon : SummonItem_Icon
     private void Start()
     {
         _equipButton.AddClickEvent(EquipItem);
+
         _unEquipItemButton.AddClickEvent(UnEquipItem);
     }
 
@@ -70,7 +71,7 @@ public class InventoryItem_Icon : SummonItem_Icon
         _itemCountFillAmountImage.fillAmount = fillAmount;
         _itemCountText.SetText($"{_summonItem.ElementsCount}/{_summonItem.UpgradableCount}");
 
-        if(_summonItem.ElementsCount > _summonItem.UpgradableCount)
+        if(_summonItem.ElementsCount >= _summonItem.UpgradableCount)
         {
             SetCanUpgrade();
         }

@@ -90,6 +90,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <_icon>k__BackingField: {fileID: 2008549252296530633}
+  _bgImage: {fileID: 3864421756427337418}
 --- !u!1 &5502544057048171461
 GameObject:
   m_ObjectHideFlags: 0

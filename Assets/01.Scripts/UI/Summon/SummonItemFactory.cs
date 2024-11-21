@@ -32,8 +32,10 @@ public abstract class SummonItemFactory : ObjectFactory<SummonItem>
         {
             SummonItem summonItem = PoolManager.Instance.CreateObject(SummonItem) as SummonItem;
             summonItem.transform.SetParent(spawnParentTrm);
-            
+
+            summonItem.SetBGImage(item.GradeInfo.ColorByGrade);
             summonItem.UpdateImage(item.Icon);
+
             item.GetItem();
 
             _prevSpawnItems.Add(summonItem);
@@ -58,29 +60,34 @@ public abstract class SummonItemFactory : ObjectFactory<SummonItem>
     {
         List<SummonItemInfo> results = new List<SummonItemInfo>();
 
+        // 1. 각 아이템의 누적 확률 계산
         float totalProbability = 0f;
-        foreach (var equipment in cansummonItems)
+        List<float> cumulativeProbabilities = new List<float>();
+        foreach (var item in cansummonItems)
         {
-            totalProbability += equipment.SummonProbability;
+            totalProbability += item.GetSummonProbability();
+            cumulativeProbabilities.Add(totalProbability); // 누적 확률 추가
         }
 
+        // 2. count만큼 아이템 선택
         for (int i = 0; i < count; i++)
         {
             float randomPoint = Random.value * totalProbability;
 
-            foreach (SummonItemInfo item in cansummonItems)
+            // 3. 누적 확률 범위를 기반으로 아이템 선택
+            for (int j = 0; j < cumulativeProbabilities.Count; j++)
             {
-                if (randomPoint < item.SummonProbability)
+                if (randomPoint <= cumulativeProbabilities[j])
                 {
-                    results.Add(item);
+                    results.Add(cansummonItems[j]);
                     break;
                 }
-                randomPoint -= item.SummonProbability;
             }
         }
 
         return results;
     }
+
 
     private void SetSummonItemPos(SummonItem summonItem, int xCount, int yCount)
     {

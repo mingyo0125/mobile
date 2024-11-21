@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ItemInfoUI<T> : UI_Image where T : SummonItemInfo
 {
@@ -15,6 +16,9 @@ public class ItemInfoUI<T> : UI_Image where T : SummonItemInfo
 
     [field: SerializeField]
     protected TextMeshProUGUI _countText { get; private set; }
+
+    [SerializeField]
+    private Image _bgImage;
 
     protected T _itemInfo { get; private set; }
 
@@ -30,6 +34,7 @@ public class ItemInfoUI<T> : UI_Image where T : SummonItemInfo
     {
         _icon.sprite = _itemInfo.Icon;
         _skillNameText.SetText(_itemInfo.ItemName);
+        _bgImage.color = _itemInfo.GradeInfo.ColorByGrade;
 
         UpdateUI();
     }
@@ -41,7 +46,7 @@ public class ItemInfoUI<T> : UI_Image where T : SummonItemInfo
 
     public void UpdateCountText()
     {
-        _countText.SetText($"{_itemInfo.ElementsCount / _itemInfo.UpgradableCount}");
+        _countText.SetText($"{_itemInfo.ElementsCount}/{_itemInfo.UpgradableCount}");
     }
 
     public override void UpdateUI()

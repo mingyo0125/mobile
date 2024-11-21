@@ -7,7 +7,6 @@ using static UnityEditor.Progress;
 public enum ItemType
 {
     Skill,
-    
 }
 
 
@@ -51,4 +50,5 @@ public class InventoryManager : MonoSingleTon<InventoryManager>
 
         Debug.Log($"{itemType}인벤토리에 {summonItemName} 장착 해제");
     }
+
 }

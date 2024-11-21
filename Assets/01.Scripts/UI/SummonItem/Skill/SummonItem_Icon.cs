@@ -30,6 +30,7 @@ public class SummonItem_Icon : UI_Button, ISummonItemUI
         _unEquipItemButton.SetSummonItem(_summonItem);
 
         UpdateLevelText();
+        UpdateBGColor();
         Init();
     }
 
@@ -38,9 +39,9 @@ public class SummonItem_Icon : UI_Button, ISummonItemUI
         _levelText.SetText($"Lv.{_summonItem.ItemLevel}");
     }
 
-    public void UpdateBGColor(Color color)
+    public void UpdateBGColor()
     {
-        _bgImage.color = color;
+        _bgImage.color = _summonItem.GradeInfo.ColorByGrade;
     }
 
     protected virtual void Init()
@@ -51,7 +52,6 @@ public class SummonItem_Icon : UI_Button, ISummonItemUI
     protected override void ButtonEvent()
     {
         base.ButtonEvent();
-        Debug.Log("A");
 
         SpawnItemInfoUI();
     }

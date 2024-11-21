@@ -16,9 +16,11 @@ MonoBehaviour:
     <ItemId>k__BackingField: Flame
     <ItemName>k__BackingField: "\uD50C\uB808\uC784"
     <Icon>k__BackingField: {fileID: -9022386717482406885, guid: f5246608584596f45a9a22eb0f3cf0a6, type: 3}
-    <SummonProbability>k__BackingField: 20
     <ItemLevel>k__BackingField: 0
     <ItemType>k__BackingField: 0
+    <GradeInfo>k__BackingField:
+      <ItemGradeType>k__BackingField: 10
+      <ColorByGrade>k__BackingField: {r: 0.9215687, g: 0.15294118, b: 0.91372555, a: 1}
     <ElementsCount>k__BackingField: 0
     <Description>k__BackingField: "\uBD88\uAF43"
     <Cooldown>k__BackingField: 5
