@@ -126,6 +126,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61201cf0d70fb77458451ea44bf463e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <_icon>k__BackingField: {fileID: 7227658696344409965}
+  _descriptionText: {fileID: 8833117316773179418}
+  _skillNameText: {fileID: 48351993646384333}
+  _levelText: {fileID: 6279182631573396147}
+  _countText: {fileID: 2574080627773980601}
 --- !u!1 &1088642414405377123
 GameObject:
   m_ObjectHideFlags: 0
@@ -941,7 +946,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7901356623558898157}
   - component: {fileID: 8448722813733636845}
-  - component: {fileID: 1236831259345840043}
+  - component: {fileID: 2574080627773980601}
   m_Layer: 5
   m_Name: Count_Text
   m_TagString: Untagged
@@ -976,7 +981,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4821707922282623441}
   m_CullTransparentMesh: 1
---- !u!114 &1236831259345840043
+--- !u!114 &2574080627773980601
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -985,12 +990,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 4821707922282623441}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a1e2bc2efb60657489cef65e75f33c0e, type: 3}
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 0
+  m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -1151,7 +1156,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7396741255672825661}
   - component: {fileID: 4633757698415725416}
-  - component: {fileID: 2827975113880364375}
+  - component: {fileID: 48351993646384333}
   m_Layer: 5
   m_Name: SkillName_Text
   m_TagString: Untagged
@@ -1176,7 +1181,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -58.6, y: 256.99997}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4633757698415725416
 CanvasRenderer:
@@ -1186,7 +1191,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5345386407874209725}
   m_CullTransparentMesh: 1
---- !u!114 &2827975113880364375
+--- !u!114 &48351993646384333
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1195,12 +1200,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 5345386407874209725}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a1e2bc2efb60657489cef65e75f33c0e, type: 3}
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 0
+  m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -1719,7 +1724,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7273593149286402134}
   - component: {fileID: 8118790255938908963}
-  - component: {fileID: 1748700295921526273}
+  - component: {fileID: 6279182631573396147}
   m_Layer: 5
   m_Name: Level_Text
   m_TagString: Untagged
@@ -1754,7 +1759,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7656327581946141963}
   m_CullTransparentMesh: 1
---- !u!114 &1748700295921526273
+--- !u!114 &6279182631573396147
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1763,18 +1768,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 7656327581946141963}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a1e2bc2efb60657489cef65e75f33c0e, type: 3}
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 0
+  m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: LV. 10
+  m_text: LV.1
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c2c3e0846bb393a459a6899d1a44c77d, type: 2}
   m_sharedMaterial: {fileID: 3645778273491880576, guid: c2c3e0846bb393a459a6899d1a44c77d, type: 2}

@@ -2,7 +2,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class SummonItem_Icon : UI_Button
+public class SummonItem_Icon : UI_Button, ISummonItemUI
 {
     [SerializeField]
     private TextMeshProUGUI _levelText;
@@ -18,8 +18,7 @@ public class SummonItem_Icon : UI_Button
 
     [field: SerializeField]
     protected UnEquipItemButton _unEquipItemButton { get; private set; }
-
-    protected SummonItemInfo _summonItem { get; private set; }
+    public SummonItemInfo _summonItem { get; set; }
 
     private const string Skill_InfoName = "Skill_Info";
 
@@ -35,7 +34,7 @@ public class SummonItem_Icon : UI_Button
 
     public void UpdateLevelText()
     {
-        _levelText.SetText($"Lv:{_summonItem.ItemLevel}");
+        _levelText.SetText($"Lv.{_summonItem.ItemLevel}");
     }
 
     public void UpdateBGColor(Color color)
@@ -51,7 +50,7 @@ public class SummonItem_Icon : UI_Button
     protected override void ButtonEvent()
     {
         base.ButtonEvent();
-
+        Debug.Log("A");
         UIManager.Instance.GenerateUI(Skill_InfoName, null, UIGenerateType.STACKING, UIGenerateSortType.TOP);
     }
 }
