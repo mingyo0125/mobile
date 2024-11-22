@@ -24,6 +24,9 @@ public class InventoryItem_Icon : SummonItem_Icon
     [SerializeField]
     private TextMeshProUGUI _itemCountText;
 
+    [SerializeField]
+    private EquipItemButton _equipButton;
+
     private bool isLocked = true;
 
     private void Start()
@@ -31,6 +34,13 @@ public class InventoryItem_Icon : SummonItem_Icon
         _equipButton.AddClickEvent(EquipItem);
 
         _unEquipItemButton.AddClickEvent(UnEquipItem);
+    }
+
+    public override void SetSummonItem(SummonItemInfo summonItem)
+    {
+        base.SetSummonItem(summonItem);
+
+        _equipButton.SetSummonItem(_summonItem);
     }
 
     protected override void Init()

@@ -40,6 +40,9 @@ MonoBehaviour:
   - <PoolObject>k__BackingField: {fileID: 421930074360765688, guid: b3e2c36d3db3faa4d84e014fb8edbecc, type: 3}
     <PoolCount>k__BackingField: 1
     <IsStartCreate>k__BackingField: 0
+  - <PoolObject>k__BackingField: {fileID: 7063732720037969284, guid: 2d407ece52847114588588e72841bdcb, type: 3}
+    <PoolCount>k__BackingField: 1
+    <IsStartCreate>k__BackingField: 0
   <UI>k__BackingField:
   - <PoolObject>k__BackingField: {fileID: 4625199943726896284, guid: b4fabfb12245af84ea80c2b4c091c1be, type: 3}
     <PoolCount>k__BackingField: 10

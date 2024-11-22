@@ -15,18 +15,14 @@ public class SummonItem_Icon : UI_Button, ISummonItemUI
     private Image _bgImage;
 
     [field: SerializeField]
-    protected EquipItemButton _equipButton { get; private set; }
-
-    [field: SerializeField]
     protected UnEquipItemButton _unEquipItemButton { get; private set; }
     public SummonItemInfo _summonItem { get; set; }
 
     private const string Skill_InfoName = "Skill_Info";
 
-    public void SetSummonItem(SummonItemInfo summonItem)
+    public virtual void SetSummonItem(SummonItemInfo summonItem)
     {
         _summonItem = summonItem;
-        _equipButton.SetSummonItem(_summonItem);
         _unEquipItemButton.SetSummonItem(_summonItem);
 
         UpdateLevelText();

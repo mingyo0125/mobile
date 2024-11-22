@@ -9,14 +9,15 @@ public class PlayerSkillHolder : MonoBehaviour
 
     public void AddSkill(string id, BaseSkill skill)
     {
-        Debug.Log($"Add Skill {id}");
         CanUseSkills.Add(id, skill);
+        Debug.Log($"Add Skill {id}");
         _lastUsedTimes.Add(id, -Mathf.Infinity);  
     }
 
     public void RemoveSkill(string id)
     {
         CanUseSkills.Remove(id);
+        Debug.Log($"Remove Skill {id}");
         _lastUsedTimes.Remove(id);
     }
 

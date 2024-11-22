@@ -6,9 +6,6 @@ using UnityEngine.UI;
 
 public class SkillButton : UI_Button
 {
-    [SerializeField]
-    private string testSkillInput;
-
     private PlayerSkillHolder _skillHolder;
 
     [SerializeField]
@@ -25,11 +22,9 @@ public class SkillButton : UI_Button
         _skillButtonInfo = new SkillButtonInfo();
     }
 
-    public void SubscribeSkill(string skillID)
+    public void SubscribeSkill(BaseSkill skill)
     {
-        bool isContainsSkill =  _skillHolder.CanUseSkills.TryGetValue(skillID, out BaseSkill skill);
-        Debug.LogFormat($"Subscribe {skillID}");
-        if (!isContainsSkill) { return; }
+        Debug.LogFormat($"Subscribe {skill.SkillInfo.ItemName}");
 
         _skillButtonInfo.SetInfo(skill.SkillInfo);
         IsUsingButton = true;
@@ -37,7 +32,7 @@ public class SkillButton : UI_Button
         UpdateUI();
         //_button.onClick.RemoveAllListeners();
         _button.onClick.AddListener(() => StartCoroutine(CalculateSkillCooldownCorou()));
-        _button.onClick.AddListener(() => _skillHolder.PlaySkill(skillID));
+        _button.onClick.AddListener(() => _skillHolder.PlaySkill(skill.SkillInfo.ItemId));
     }
 
     public override void UpdateUI()

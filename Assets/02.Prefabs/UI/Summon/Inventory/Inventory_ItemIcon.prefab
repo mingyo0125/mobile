@@ -1136,13 +1136,13 @@ MonoBehaviour:
   _levelText: {fileID: 9047109320096422284}
   <_icon>k__BackingField: {fileID: 3884472343627917189}
   _bgImage: {fileID: 2886824396033091050}
-  <_equipButton>k__BackingField: {fileID: 7449119681579640986}
   <_unEquipItemButton>k__BackingField: {fileID: 5906139006425059144}
   _lockPanel: {fileID: 2838507559350955497}
   _targetAchievedImage: {fileID: 7533887071121365517}
   _equippedIcon: {fileID: 1359389394768283003}
   _itemCountFillAmountImage: {fileID: 4578619636957420425}
   _itemCountText: {fileID: 2871515325340448653}
+  _equipButton: {fileID: 7449119681579640986}
 --- !u!114 &7991158560323994383
 MonoBehaviour:
   m_ObjectHideFlags: 0

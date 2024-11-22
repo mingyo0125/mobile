@@ -9,23 +9,26 @@ public class SkillButtonsController : MonoBehaviour
 
     private Dictionary<BaseSkill, SkillButton> _usingSkillButtons = new Dictionary<BaseSkill, SkillButton>();
 
+
     private void Awake()
     {
         _skillButtons = new List<SkillButton>(GetComponentsInChildren<SkillButton>());
     }
 
-    public void SubscribeSkill(BaseSkill skill)
+    public bool SubscribeSkill(BaseSkill skill)
     {
         // 나중에 지정 해서 저장 later
         SkillButton skillButton = GetEmptyButton();
         if (skillButton != null) // 스킬 칸이 다 안 차있으면
         {
-            skillButton.SubscribeSkill(skill.SkillInfo.ItemId);
+            skillButton.SubscribeSkill(skill);
 
             _usingSkillButtons.Add(skill, skillButton);
-            return;
+            return true;
         }
 
+        Signalhub.OnSkillChangingEvent?.Invoke();
+        return false;
         // 스킬칸이 다 차있으면 할거 무언가
     }
 
@@ -46,10 +49,10 @@ public class SkillButtonsController : MonoBehaviour
         {
             if(!button.IsUsingButton)
             {
+                Debug.Log($"{button.GetInstanceID()} : {button.IsUsingButton}");
                 return button;
             }
         }
-
         return null;
     }
 }

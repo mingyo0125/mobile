@@ -60,11 +60,12 @@ public class SkillManager : MonoSingleTon<SkillManager>
             return false;
         }
 
-
         if (!Skills.TryGetValue(skillId, out BaseSkill skill)) { return false; }
 
-        _skillHolder.AddSkill(skillId, skill);
-        _skillButtonsController.SubscribeSkill(skill);
+        if(_skillButtonsController.SubscribeSkill(skill)) // 스킬 칸이 다 차있지 않아서 바로 가능하면
+        {
+            _skillHolder.AddSkill(skillId, skill);
+        }
 
         return true;
     }
