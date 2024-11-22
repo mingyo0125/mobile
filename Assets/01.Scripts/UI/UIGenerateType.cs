@@ -7,6 +7,7 @@ public enum UIGenerateType
 
 public enum UIGenerateSortType
 {
+    NONE,
     STACKING,
     TOP
 }

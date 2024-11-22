@@ -27,7 +27,7 @@ public class SkillButtonsController : MonoBehaviour
             return true;
         }
 
-        Signalhub.OnSkillChangingEvent?.Invoke();
+        Signalhub.OnSkillChangingEvent?.Invoke(skill.SkillInfo);
         return false;
         // 스킬칸이 다 차있으면 할거 무언가
     }

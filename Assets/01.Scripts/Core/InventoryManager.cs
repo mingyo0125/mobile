@@ -22,17 +22,19 @@ public class InventoryManager : MonoSingleTon<InventoryManager>
         }
     }
 
-    public void EquipItem(SummonItemInfo summonItem)
+    public bool EquipItem(SummonItemInfo summonItem)
     {
         ItemType itemType = summonItem.ItemType;
 
-        if (!summonItem.EquipItem()) { return; }
+        if (!summonItem.EquipItem()) { return false; }
 
         summonItem.OnItemEquipEvent?.Invoke();
 
         _equippedInventory[itemType].Add(summonItem.ItemId, summonItem);
 
         Debug.Log($"{itemType}인벤토리에 {summonItem.ItemId} 장착");
+
+        return true;
 
     }
 

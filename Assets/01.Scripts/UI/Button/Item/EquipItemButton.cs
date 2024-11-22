@@ -13,6 +13,9 @@ public class EquipItemButton : UI_Button
 
     protected override void ButtonEvent()
     {
-        InventoryManager.Instance.EquipItem(_item);
+        if(InventoryManager.Instance.EquipItem(_item))
+        {
+            base.ButtonEvent();
+        }
     }
 }

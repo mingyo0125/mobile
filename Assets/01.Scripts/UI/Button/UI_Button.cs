@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
@@ -8,6 +9,8 @@ using UnityEngine.UI;
 public abstract class UI_Button : UI_Component
 {
     protected Button _button { get; private set; }
+
+    private List<UnityAction> _actions = new List<UnityAction>();
 
     protected virtual void Awake()
     {
@@ -18,7 +21,10 @@ public abstract class UI_Button : UI_Component
 
     protected virtual void ButtonEvent()
     {
-
+        foreach(var action in _actions)
+        {
+            action?.Invoke();
+        }
     }
 
     public override void UpdateUI()
@@ -30,7 +36,7 @@ public abstract class UI_Button : UI_Component
     {
         foreach (UnityAction action in actions) 
         {
-            _button.onClick.AddListener(action);
+            _actions.Add(action);
         }
     }
 

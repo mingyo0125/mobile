@@ -27,8 +27,6 @@ public class InventoryItem_Icon : SummonItem_Icon
     [SerializeField]
     private EquipItemButton _equipButton;
 
-    private bool isLocked = true;
-
     private void Start()
     {
         _equipButton.AddClickEvent(EquipItem);
@@ -67,10 +65,9 @@ public class InventoryItem_Icon : SummonItem_Icon
 
     public void GetItem()
     {
-        if(isLocked)
+        if(_summonItem.IsLock)
         {
             _lockPanel.SetActive(false);
-            isLocked = false;
         }
 
         //int로만 하면 int의 나눗셈을 해서 소수점을 버림

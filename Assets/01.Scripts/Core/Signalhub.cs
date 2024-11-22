@@ -1,4 +1,4 @@
-public delegate void SkillChangingEvent();
+public delegate void SkillChangingEvent(SkillInfo skillInfo);
 
 public static class Signalhub
 {

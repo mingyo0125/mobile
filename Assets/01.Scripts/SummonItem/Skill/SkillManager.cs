@@ -65,8 +65,10 @@ public class SkillManager : MonoSingleTon<SkillManager>
         if(_skillButtonsController.SubscribeSkill(skill)) // 스킬 칸이 다 차있지 않아서 바로 가능하면
         {
             _skillHolder.AddSkill(skillId, skill);
+            return true;
         }
 
-        return true;
+        Debug.Log(false);
+        return false;
     }
 }
