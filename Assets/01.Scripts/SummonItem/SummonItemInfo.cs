@@ -39,7 +39,6 @@ public class SummonItemInfo : ISummonItem
 
     public int UpgradableCount { get; private set; }
 
-
     private int legendaryCount = 0; // 레전더리 누적 카운트
     private const float legendaryIncrement = 0.01f; // 누적될 때마다 확률 증가량
 
