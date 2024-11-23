@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using UnityEditorInternal.Profiling.Memory.Experimental;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -38,15 +39,35 @@ public class InventoryItem_Icon : SummonItem_Icon
     {
         base.SetSummonItem(summonItem);
 
-        _equipButton.SetSummonItem(_summonItem);
+        _equipButton.SetSummonItem(ItemInfo);
     }
 
     protected override void Init()
     {
         base.Init();
 
-        _icon.sprite = _summonItem.Icon;
-        _summonItem.OnItemGetEvent += GetItem;
+        ItemInfo.OnItemGetEvent += GetItem;
+    }
+
+    public void GetItem()
+    {
+        if (ItemInfo.IsLock)
+        {
+            _lockPanel.SetActive(false);
+        }
+
+        //int로만 하면 int의 나눗셈을 해서 소수점을 버림
+        float fillAmount = Mathf.Clamp((float)ItemInfo.ElementsCount / ItemInfo.UpgradableCount,
+                                       0,
+                                       1);
+
+        _itemCountFillAmountImage.fillAmount = fillAmount;
+        _itemCountText.SetText($"{ItemInfo.ElementsCount}/{ItemInfo.UpgradableCount}");
+
+        if (ItemInfo.ElementsCount >= ItemInfo.UpgradableCount)
+        {
+            SetCanUpgrade();
+        }
     }
 
     public void EquipItem()
@@ -61,27 +82,6 @@ public class InventoryItem_Icon : SummonItem_Icon
         _equippedIcon.SetActive(false);
         _unEquipItemButton.gameObject.SetActive(false);
         _equipButton.gameObject.SetActive(true);
-    }
-
-    public void GetItem()
-    {
-        if(_summonItem.IsLock)
-        {
-            _lockPanel.SetActive(false);
-        }
-
-        //int로만 하면 int의 나눗셈을 해서 소수점을 버림
-        float fillAmount = Mathf.Clamp((float)_summonItem.ElementsCount / _summonItem.UpgradableCount,
-                                       0,
-                                       1);
-
-        _itemCountFillAmountImage.fillAmount = fillAmount;
-        _itemCountText.SetText($"{_summonItem.ElementsCount}/{_summonItem.UpgradableCount}");
-
-        if(_summonItem.ElementsCount >= _summonItem.UpgradableCount)
-        {
-            SetCanUpgrade();
-        }
     }
 
     public void UnLockItem()

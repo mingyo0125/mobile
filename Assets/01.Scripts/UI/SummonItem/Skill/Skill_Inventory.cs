@@ -16,7 +16,7 @@ public class Skill_Inventory : UI_Component
 
     private void Start()
     {
-        Signalhub.OnSkillChangingEvent += GenerateEquippingSkillUI;
+        Signalhub.OnSelectChnageSkillEvent += GenerateEquippingSkillUI;
     }
 
     private void GenerateEquippingSkillUI(SkillInfo skillInfo)

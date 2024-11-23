@@ -6,9 +6,15 @@ public class UnEquipItemButton : UI_Button
 {
     private SummonItemInfo _item;
 
+    [SerializeField]
+    private bool isDisableParent;
+
     private void Start()
     {
-        CoroutineUtil.CallWaitForOneFrame(() => transform.parent.gameObject.SetActive(false));
+        if(isDisableParent)
+        {
+            CoroutineUtil.CallWaitForOneFrame(() => transform.parent.gameObject.SetActive(false));
+        }
     }
 
     public void SetSummonItem(SummonItemInfo summonItem)

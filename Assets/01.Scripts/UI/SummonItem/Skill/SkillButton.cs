@@ -13,8 +13,6 @@ public class SkillButton : UI_Button
 
     private SkillButtonInfo _skillButtonInfo;
 
-    public bool IsUsingButton { get; private set; } = false;
-
     private void Start()
     {
         _skillHolder = GameManager.Instance.GetPlayer().SkillHolder;

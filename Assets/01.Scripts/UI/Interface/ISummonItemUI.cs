@@ -4,6 +4,6 @@ using UnityEngine;
 
 public interface ISummonItemUI
 {
-    public SummonItemInfo _summonItem { get; set; }
+    public SummonItemInfo ItemInfo { get; set; }
     public void SetSummonItem(SummonItemInfo summonItem);
 }

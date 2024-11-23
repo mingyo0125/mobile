@@ -12,6 +12,8 @@ public abstract class UI_Button : UI_Component
 
     private List<UnityAction> _actions = new List<UnityAction>();
 
+    public bool IsUsingButton { get; protected set; } = false;
+
     protected virtual void Awake()
     {
         _button = GetComponent<Button>();

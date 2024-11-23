@@ -19,7 +19,7 @@ MonoBehaviour:
     <ItemLevel>k__BackingField: 0
     <ItemType>k__BackingField: 0
     <GradeInfo>k__BackingField:
-      <ItemGradeType>k__BackingField: 1
+      <ItemGradeType>k__BackingField: 100
       <ColorByGrade>k__BackingField: {r: 1, g: 1, b: 0, a: 1}
     <ElementsCount>k__BackingField: 0
     <Description>k__BackingField: Test

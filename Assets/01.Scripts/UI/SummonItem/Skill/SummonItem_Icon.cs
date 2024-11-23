@@ -16,14 +16,15 @@ public class SummonItem_Icon : UI_Button, ISummonItemUI
 
     [field: SerializeField]
     protected UnEquipItemButton _unEquipItemButton { get; private set; }
-    public SummonItemInfo _summonItem { get; set; }
+    public SummonItemInfo ItemInfo { get; set; }
 
     private const string Skill_InfoName = "Skill_Info";
 
     public virtual void SetSummonItem(SummonItemInfo summonItem)
     {
-        _summonItem = summonItem;
-        _unEquipItemButton.SetSummonItem(_summonItem);
+        ItemInfo = summonItem;
+        _unEquipItemButton.SetSummonItem(ItemInfo);
+        IsUsingButton = true;
 
         UpdateLevelText();
         UpdateBGColor();
@@ -32,17 +33,18 @@ public class SummonItem_Icon : UI_Button, ISummonItemUI
 
     public void UpdateLevelText()
     {
-        _levelText.SetText($"Lv.{_summonItem.ItemLevel}");
+        _levelText.SetText($"Lv.{ItemInfo.ItemLevel}");
     }
 
     public void UpdateBGColor()
     {
-        _bgImage.color = _summonItem.GradeInfo.ColorByGrade;
+        _bgImage.color = ItemInfo.GradeInfo.ColorByGrade;
     }
 
     protected virtual void Init()
     {
-        _summonItem.OnItemLevelUpEvent += UpdateLevelText;
+        _icon.sprite = ItemInfo.Icon;
+        ItemInfo.OnItemLevelUpEvent += UpdateLevelText;
     }
 
     protected override void ButtonEvent()
@@ -54,14 +56,14 @@ public class SummonItem_Icon : UI_Button, ISummonItemUI
 
     private void SpawnItemInfoUI()
     {
-        switch (_summonItem.ItemType)
+        switch (ItemInfo.ItemType)
         {
             case ItemType.Skill:
                 Skill_InfoUI itemInfoUI = UIManager.Instance.GenerateUI(Skill_InfoName,
                                                                         null,
                                                                         UIGenerateType.STACKING,
                                                                         UIGenerateSortType.TOP) as Skill_InfoUI;
-                itemInfoUI.SetSkillInfo(_summonItem as SkillInfo);
+                itemInfoUI.SetSkillInfo(ItemInfo as SkillInfo);
                 break;
 
             default:
