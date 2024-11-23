@@ -24,6 +24,7 @@ public class UnEquipItemButton : UI_Button
 
     protected override void ButtonEvent()
     {
+        base.ButtonEvent();
         InventoryManager.Instance.UnEquipItem(_item.ItemType, _item.ItemId);
     }
 }

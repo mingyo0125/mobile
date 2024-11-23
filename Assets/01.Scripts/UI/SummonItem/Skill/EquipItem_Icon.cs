@@ -26,6 +26,9 @@ public class EquipItem_Icon : SummonItem_Icon
     public void ReSetSummonItem()
     {
         _bgImage.color = _originBGColor;
+
+        IsUsingButton = false;
+
         OnOffPanels(false);
     }
 

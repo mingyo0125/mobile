@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
-using UnityEditorInternal.Profiling.Memory.Experimental;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -28,18 +25,14 @@ public class InventoryItem_Icon : SummonItem_Icon
     [SerializeField]
     private EquipItemButton _equipButton;
 
-    private void Start()
-    {
-        _equipButton.AddClickEvent(EquipItem);
-
-        _unEquipItemButton.AddClickEvent(UnEquipItem);
-    }
-
     public override void SetSummonItem(SummonItemInfo summonItem)
     {
         base.SetSummonItem(summonItem);
 
         _equipButton.SetSummonItem(ItemInfo);
+
+        ItemInfo.OnItemUnEquipEvent += UnEquipItem;
+        ItemInfo.OnItemEquipEvent += EquipItem;
     }
 
     protected override void Init()
