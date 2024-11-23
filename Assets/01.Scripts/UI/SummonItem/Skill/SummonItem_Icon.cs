@@ -11,8 +11,8 @@ public class SummonItem_Icon : UI_Button, ISummonItemUI
     [field: SerializeField]
     protected Image _icon { get; private set; }
 
-    [SerializeField]
-    private Image _bgImage;
+    [field: SerializeField]
+    protected Image _bgImage;
 
     [field: SerializeField]
     protected UnEquipItemButton _unEquipItemButton { get; private set; }

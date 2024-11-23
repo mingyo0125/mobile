@@ -31,6 +31,19 @@ public class EquippedSkillsController : MonoBehaviour
         _equippedSkill_Icons.Add(summonItemInfo, epuippedIcon);
     }
 
+    public void UnEquippedSkill(SummonItemInfo summonItemInfo)
+    {
+        if(!_equippedSkill_Icons.TryGetValue(summonItemInfo, out EquipItem_Icon equipItem_Icon))
+        {
+            Debug.LogError($"{summonItemInfo.ItemName} is not Equipped");
+            return;
+        }
+
+        equipItem_Icon.ReSetSummonItem();
+
+        _equippedSkill_Icons.Remove(summonItemInfo);
+    }
+
     private EquipItem_Icon GetEmptyButton()
     {
         foreach (EquipItem_Icon button in _summonItemIcons)
