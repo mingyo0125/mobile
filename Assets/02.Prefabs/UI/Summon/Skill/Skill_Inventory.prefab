@@ -73,6 +73,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53326b351f6d94448a59a7523ae6c3c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  EquipItemCount: 3
 --- !u!1 &260647140223874132
 GameObject:
   m_ObjectHideFlags: 0

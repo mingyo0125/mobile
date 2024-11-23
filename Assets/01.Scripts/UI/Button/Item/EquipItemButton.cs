@@ -6,6 +6,9 @@ public class EquipItemButton : UI_Button
 {
     private SummonItemInfo _item;
 
+    [SerializeField]
+    private bool isCloseTopUI;
+
     public void SetSummonItem(SummonItemInfo summonItem)
     {
         _item = summonItem;
@@ -16,6 +19,10 @@ public class EquipItemButton : UI_Button
         if(InventoryManager.Instance.EquipItem(_item))
         {
             base.ButtonEvent();
+        }
+        else
+        {
+            if (isCloseTopUI) { UIManager.Instance.RemoveTopUGUI(); }
         }
     }
 }

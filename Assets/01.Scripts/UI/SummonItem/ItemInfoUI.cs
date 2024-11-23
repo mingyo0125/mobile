@@ -18,6 +18,12 @@ public class ItemInfoUI<T> : UI_Image where T : SummonItemInfo
     protected TextMeshProUGUI _countText { get; private set; }
 
     [SerializeField]
+    private EquipItemButton _equipButton;
+
+    [SerializeField]
+    private GameObject _targetAchievedImage;
+
+    [SerializeField]
     private Image _bgImage;
     [SerializeField]
     private GameObject _lockPanel;
@@ -37,10 +43,12 @@ public class ItemInfoUI<T> : UI_Image where T : SummonItemInfo
         _icon.sprite = _itemInfo.Icon;
         _skillNameText.SetText(_itemInfo.ItemName);
         _bgImage.color = _itemInfo.GradeInfo.ColorByGrade;
+        _equipButton.SetSummonItem(_itemInfo);
 
         _lockPanel.SetActive(_itemInfo.IsLock);
         Debug.Log($"{_itemInfo.ItemName} : {_itemInfo.IsLock}");
 
+        _targetAchievedImage.SetActive(_itemInfo.ElementsCount >= _itemInfo.UpgradableCount);
         UpdateUI();
     }
 
@@ -51,6 +59,11 @@ public class ItemInfoUI<T> : UI_Image where T : SummonItemInfo
 
     public void UpdateCountText()
     {
+        if(_itemInfo.ElementsCount >= _itemInfo.UpgradableCount)
+        {
+            _targetAchievedImage.SetActive(true);
+        }
+
         _countText.SetText($"{_itemInfo.ElementsCount}/{_itemInfo.UpgradableCount}");
     }
 

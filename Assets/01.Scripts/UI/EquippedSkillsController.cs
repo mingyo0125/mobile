@@ -9,9 +9,12 @@ public class EquippedSkillsController : MonoBehaviour
 
     private const string EquipItem_Icon = "EquipItem_Icon";
 
+    [SerializeField]
+    private int EquipItemCount;
+
     private void Start()
     {
-        for(int i = 0; i < 4; i++)
+        for(int i = 0; i < EquipItemCount; i++)
         {
             EquipItem_Icon equipItem_Icon = UIManager.Instance.GenerateUI(EquipItem_Icon,
                                                                           transform,
