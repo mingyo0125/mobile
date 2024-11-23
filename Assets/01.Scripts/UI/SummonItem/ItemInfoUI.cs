@@ -21,6 +21,9 @@ public class ItemInfoUI<T> : UI_Image where T : SummonItemInfo
     private EquipItemButton _equipButton;
 
     [SerializeField]
+    private UnEquipItemButton _unEquipButton;
+
+    [SerializeField]
     private GameObject _targetAchievedImage;
 
     [SerializeField]
@@ -44,12 +47,18 @@ public class ItemInfoUI<T> : UI_Image where T : SummonItemInfo
         _skillNameText.SetText(_itemInfo.ItemName);
         _bgImage.color = _itemInfo.GradeInfo.ColorByGrade;
         _equipButton.SetSummonItem(_itemInfo);
+        _unEquipButton.SetSummonItem(_itemInfo);
 
         _lockPanel.SetActive(_itemInfo.IsLock);
         Debug.Log($"{_itemInfo.ItemName} : {_itemInfo.IsLock}");
 
         _targetAchievedImage.SetActive(_itemInfo.ElementsCount >= _itemInfo.UpgradableCount);
         UpdateUI();
+    }
+
+    public void OnUnEquipButton()
+    {
+        _unEquipButton.gameObject.SetActive(true);
     }
 
     public void UpdateLevelText()
@@ -70,6 +79,8 @@ public class ItemInfoUI<T> : UI_Image where T : SummonItemInfo
     public override void UpdateUI()
     {
         base.UpdateUI();
+
+        _unEquipButton.gameObject.SetActive(false);
 
         UpdateLevelText();
         UpdateCountText();

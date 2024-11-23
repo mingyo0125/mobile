@@ -18,6 +18,7 @@ public class Skill_InfoUI : ItemInfoUI<SkillInfo>
         base.Initialze();
 
         _descriptionText.SetText(_itemInfo.Description);
+        OnUnEquipButton();
     }
 
 }

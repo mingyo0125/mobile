@@ -9,6 +9,9 @@ public class UnEquipItemButton : UI_Button
     [SerializeField]
     private bool isDisableParent;
 
+    [SerializeField]
+    private bool isCloseTopUI;
+
     private void Start()
     {
         if(isDisableParent)
@@ -25,6 +28,7 @@ public class UnEquipItemButton : UI_Button
     protected override void ButtonEvent()
     {
         base.ButtonEvent();
+        if (isCloseTopUI) { UIManager.Instance.RemoveTopUGUI(); }
         InventoryManager.Instance.UnEquipItem(_item.ItemType, _item.ItemId);
     }
 }
