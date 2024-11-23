@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using static UnityEditor.Progress;
 
 public class EquippingSkillUI : UI_Component
 {
@@ -13,6 +10,14 @@ public class EquippingSkillUI : UI_Component
 
     private const string inventoryItemIcon = "Inventory_ItemIcon";
 
+    private InventoryItem_Icon _equippingItem_Icon;
+    private Transform _prevequippingItemParentTrm;
+
+    private void Start()
+    {
+        Signalhub.OnReplaceSkillEvent += CloseEquippingSkillUI;
+    }
+
     public override void UpdateUI()
     {
         _allSkillsUI.SetActive(false);
@@ -21,12 +26,17 @@ public class EquippingSkillUI : UI_Component
 
     public void SetSkillInfo(InventoryItem_Icon inventoryItem_Icon)
     {
+        _equippingItem_Icon = inventoryItem_Icon;
+        _prevequippingItemParentTrm = inventoryItem_Icon.transform.parent;
         inventoryItem_Icon.transform.SetParent(_equipSkillButtonTrm);
     }
 
-    public void SetInfo()
+    public void CloseEquippingSkillUI()
     {
+        _equippingItem_Icon.transform.SetParent(_prevequippingItemParentTrm);
+        _equippingItem_Icon = null;
 
+        _allSkillsUI.SetActive(true);
+        gameObject.SetActive(false);
     }
-
 }

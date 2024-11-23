@@ -23,7 +23,8 @@ public abstract class UI_Button : UI_Component
 
     protected virtual void ButtonEvent()
     {
-        foreach(var action in _actions)
+        var actionsCopy = new List<UnityAction>(_actions);
+        foreach (var action in actionsCopy)
         {
             action?.Invoke();
         }
@@ -40,6 +41,21 @@ public abstract class UI_Button : UI_Component
         {
             _actions.Add(action);
         }
+    }
+
+    public void AddClickEvent(List<UnityAction> actions)
+    {
+        foreach (UnityAction action in actions)
+        {
+            _actions.Add(action);
+        }
+    }
+
+    public List<UnityAction> RemoveClickEvent()
+    {
+        List<UnityAction> actions = new List<UnityAction>(_actions);
+        _actions.Clear();
+        return actions;
     }
 
 }

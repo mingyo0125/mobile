@@ -49,9 +49,13 @@ public class SummonItem_Icon : UI_Button, ISummonItemUI
 
     protected override void ButtonEvent()
     {
-        base.ButtonEvent();
+        try
+        {
+            base.ButtonEvent();
 
-        SpawnItemInfoUI();
+            SpawnItemInfoUI();
+        }
+        catch { }
     }
 
     private void SpawnItemInfoUI()

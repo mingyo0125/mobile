@@ -20,9 +20,7 @@ public class EquipItemButton : UI_Button
         {
             base.ButtonEvent();
         }
-        else
-        {
-            if (isCloseTopUI) { UIManager.Instance.RemoveTopUGUI(); }
-        }
+
+        if (isCloseTopUI) { UIManager.Instance.RemoveTopUGUI(); }
     }
 }
