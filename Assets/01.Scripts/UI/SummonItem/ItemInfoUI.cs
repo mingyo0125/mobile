@@ -18,6 +18,9 @@ public class ItemInfoUI<T> : UI_Image where T : SummonItemInfo
     protected TextMeshProUGUI _countText { get; private set; }
 
     [SerializeField]
+    private Image _itemCountFillAmountImage;
+
+    [SerializeField]
     private EquipItemButton _equipButton;
 
     [SerializeField]
@@ -73,6 +76,12 @@ public class ItemInfoUI<T> : UI_Image where T : SummonItemInfo
             _targetAchievedImage.SetActive(true);
         }
 
+        // int로만 하면 int의 나눗셈을 해서 소수점을 버림
+        float fillAmount = Mathf.Clamp((float)_itemInfo.ElementsCount / _itemInfo.UpgradableCount,
+                                       0,
+                                       1);
+
+        _itemCountFillAmountImage.fillAmount = fillAmount;
         _countText.SetText($"{_itemInfo.ElementsCount}/{_itemInfo.UpgradableCount}");
     }
 
@@ -81,6 +90,11 @@ public class ItemInfoUI<T> : UI_Image where T : SummonItemInfo
         base.UpdateUI();
 
         _unEquipButton.gameObject.SetActive(false);
+
+        if (_itemInfo.isEquipped)
+        {
+            OnUnEquipButton();
+        }
 
         UpdateLevelText();
         UpdateCountText();

@@ -28,7 +28,6 @@ public class SummonItemInfo : ISummonItem
     [field: SerializeField]
     public int ElementsCount { get; private set; }
 
-
     #region Events
 
     public event Action OnItemUnEquipEvent = null, OnItemGetEvent = null;
@@ -43,6 +42,7 @@ public class SummonItemInfo : ISummonItem
     private const float legendaryIncrement = 0.01f; // 누적될 때마다 확률 증가량
 
     public bool IsLock { get; private set; }
+    public bool isEquipped { get; private set; }
 
     public SummonItemInfo(SummonItemInfo summonItemInfo)
     {
@@ -62,6 +62,8 @@ public class SummonItemInfo : ISummonItem
         UpgradableCount = 2;
 
         IsLock = true;
+
+        OnItemEquipEvent += () => isEquipped = true;
     }
 
     public void AddElementsCount()
@@ -79,11 +81,13 @@ public class SummonItemInfo : ISummonItem
 
     public virtual bool EquipItem()
     {
+
         return false;
     }
 
     public virtual void UnEquipItem()
     {
+        isEquipped = false;
         OnItemUnEquipEvent?.Invoke();
     }
 
