@@ -13,6 +13,8 @@ public class SkillButton : UI_Button
 
     private SkillButtonInfo _skillButtonInfo;
 
+    private Coroutine _calculateSkillCooldownCoroutine;
+
     private void Start()
     {
         _skillHolder = GameManager.Instance.GetPlayer().SkillHolder;
@@ -29,7 +31,7 @@ public class SkillButton : UI_Button
 
         UpdateUI();
         //_button.onClick.RemoveAllListeners();
-        _button.onClick.AddListener(() => StartCoroutine(CalculateSkillCooldownCorou()));
+        _button.onClick.AddListener(() => _calculateSkillCooldownCoroutine = StartCoroutine(CalculateSkillCooldownCorou()));
         _button.onClick.AddListener(() => _skillHolder.PlaySkill(skill.SkillInfo.ItemId));
     }
 
@@ -43,13 +45,16 @@ public class SkillButton : UI_Button
     public void UnSubscribeSkill()
     {
         _iconImage.sprite = null;
-        _button.interactable = true;
-        _cooldownImage.fillAmount = 0;
 
         IsUsingButton = false;
 
         _skillButtonInfo.ResetInfo();
         _button.onClick.RemoveAllListeners();
+
+        _cooldownImage.fillAmount = 0;
+        _button.interactable = true;
+
+        StopCoroutine(_calculateSkillCooldownCoroutine);
     }
 
     private IEnumerator CalculateSkillCooldownCorou()
