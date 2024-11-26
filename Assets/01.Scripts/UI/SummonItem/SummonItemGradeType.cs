@@ -19,4 +19,7 @@ public struct ItemGradeInfo
 
     [field: SerializeField]
     public Color ColorByGrade { get; private set; }
+
+    [field: SerializeField]
+    public float UpgradeIncreaseValue { get; private set; }
 }

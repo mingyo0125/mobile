@@ -24,8 +24,6 @@ public class SummonItemInfo : ISummonItem
     [field: SerializeField]
     public ItemGradeInfo GradeInfo { get; private set; }
 
-    // 나중에 직렬화 지우셈 later
-    [field: SerializeField]
     public int ElementsCount { get; private set; }
 
     #region Events
@@ -75,9 +73,9 @@ public class SummonItemInfo : ISummonItem
         Debug.Log($"{ItemName}: {ElementsCount}");
     }
 
-    public void ItemLevelUp()
+    public virtual bool ItemLevelUp()
     {
-        if (!CanUpgrade) { return; }
+        if (!CanUpgrade) { return false; }
         // 부족하다고 알리기 later
 
         ItemLevel++;
@@ -89,6 +87,8 @@ public class SummonItemInfo : ISummonItem
         Debug.Log($"{ItemName}: {ItemLevel}");
 
         OnItemLevelUpEvent?.Invoke();
+
+        return true;
     }
 
     public virtual bool EquipItem()

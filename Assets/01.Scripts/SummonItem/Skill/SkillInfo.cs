@@ -42,4 +42,15 @@ public class SkillInfo : SummonItemInfo
         SkillManager.Instance.AddSkill(ItemId);
         base.GetItem();
     }
+
+    public override bool ItemLevelUp()
+    {
+        if (!base.ItemLevelUp()) { return false; }
+
+        DamagePercent += GradeInfo.UpgradeIncreaseValue;
+
+        Debug.Log($"{ItemName}DamagePercent: {DamagePercent}");
+
+        return true;
+    }
 }

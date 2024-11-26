@@ -52,6 +52,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   isCollisionUpdate: 0
+  shouldDisappearOnCollision: 0
 --- !u!1 &7723339272816996366
 GameObject:
   m_ObjectHideFlags: 0

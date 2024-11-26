@@ -24,8 +24,8 @@ public class SkillManager : MonoSingleTon<SkillManager>
 
         foreach (BaseSkill skill in _skillListSO.SkillLists)
         {
-            skill.InitializeSkillInfo();
             Skills.Add(skill.SkillInfo.ItemId, skill);
+            skill.InitializeSkillInfo();
         }
     }
 
@@ -70,4 +70,15 @@ public class SkillManager : MonoSingleTon<SkillManager>
         Debug.Log(false);
         return false;
     }
+
+    //public SkillInfo GetSkillInfo(string id)
+    //{
+    //    if(!_skillInfos.TryGetValue(id, out SkillInfo skill_Info))
+    //    {
+    //        Debug.LogError($"Player doesn't have {id}Skill");
+    //        return null;
+    //    }
+
+    //    return skill_Info;
+    //}    
 }

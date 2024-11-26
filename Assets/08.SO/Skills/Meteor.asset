@@ -21,6 +21,7 @@ MonoBehaviour:
     <GradeInfo>k__BackingField:
       <ItemGradeType>k__BackingField: 25
       <ColorByGrade>k__BackingField: {r: 0.15686275, g: 0.7294118, b: 0.92156863, a: 1}
+      <UpgradeIncreaseValue>k__BackingField: 20
     <ElementsCount>k__BackingField: 0
     <Description>k__BackingField: "\uBA54\uD14C\uC624\uC774\uB2E4"
     <Cooldown>k__BackingField: 5
