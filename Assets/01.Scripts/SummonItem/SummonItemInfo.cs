@@ -44,6 +44,8 @@ public class SummonItemInfo : ISummonItem
     public bool IsLock { get; private set; }
     public bool isEquipped { get; private set; }
 
+    public bool CanUpgrade => ElementsCount >= UpgradableCount;
+
     public SummonItemInfo(SummonItemInfo summonItemInfo)
     {
         this.ItemId = summonItemInfo.ItemId;
@@ -75,6 +77,9 @@ public class SummonItemInfo : ISummonItem
 
     public void ItemLevelUp()
     {
+        if (!CanUpgrade) { return; }
+        // 부족하다고 알리기 later
+
         ItemLevel++;
 
         ElementsCount -= UpgradableCount;
