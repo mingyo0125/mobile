@@ -30,6 +30,7 @@ public class PlayerSkillHolder : MonoBehaviour
         }
         
         BaseSkill skillInstance = PoolManager.Instance.CreateObject(id) as BaseSkill;
+        skillInstance.InitializeSkillInfo(SkillManager.Instance.GetSkillInfo(id));
 
         _lastUsedTimes[id] = Time.time;
         skillInstance.Execute(GameManager.Instance.GetPlayer(), (Vector2)transform.position + skillInstance.SpawnDir);

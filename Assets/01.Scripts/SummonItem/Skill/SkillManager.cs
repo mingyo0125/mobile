@@ -14,6 +14,8 @@ public class SkillManager : MonoSingleTon<SkillManager>
     public Dictionary<string, BaseSkill> Skills { get; private set; } = new Dictionary<string, BaseSkill>();
     public Dictionary<string, int> SkillsInventory { get; private set; } = new Dictionary<string, int>();
 
+    public Dictionary<string, SkillInfo> _skill_Infos { get; private set; } = new Dictionary<string, SkillInfo>();
+
     private SkillButtonsController _skillButtonsController;
 
     private void Awake()
@@ -24,14 +26,19 @@ public class SkillManager : MonoSingleTon<SkillManager>
 
         foreach (BaseSkill skill in _skillListSO.SkillLists)
         {
-            Skills.Add(skill.SkillInfo.ItemId, skill);
-            skill.InitializeSkillInfo();
+            SkillInfo skillInfo = new SkillInfo(skill.SkillInfoSO.SkillInfo);
+
+            Skills.Add(skillInfo.ItemId, skill);
+
+            _skill_Infos.Add(skillInfo.ItemId, skillInfo);
+
+            skill.InitializeSkillInfo(skillInfo);
         }
     }
 
     public void AddSkill(string skillId)
     {
-        if(!Skills.TryGetValue(skillId, out BaseSkill skill)) { return; }
+        if(!Skills.ContainsKey(skillId)) { return; }
 
         if(!SkillsInventory.ContainsKey(skillId)) // Ã³À½ È¹µæ ÇßÀ¸¸é
         {
@@ -71,14 +78,14 @@ public class SkillManager : MonoSingleTon<SkillManager>
         return false;
     }
 
-    //public SkillInfo GetSkillInfo(string id)
-    //{
-    //    if(!_skillInfos.TryGetValue(id, out SkillInfo skill_Info))
-    //    {
-    //        Debug.LogError($"Player doesn't have {id}Skill");
-    //        return null;
-    //    }
+    public SkillInfo GetSkillInfo(string id)
+    {
+        if(!_skill_Infos.TryGetValue(id, out SkillInfo skill_Info))
+        {
+            Debug.LogError($"Player doesn't have {id}Skill");
+            return null;
+        }
 
-    //    return skill_Info;
-    //}    
+        return skill_Info;
+    }    
 }

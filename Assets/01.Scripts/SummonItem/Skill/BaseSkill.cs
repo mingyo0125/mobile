@@ -5,7 +5,7 @@ using UnityEngine;
 public abstract class BaseSkill : PoolableMono
 {
     [SerializeField]
-    protected SkillInfoSO _skillInfoSO;
+    public SkillInfoSO SkillInfoSO;
 
     [SerializeField]
     [Range(0f, 5f)]
@@ -29,13 +29,11 @@ public abstract class BaseSkill : PoolableMono
         _viusal = transform.Find("Visual").GetComponent<SkillVisual>();
 
         _viusal.OnAnimationEndEvent += () => PoolManager.Instance.DestroyObject(this);
-
-        InitializeSkillInfo();
     }
 
-    public void InitializeSkillInfo()
+    public void InitializeSkillInfo(SkillInfo sharedSkillInfo)
     {
-        SkillInfo = new SkillInfo(_skillInfoSO.SkillInfo);
+        SkillInfo = sharedSkillInfo;
     }
 
     public override void Initialize()

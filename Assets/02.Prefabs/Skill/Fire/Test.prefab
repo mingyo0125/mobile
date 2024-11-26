@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f1b72d356ba8154cbe128f351741d97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _skillInfoSO: {fileID: 11400000, guid: fc345da92907dd14d96ddd7d877cbb99, type: 2}
+  SkillInfoSO: {fileID: 11400000, guid: fc345da92907dd14d96ddd7d877cbb99, type: 2}
   castRadius: 1
   <SpawnDir>k__BackingField: {x: -0.3, y: 1.3}
   _enemyLayer:
