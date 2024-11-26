@@ -14,7 +14,7 @@ public class SkillManager : MonoSingleTon<SkillManager>
     public Dictionary<string, BaseSkill> Skills { get; private set; } = new Dictionary<string, BaseSkill>();
     public Dictionary<string, int> SkillsInventory { get; private set; } = new Dictionary<string, int>();
 
-    public Dictionary<string, SkillInfo> _skill_Infos { get; private set; } = new Dictionary<string, SkillInfo>();
+    public Dictionary<string, SkillInfo> Skill_Infos { get; private set; } = new Dictionary<string, SkillInfo>();
 
     private SkillButtonsController _skillButtonsController;
 
@@ -30,7 +30,7 @@ public class SkillManager : MonoSingleTon<SkillManager>
 
             Skills.Add(skillInfo.ItemId, skill);
 
-            _skill_Infos.Add(skillInfo.ItemId, skillInfo);
+            Skill_Infos.Add(skillInfo.ItemId, skillInfo);
 
             skill.InitializeSkillInfo(skillInfo);
         }
@@ -80,7 +80,7 @@ public class SkillManager : MonoSingleTon<SkillManager>
 
     public SkillInfo GetSkillInfo(string id)
     {
-        if(!_skill_Infos.TryGetValue(id, out SkillInfo skill_Info))
+        if(!Skill_Infos.TryGetValue(id, out SkillInfo skill_Info))
         {
             Debug.LogError($"Player doesn't have {id}Skill");
             return null;
