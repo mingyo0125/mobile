@@ -70,6 +70,9 @@ public class ItemInfoUI<T> : UI_Image where T : SummonItemInfo
         Debug.Log($"{_itemInfo.ItemName} : {_itemInfo.IsLock}");
 
         _targetAchievedImage.SetActive(_itemInfo.ElementsCount >= _itemInfo.UpgradableCount);
+
+        _itemInfo.OnItemLevelUpEvent += UpdateUI;
+
         UpdateUI();
     }
 
@@ -85,9 +88,14 @@ public class ItemInfoUI<T> : UI_Image where T : SummonItemInfo
 
     public void UpdateCountText()
     {
+        Debug.Log("UpdateCountText");
         if(_itemInfo.ElementsCount >= _itemInfo.UpgradableCount)
         {
             _targetAchievedImage.SetActive(true);
+        }
+        else
+        {
+            _targetAchievedImage.SetActive(false);
         }
 
         // int로만 하면 int의 나눗셈을 해서 소수점을 버림
