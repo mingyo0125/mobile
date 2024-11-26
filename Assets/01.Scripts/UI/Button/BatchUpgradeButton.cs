@@ -19,11 +19,18 @@ public class BatchUpgradeButton : UI_Button
 
     private void OnCanUpgradeIcon_Image()
     {
+        bool canUpgrade = false;
         foreach (SkillInfo skillInfo in SkillManager.Instance.Skill_Infos.Values)
         {
             // 그냥 각자 강화해도 거시기 됨
-            CanUpgradeIcon_Image.SetActive(skillInfo.CanUpgrade);
+            if(skillInfo.CanUpgrade)
+            {
+                canUpgrade = true;
+                break;
+            }
         }
+
+        CanUpgradeIcon_Image.SetActive(canUpgrade);
     }
 
     protected override void ButtonEvent()
