@@ -59,6 +59,7 @@ public class SummonItemInfo : ISummonItem
         OnItemEquipEvent = null;
         OnItemLevelUpEvent = null;
 
+        ItemLevel = 1;
         UpgradableCount = 2;
 
         IsLock = true;
@@ -75,9 +76,11 @@ public class SummonItemInfo : ISummonItem
     public void ItemLevelUp()
     {
         ItemLevel++;
+
         ElementsCount -= UpgradableCount;
 
         UpgradableCount += 2;
+
         Debug.Log($"{ItemName}: {ItemLevel}");
 
         OnItemLevelUpEvent?.Invoke();

@@ -36,7 +36,6 @@ public class SkillManager : MonoSingleTon<SkillManager>
         if(!SkillsInventory.ContainsKey(skillId)) // 처음 획득 했으면
         {
             SkillsInventory.Add(skillId, 0);
-            Skills[skillId].SkillInfo.ItemLevelUp();
         }
 
             // 가지고 있는 스킬의 수를 더한다.

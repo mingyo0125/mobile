@@ -32,6 +32,11 @@ public class InventoryItem_Icon : SummonItem_Icon
         base.SetSummonItem(summonItem);
 
         _equipButton.SetSummonItem(ItemInfo);
+
+        if (ItemInfo.IsLock)
+        {
+            _lockPanel.SetActive(false);
+        }
     }
 
     protected override void Init()
@@ -46,11 +51,6 @@ public class InventoryItem_Icon : SummonItem_Icon
 
     public void UpdateItemCountUI()
     {
-        if (ItemInfo.IsLock)
-        {
-            _lockPanel.SetActive(false);
-        }
-
         //int로만 하면 int의 나눗셈을 해서 소수점을 버림
         float fillAmount = Mathf.Clamp((float)ItemInfo.ElementsCount / ItemInfo.UpgradableCount,
                                        0,
