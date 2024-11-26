@@ -25,24 +25,26 @@ public class InventoryItem_Icon : SummonItem_Icon
     [SerializeField]
     private EquipItemButton _equipButton;
 
+    private bool canUpgrade => ItemInfo.ElementsCount >= ItemInfo.UpgradableCount;
+
     public override void SetSummonItem(SummonItemInfo summonItem)
     {
         base.SetSummonItem(summonItem);
 
         _equipButton.SetSummonItem(ItemInfo);
-
-        ItemInfo.OnItemUnEquipEvent += UnEquipItem;
-        ItemInfo.OnItemEquipEvent += EquipItem;
     }
 
     protected override void Init()
     {
         base.Init();
 
-        ItemInfo.OnItemGetEvent += GetItem;
+        ItemInfo.OnItemUnEquipEvent += UnEquipItem;
+        ItemInfo.OnItemEquipEvent += EquipItem;
+        ItemInfo.OnItemLevelUpEvent += UpdateItemCountUI;
+        ItemInfo.OnItemGetEvent += UpdateItemCountUI;
     }
 
-    public void GetItem()
+    public void UpdateItemCountUI()
     {
         if (ItemInfo.IsLock)
         {
@@ -57,10 +59,9 @@ public class InventoryItem_Icon : SummonItem_Icon
         _itemCountFillAmountImage.fillAmount = fillAmount;
         _itemCountText.SetText($"{ItemInfo.ElementsCount}/{ItemInfo.UpgradableCount}");
 
-        if (ItemInfo.ElementsCount >= ItemInfo.UpgradableCount)
-        {
-            SetCanUpgrade();
-        }
+        Debug.Log("UpdateItemCountUI");
+
+        SetCanUpgrade(canUpgrade);
     }
 
     public void EquipItem()
@@ -82,13 +83,15 @@ public class InventoryItem_Icon : SummonItem_Icon
         _lockPanel.SetActive(false);
     }
 
-    private void SetCanUpgrade()
+    private void SetCanUpgrade(bool canUpgrade)
     {
-        _targetAchievedImage.SetActive(true);
+        _targetAchievedImage.SetActive(canUpgrade);
     }
 
-    private void Upgrade()
+    public override void UpdateUI()
     {
-        _targetAchievedImage.SetActive(false);
+        base.UpdateUI();
+
+        UpdateItemCountUI();
     }
 }

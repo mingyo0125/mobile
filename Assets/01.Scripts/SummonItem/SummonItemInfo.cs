@@ -75,7 +75,11 @@ public class SummonItemInfo : ISummonItem
     public void ItemLevelUp()
     {
         ItemLevel++;
+        ElementsCount -= UpgradableCount;
+
         UpgradableCount += 2;
+        Debug.Log($"{ItemName}: {ItemLevel}");
+
         OnItemLevelUpEvent?.Invoke();
     }
 

@@ -136,6 +136,7 @@ MonoBehaviour:
   _targetAchievedImage: {fileID: 51020821506876612}
   _bgImage: {fileID: 2154009898861702497}
   _lockPanel: {fileID: 4800465113854025775}
+  _summonItemUpgradeButton: {fileID: 3436063529206672702}
   _descriptionText: {fileID: 8833117316773179418}
 --- !u!1 &1088642414405377123
 GameObject:
@@ -1912,6 +1913,7 @@ GameObject:
   - component: {fileID: 2674950213163784423}
   - component: {fileID: 4258208612519641106}
   - component: {fileID: 5716959101308218798}
+  - component: {fileID: 3436063529206672702}
   m_Layer: 5
   m_Name: Upgrade_Button
   m_TagString: Untagged
@@ -2033,6 +2035,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &3436063529206672702
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7620782413280610184}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fd14ace33d80844fb3bf29e2877a609, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7656327581946141963
 GameObject:
   m_ObjectHideFlags: 0

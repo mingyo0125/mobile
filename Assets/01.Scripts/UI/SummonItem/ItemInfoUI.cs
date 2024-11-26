@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -34,9 +35,19 @@ public class ItemInfoUI<T> : UI_Image where T : SummonItemInfo
     [SerializeField]
     private GameObject _lockPanel;
 
+    [SerializeField]
+    private SummonItemUpgradeButton _summonItemUpgradeButton;
+
     protected T _itemInfo { get; private set; }
 
+    private ISummonItemUI[] _summonItemUIs;
+
     #endregion
+
+    private void Awake()
+    {
+        _summonItemUIs = GetComponentsInChildren<ISummonItemUI>();
+    }
 
     public void SetSkillInfo(T itemInfo)
     {
@@ -49,8 +60,11 @@ public class ItemInfoUI<T> : UI_Image where T : SummonItemInfo
         _icon.sprite = _itemInfo.Icon;
         _skillNameText.SetText(_itemInfo.ItemName);
         _bgImage.color = _itemInfo.GradeInfo.ColorByGrade;
-        _equipButton.SetSummonItem(_itemInfo);
-        _unEquipButton.SetSummonItem(_itemInfo);
+
+        foreach(ISummonItemUI summonItemUI in _summonItemUIs)
+        {
+            summonItemUI.SetSummonItem(_itemInfo);
+        }
 
         _lockPanel.SetActive(_itemInfo.IsLock);
         Debug.Log($"{_itemInfo.ItemName} : {_itemInfo.IsLock}");

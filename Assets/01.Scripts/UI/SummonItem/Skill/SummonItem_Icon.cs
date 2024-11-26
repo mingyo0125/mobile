@@ -1,6 +1,7 @@
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.PlayerLoop;
 using UnityEngine.UI;
 
 public class SummonItem_Icon : UI_Button, ISummonItemUI
@@ -23,12 +24,9 @@ public class SummonItem_Icon : UI_Button, ISummonItemUI
     public virtual void SetSummonItem(SummonItemInfo summonItem)
     {
         ItemInfo = summonItem;
-        _unEquipItemButton.SetSummonItem(ItemInfo);
         IsUsingButton = true;
 
-        UpdateLevelText();
-        UpdateBGColor();
-        Init();
+        UpdateUI();
     }
 
     public void UpdateLevelText()
@@ -73,5 +71,16 @@ public class SummonItem_Icon : UI_Button, ISummonItemUI
             default:
                 break;
         }
+    }
+
+    public override void UpdateUI()
+    {
+        base.UpdateUI();
+        _unEquipItemButton.SetSummonItem(ItemInfo);
+
+
+        UpdateLevelText();
+        UpdateBGColor();
+        Init();
     }
 }

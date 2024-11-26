@@ -2,15 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UnEquipItemButton : UI_Button
+public class UnEquipItemButton : UI_Button, ISummonItemUI
 {
-    private SummonItemInfo _item;
-
     [SerializeField]
     private bool isDisableParent;
 
     [SerializeField]
     private bool isCloseTopUI;
+
+    public SummonItemInfo ItemInfo { get; set; }
 
     private void Start()
     {
@@ -22,13 +22,13 @@ public class UnEquipItemButton : UI_Button
 
     public void SetSummonItem(SummonItemInfo summonItem)
     {
-        _item = summonItem;
+        ItemInfo = summonItem;
     }
 
     protected override void ButtonEvent()
     {
         base.ButtonEvent();
         if (isCloseTopUI) { UIManager.Instance.RemoveTopUGUI(); }
-        InventoryManager.Instance.UnEquipItem(_item.ItemType, _item.ItemId);
+        InventoryManager.Instance.UnEquipItem(ItemInfo.ItemType, ItemInfo.ItemId);
     }
 }

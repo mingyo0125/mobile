@@ -2,21 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EquipItemButton : UI_Button
+public class EquipItemButton : UI_Button, ISummonItemUI
 {
-    private SummonItemInfo _item;
-
     [SerializeField]
     private bool isCloseTopUI;
 
+    public SummonItemInfo ItemInfo { get; set; }
+
     public void SetSummonItem(SummonItemInfo summonItem)
     {
-        _item = summonItem;
+        ItemInfo = summonItem;
     }
 
     protected override void ButtonEvent()
     {
-        if(InventoryManager.Instance.EquipItem(_item))
+        if(InventoryManager.Instance.EquipItem(ItemInfo))
         {
             base.ButtonEvent();
         }
