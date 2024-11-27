@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEditor.Progress;
 
 public abstract class SummonItemIconFactory : ObjectFactory<InventoryItem_Icon>
 {
@@ -10,10 +11,13 @@ public abstract class SummonItemIconFactory : ObjectFactory<InventoryItem_Icon>
 
     private void Start()
     {
-        foreach (var item in GetSummonItems())
+        List<SummonItemInfo> summonItems = GetSummonItems();
+        for (int i = 0; i < summonItems.Count; i++)
         {
+            SummonItemInfo item = summonItems[i];
             InventoryItem_Icon icon = UIManager.Instance.GenerateUI(InventoryItemIcon, transform) as InventoryItem_Icon;
             icon.SetSummonItem(item);
+            icon.SetSiblingIndex(i);
             _inventoryItems.Add(item.ItemId, icon);
         }
     }

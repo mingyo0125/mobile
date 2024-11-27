@@ -28,12 +28,13 @@ public class EquippingSkillUI : UI_Component
     {
         _equippingItem_Icon = inventoryItem_Icon;
         _prevequippingItemParentTrm = inventoryItem_Icon.transform.parent;
-        inventoryItem_Icon.transform.SetParent(_equipSkillButtonTrm);
+
+        _equippingItem_Icon.ChangeParent(_equipSkillButtonTrm);
     }
 
     public void CloseEquippingSkillUI()
     {
-        _equippingItem_Icon.transform.SetParent(_prevequippingItemParentTrm);
+        _equippingItem_Icon.ChangeParent(_prevequippingItemParentTrm);
         _equippingItem_Icon = null;
 
         _allSkillsUI.SetActive(true);

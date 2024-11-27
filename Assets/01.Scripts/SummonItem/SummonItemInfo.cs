@@ -63,7 +63,6 @@ public class SummonItemInfo : ISummonItem
         UpgradableCount = 2;
 
         IsLock = true;
-
         OnItemEquipEvent += () => isEquipped = true;
     }
 

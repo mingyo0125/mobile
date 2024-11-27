@@ -25,7 +25,7 @@ public class InventoryItem_Icon : SummonItem_Icon
     [SerializeField]
     private EquipItemButton _equipButton;
 
-    private bool canUpgrade => ItemInfo.ElementsCount >= ItemInfo.UpgradableCount;
+    public int siblingIndex = 999;
 
     public override void SetSummonItem(SummonItemInfo summonItem)
     {
@@ -49,7 +49,7 @@ public class InventoryItem_Icon : SummonItem_Icon
     public void UpdateItemCountUI()
     {
         UnLockItem();
-        SetCanUpgrade(canUpgrade);
+        SetCanUpgrade(ItemInfo.CanUpgrade);
 
         //int로만 하면 int의 나눗셈을 해서 소수점을 버림
         float fillAmount = Mathf.Clamp((float)ItemInfo.ElementsCount / ItemInfo.UpgradableCount,
@@ -90,10 +90,21 @@ public class InventoryItem_Icon : SummonItem_Icon
         _targetAchievedImage.SetActive(canUpgrade);
     }
 
+    public void SetSiblingIndex(int siblingIndex)
+    {
+        this.siblingIndex = siblingIndex;
+    }
+
     public override void UpdateUI()
     {
         base.UpdateUI();
 
         UpdateItemCountUI();
+    }
+
+    public void ChangeParent(Transform parent)
+    {
+        transform.SetParent(parent);
+        transform.SetSiblingIndex(siblingIndex);
     }
 }
