@@ -45,7 +45,7 @@ public class SkillManager : MonoSingleTon<SkillManager>
             SkillsInventory.Add(skillId, 0);
         }
 
-            // 가지고 있는 스킬의 수를 더한다.
+        // 가지고 있는 스킬의 수를 더한다.
         Skills[skillId].SkillInfo.AddElementsCount();
     }
 

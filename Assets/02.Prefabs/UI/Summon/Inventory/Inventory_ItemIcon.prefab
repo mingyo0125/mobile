@@ -134,6 +134,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c01016a97bc3b2a47adc8332379860d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isCloseTopUI: 0
 --- !u!1 &373339280601867196
 GameObject:
   m_ObjectHideFlags: 0
@@ -936,6 +937,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isDisableParent: 1
+  isCloseTopUI: 0
 --- !u!1 &4033397416999061678
 GameObject:
   m_ObjectHideFlags: 0
@@ -1144,6 +1146,7 @@ MonoBehaviour:
   _itemCountFillAmountImage: {fileID: 4578619636957420425}
   _itemCountText: {fileID: 2871515325340448653}
   _equipButton: {fileID: 7449119681579640986}
+  siblingIndex: 999
 --- !u!114 &7991158560323994383
 MonoBehaviour:
   m_ObjectHideFlags: 0

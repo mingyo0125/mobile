@@ -9,6 +9,7 @@ using UnityEngine.UI;
 public abstract class UI_Button : UI_Component
 {
     protected Button _button { get; private set; }
+    public Button Button => _button;
 
     private List<UnityAction> _actions = new List<UnityAction>();
 

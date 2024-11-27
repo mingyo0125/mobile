@@ -120,7 +120,8 @@ public class SummonItemInfo : ISummonItem
 
         if (GradeInfo.ItemGradeType == SummonItemGradeType.Legendary) // 레전더리면 legendaryCount에 따라 확률 증가
         {
-            baseProbability += legendaryCount * legendaryIncrement;
+            float increaseValue = legendaryCount * legendaryIncrement;
+            baseProbability += increaseValue;
         }
 
         return baseProbability;

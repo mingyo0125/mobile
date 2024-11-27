@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SkillButtonsController : MonoBehaviour
 {
@@ -21,6 +22,8 @@ public class SkillButtonsController : MonoBehaviour
             return _equippedSkillsController;
         }
     }
+
+    private bool isAutoPlay;
 
     private void Awake()
     {
@@ -68,5 +71,23 @@ public class SkillButtonsController : MonoBehaviour
             }
         }
         return null;
+    }
+
+    private void Update()
+    {
+        if (!isAutoPlay) { return; }
+
+        foreach (SkillButton button in _skillButtons)
+        {
+            if (button.Button.interactable)
+            {
+                button.Button.onClick?.Invoke();
+            }
+        }
+    }
+
+    public void SetAutoPlay(bool autoPlay)
+    {
+        this.isAutoPlay = autoPlay;
     }
 }
