@@ -33,10 +33,7 @@ public class InventoryItem_Icon : SummonItem_Icon
 
         _equipButton.SetSummonItem(ItemInfo);
 
-        if (ItemInfo.IsLock)
-        {
-            _lockPanel.SetActive(false);
-        }
+        UnLockItem();
     }
 
     protected override void Init()
@@ -51,6 +48,9 @@ public class InventoryItem_Icon : SummonItem_Icon
 
     public void UpdateItemCountUI()
     {
+        UnLockItem();
+        SetCanUpgrade(canUpgrade);
+
         //int로만 하면 int의 나눗셈을 해서 소수점을 버림
         float fillAmount = Mathf.Clamp((float)ItemInfo.ElementsCount / ItemInfo.UpgradableCount,
                                        0,
@@ -61,7 +61,6 @@ public class InventoryItem_Icon : SummonItem_Icon
 
         Debug.Log("UpdateItemCountUI");
 
-        SetCanUpgrade(canUpgrade);
     }
 
     public void EquipItem()
@@ -80,7 +79,10 @@ public class InventoryItem_Icon : SummonItem_Icon
 
     public void UnLockItem()
     {
-        _lockPanel.SetActive(false);
+        if (!ItemInfo.IsLock)
+        {
+            _lockPanel.SetActive(false);
+        }
     }
 
     private void SetCanUpgrade(bool canUpgrade)
