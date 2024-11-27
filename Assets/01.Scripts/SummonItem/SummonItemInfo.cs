@@ -106,12 +106,12 @@ public class SummonItemInfo : ISummonItem
     {
         if (GradeInfo.ItemGradeType == SummonItemGradeType.Legendary) { legendaryCount = 0; }
 
-        OnItemGetEvent?.Invoke();
-
         if (IsLock)
         {
             IsLock = false;
         }
+
+        OnItemGetEvent?.Invoke();
     }
 
     public float GetSummonProbability()
