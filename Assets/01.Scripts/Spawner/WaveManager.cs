@@ -22,23 +22,13 @@ public class WaveManager : MonoSingleTon<WaveManager>
         _enemyFactory.SpawnEnemy(spawnedEnmiesCount);
     }
 
-    private void Update()
-    {
-        if(Input.GetKeyDown(KeyCode.D))
-        {
-            foreach (var item in FindObjectsByType<Enemy>(FindObjectsSortMode.None))
-            {
-                item.Die();
-            }
-        }
-    }
-
     public void IncreaseDeadEnemyCount()
     {
         deadEnmiesCount++;
 
         if (deadEnmiesCount == spawnedEnmiesCount)
         {
+            Signalhub.OnSpawnEnemiesEvent?.Invoke();
             _enemyFactory.SpawnEnemy(spawnedEnmiesCount);
             deadEnmiesCount = 0;
         }

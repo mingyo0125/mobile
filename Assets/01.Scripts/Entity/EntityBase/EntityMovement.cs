@@ -33,6 +33,7 @@ public abstract partial class Entity<T, G> : IMoveable
         if (!IsMove) { return; }
 
         Rb.velocity = dir * Speed;
+
         //CheckFacingDir(targetPos);
     }
 

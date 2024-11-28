@@ -12,7 +12,7 @@ public class PlayerAttackState : EntityAttackState<PlayerStateType, Player>
 
     }
 
-	public override void ChangeMoveState()
+	public override void ChangeNextState()
 	{
 		_stateMachine.ChangeState(PlayerStateType.Move);
 	}

@@ -12,9 +12,11 @@ public abstract class EntityAttackState<T, G> : EntityState<T, G> where T : Enum
 	{
 		base.EnterState();
 
+		_owner.StopImmediatetly();
+
         if (!GetAttackable())
 		{
-			ChangeMoveState();
+			ChangeNextState();
 			return;
 		}
 
@@ -30,5 +32,5 @@ public abstract class EntityAttackState<T, G> : EntityState<T, G> where T : Enum
 
 	}
 
-	public abstract void ChangeMoveState();
+	public abstract void ChangeNextState();
 }

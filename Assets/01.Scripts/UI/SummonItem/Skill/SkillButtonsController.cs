@@ -75,7 +75,8 @@ public class SkillButtonsController : MonoBehaviour
 
     private void Update()
     {
-        if (!isAutoPlay) { return; }
+        bool canAutoPlay = isAutoPlay && GameManager.Instance.GetPlayer().StateMachine.CurrentState.GetAttackable();
+        if (!canAutoPlay) { return; }
 
         foreach (SkillButton button in _skillButtons)
         {
