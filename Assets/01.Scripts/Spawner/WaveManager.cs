@@ -28,7 +28,6 @@ public class WaveManager : MonoSingleTon<WaveManager>
 
         if (deadEnmiesCount == spawnedEnmiesCount)
         {
-            Signalhub.OnSpawnEnemiesEvent?.Invoke();
             _enemyFactory.SpawnEnemy(spawnedEnmiesCount);
             deadEnmiesCount = 0;
         }

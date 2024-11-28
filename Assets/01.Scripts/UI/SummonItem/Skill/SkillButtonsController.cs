@@ -89,6 +89,6 @@ public class SkillButtonsController : MonoBehaviour
 
     public void SetAutoPlay(bool autoPlay)
     {
-        this.isAutoPlay = autoPlay;
+        isAutoPlay = autoPlay;
     }
 }

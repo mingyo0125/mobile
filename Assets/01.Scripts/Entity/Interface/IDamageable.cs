@@ -13,4 +13,6 @@ public interface IDamageable
     public float MaxHP { get; set; }
     public float HP { get; set; }
     public Collider2D EntityCollider { get; set;}
+
+    public bool IsInvincibility { get; set; }
 }

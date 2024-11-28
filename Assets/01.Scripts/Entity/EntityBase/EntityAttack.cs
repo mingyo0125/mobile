@@ -20,7 +20,7 @@ public abstract partial class Entity<T, G>
 
     private TakeDamageInfo _entityTakeDamageInfo;
 
-    public float DefualtAttackDelay { get; private set; } = 3;
+    public float DefualtAttackDelay { get; private set; } = 5;
 
     private void OnDrawGizmos()
     {
@@ -104,7 +104,7 @@ public abstract partial class Entity<T, G>
     public float GetAttackDelay()
     {
         float attackDelay = Mathf.Clamp(DefualtAttackDelay - EntityStatController.GetStatValue(StatType.AttackDelay),
-                                        0.5f,
+                                        3f,
                                         10);
 
         return attackDelay;

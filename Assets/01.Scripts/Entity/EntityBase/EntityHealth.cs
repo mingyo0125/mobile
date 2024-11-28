@@ -15,13 +15,15 @@ public abstract partial class Entity<T, G> : IDamageable
             currentHp = Mathf.Clamp(value, 0, MaxHP);
         }
     }
-    public Collider2D EntityCollider { get; set; }
 
     public event Action<TakeDamageInfo> OnTakeDamagedEvent = null;
     public event Action<Vector2, string, Color> OnHpChangedEvent = null;
     public Action<Vector2> OnDieEvent { get; set; }
 
     public event Action OnDieAnimationEndEvent = null;
+
+    public bool IsInvincibility { get; set; } = false;
+    public Collider2D EntityCollider { get; set; }
 
     [Header("HpUI")]
     [SerializeField]
@@ -57,7 +59,7 @@ public abstract partial class Entity<T, G> : IDamageable
 
         OnTakeDamagedEvent?.Invoke(takeDamageInfo);
         FeedbackPlayerCompo.PlayFeedback<T, G>(FeedbackTypes.Hit, takeDamageInfo);
-        EntityCollider.enabled = false;
+        IsInvincibility = true;
 
         _entityHpBar.SetHpbarValue(HP);
 
@@ -91,7 +93,7 @@ public abstract partial class Entity<T, G> : IDamageable
 
     private void EnableCollider()
     {
-        EntityCollider.enabled = true;
+        IsInvincibility = false;
     }
 
     private void HealthDisable()
