@@ -27,8 +27,6 @@ public class SkillAutoPlayButtonController : UI_Button
 
         isAutoPlaying = !isAutoPlaying;
 
-        Debug.Log(isAutoPlaying);
-
         autoPlayUI.gameObject.SetActive(isAutoPlaying);
         unAutoPlayUI.gameObject.SetActive(!isAutoPlaying);
 

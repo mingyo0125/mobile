@@ -26,6 +26,13 @@ public class Enemy : Entity<EnemyStateType, Enemy>
         EntityStatController.Initialize(enemyStat);
     }
 
+    public override void Die()
+    {
+        base.Die();
+
+        WaveManager.Instance.IncreaseDeadEnemyCount();
+    }
+
     protected override string GetHudTextValue(float value)
     {
         return $"{-value}";

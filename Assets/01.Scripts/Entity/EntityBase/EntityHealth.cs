@@ -1,5 +1,4 @@
 using System;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public abstract partial class Entity<T, G> : IDamageable
@@ -66,7 +65,7 @@ public abstract partial class Entity<T, G> : IDamageable
         else
         {
 			EntityAnimatorCompo.SetFloat("Speed", -1f);
-			EntityAnimatorCompo.SetTrigger("HitTrigger");
+            EntityAnimatorCompo.SetTrigger("HitTrigger");
         }
     }
 
@@ -76,7 +75,7 @@ public abstract partial class Entity<T, G> : IDamageable
         FeedbackPlayerCompo.PlayFeedback<T, G>(FeedbackTypes.Die);
         EntityAnimatorCompo.SetFloat("Speed", -1f);
 		EntityAnimatorCompo.SetTrigger("DieTrigger");
-        WaveManager.Instance.IncreaseDeadEnemyCount();
+        
         StopImmediatetly();
     }
 

@@ -18,11 +18,13 @@ public abstract partial class Entity<T, G> : IMoveable
 	private void MovementAwake()
     {
         Rb = GetComponent<Rigidbody2D>();
+
 	}
 
 	private void InitializeMovement()
     {
 		Speed = EntityStatController.GetStatValue(StatType.Speed);
+        EntityAnimatorCompo.OnHitAnimationEndEvent += SetMove;
         SetMove();
 	}
 
