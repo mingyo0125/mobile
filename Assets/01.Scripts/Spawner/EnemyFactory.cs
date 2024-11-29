@@ -18,12 +18,17 @@ public class EnemyFactory : ObjectFactory<Enemy>
         _itemFactory = FindAnyObjectByType<ItemFactory>();
         _coinFactory = FindAnyObjectByType<CoinFactory>();
 
-        Vector3 middleRight = Camera.main.ViewportToWorldPoint(new Vector3(2f, 0.5f, Camera.main.nearClipPlane));
+        Vector3 middleRight = Camera.main.ViewportToWorldPoint(new Vector3(2f, 0.55f, Camera.main.nearClipPlane));
 
         _minBound.parent.position = middleRight;
     }
 
     public void SpawnEnemy(int spawnCount, params Action<Vector2>[] onDieEvents)
+    {
+        StartCoroutine(SpawnEnemyCorou(spawnCount, onDieEvents));
+    }
+
+    private IEnumerator SpawnEnemyCorou(int spawnCount, Action<Vector2>[] onDieEvents)
     {
         for (int i = 0; i < spawnCount; i++)
         {
@@ -35,10 +40,12 @@ public class EnemyFactory : ObjectFactory<Enemy>
             spawnedEnemy.OnDieEvent += _itemFactory.SpawnItem;
             spawnedEnemy.OnDieEvent += _coinFactory.SpawnCoin;
 
-            foreach(Action<Vector2> action in onDieEvents)
+            foreach (Action<Vector2> action in onDieEvents)
             {
                 spawnedEnemy.OnDieEvent += action;
             }
+
+            yield return new WaitForSeconds(UnityEngine.Random.Range(0.1f, 0.2f));
         }
     }
 
