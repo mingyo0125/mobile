@@ -58,9 +58,6 @@ public class InventoryItem_Icon : SummonItem_Icon
 
         _itemCountFillAmountImage.fillAmount = fillAmount;
         _itemCountText.SetText($"{ItemInfo.ElementsCount}/{ItemInfo.UpgradableCount}");
-
-        Debug.Log("UpdateItemCountUI");
-
     }
 
     public void EquipItem()

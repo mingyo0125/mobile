@@ -40,7 +40,7 @@ public abstract partial class Entity<T, G>
         }
     }
 
-    protected virtual (bool, float) GetDamage(float skillDamagePercent)
+    protected virtual (bool, float) GetDamage(float skillDamagePercent = 100)
     {
         float damage = EntityStatController.GetStatValue(StatType.Damage);
         bool isCritical = Utils.CalculateProbability(EntityStatController.GetStatValue(StatType.CriticalProbability));
@@ -79,7 +79,7 @@ public abstract partial class Entity<T, G>
 
     private void UpdateTakeDamageInfo(Vector2 hitPoint)
     {
-        var calculateDamage = GetDamage(0);
+        var calculateDamage = GetDamage();
 
         _entityTakeDamageInfo.UpdateTakeDamageInfo(calculateDamage.Item2,
                                                    calculateDamage.Item2 * 0.25f,

@@ -16,6 +16,8 @@ public abstract partial class Entity<T, G> : IDamageable
         }
     }
 
+    public bool IsDead { get; private set; }
+
     public event Action<TakeDamageInfo> OnTakeDamagedEvent = null;
     public event Action<Vector2, string, Color> OnHpChangedEvent = null;
     public Action<Vector2> OnDieEvent { get; set; }
@@ -42,6 +44,7 @@ public abstract partial class Entity<T, G> : IDamageable
     {
 		HP = MaxHP;
         _entityHpBar.ReserFillAmount();
+        IsDead = false;
 
         EnableCollider();
 
@@ -54,6 +57,8 @@ public abstract partial class Entity<T, G> : IDamageable
 
     public virtual void TakedDamage(TakeDamageInfo takeDamageInfo)
     {
+        if (IsDead) { return; }
+
         Color hudTextColor = takeDamageInfo.IsCritical ? Color.red : Color.white;
         SetHp(-takeDamageInfo.Damage, hudTextColor);
 
@@ -63,7 +68,7 @@ public abstract partial class Entity<T, G> : IDamageable
 
         _entityHpBar.SetHpbarValue(HP);
 
-        if (HP <= 0) { Die(); }
+        if (HP <= 0) { IsDead = true; Die(); }
         else
         {
 			EntityAnimatorCompo.SetFloat("Speed", -1f);
@@ -73,11 +78,13 @@ public abstract partial class Entity<T, G> : IDamageable
 
     public virtual void Die()
     {
+        EntityCollider.enabled = false;
+
 		OnDieEvent?.Invoke(transform.position);
         FeedbackPlayerCompo.PlayFeedback<T, G>(FeedbackTypes.Die);
         EntityAnimatorCompo.SetFloat("Speed", -1f);
 		EntityAnimatorCompo.SetTrigger("DieTrigger");
-        
+
         StopImmediatetly();
     }
 
@@ -93,6 +100,7 @@ public abstract partial class Entity<T, G> : IDamageable
 
     private void EnableCollider()
     {
+        EntityCollider.enabled = true;
         IsInvincibility = false;
     }
 

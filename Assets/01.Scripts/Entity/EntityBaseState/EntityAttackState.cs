@@ -32,12 +32,5 @@ public abstract class EntityAttackState<T, G> : EntityState<T, G> where T : Enum
 
 	}
 
-    public override void ExitState()
-    {
-        base.ExitState();
-
-        Debug.Log("Exit");
-    }
-
     public abstract void ChangeNextState();
 }

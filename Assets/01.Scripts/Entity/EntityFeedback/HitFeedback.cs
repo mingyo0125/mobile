@@ -12,19 +12,19 @@ public class HitFeedback : Feedback
     {
         Entity<T, G> entity = owner.GetEntity<T,G>();
         
-        Vector2 knockbackVec = (Vector2)(transform.position - takeDamageInfo.TriggerEntityPos).normalized;
         entity.StopImmediatetly();
 
         float knockbackPower =
             takeDamageInfo.KnockbackPower -
             Utils.CalculatePercent(takeDamageInfo.KnockbackPower, entity.EntityStatController.GetStatValue(StatType.ResistancePercent));
 
+        Vector2 knockbackVec = (Vector2)(transform.position - takeDamageInfo.TriggerEntityPos).normalized;
         entity.Rb.AddForce(knockbackVec * knockbackPower, ForceMode2D.Impulse);
 
         if(takeDamageInfo.HitFeedbackEffect != null)
         {
             FeedbackEffect feedbackEffect = PoolManager.Instance.CreateObject(takeDamageInfo.HitFeedbackEffect.name) as FeedbackEffect;
-            feedbackEffect.SetPosition(takeDamageInfo.HitPos); // 이거 맞은 위치로
+            feedbackEffect.SetPosition(takeDamageInfo.HitPos);
         }
 
         CoroutineUtil.CallWaitForSeconds(0.1f, () => StopFeedback<T, G>(owner));

@@ -60,6 +60,5 @@ public class PlayerSkillHolder : MonoBehaviour
 
         Player player = _owner.GetEntity<PlayerStateType, Player>() as Player;
         player.SetMove();
-        Debug.Log($"Skill {id} executed after animation");
     }
 }
