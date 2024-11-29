@@ -1,5 +1,6 @@
 using DG.Tweening;
 using System;
+using System.Collections;
 using UnityEngine;
 
 public abstract partial class Entity<T, G> : PoolableMono, IEntity
@@ -13,6 +14,7 @@ public abstract partial class Entity<T, G> : PoolableMono, IEntity
     //[SerializeField]
     //private EntityStatSO _entityStatSO;
     private SpriteRenderer _spriteRenderer;
+    private Material _material;
 
     public StatController EntityStatController { get; private set;}
 
@@ -22,6 +24,7 @@ public abstract partial class Entity<T, G> : PoolableMono, IEntity
 
         EntityAnimatorCompo = visual.GetComponent<EntityAnimator>();
         _spriteRenderer = visual.GetComponent<SpriteRenderer>();
+        _material = _spriteRenderer.material;
         EntityStatController = new StatController();
 
         //EntityStat = new BaseStat(_entityStatSO.EntityStat);
@@ -82,4 +85,18 @@ public abstract partial class Entity<T, G> : PoolableMono, IEntity
 
     protected abstract void SetStat();
     protected abstract BaseStat GetStatSO(); // 이건 실행 안 했을때 기즈모 그릴려고 있는 것.
+
+    public void SetFlash()
+    {
+        _material.SetFloat("_FlashAmount", 0f);
+        DOTween.To(() => _material.GetFloat("_FlashAmount"),
+                   x => _material.SetFloat("_FlashAmount", x),
+                   0.1f, 0.125f)
+               .OnComplete(() =>
+               {
+                   DOTween.To(() => _material.GetFloat("_FlashAmount"),
+                              x => _material.SetFloat("_FlashAmount", x),
+                              0f, 0.125f);
+               });
+    }
 }

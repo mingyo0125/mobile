@@ -27,6 +27,8 @@ public class HitFeedback : Feedback
             feedbackEffect.SetPosition(takeDamageInfo.HitPos);
         }
 
+        entity.SetFlash();
+
         CoroutineUtil.CallWaitForSeconds(0.1f, () => StopFeedback<T, G>(owner));
     }
 
