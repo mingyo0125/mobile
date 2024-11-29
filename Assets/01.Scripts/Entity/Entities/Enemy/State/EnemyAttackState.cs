@@ -8,7 +8,7 @@ public class EnemyAttackState : EntityAttackState<EnemyStateType, Enemy>
         
     }
 
-	public override void ChangeNextState()
+    public override void ChangeNextState()
 	{
 		_stateMachine.ChangeState(EnemyStateType.Move);
 	}

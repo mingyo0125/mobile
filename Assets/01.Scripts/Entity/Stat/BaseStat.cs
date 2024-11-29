@@ -38,7 +38,7 @@ public class BaseStat
     public StatInfo Speed { get; private set; }
 
     [field: SerializeField]
-    public StatInfo AttackDelay { get; private set; }
+    public StatInfo AttackSpeed { get; private set; }
 
     [field: SerializeField]
     public StatInfo AttackRange { get; private set;}
@@ -57,7 +57,7 @@ public class BaseStat
         this.Speed = new StatInfo(stat.Speed.Level, stat.Speed.Value, stat.Speed.StatUIInfo);
         this.MaxHP = new StatInfo(stat.MaxHP.Level, stat.MaxHP.Value, stat.MaxHP.StatUIInfo);
         this.AttackRange = new StatInfo(stat.AttackRange.Level, stat.AttackRange.Value, stat.AttackRange.StatUIInfo);
-        this.AttackDelay = new StatInfo(stat.AttackDelay.Level, stat.AttackDelay.Value, stat.AttackDelay.StatUIInfo);
+        this.AttackSpeed = new StatInfo(stat.AttackSpeed.Level, stat.AttackSpeed.Value, stat.AttackSpeed.StatUIInfo);
         this.Damage = new StatInfo(stat.Damage.Level, stat.Damage.Value, stat.Damage.StatUIInfo);
         this.CriticalProbability = new StatInfo(stat.CriticalProbability.Level, stat.CriticalProbability.Value, stat.CriticalProbability.StatUIInfo);
         this.CriticalDamageIncreasePercent = new StatInfo(stat.CriticalDamageIncreasePercent.Level, stat.CriticalDamageIncreasePercent.Value, stat.CriticalDamageIncreasePercent.StatUIInfo);
@@ -69,7 +69,7 @@ public class BaseStat
             { StatType.MaxHp, MaxHP },
             { StatType.Speed, Speed },
             { StatType.AttackRange, AttackRange },
-            { StatType.AttackDelay, AttackDelay },
+            { StatType.AttackDelay, AttackSpeed },
             { StatType.CriticalProbability, CriticalProbability },
             { StatType.CriticalDamageIncreasePercent, CriticalDamageIncreasePercent },
             { StatType.ResistancePercent, ResistancePercent },

@@ -3400,7 +3400,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b27de1aacf365ec4cbea62c780db8e8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnedEnmiesCount: 5
+  spawnedEnmiesCount: 1
   deadEnmiesCount: 0
 --- !u!1 &862469747
 GameObject:
