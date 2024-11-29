@@ -86,16 +86,18 @@ public abstract partial class Entity<T, G> : PoolableMono, IEntity
     protected abstract void SetStat();
     protected abstract BaseStat GetStatSO(); // 이건 실행 안 했을때 기즈모 그릴려고 있는 것.
 
+
+    private const string FlashAmount = "_FlashAmount";
     public void SetFlash()
     {
-        _material.SetFloat("_FlashAmount", 0f);
-        DOTween.To(() => _material.GetFloat("_FlashAmount"),
-                   x => _material.SetFloat("_FlashAmount", x),
+        _material.SetFloat(FlashAmount, 0f);
+        DOTween.To(() => _material.GetFloat(FlashAmount),
+                   x => _material.SetFloat(FlashAmount, x),
                    0.1f, 0.125f)
                .OnComplete(() =>
                {
-                   DOTween.To(() => _material.GetFloat("_FlashAmount"),
-                              x => _material.SetFloat("_FlashAmount", x),
+                   DOTween.To(() => _material.GetFloat(FlashAmount),
+                              x => _material.SetFloat(FlashAmount, x),
                               0f, 0.125f);
                });
     }
