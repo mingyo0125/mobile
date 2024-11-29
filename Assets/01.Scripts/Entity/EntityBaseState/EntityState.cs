@@ -27,9 +27,6 @@ public class EntityState<T, G> : IRangeCheckable where T : Enum where G : Entity
     public virtual void UpdateState() { }
     public virtual void FixedUpdateState() { }
 
-    public virtual void AnimationTriggerEvent(AnimationTriggerType animationTriggerType) { }
-
-
     #region Range
 
     public (bool, Collider2D[]) GetInRange(float checkRange)

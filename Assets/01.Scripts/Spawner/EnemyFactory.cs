@@ -18,7 +18,7 @@ public class EnemyFactory : ObjectFactory<Enemy>
         _itemFactory = FindAnyObjectByType<ItemFactory>();
         _coinFactory = FindAnyObjectByType<CoinFactory>();
 
-        Vector3 middleRight = Camera.main.ViewportToWorldPoint(new Vector3(1f, 0.5f, Camera.main.nearClipPlane));
+        Vector3 middleRight = Camera.main.ViewportToWorldPoint(new Vector3(2f, 0.5f, Camera.main.nearClipPlane));
 
         _minBound.parent.position = middleRight;
     }
