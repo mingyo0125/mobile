@@ -18,7 +18,7 @@ public class WaveManager : MonoSingleTon<WaveManager>
     public int CurStageCount { get; private set; }
     public int CurWaveCount { get; private set; }
 
-    private const int bossWaveNumber = 5;
+    private const int bossWaveNumber = 2;
 
     private void Start()
     {
@@ -31,21 +31,16 @@ public class WaveManager : MonoSingleTon<WaveManager>
 
         if (deadEnmiesCount == spawnedEnmiesCount)
         {
-            if (CurWaveCount > bossWaveNumber)
+            if (CurWaveCount == bossWaveNumber)
             {
-                Debug.Log("Next Stage");
-                CurWaveCount = 0;
                 CurStageCount++;
             }
 
             deadEnmiesCount = 0;
             CurWaveCount++;
 
-            Debug.Log($"CurWave: {CurWaveCount}");
-            Debug.Log($"CurWaveCount % bossWaveNumber : {CurWaveCount % bossWaveNumber}");
             if (CurWaveCount % bossWaveNumber == 0)
             {
-                Debug.Log("SpawnBoss");
                 _bossFactory.SpawnEnemy(spawnedEnmiesCount);
                 return;
             }
