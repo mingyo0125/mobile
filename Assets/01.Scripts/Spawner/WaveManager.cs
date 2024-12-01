@@ -41,6 +41,9 @@ public class WaveManager : MonoSingleTon<WaveManager>
 
             if (CurWaveCount % bossWaveNumber == 0)
             {
+                // 나중에 Signalhub delegate로 처리 later
+                BossWarningPanel bossWarningPanel = UIManager.Instance.CreateUI("BossWarningPanel", null, UIGenerateType.NONE, UIGenerateSortType.TOP) as BossWarningPanel;
+                bossWarningPanel.UpdateUI();
                 _bossFactory.SpawnEnemy(spawnedEnmiesCount);
                 return;
             }

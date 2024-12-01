@@ -25,7 +25,7 @@ public class UIManager : MonoSingleTon<UIManager>
     }
 
     public UI_Component CreateUI(string name, Transform parent = null, UIGenerateType generateType = UIGenerateType.NONE,
-                                                                         UIGenerateSortType sortType = UIGenerateSortType.STACKING)
+                                                                       UIGenerateSortType sortType = UIGenerateSortType.STACKING)
     {
         if(parent == null) { parent = _deaultUIParentTrm; }
         if (sortType == UIGenerateSortType.TOP) { parent = _canvas.transform; }

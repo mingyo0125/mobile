@@ -58,6 +58,6 @@ public class EnemyFactory : ObjectFactory<Enemy>
             Debug.LogError($"{name} : doesn't have {curEnemyType}Stage enemy");
             return null;
         }
-        return _spawnEntitys[curEnemyType];
+        return _spawnEntitys[0];
     }
 }

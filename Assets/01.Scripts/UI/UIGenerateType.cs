@@ -12,8 +12,3 @@ public enum UIGenerateSortType
     TOP
 }
 
-public enum UITweenType
-{
-
-}
-

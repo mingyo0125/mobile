@@ -18,14 +18,6 @@ public class BossWarningPanel : UI_Component
         _canvasGroup = GetComponent<CanvasGroup>();
     }
 
-    private void Update()
-    {
-        if(Input.GetKeyUp(KeyCode.S))
-        {
-            UpdateUI();
-        }
-    }
-
     public override void UpdateUI()
     {
         _canvasGroup.alpha = 1;
@@ -43,8 +35,12 @@ public class BossWarningPanel : UI_Component
                 color.a = 0.35f;
                 _warningImage.color = color;
 
-                CoroutineUtil.CallWaitForSeconds(1.5f, () => _canvasGroup.DOFade(0.0f, 0.5f));
                 _warningImage.DOFade(0.75f, 0.3f).SetLoops(5, LoopType.Yoyo);
+
+                CoroutineUtil.CallWaitForSeconds(1.5f, () => _canvasGroup.DOFade(0.0f, 0.5f).OnComplete(() =>
+                {
+                    PoolManager.Instance.DestroyObject(this);
+                }));
             });
         });
     }
