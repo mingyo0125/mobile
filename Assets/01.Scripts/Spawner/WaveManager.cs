@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class WaveManager : MonoSingleTon<WaveManager>
 {
+    [SerializeField]
     private EnemyFactory _enemyFactory;
+    [SerializeField]
+    private BossFactory _bossFactory;
 
     [SerializeField]
     private int spawnedEnmiesCount;
@@ -12,10 +15,10 @@ public class WaveManager : MonoSingleTon<WaveManager>
     [SerializeField]
     private int deadEnmiesCount;
 
-    private void Awake()
-    {
-        _enemyFactory = FindAnyObjectByType<EnemyFactory>();
-    }
+    public int CurStageCount { get; private set; }
+    public int CurWaveCount { get; private set; }
+
+    private const int bossWaveNumber = 5;
 
     private void Start()
     {
@@ -28,8 +31,26 @@ public class WaveManager : MonoSingleTon<WaveManager>
 
         if (deadEnmiesCount == spawnedEnmiesCount)
         {
-            _enemyFactory.SpawnEnemy(spawnedEnmiesCount);
+            if (CurWaveCount > bossWaveNumber)
+            {
+                Debug.Log("Next Stage");
+                CurWaveCount = 0;
+                CurStageCount++;
+            }
+
             deadEnmiesCount = 0;
+            CurWaveCount++;
+
+            Debug.Log($"CurWave: {CurWaveCount}");
+            Debug.Log($"CurWaveCount % bossWaveNumber : {CurWaveCount % bossWaveNumber}");
+            if (CurWaveCount % bossWaveNumber == 0)
+            {
+                Debug.Log("SpawnBoss");
+                _bossFactory.SpawnEnemy(spawnedEnmiesCount);
+                return;
+            }
+
+            _enemyFactory.SpawnEnemy(spawnedEnmiesCount);
         }
     }
 }

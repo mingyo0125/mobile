@@ -11,6 +11,8 @@ public class EnemyFactory : ObjectFactory<Enemy>
     private ItemFactory _itemFactory;
     private CoinFactory _coinFactory;
 
+    protected int curEnemyType => WaveManager.Instance.CurStageCount;
+
     protected override void Awake()
     {
         base.Awake();
@@ -23,7 +25,7 @@ public class EnemyFactory : ObjectFactory<Enemy>
         _minBound.parent.position = middleRight;
     }
 
-    public void SpawnEnemy(int spawnCount, params Action<Vector2>[] onDieEvents)
+    public virtual void SpawnEnemy(int spawnCount, params Action<Vector2>[] onDieEvents)
     {
         StartCoroutine(SpawnEnemyCorou(spawnCount, onDieEvents));
     }
@@ -32,7 +34,7 @@ public class EnemyFactory : ObjectFactory<Enemy>
     {
         for (int i = 0; i < spawnCount; i++)
         {
-            Enemy enemyPrefab = Utils.GetRandomElement(_spawnEntitys);
+            Enemy enemyPrefab = GetEnemy();
             Enemy spawnedEnemy = SpawnObject(enemyPrefab.name, Utils.GetRandomSpawnPos(_minBound.position, _maxBound.position)) as Enemy;
 
             spawnedEnemy.OnDieEvent = null;
@@ -49,8 +51,8 @@ public class EnemyFactory : ObjectFactory<Enemy>
         }
     }
 
-    public void SpawnBoss()
+    protected virtual Enemy GetEnemy()
     {
-
+        return _spawnEntitys[curEnemyType];
     }
 }

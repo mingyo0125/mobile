@@ -30,6 +30,9 @@ public abstract class ObjectFactory<T> : MonoBehaviour where T : PoolableMono
             case SpawnEntityTypes.Enemies:
                 SetSpawnEntities(PoolManager.Instance.PoolObjSO.Enemies);
                 break;
+            case SpawnEntityTypes.Bosses:
+                SetSpawnEntities(PoolManager.Instance.PoolObjSO.Bosses);
+                break;
             case SpawnEntityTypes.Items:
                 SetSpawnEntities(PoolManager.Instance.PoolObjSO.Items);
                 break;
