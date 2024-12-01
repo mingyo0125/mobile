@@ -57,7 +57,7 @@ public class ItemInfoUI<T> : UI_Image where T : SummonItemInfo
 
     public virtual void Initialze()
     {
-        _icon.sprite = _itemInfo.Icon;
+        Icon.sprite = _itemInfo.Icon;
         _skillNameText.SetText(_itemInfo.ItemName);
         _bgImage.color = _itemInfo.GradeInfo.ColorByGrade;
 

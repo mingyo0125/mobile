@@ -24,7 +24,7 @@ public class UIManager : MonoSingleTon<UIManager>
         //}
     }
 
-    public UI_Component GenerateUI(string name, Transform parent = null, UIGenerateType generateType = UIGenerateType.NONE,
+    public UI_Component CreateUI(string name, Transform parent = null, UIGenerateType generateType = UIGenerateType.NONE,
                                                                          UIGenerateSortType sortType = UIGenerateSortType.STACKING)
     {
         if(parent == null) { parent = _deaultUIParentTrm; }
@@ -69,7 +69,7 @@ public class UIManager : MonoSingleTon<UIManager>
         var prevComponent = _uiComponentsStack.Pop();
 
         curComponent.RemoveUI();
-        GenerateUI(prevComponent.name, prevComponent.Parent, prevComponent.GenerateType);
+        CreateUI(prevComponent.name, prevComponent.Parent, prevComponent.GenerateType);
     }
 
     public void ClearPanel()
@@ -82,7 +82,6 @@ public class UIManager : MonoSingleTon<UIManager>
             component.RemoveUI();
         }
     }
-
 
     public void SpawnHudText(Vector2 pos, string value, Color textColor)
     {

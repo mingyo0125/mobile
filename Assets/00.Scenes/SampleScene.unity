@@ -3521,6 +3521,7 @@ GameObject:
   m_Component:
   - component: {fileID: 844498869}
   - component: {fileID: 844498870}
+  - component: {fileID: 844498871}
   m_Layer: 5
   m_Name: BossWarningPanel
   m_TagString: Untagged
@@ -3563,6 +3564,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _warningImage: {fileID: 1243769498}
+--- !u!225 &844498871
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 844498868}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &854630188
 GameObject:
   m_ObjectHideFlags: 0

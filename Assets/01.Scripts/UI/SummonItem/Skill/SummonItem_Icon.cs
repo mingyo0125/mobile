@@ -61,7 +61,7 @@ public class SummonItem_Icon : UI_Button, ISummonItemUI
         switch (ItemInfo.ItemType)
         {
             case ItemType.Skill:
-                Skill_InfoUI itemInfoUI = UIManager.Instance.GenerateUI(Skill_InfoName,
+                Skill_InfoUI itemInfoUI = UIManager.Instance.CreateUI(Skill_InfoName,
                                                                         null,
                                                                         UIGenerateType.STACKING,
                                                                         UIGenerateSortType.TOP) as Skill_InfoUI;
