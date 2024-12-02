@@ -16,8 +16,16 @@ public class BossTimeLimitUI : UI_Component
 
     private Coroutine _timeLimitCoroutine = null;
 
+    private CanvasGroup _canvasGroup;
+
+    private void Awake()
+    {
+        _canvasGroup = GetComponent<CanvasGroup>();
+    }
+
     public override void UpdateUI()
     {
+        _canvasGroup.alpha = 1.0f;
         _timeLimitCoroutine = StartCoroutine(UpdateTimeLimitUICorou());
     }
 
@@ -27,6 +35,8 @@ public class BossTimeLimitUI : UI_Component
         {
             StopCoroutine(_timeLimitCoroutine);
             _timeLimitCoroutine = null;
+
+            _canvasGroup.alpha = 0.0f;
         }
     }
 
@@ -47,6 +57,8 @@ public class BossTimeLimitUI : UI_Component
 
             yield return null;
         }
+
+        _canvasGroup.alpha = 0.0f;
 
         _timeLimitText.SetText("0.00");
         _timeLimitImage.fillAmount = 0.0f;

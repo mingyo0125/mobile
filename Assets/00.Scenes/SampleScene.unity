@@ -1365,6 +1365,7 @@ GameObject:
   m_Component:
   - component: {fileID: 357542298}
   - component: {fileID: 357542299}
+  - component: {fileID: 357542300}
   m_Layer: 5
   m_Name: BossTimeLimitUI
   m_TagString: Untagged
@@ -1406,6 +1407,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _timeLimitText: {fileID: 1848536911}
   _timeLimitImage: {fileID: 2065134226}
+--- !u!225 &357542300
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 357542297}
+  m_Enabled: 1
+  m_Alpha: 0
+  m_Interactable: 0
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &401481097
 GameObject:
   m_ObjectHideFlags: 0
