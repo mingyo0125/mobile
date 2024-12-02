@@ -35,6 +35,8 @@ public class EnemyFactory : ObjectFactory<Enemy>
 
     private IEnumerator SpawnEnemyCorou(int spawnCount, Action<Vector2>[] onDieEvents)
     {
+        yield return new WaitForEndOfFrame();
+
         for (int i = 0; i < spawnCount; i++)
         {
             Enemy enemyPrefab = GetEnemy();
@@ -64,6 +66,7 @@ public class EnemyFactory : ObjectFactory<Enemy>
     {
         if(_spawnEntitys.Length < curEnemyType)
         {
+            Debug.LogError($"{name} doesn't have {curEnemyType} Stage Enemy");
             return null;
         }
 

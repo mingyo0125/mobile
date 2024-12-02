@@ -15,7 +15,7 @@ public class SpawnBossButton : UI_Button
             PoolManager.Instance.DestroyObject(enemy);
         }
 
-        WaveManager.Instance.SpawnBoss();
+        WaveManager.Instance.SpawnBossWarningPanel();
         
         transform.parent.gameObject.SetActive(false);
     }

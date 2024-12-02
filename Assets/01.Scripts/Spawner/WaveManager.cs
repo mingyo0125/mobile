@@ -31,11 +31,6 @@ public class WaveManager : MonoSingleTon<WaveManager>
 
         if (deadEnmiesCount == spawnedEnmiesCount)
         {
-            if (CurWaveCount == bossWaveNumber)
-            {
-                CurStageCount++;
-            }
-
             deadEnmiesCount = 0;
             CurWaveCount++;
 
@@ -48,7 +43,16 @@ public class WaveManager : MonoSingleTon<WaveManager>
         }
     }
 
-    public void SpawnBoss()
+    public void StageClear()
+    {
+        CurStageCount++;
+        deadEnmiesCount = 0;
+        CurWaveCount = 1;
+
+        Debug.Log("Stage Clear");
+    }
+
+    public void SpawnBossWarningPanel()
     {
         // 나중에 Signalhub delegate로 처리 later
         BossWarningPanel bossWarningPanel = UIManager.Instance.CreateUI("BossWarningPanel", null, UIGenerateType.NONE, UIGenerateSortType.TOP) as BossWarningPanel;
