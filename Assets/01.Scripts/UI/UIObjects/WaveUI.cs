@@ -59,7 +59,7 @@ public class WaveUI : UI_Component
         enemyCount = Mathf.Clamp(enemyCount + 1, 0, goalCount); 
 
         _enemyCountText.SetText($"{enemyCount} / {goalCount}");
-        Debug.Log(enemyCount);
+        
         bool enable = enemyCount == goalCount;
         if (enable != isButtonEnabled)
         {

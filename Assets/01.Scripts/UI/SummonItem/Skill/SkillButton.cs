@@ -31,6 +31,7 @@ public class SkillButton : UI_Button
         //_button.onClick.RemoveAllListeners();
         _button.onClick.AddListener(() => StartCoroutine(CalculateSkillCooldownCorou()));
         _button.onClick.AddListener(() => _skillHolder.PlaySkill(skill.SkillInfo.ItemId));
+        _button.onClick.AddListener(() => GameManager.Instance.GetPlayer().StateMachine.ChangeState(PlayerStateType.Attack));
     }
 
     public override void UpdateUI()
