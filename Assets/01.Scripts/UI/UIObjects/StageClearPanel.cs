@@ -31,9 +31,6 @@ public class StageClearPanel : UI_Component
         PoolableMono particle = PoolManager.Instance.CreateObject(stageClearParticle);
         particle.transform.SetParent(GameManager.Instance.GetPlayerTrm());
         particle.transform.localPosition = Vector2.zero;
-        //particle.SetPosition(Camera.main.ScreenToWorldPoint(_clearPanelTrm.position));
-        //
-        //Debug.Log(Camera.main.ScreenToWorldPoint(_clearPanelTrm.position));
 
         CoroutineUtil.CallWaitForSeconds(3f, () => PoolManager.Instance.DestroyObject(particle));
     }

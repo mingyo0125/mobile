@@ -126,7 +126,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61201cf0d70fb77458451ea44bf463e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <_icon>k__BackingField: {fileID: 7227658696344409965}
+  <Icon>k__BackingField: {fileID: 7227658696344409965}
   <_skillNameText>k__BackingField: {fileID: 48351993646384333}
   <_levelText>k__BackingField: {fileID: 6279182631573396147}
   <_countText>k__BackingField: {fileID: 2574080627773980601}
