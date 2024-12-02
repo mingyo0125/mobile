@@ -15,7 +15,7 @@ public class WaveManager : MonoSingleTon<WaveManager>
     [SerializeField]
     private int deadEnmiesCount;
 
-    public int CurStageCount { get; private set; }
+    public int CurStageCount { get; private set; } = 1;
     public int CurWaveCount { get; private set; }
 
     private const int bossWaveNumber = 2;
