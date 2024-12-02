@@ -11,7 +11,7 @@ public class BossWarningPanel : UI_Component
 
     private CanvasGroup _canvasGroup;
 
-    private const string blackImage = "Black_Image";
+    private const string blackImageName = "Black_Image";
 
     private void Awake()
     {
@@ -22,7 +22,7 @@ public class BossWarningPanel : UI_Component
     {
         _canvasGroup.alpha = 1;
 
-        UI_Image blackImage = UIManager.Instance.CreateUI("Black_Image", transform) as UI_Image;
+        UI_Image blackImage = UIManager.Instance.CreateUI(blackImageName, transform) as UI_Image;
         blackImage.Icon.color = Color.black;
         CoroutineUtil.CallWaitForSeconds(0.2f, () =>
         {

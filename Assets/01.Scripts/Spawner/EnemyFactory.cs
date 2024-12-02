@@ -62,11 +62,8 @@ public class EnemyFactory : ObjectFactory<Enemy>
 
     protected virtual Enemy GetEnemy()
     {
-        Debug.Log($"Length: {_spawnEntitys.Length}");
-        Debug.Log($"curEnemyType: {curEnemyType}");
         if(_spawnEntitys.Length < curEnemyType)
         {
-            Debug.LogError($"{name} : doesn't have {curEnemyType} Stage enemy");
             return null;
         }
 

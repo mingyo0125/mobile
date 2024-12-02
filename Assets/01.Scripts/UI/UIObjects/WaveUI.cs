@@ -35,6 +35,11 @@ public class WaveUI : UI_Component
 
     public void EnableWaveUI()
     {
+        gameObject.SetActive(true);
+
+        enemyCount = 0;
+        _enemyCountText.SetText($"{enemyCount} / {goalCount}");
+
         _canvasGroup.alpha = 1;
         _canvasGroup.interactable = true;
     }
