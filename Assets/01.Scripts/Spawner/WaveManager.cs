@@ -20,6 +20,8 @@ public class WaveManager : MonoSingleTon<WaveManager>
 
     private const int bossWaveNumber = 2;
 
+    private const string stageClearPanelName = "ClearPanel";
+
     private void Start()
     {
         _enemyFactory.SpawnEnemy(spawnedEnmiesCount);
@@ -49,12 +51,14 @@ public class WaveManager : MonoSingleTon<WaveManager>
         deadEnmiesCount = 0;
         CurWaveCount = 1;
 
+        StageClearPanel stageClearPanel = UIManager.Instance.CreateUI(stageClearPanelName, null, UIGenerateType.NONE, UIGenerateSortType.TOP) as StageClearPanel;
+        stageClearPanel.UpdateUI();
+
         Debug.Log("Stage Clear");
     }
 
     public void SpawnBossWarningPanel()
     {
-        // 나중에 Signalhub delegate로 처리 later
         BossWarningPanel bossWarningPanel = UIManager.Instance.CreateUI("BossWarningPanel", null, UIGenerateType.NONE, UIGenerateSortType.TOP) as BossWarningPanel;
         bossWarningPanel.UpdateUI();
         _bossFactory.SpawnEnemy(spawnedEnmiesCount);

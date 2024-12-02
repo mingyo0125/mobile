@@ -3348,10 +3348,10 @@ RectTransform:
   m_Children:
   - {fileID: 297313039}
   - {fileID: 827869709}
+  - {fileID: 2077473123}
   - {fileID: 1220623262}
   - {fileID: 541330023}
   - {fileID: 2208358097215774391}
-  - {fileID: 2077473123}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -7580,7 +7580,7 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 1, g: 0, b: 0, a: 1}
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -7616,7 +7616,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -7892,6 +7892,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2077473123}
   - component: {fileID: 2077473124}
+  - component: {fileID: 2077473125}
   m_Layer: 5
   m_Name: WaveUI
   m_TagString: Untagged
@@ -7934,6 +7935,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _spawnBossButton: {fileID: 2024306336}
   _enemyCountText: {fileID: 1551854996}
+--- !u!225 &2077473125
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2077473122}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &2082083683
 GameObject:
   m_ObjectHideFlags: 0

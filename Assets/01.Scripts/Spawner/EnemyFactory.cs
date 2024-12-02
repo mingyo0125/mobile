@@ -40,6 +40,10 @@ public class EnemyFactory : ObjectFactory<Enemy>
         for (int i = 0; i < spawnCount; i++)
         {
             Enemy enemyPrefab = GetEnemy();
+            if(enemyPrefab == null)
+            {
+                yield break;
+            }
             Enemy spawnedEnemy = SpawnObject(enemyPrefab.name, Utils.GetRandomSpawnPos(_minBound.position, _maxBound.position)) as Enemy;
 
             spawnedEnemy.OnDieEvent = null;

@@ -9,7 +9,6 @@ public class BossFactory : EnemyFactory
     {
         base.SubscribeEnemyDieEvent(enemy);
 
-        enemy.OnDieEvent += _ => _waveUI.EnableWaveUI();
         enemy.OnDieEvent += _ => WaveManager.Instance.StageClear();
     }
 }
