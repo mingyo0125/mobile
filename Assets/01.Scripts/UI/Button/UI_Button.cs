@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
-public abstract class UI_Button : UI_Component
+public class UI_Button : UI_Component
 {
     protected Button _button { get; private set; }
     public Button Button => _button;
@@ -59,4 +59,8 @@ public abstract class UI_Button : UI_Component
         return actions;
     }
 
+    public void SetInteractableButton(bool interactable)
+    {
+        _button.interactable = interactable;
+    }
 }

@@ -11,6 +11,8 @@ public class EnemyFactory : ObjectFactory<Enemy>
     private ItemFactory _itemFactory;
     private CoinFactory _coinFactory;
 
+    protected WaveUI _waveUI;
+
     protected int curEnemyType => WaveManager.Instance.CurStageCount;
 
     protected override void Awake()
@@ -19,6 +21,7 @@ public class EnemyFactory : ObjectFactory<Enemy>
 
         _itemFactory = FindAnyObjectByType<ItemFactory>();
         _coinFactory = FindAnyObjectByType<CoinFactory>();
+        _waveUI = FindAnyObjectByType<WaveUI>();
 
         Vector3 middleRight = Camera.main.ViewportToWorldPoint(new Vector3(2f, 0.55f, Camera.main.nearClipPlane));
 
@@ -39,8 +42,7 @@ public class EnemyFactory : ObjectFactory<Enemy>
 
             spawnedEnemy.OnDieEvent = null;
 
-            spawnedEnemy.OnDieEvent += _itemFactory.SpawnItem;
-            spawnedEnemy.OnDieEvent += _coinFactory.SpawnCoin;
+            SubscribeEnemyDieEvent(spawnedEnemy);
 
             foreach (Action<Vector2> action in onDieEvents)
             {
@@ -49,6 +51,13 @@ public class EnemyFactory : ObjectFactory<Enemy>
 
             yield return new WaitForSeconds(UnityEngine.Random.Range(0.1f, 0.2f));
         }
+    }
+
+    protected virtual void SubscribeEnemyDieEvent(Enemy enemy)
+    {
+        enemy.OnDieEvent += _itemFactory.SpawnItem;
+        enemy.OnDieEvent += _coinFactory.SpawnCoin;
+        enemy.OnDieEvent += _ => _waveUI.UpdateUI();
     }
 
     protected virtual Enemy GetEnemy()

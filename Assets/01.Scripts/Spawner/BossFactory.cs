@@ -5,8 +5,10 @@ using UnityEngine;
 
 public class BossFactory : EnemyFactory
 {
-    public override void SpawnEnemy(int spawnCount, params Action<Vector2>[] onDieEvents)
+    protected override void SubscribeEnemyDieEvent(Enemy enemy)
     {
-        base.SpawnEnemy(spawnCount, onDieEvents);
+        base.SubscribeEnemyDieEvent(enemy);
+
+        enemy.OnDieEvent += _ => _waveUI.EnableWaveUI();
     }
 }
