@@ -10,13 +10,9 @@ public class SummonItem : UI_Image
     [SerializeField]
     private Image _bgImage;
 
-    public override void Initialize()
+    public void ScaleTween()
     {
-        base.Initialize();
-
         transform.localScale = Vector3.zero;
-
-        //Sequence.Kill();
 
         Sequence
             .Prepend(transform.DOScale(1.3f, 0.3f).SetEase(Ease.OutBack))

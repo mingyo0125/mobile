@@ -19,18 +19,18 @@ public abstract class SummonItemFactory : ObjectFactory<SummonItem>
         _prevSpawnItems.ForEach(item => PoolManager.Instance.DestroyObject(item));
         _prevSpawnItems.Clear();
 
-        StartCoroutine(SpawnSummonItemCorou(spawnParentTrm, count));
+        SpawnSummonItemCorou(spawnParentTrm, count);
     }
 
-    private IEnumerator SpawnSummonItemCorou(Transform spawnParentTrm, int count)
+    private void SpawnSummonItemCorou(Transform spawnParentTrm, int count)
     {
-        int xCount = 0, yCount = 0;
-
         List<SummonItemInfo> summonedItem = GetSummonItems(GetCanSummonItems(), count);
+        List<SummonItem> summonItemUIs = new List<SummonItem>();
 
         foreach (SummonItemInfo item in summonedItem)
         {
             SummonItem summonItem = PoolManager.Instance.CreateObject(SummonItem) as SummonItem;
+            summonItemUIs.Add(summonItem);
             summonItem.transform.SetParent(spawnParentTrm);
 
             summonItem.SetBGImage(item.GradeInfo.ColorByGrade);
@@ -39,21 +39,9 @@ public abstract class SummonItemFactory : ObjectFactory<SummonItem>
             item.GetItem();
 
             _prevSpawnItems.Add(summonItem);
-
-            spawnParentTrm.DOShakePosition(spawnDelayTime, Vector2.one * 10, 10, 90);
-
-            SetSummonItemPos(summonItem, xCount, yCount);
-
-            xCount++;
-
-            if (xCount == 5)
-            {
-                xCount = 0;
-                yCount++;
-            }
-
-            yield return new WaitForSeconds(spawnDelayTime);
         }
+
+        StartCoroutine(SetSummonItemPos(summonItemUIs, spawnParentTrm));
     }
 
     private List<SummonItemInfo> GetSummonItems(List<SummonItemInfo> cansummonItems, int count)
@@ -89,13 +77,32 @@ public abstract class SummonItemFactory : ObjectFactory<SummonItem>
     }
 
 
-    private void SetSummonItemPos(SummonItem summonItem, int xCount, int yCount)
+    private IEnumerator SetSummonItemPos(List<SummonItem> summonItemUIs, Transform spawnParentTrm)
     {
-        RectTransform rectTransform = (RectTransform)summonItem.transform;
+        int xCount = 0, yCount = 0;
 
-        rectTransform.anchoredPosition = new Vector2(50, -50);
+        foreach (SummonItem summonItem in summonItemUIs)
+        {
+            spawnParentTrm.DOShakePosition(spawnDelayTime, Vector2.one * 10, 10, 90);
 
-        rectTransform.anchoredPosition += new Vector2(xDistance * xCount, yDistance * yCount);
+            summonItem.ScaleTween();
+
+            RectTransform rectTransform = (RectTransform)summonItem.transform;
+
+            rectTransform.anchoredPosition = new Vector2(50, -50);
+
+            rectTransform.anchoredPosition += new Vector2(xDistance * xCount, yDistance * yCount);
+
+            xCount++;
+
+            if (xCount == 5)
+            {
+                xCount = 0;
+                yCount++;
+            }
+
+            yield return new WaitForSeconds(spawnDelayTime);
+        }
     }
 
     public abstract List<SummonItemInfo> GetCanSummonItems();
