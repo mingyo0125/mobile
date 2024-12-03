@@ -14,7 +14,7 @@ public abstract class EntityAttackState<T, G> : EntityState<T, G> where T : Enum
 
 		_owner.StopImmediatetly();
 
-        _owner.SetIsAttack(true);
+        _owner.SetCanAttack(true);
 
         Attack();
     }
@@ -25,6 +25,6 @@ public abstract class EntityAttackState<T, G> : EntityState<T, G> where T : Enum
     {
         base.ExitState();
 
-        _owner.SetIsAttack(false);
+        _owner.SetCanAttack(false);
     }
 }

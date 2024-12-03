@@ -23,6 +23,6 @@ MonoBehaviour:
       <ColorByGrade>k__BackingField: {r: 0.89019614, g: 0.87843144, b: 0.8117648, a: 1}
       <UpgradeIncreaseValue>k__BackingField: 10
     <Description>k__BackingField: "\uD30C\uC774\uC5B4\uBCFC\uC774\uB2E4"
-    <Cooldown>k__BackingField: 3
+    <Cooldown>k__BackingField: 1
     <DamagePercent>k__BackingField: 100
     <HitFeedbackEffect>k__BackingField: {fileID: 7707854994357197448, guid: 647fb1399372ec9439b21d176cd734e5, type: 3}

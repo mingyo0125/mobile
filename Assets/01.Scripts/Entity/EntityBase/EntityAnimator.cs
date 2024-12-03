@@ -51,7 +51,7 @@ public class EntityAnimator : MonoBehaviour
         {
             _attackAnimationEvents.Add(key, action);
         }
-        _animator.SetFloat("AttackSpeed", speed);
+        _animator.SetFloat("AttackSpeed", 1f / speed);
 
         if (!isAnimationPlaying)
         {
@@ -62,7 +62,7 @@ public class EntityAnimator : MonoBehaviour
     private void PlayAttackAnimation()
     {
         isAnimationPlaying = true;
-        _animator.SetTrigger("AttackTrigger"); // 다음 애니메이션 실행
+        _animator.SetTrigger(AttackTrigger); // 다음 애니메이션 실행
     }
 
     public void EndAttackEventTrigger()

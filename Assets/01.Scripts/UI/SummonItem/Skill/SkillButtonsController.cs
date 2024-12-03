@@ -79,16 +79,19 @@ public class SkillButtonsController : MonoBehaviour
     {
         isAutoPlay = autoPlay;
 
-        StartCoroutine(AutoPlaySkillCorou());
+        if (isAutoPlay)
+        {
+            StartCoroutine(AutoPlaySkillCorou());
+        }
     }
 
     private IEnumerator AutoPlaySkillCorou()
     {
-        while (isAutoPlay && GameManager.Instance.GetPlayer().IsAttack)
+        while (isAutoPlay)
         {
             foreach (SkillButton button in _skillButtons)
             {
-                if (button.Button.interactable)
+                if (button.Button.interactable && GameManager.Instance.GetPlayer().CanAttack)
                 {
                     button.Button.onClick?.Invoke();
                 }

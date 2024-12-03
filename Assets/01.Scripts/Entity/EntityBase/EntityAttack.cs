@@ -22,14 +22,14 @@ public abstract partial class Entity<T, G>
 
     private const float DefualtAttackSpeed = 0.5f;
 
-    private bool isAttack;
-    public bool IsAttack
+    private bool canAttack;
+    public bool CanAttack
     {
         get
         {
             Debug.Log($"GetAttackable: {StateMachine.CurrentState.GetAttackable()}");
-            Debug.Log($"CanAttack: {isAttack}");
-            return StateMachine.CurrentState.GetAttackable() && isAttack;
+            Debug.Log($"CanAttack: {canAttack}");
+            return StateMachine.CurrentState.GetAttackable() && !canAttack;
         }
     }
 
@@ -117,8 +117,8 @@ public abstract partial class Entity<T, G>
         return DefualtAttackSpeed + EntityStatController.GetStatValue(StatType.AttackDelay);
     }
 
-    public void SetIsAttack(bool isAttack)
+    public void SetCanAttack(bool canAttack)
     {
-        this.isAttack = isAttack;
+        this.canAttack = canAttack;
     }
 }

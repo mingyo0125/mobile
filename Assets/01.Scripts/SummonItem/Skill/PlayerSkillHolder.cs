@@ -45,6 +45,7 @@ public class PlayerSkillHolder : MonoBehaviour
         //                                                .EntityStatController
         //                                                .GetStatValue(StatType.AttackDelay));
 
+        Debug.Log($"Attack Delay: {player.GetAttackDelay()}");
         player.EntityAnimatorCompo.QueueSkillAnimationTrigger(id,
                                                    player.GetAttackDelay(),
                                                    () => SpawnSkill(id, skill));

@@ -173,5 +173,5 @@ MonoBehaviour:
   _enemyLayer:
     serializedVersion: 2
     m_Bits: 128
-  isCollisionUpdate: 1
+  isCollisionUpdate: 0
   shouldDisappearOnCollision: 0
