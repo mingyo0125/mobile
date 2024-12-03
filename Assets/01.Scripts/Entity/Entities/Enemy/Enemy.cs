@@ -15,6 +15,13 @@ public class Enemy : Entity<EnemyStateType, Enemy>
         return null;
     }
 
+    public override void TakedDamage(TakeDamageInfo takeDamageInfo)
+    {
+        base.TakedDamage(takeDamageInfo);
+
+        StateMachine.ChangeState(EnemyStateType.Idle);
+    }
+
     protected override void CreateStateMachine()
     {
         StateMachine = new EnemyStateMachine(this);

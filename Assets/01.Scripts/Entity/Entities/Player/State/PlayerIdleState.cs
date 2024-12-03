@@ -13,7 +13,7 @@ public class PlayerIdleState : EntityIdleState<PlayerStateType, Player>
     public override void UpdateState()
 	{
 		base.UpdateState();
-        if(GetInRange(100f).Item1)
+        if(GetInRange(100f).Item1 && !GetAttackable())
         {
 			_stateMachine.ChangeState(PlayerStateType.Move);
 		}

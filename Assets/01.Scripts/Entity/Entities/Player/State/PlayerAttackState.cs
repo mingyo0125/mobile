@@ -12,13 +12,22 @@ public class PlayerAttackState : EntityAttackState<PlayerStateType, Player>
 
     }
 
-    public override void ChangeNextState()
-	{
-		_stateMachine.ChangeState(PlayerStateType.Move);
-	}
+    public override void EnterState()
+    {
+        base.EnterState();
+
+        Debug.Log("Enter AttackState");
+    }
 
     protected override void Attack()
     {
         //_owner.SkillHolder.PlaySkill("Fireball");
+    }
+
+    public override void ExitState()
+    {
+        base.ExitState();
+
+        Debug.Log("Exit AttackState");
     }
 }

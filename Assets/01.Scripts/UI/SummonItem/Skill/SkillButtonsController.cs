@@ -25,6 +25,8 @@ public class SkillButtonsController : MonoBehaviour
 
     private bool isAutoPlay;
 
+    private WaitForSeconds _waitForSeconds = new WaitForSeconds(0.1f);
+
     private void Awake()
     {
         _skillButtons = new List<SkillButton>(GetComponentsInChildren<SkillButton>());
@@ -72,23 +74,29 @@ public class SkillButtonsController : MonoBehaviour
         }
         return null;
     }
-
-    private void Update()
-    {
-        bool canAutoPlay = isAutoPlay && GameManager.Instance.GetPlayer().StateMachine.CurrentState.GetAttackable();
-        if (!canAutoPlay) { return; }
-
-        foreach (SkillButton button in _skillButtons)
-        {
-            if (button.Button.interactable)
-            {
-                button.Button.onClick?.Invoke();
-            }
-        }
-    }
-
+    
     public void SetAutoPlay(bool autoPlay)
     {
         isAutoPlay = autoPlay;
+
+        StartCoroutine(AutoPlaySkillCorou());
+    }
+
+    private IEnumerator AutoPlaySkillCorou()
+    {
+        while (isAutoPlay && GameManager.Instance.GetPlayer().IsAttack)
+        {
+            foreach (SkillButton button in _skillButtons)
+            {
+                if (button.Button.interactable)
+                {
+                    button.Button.onClick?.Invoke();
+                }
+
+                yield return _waitForSeconds;
+            }
+
+            yield return null;
+        }
     }
 }

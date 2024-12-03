@@ -22,9 +22,13 @@ public class EntityAnimator : MonoBehaviour
     private bool isAnimationPlaying = false; // 현재 애니메이션 실행 여부 확인용
     private string nextAniamtionName;
 
+    protected IEntity _owner;
+
     private void Awake()
     {
         _animator = GetComponent<Animator>();
+
+        _owner = transform.parent.GetComponent<IEntity>();
     }
 
     public void SetFloat(string animationName, float value)
@@ -69,8 +73,13 @@ public class EntityAnimator : MonoBehaviour
         }
         else
         {
-            isAnimationPlaying = false;
+            EndAttack();
         }
+    }
+
+    protected virtual void EndAttack()
+    {
+        isAnimationPlaying = false;
     }
 
     public void EndHitEventTrigger()

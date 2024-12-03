@@ -8,10 +8,13 @@ public class EnemyAttackState : EntityAttackState<EnemyStateType, Enemy>
         
     }
 
-    public override void ChangeNextState()
-	{
-		_stateMachine.ChangeState(EnemyStateType.Move);
-	}
+    public override void EnterState()
+    {
+        base.EnterState();
+
+        // Attack Animation이 없어서 일단이걸로 함 later
+        CoroutineUtil.CallWaitForSeconds(_owner.GetAttackDelay(), () => _owner.StateMachine.ChangeState(EnemyStateType.Move));
+    }
 
     protected override void Attack()
     {

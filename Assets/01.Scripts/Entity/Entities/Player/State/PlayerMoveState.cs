@@ -16,11 +16,4 @@ public class PlayerMoveState : EntityMoveState<PlayerStateType, Player>
         _owner.Move(Vector2.right);
     }
 
-    public override void UpdateState()
-    {
-        if (GetAttackable())
-        {
-            _stateMachine.ChangeState(PlayerStateType.Attack);
-        }
-    }
 }

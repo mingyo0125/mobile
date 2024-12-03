@@ -14,23 +14,17 @@ public abstract class EntityAttackState<T, G> : EntityState<T, G> where T : Enum
 
 		_owner.StopImmediatetly();
 
-        CoroutineUtil.CallWaitForSeconds(_owner.GetAttackDelay(), EndAttack);
+        _owner.SetIsAttack(true);
 
         Attack();
     }
 
 	protected abstract void Attack();
 
-	protected virtual void EndAttack()
-	{
-        if (!GetAttackable())
-        {
-            ChangeNextState();
-            return;
-        }
+    public override void ExitState()
+    {
+        base.ExitState();
 
-        EnterState();
+        _owner.SetIsAttack(false);
     }
-
-    public abstract void ChangeNextState();
 }

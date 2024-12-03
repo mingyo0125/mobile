@@ -23,6 +23,13 @@ public class Player : Entity<PlayerStateType, Player>
         base.Initialize();
     }
 
+    public override void TakedDamage(TakeDamageInfo takeDamageInfo)
+    {
+        base.TakedDamage(takeDamageInfo);
+
+        StateMachine.ChangeState(PlayerStateType.Idle);
+    }
+
     public void GetItem(Item item)
     {
         // Dosomething

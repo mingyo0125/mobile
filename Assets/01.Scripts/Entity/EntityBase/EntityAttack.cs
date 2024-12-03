@@ -22,6 +22,17 @@ public abstract partial class Entity<T, G>
 
     private const float DefualtAttackSpeed = 0.5f;
 
+    private bool isAttack;
+    public bool IsAttack
+    {
+        get
+        {
+            Debug.Log($"GetAttackable: {StateMachine.CurrentState.GetAttackable()}");
+            Debug.Log($"CanAttack: {isAttack}");
+            return StateMachine.CurrentState.GetAttackable() && isAttack;
+        }
+    }
+
     private void OnDrawGizmos()
     {
         if (isDrawRangeGizmo)
@@ -104,5 +115,10 @@ public abstract partial class Entity<T, G>
     public float GetAttackDelay()
     {
         return DefualtAttackSpeed + EntityStatController.GetStatValue(StatType.AttackDelay);
+    }
+
+    public void SetIsAttack(bool isAttack)
+    {
+        this.isAttack = isAttack;
     }
 }

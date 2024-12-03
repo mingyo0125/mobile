@@ -7,6 +7,13 @@ public class EnemyMoveState : EntityMoveState<EnemyStateType, Enemy>
     {
     }
 
+    public override void EnterState()
+    {
+        base.EnterState();
+
+        Debug.Log("Enter Move");
+    }
+
     public override void FixedUpdateState()
     {
         base.FixedUpdateState();
