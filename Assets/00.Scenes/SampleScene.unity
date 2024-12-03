@@ -1300,8 +1300,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8e08da37353d99428e3d296576279d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _spawnEntityTypes: 4
-  spawnDelayTime: 0.05
+  _spawnEntityTypes: 0
   _skillListSO: {fileID: 11400000, guid: 5201373617cf3ea4a8e5504766089d08, type: 2}
 --- !u!1 &356455889
 GameObject:

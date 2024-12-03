@@ -7,23 +7,26 @@ public abstract class SummonItemFactory : ObjectFactory<SummonItem>
 {
     private List<SummonItem> _prevSpawnItems = new List<SummonItem>();
 
-    [SerializeField]
-    private float spawnDelayTime = 0.05f;
+    private const float spawnDelayTime = 0.05f;
 
     private const string SummonItem = "SummonItem_Image";
 
     private const int xDistance = 150, yDistance = -150;
 
+    private Coroutine _setSummonItemPosCoroutine;
+    private WaitForSeconds _setSummonItemPosWaitSeconds = new WaitForSeconds(spawnDelayTime);
+
     public virtual void SpawnSummonItem(Transform spawnParentTrm, int count)
     {
-        _prevSpawnItems.ForEach(item => PoolManager.Instance.DestroyObject(item));
-        _prevSpawnItems.Clear();
+        if(_setSummonItemPosCoroutine != null)
+        {
+            StopCoroutine(_setSummonItemPosCoroutine);
+            _setSummonItemPosCoroutine = null;
+        }
 
-        SpawnSummonItemCorou(spawnParentTrm, count);
-    }
+        _prevSpawnItems.ForEach(item => PoolManager.Instance.DestroyObject(item)); // 전에 소환된거 지움
+        _prevSpawnItems.Clear();                                                   // 전에 소환된거 지움
 
-    private void SpawnSummonItemCorou(Transform spawnParentTrm, int count)
-    {
         List<SummonItemInfo> summonedItem = GetSummonItems(GetCanSummonItems(), count);
         List<SummonItem> summonItemUIs = new List<SummonItem>();
 
@@ -31,7 +34,6 @@ public abstract class SummonItemFactory : ObjectFactory<SummonItem>
         {
             SummonItem summonItem = PoolManager.Instance.CreateObject(SummonItem) as SummonItem;
             summonItemUIs.Add(summonItem);
-            summonItem.transform.SetParent(spawnParentTrm);
 
             summonItem.SetBGImage(item.GradeInfo.ColorByGrade);
             summonItem.UpdateImage(item.Icon);
@@ -41,7 +43,7 @@ public abstract class SummonItemFactory : ObjectFactory<SummonItem>
             _prevSpawnItems.Add(summonItem);
         }
 
-        StartCoroutine(SetSummonItemPos(summonItemUIs, spawnParentTrm));
+        _setSummonItemPosCoroutine = StartCoroutine(SetSummonItemPosCorou(summonItemUIs, spawnParentTrm));
     }
 
     private List<SummonItemInfo> GetSummonItems(List<SummonItemInfo> cansummonItems, int count)
@@ -77,7 +79,7 @@ public abstract class SummonItemFactory : ObjectFactory<SummonItem>
     }
 
 
-    private IEnumerator SetSummonItemPos(List<SummonItem> summonItemUIs, Transform spawnParentTrm)
+    private IEnumerator SetSummonItemPosCorou(List<SummonItem> summonItemUIs, Transform spawnParentTrm)
     {
         int xCount = 0, yCount = 0;
 
@@ -87,10 +89,9 @@ public abstract class SummonItemFactory : ObjectFactory<SummonItem>
 
             summonItem.ScaleTween();
 
+            summonItem.transform.SetParent(spawnParentTrm);
             RectTransform rectTransform = (RectTransform)summonItem.transform;
-
             rectTransform.anchoredPosition = new Vector2(50, -50);
-
             rectTransform.anchoredPosition += new Vector2(xDistance * xCount, yDistance * yCount);
 
             xCount++;
@@ -101,7 +102,7 @@ public abstract class SummonItemFactory : ObjectFactory<SummonItem>
                 yCount++;
             }
 
-            yield return new WaitForSeconds(spawnDelayTime);
+            yield return _setSummonItemPosWaitSeconds;
         }
     }
 
