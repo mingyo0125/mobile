@@ -73,6 +73,8 @@ public class ItemInfoUI<T> : UI_Image where T : SummonItemInfo
 
         _itemInfo.OnItemLevelUpEvent += UpdateUI;
 
+        _unEquipButton.SetSummonItem(_itemInfo);
+
         UpdateUI();
     }
 
