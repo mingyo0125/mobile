@@ -53,6 +53,7 @@ MonoBehaviour:
     m_Bits: 128
   isCollisionUpdate: 0
   shouldDisappearOnCollision: 0
+  useAnimationEvent: 1
 --- !u!1 &7723339272816996366
 GameObject:
   m_ObjectHideFlags: 0

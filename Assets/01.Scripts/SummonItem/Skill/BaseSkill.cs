@@ -22,13 +22,18 @@ public abstract class BaseSkill : PoolableMono
     protected LayerMask _enemyLayer;
 
     [SerializeField]
-    private bool isCollisionUpdate, shouldDisappearOnCollision;
+    private bool isCollisionUpdate, shouldDisappearOnCollision, useAnimationEvent;
 
     protected virtual void Awake()
     {
         _viusal = transform.Find("Visual").GetComponent<SkillVisual>();
 
         _viusal.OnAnimationEndEvent += () => PoolManager.Instance.DestroyObject(this);
+
+        if(useAnimationEvent)
+        {
+            _viusal.OnTakeDamageEvent += TakeDamage;
+        }
     }
 
     public void InitializeSkillInfo(SkillInfo sharedSkillInfo)

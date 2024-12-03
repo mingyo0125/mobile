@@ -175,3 +175,4 @@ MonoBehaviour:
     m_Bits: 128
   isCollisionUpdate: 0
   shouldDisappearOnCollision: 0
+  useAnimationEvent: 1

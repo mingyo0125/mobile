@@ -4,11 +4,6 @@ using UnityEngine;
 
 public class Flame : BaseSkill
 {
-    protected override void Awake()
-    {
-        _viusal.OnTakeDamageEvent += TakeDamage;
-    }
-
     public override void Initialize()
     {
         base.Initialize();
