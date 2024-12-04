@@ -22,7 +22,7 @@ public class BossWarningPanel : UI_Component
     {
         _canvasGroup.alpha = 1;
 
-        UI_Image blackImage = UIManager.Instance.CreateUI(blackImageName, transform) as UI_Image;
+        UI_Image blackImage = UIManager.Instance.CreateUI(blackImageName, Vector2.zero, transform) as UI_Image;
         blackImage.Icon.color = Color.black;
         CoroutineUtil.CallWaitForSeconds(0.2f, () =>
         {

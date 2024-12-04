@@ -19,6 +19,7 @@ public class HitFeedback : Feedback
             Utils.CalculatePercent(takeDamageInfo.KnockbackPower, entity.EntityStatController.GetStatValue(StatType.ResistancePercent));
 
         Vector2 knockbackVec = (Vector2)(transform.position - takeDamageInfo.TriggerEntityPos).normalized;
+        knockbackVec.y = 0;
         entity.Rb.AddForce(knockbackVec * knockbackPower, ForceMode2D.Impulse);
 
         if(takeDamageInfo.HitFeedbackEffect != null)

@@ -12,7 +12,7 @@ public class CategoryButton : UI_Button
         base.ButtonEvent();
 
         UIManager.Instance.RemoveTopUGUI();
-        UIManager.Instance.CreateUI(categoryName, null, UIGenerateType.STACKING);
+        UIManager.Instance.CreateUI(categoryName, Vector2.zero, null, UIGenerateType.STACKING);
     }
 
     private void Start()

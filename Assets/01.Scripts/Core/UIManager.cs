@@ -1,7 +1,9 @@
+using DG.Tweening;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEditor.PlayerSettings;
 using Random = UnityEngine.Random;
 
 public class UIManager : MonoSingleTon<UIManager>
@@ -15,17 +17,12 @@ public class UIManager : MonoSingleTon<UIManager>
     private Stack<UI_Component> _uiComponentsStack = new Stack<UI_Component>();
     public UI_Component TopUI => _uiComponentsStack.Peek();
 
-    private void Update()
-    {
-        //if(_uiComponentsStack.Count > 0 &&
-        //   TopUI.IsActive)
-        //{
-        //    TopUI.UpdateUI();
-        //}
-    }
-
-    public UI_Component CreateUI(string name, Transform parent = null, UIGenerateType generateType = UIGenerateType.NONE,
-                                                                       UIGenerateSortType sortType = UIGenerateSortType.STACKING)
+    public UI_Component CreateUI(string name, Vector2 pos,
+                                 Transform parent = null, 
+                                 UIGenerateType generateType = UIGenerateType.NONE,
+                                 UIGenerateSortType sortType = UIGenerateSortType.STACKING,
+                                 UIGenerateTweenType tweenType = UIGenerateTweenType.None,
+                                 float duration = 0.1f)
     {
         if(parent == null) { parent = _deaultUIParentTrm; }
         if (sortType == UIGenerateSortType.TOP) { parent = _canvas.transform; }
@@ -38,38 +35,37 @@ public class UIManager : MonoSingleTon<UIManager>
 
         if (generateType == UIGenerateType.STACKING) { _uiComponentsStack.Push(ui); }
 
+        if(tweenType != UIGenerateTweenType.None)
+        {
+            Vector2 startPos = pos + new Vector2(0, (int)tweenType * 2000f);
+
+            ((RectTransform)ui.transform).anchoredPosition = startPos;
+
+            ((RectTransform)ui.transform).DOAnchorPos(pos, duration).SetEase(Ease.OutQuad);
+        }
+
         return ui;
     }
 
-    public void RemoveTopUGUI()
+    public void RemoveTopUGUI(UIGenerateTweenType tweenType = UIGenerateTweenType.None, float duration = 0.1f)
     {
         if(_uiComponentsStack.Count > 0)
         {
             UI_Component top = _uiComponentsStack.Pop();
+
+            if (tweenType != UIGenerateTweenType.None)
+            {
+                Vector2 endPos = ((RectTransform)top.transform).anchoredPosition + new Vector2(0, (int)tweenType * 2000f);
+
+                ((RectTransform)top.transform).DOAnchorPos(endPos, duration)
+                    .SetEase(Ease.OutQuad)
+                    .OnComplete(() => top.RemoveUI());
+
+                return;
+            }
+
             top.RemoveUI();
         }
-    }
-
-    public void ReturnUI()
-    {
-        if (_uiComponentsStack.Count <= 0)
-        {
-            Debug.LogWarning("There is not exist current UI");
-            return;
-        }
-
-        var curComponent = _uiComponentsStack.Pop();
-
-        if (_uiComponentsStack.Count <= 0)
-        {
-            Debug.LogWarning("There is not exist prev UI");
-            return;
-        }
-
-        var prevComponent = _uiComponentsStack.Pop();
-
-        curComponent.RemoveUI();
-        CreateUI(prevComponent.name, prevComponent.Parent, prevComponent.GenerateType);
     }
 
     public void ClearPanel()

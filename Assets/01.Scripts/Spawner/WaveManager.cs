@@ -51,7 +51,7 @@ public class WaveManager : MonoSingleTon<WaveManager>
         deadEnmiesCount = 0;
         CurWaveCount = 1;
 
-        StageClearPanel stageClearPanel = UIManager.Instance.CreateUI(stageClearPanelName, null, UIGenerateType.NONE, UIGenerateSortType.TOP) as StageClearPanel;
+        StageClearPanel stageClearPanel = UIManager.Instance.CreateUI(stageClearPanelName, Vector2.zero, null, UIGenerateType.NONE, UIGenerateSortType.TOP) as StageClearPanel;
         stageClearPanel.UpdateUI();
 
         Debug.Log("Stage Clear");
@@ -59,7 +59,7 @@ public class WaveManager : MonoSingleTon<WaveManager>
 
     public void SpawnBossWarningPanel()
     {
-        BossWarningPanel bossWarningPanel = UIManager.Instance.CreateUI("BossWarningPanel", null, UIGenerateType.NONE, UIGenerateSortType.TOP) as BossWarningPanel;
+        BossWarningPanel bossWarningPanel = UIManager.Instance.CreateUI("BossWarningPanel", Vector2.zero, null, UIGenerateType.NONE, UIGenerateSortType.TOP) as BossWarningPanel;
         bossWarningPanel.UpdateUI();
         _bossFactory.SpawnEnemy(spawnedEnmiesCount);
         return;

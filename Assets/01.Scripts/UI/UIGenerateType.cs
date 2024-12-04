@@ -12,3 +12,10 @@ public enum UIGenerateSortType
     TOP
 }
 
+public enum UIGenerateTweenType
+{
+    None,
+    Up = -1,
+    Down = 1,
+}
+

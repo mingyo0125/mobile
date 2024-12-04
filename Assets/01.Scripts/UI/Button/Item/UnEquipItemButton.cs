@@ -22,7 +22,6 @@ public class UnEquipItemButton : UI_Button, ISummonItemUI
 
     public void SetSummonItem(SummonItemInfo summonItem)
     {
-        Debug.Log("AA");
         ItemInfo = summonItem;
     }
 
@@ -31,7 +30,5 @@ public class UnEquipItemButton : UI_Button, ISummonItemUI
         base.ButtonEvent();
         if (isCloseTopUI) { UIManager.Instance.RemoveTopUGUI(); }
         InventoryManager.Instance.UnEquipItem(ItemInfo.ItemType, ItemInfo.ItemId);
-
-        //«ÿ¡¶ æ»µ 
     }
 }

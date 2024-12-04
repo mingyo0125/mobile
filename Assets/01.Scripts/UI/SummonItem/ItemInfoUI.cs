@@ -67,7 +67,6 @@ public class ItemInfoUI<T> : UI_Image where T : SummonItemInfo
         }
 
         _lockPanel.SetActive(_itemInfo.IsLock);
-        Debug.Log($"{_itemInfo.ItemName} : {_itemInfo.IsLock}");
 
         _targetAchievedImage.SetActive(_itemInfo.CanUpgrade);
 
@@ -90,7 +89,6 @@ public class ItemInfoUI<T> : UI_Image where T : SummonItemInfo
 
     public void UpdateCountText()
     {
-        Debug.Log("UpdateCountText");
         if(_itemInfo.CanUpgrade)
         {
             _targetAchievedImage.SetActive(true);

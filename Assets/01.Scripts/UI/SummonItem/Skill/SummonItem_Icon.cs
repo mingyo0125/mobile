@@ -62,9 +62,11 @@ public class SummonItem_Icon : UI_Button, ISummonItemUI
         {
             case ItemType.Skill:
                 Skill_InfoUI itemInfoUI = UIManager.Instance.CreateUI(Skill_InfoName,
-                                                                        null,
-                                                                        UIGenerateType.STACKING,
-                                                                        UIGenerateSortType.TOP) as Skill_InfoUI;
+                                                                      Vector2.zero, 
+                                                                      null,
+                                                                      UIGenerateType.STACKING,
+                                                                      UIGenerateSortType.TOP,
+                                                                      UIGenerateTweenType.Up) as Skill_InfoUI;
                 itemInfoUI.SetSkillInfo(ItemInfo as SkillInfo);
                 break;
 

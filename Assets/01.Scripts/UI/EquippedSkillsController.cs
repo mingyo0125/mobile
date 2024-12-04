@@ -17,9 +17,10 @@ public class EquippedSkillsController : MonoBehaviour
         for(int i = 0; i < EquipItemCount; i++)
         {
             EquipItem_Icon equipItem_Icon = UIManager.Instance.CreateUI(EquipItem_Icon,
-                                                                          transform,
-                                                                          UIGenerateType.NONE,
-                                                                          UIGenerateSortType.NONE) as EquipItem_Icon;
+                                                                        Vector2.zero, 
+                                                                        transform,
+                                                                        UIGenerateType.NONE,
+                                                                        UIGenerateSortType.NONE) as EquipItem_Icon;
 
             _summonItemIcons.Add(equipItem_Icon);
         }
