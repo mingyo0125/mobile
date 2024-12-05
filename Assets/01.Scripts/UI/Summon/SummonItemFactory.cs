@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class SummonItemFactory : ObjectFactory<SummonItem>
+public abstract class SummonItemFactory<T> : ObjectFactory<SummonItem>, ISummonFactory where T : SummonItemInfo
 {
     private List<SummonItem> _prevSpawnItems = new List<SummonItem>();
 
@@ -27,10 +27,10 @@ public abstract class SummonItemFactory : ObjectFactory<SummonItem>
         _prevSpawnItems.ForEach(item => PoolManager.Instance.DestroyObject(item)); // 전에 소환된거 지움
         _prevSpawnItems.Clear();                                                   // 전에 소환된거 지움
 
-        List<SummonItemInfo> summonedItem = GetSummonItems(GetCanSummonItems(), count);
+        List<T> summonedItem = GetSummonItems(GetCanSummonItems(), count);
         List<SummonItem> summonItemUIs = new List<SummonItem>();
 
-        foreach (SummonItemInfo item in summonedItem)
+        foreach (T item in summonedItem)
         {
             SummonItem summonItem = PoolManager.Instance.CreateObject(SummonItem) as SummonItem;
             summonItemUIs.Add(summonItem);
@@ -46,9 +46,9 @@ public abstract class SummonItemFactory : ObjectFactory<SummonItem>
         _setSummonItemPosCoroutine = StartCoroutine(SetSummonItemPosCorou(summonItemUIs, spawnParentTrm));
     }
 
-    private List<SummonItemInfo> GetSummonItems(List<SummonItemInfo> cansummonItems, int count)
+    private List<T> GetSummonItems(List<T> cansummonItems, int count)
     {
-        List<SummonItemInfo> results = new List<SummonItemInfo>();
+        List<T> results = new List<T>();
 
         // 1. 각 아이템의 누적 확률 계산
         float totalProbability = 0f;
@@ -106,5 +106,10 @@ public abstract class SummonItemFactory : ObjectFactory<SummonItem>
         }
     }
 
-    public abstract List<SummonItemInfo> GetCanSummonItems();
+    public abstract List<T> GetCanSummonItems();
+
+    public SummonItemFactory<G> GetFactory<G>() where G : SummonItemInfo
+    {
+        return this as SummonItemFactory<G>;
+    }
 }

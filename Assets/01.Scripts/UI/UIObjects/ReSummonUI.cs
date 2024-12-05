@@ -7,19 +7,30 @@ public class ReSummonUI : UI_Component
     [SerializeField]
     private Transform _spawnParentTrm;
 
-    private SkillSummonFactory _skillSummonFactory;
+    private ISummonFactory _summonItemFactory;
+
+    [SerializeField]
+    private ItemType _itemType;
+
+    private void Awake()
+    {
+        _summonItemFactory = GetComponent<ISummonFactory>();
+    }
 
     public override void UpdateUI()
     {
     }
 
-    protected virtual void Awake()
-    {
-        _skillSummonFactory = FindAnyObjectByType<SkillSummonFactory>();
-    }
-
     public void SpawnSummonItem(int summonCount)
     {
-        _skillSummonFactory.SpawnSummonItem(_spawnParentTrm, summonCount);
+        switch (_itemType)
+        {
+            case ItemType.Skill:
+                _summonItemFactory.GetFactory<SkillInfo>().SpawnSummonItem(_spawnParentTrm, summonCount);
+                break;
+            case ItemType.Equipment:
+                _summonItemFactory.GetFactory<EquipmentInfo>().SpawnSummonItem(_spawnParentTrm, summonCount);
+                break;
+        }
     }
 }

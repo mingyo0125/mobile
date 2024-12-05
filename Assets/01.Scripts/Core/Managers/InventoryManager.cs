@@ -8,7 +8,6 @@ public enum ItemType
     Equipment
 }
 
-
 public class InventoryManager : MonoSingleTon<InventoryManager>
 {
     private Dictionary<ItemType, Dictionary<string, SummonItemInfo>> _equippedInventory = new ();

@@ -17,9 +17,9 @@ MonoBehaviour:
     <ItemName>k__BackingField: "\uD14C\uC2A4\uD2B8\uC7A5\uBE44"
     <Icon>k__BackingField: {fileID: 21300000, guid: 33515dd44c343614d9fe815ed68d3950, type: 3}
     <ItemLevel>k__BackingField: 0
-    <ItemType>k__BackingField: 0
+    <ItemType>k__BackingField: 1
     <GradeInfo>k__BackingField:
       <ItemGradeType>k__BackingField: 100
-      <ColorByGrade>k__BackingField: {r: 0.93962264, g: 0, b: 0, a: 0}
-      <UpgradeIncreaseValue>k__BackingField: 0
+      <ColorByGrade>k__BackingField: {r: 0.93962264, g: 0, b: 0, a: 1}
+      <UpgradeIncreaseValue>k__BackingField: 10
     <ItemValue>k__BackingField: 100
