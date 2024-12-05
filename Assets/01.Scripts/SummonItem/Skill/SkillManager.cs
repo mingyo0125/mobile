@@ -22,7 +22,7 @@ public class SkillManager : SummonItemManager<SkillInfo>
         foreach (BaseSkill skill in _skillListSO.SkillLists)
         {
             SkillInfo skillInfo = new SkillInfo(skill.SkillInfoSO.SkillInfo);
-            _skills.Add(skillInfo.ItemName, skill);
+            _skills.Add(skillInfo.ItemId, skill);
             _skillInfos.Add(skillInfo);
             skill.InitializeSkillInfo(skillInfo);
         }
