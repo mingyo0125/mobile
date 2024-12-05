@@ -27,19 +27,19 @@ public class SkillInfo : SummonItemInfo
     public override bool EquipItem()
     {
         base.EquipItem();
-        return SkillManager.Instance.EquipSkill(ItemId);
+        return SkillManager.Instance.EquipSummonItem(ItemId);
     }
 
     public override void UnEquipItem()
     {
         base.UnEquipItem();
-        SkillManager.Instance.UnEquipSkill(ItemId);
+        SkillManager.Instance.UnEquipSummonItem(ItemId);
     }
 
     public override void GetItem()
     {
         Debug.Log($"GetItem {ItemId}");
-        SkillManager.Instance.AddSkill(ItemId);
+        SkillManager.Instance.AddSummonItem(ItemId);
         base.GetItem();
     }
 

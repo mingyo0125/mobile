@@ -1,91 +1,73 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
-public class SkillManager : MonoSingleTon<SkillManager>
+public class SkillManager : SummonItemManager<SkillInfo>
 {
     [SerializeField]
     private SkillListSO _skillListSO;
 
+    private Dictionary<string, BaseSkill> _skills = new Dictionary<string, BaseSkill>();
+
     private PlayerSkillHolder _skillHolder;
-
-    public Dictionary<string, BaseSkill> Skills { get; private set; } = new Dictionary<string, BaseSkill>();
-    public Dictionary<string, int> SkillsInventory { get; private set; } = new Dictionary<string, int>();
-
-    public Dictionary<string, SkillInfo> Skill_Infos { get; private set; } = new Dictionary<string, SkillInfo>();
-
     private SkillButtonsController _skillButtonsController;
 
-    private void Awake()
+    private List<SkillInfo> _skillInfos = new List<SkillInfo>();
+
+    protected override void Awake()
     {
         _skillButtonsController = FindAnyObjectByType<SkillButtonsController>();
-
         _skillHolder = FindAnyObjectByType<PlayerSkillHolder>();
 
         foreach (BaseSkill skill in _skillListSO.SkillLists)
         {
             SkillInfo skillInfo = new SkillInfo(skill.SkillInfoSO.SkillInfo);
-
-            Skills.Add(skillInfo.ItemId, skill);
-
-            Skill_Infos.Add(skillInfo.ItemId, skillInfo);
-
+            _skills.Add(skillInfo.ItemName, skill);
+            _skillInfos.Add(skillInfo);
             skill.InitializeSkillInfo(skillInfo);
         }
+
+        base.Awake();
     }
 
-    public void AddSkill(string skillId)
+    public override void UnEquipSummonItem(string skillId)
     {
-        if(!Skills.ContainsKey(skillId)) { return; }
-
-        if(!SkillsInventory.ContainsKey(skillId)) // 처음 획득 했으면
-        {
-            SkillsInventory.Add(skillId, 0);
-        }
-
-        // 가지고 있는 스킬의 수를 더한다.
-        Skills[skillId].SkillInfo.AddElementsCount();
-    }
-
-    public void UnEquipSkill(string skillId)
-    {
-        if (!Skills.TryGetValue(skillId, out BaseSkill skill)) { return; }
+        base.UnEquipSummonItem(skillId);
 
         _skillHolder.RemoveSkill(skillId);
+
+        BaseSkill skill = GetSkill(skillId);
 
         _skillButtonsController.UnSubscribeSkill(skill);
     }
 
-    public bool EquipSkill(string skillId)
+    public override bool EquipSummonItem(string skillId)
     {
-        if(!SkillsInventory.ContainsKey(skillId))
-        {
-            Debug.LogError($"Player doesn't have {skillId}Skill");
-            return false;
-        }
+        base.EquipSummonItem(skillId);
 
-        if (!Skills.TryGetValue(skillId, out BaseSkill skill)) { return false; }
+        BaseSkill skill = GetSkill(skillId);
 
-        if(_skillButtonsController.SubscribeSkill(skill)) // 스킬 칸이 다 차있지 않아서 바로 가능하면
+        if (_skillButtonsController.SubscribeSkill(skill)) // 스킬 칸이 다 차있지 않아서 바로 가능하면
         {
             _skillHolder.AddSkill(skillId, skill);
             return true;
         }
 
-        Debug.Log(false);
         return false;
     }
 
-    public SkillInfo GetSkillInfo(string id)
+    protected override List<SkillInfo> GetSummonItems()
     {
-        if(!Skill_Infos.TryGetValue(id, out SkillInfo skill_Info))
+        return _skillInfos;
+    }
+
+    public BaseSkill GetSkill(string skillId)
+    {
+        if (!_skills.TryGetValue(skillId, out BaseSkill skill))
         {
-            Debug.LogError($"Player doesn't have {id}Skill");
-            return null;
+            Debug.LogError($"{skillId}Skill is not found");
         }
 
-        return skill_Info;
-    }    
+        return skill;
+    }
 }

@@ -10,23 +10,28 @@ public class BatchUpgradeButton : UI_Button
 
     private void Start()
     {
-        foreach (SkillInfo skillInfo in SkillManager.Instance.Skill_Infos.Values)
+        foreach (SummonItemInfo skillInfo in SummonItemManager<SkillInfo>.Instance.Items.Values)
         {
-            skillInfo.OnItemGetEvent += OnCanUpgradeIcon_Image;
-            skillInfo.OnItemLevelUpEvent += OnCanUpgradeIcon_Image;
+            if(skillInfo is SkillInfo)
+            {
+                skillInfo.OnItemGetEvent += OnCanUpgradeIcon_Image;
+                skillInfo.OnItemLevelUpEvent += OnCanUpgradeIcon_Image;
+            }
         }
     }
 
     private void OnCanUpgradeIcon_Image()
     {
         bool canUpgrade = false;
-        foreach (SkillInfo skillInfo in SkillManager.Instance.Skill_Infos.Values)
+        foreach (SummonItemInfo skillInfo in SummonItemManager<SkillInfo>.Instance.Items.Values)
         {
-            // 그냥 각자 강화해도 거시기 됨
-            if(skillInfo.CanUpgrade)
+            if (skillInfo is SkillInfo)
             {
-                canUpgrade = true;
-                break;
+                if (skillInfo.CanUpgrade)
+                {
+                    canUpgrade = true;
+                    break;
+                }
             }
         }
 
@@ -37,11 +42,14 @@ public class BatchUpgradeButton : UI_Button
     {
         base.ButtonEvent();
 
-        foreach(SkillInfo skillInfo in SkillManager.Instance.Skill_Infos.Values)
+        foreach (SummonItemInfo skillInfo in SummonItemManager<SkillInfo>.Instance.Items.Values)
         {
-            while(skillInfo.CanUpgrade)
+            if (skillInfo is SkillInfo)
             {
-                skillInfo.ItemLevelUp();
+                while (skillInfo.CanUpgrade)
+                {
+                    skillInfo.ItemLevelUp();
+                }
             }
         }
     }

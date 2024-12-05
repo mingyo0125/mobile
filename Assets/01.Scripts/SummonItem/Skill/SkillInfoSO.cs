@@ -7,4 +7,5 @@ public class SkillInfoSO : ScriptableObject
 {
     [field: SerializeField]
     public SkillInfo SkillInfo { get; private set; }
+
 }
