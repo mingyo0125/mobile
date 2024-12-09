@@ -8,7 +8,7 @@ public class Equipment_IconFactory : SummonItemIconFactory
     protected override List<SummonItemInfo> GetSummonItems()
     {
         var equipmentManager = SummonItemManager<EquipmentInfo>.Instance as EquipmentManager;
-        List<SummonItemInfo> list = new List<SummonItemInfo>(equipmentManager.EquipmentInfoList);
+        List<SummonItemInfo> list = new List<SummonItemInfo>(equipmentManager.EquipmentInfoList.Values.ToList());
         return list;
     }
 }

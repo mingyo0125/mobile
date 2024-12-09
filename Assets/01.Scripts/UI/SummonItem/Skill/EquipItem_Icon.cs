@@ -16,7 +16,7 @@ public class EquipItem_Icon : SummonItem_Icon
 
     private Color _originBGColor;
 
-    private bool isEquipped = false;
+    public bool IsEquipped { get; private set; } = false;
 
     private void Start()
     {
@@ -33,7 +33,7 @@ public class EquipItem_Icon : SummonItem_Icon
 
         _replaceSummonItemButtonBG.color = ItemInfo.GradeInfo.ColorByGrade;
         _replaceSummonItemButtonIcon.sprite = ItemInfo.Icon;
-        isEquipped = true;
+        IsEquipped = true;
 
         OnOffPanels(true);
     }
@@ -43,7 +43,7 @@ public class EquipItem_Icon : SummonItem_Icon
         _bgImage.color = _originBGColor;
 
         IsUsingButton = false;
-        isEquipped = false;
+        IsEquipped = false;
 
         OnOffPanels(false);
     }
@@ -58,7 +58,7 @@ public class EquipItem_Icon : SummonItem_Icon
 
     private void EndReplace()
     {
-        if (!isEquipped) { return; }
+        if (!IsEquipped) { return; }
 
         _unEquipItemButton.gameObject.SetActive(true);
 
@@ -67,7 +67,7 @@ public class EquipItem_Icon : SummonItem_Icon
 
     private void ChangeButtonEvent(SkillInfo skillInfo)
     {
-        if(!isEquipped) { return; }
+        if(!IsEquipped) { return; }
 
         _unEquipItemButton.gameObject.SetActive(false);
         _replaceSkillButton.gameObject.SetActive(true);
