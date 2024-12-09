@@ -12,6 +12,8 @@ public class EquipmentManager : SummonItemManager<EquipmentInfo>
 
     private Equipment_Inventory _equipment_Inventory;
 
+    private EquipmentInfo _curEquipmentInfo;
+
     protected override void Awake()
     {
         foreach (EquipmentInfoSO equipmentInfoSO in _equipmentInfoListSO.EquipmentInfoList)
@@ -42,6 +44,8 @@ public class EquipmentManager : SummonItemManager<EquipmentInfo>
 
         base.UnEquipSummonItem(itemId);
 
+        _curEquipmentInfo = null;
+
         _equipment_Inventory.UnEquipItem();
     }
 
@@ -54,6 +58,19 @@ public class EquipmentManager : SummonItemManager<EquipmentInfo>
         // 무기만 할꺼니까 데미지로 함
         GameManager.Instance.GetPlayer().EntityStatController.IncreaseStat(StatType.Damage, equipmentInfo.ItemValue);
 
+        _curEquipmentInfo = equipmentInfo;
+
         return base.EquipSummonItem(itemId);
+    }
+
+    public EquipmentInfo GetCurEquipmentInfo()
+    {
+        if (_curEquipmentInfo != null)
+        {
+            return _curEquipmentInfo;
+        }
+
+        Debug.LogWarning("CurEquipment is null");
+        return null;
     }
 }
