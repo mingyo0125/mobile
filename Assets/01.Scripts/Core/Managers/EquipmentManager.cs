@@ -36,6 +36,10 @@ public class EquipmentManager : SummonItemManager<EquipmentInfo>
 
     public override void UnEquipSummonItem(string itemId)
     {
+        if (!EquipmentInfoList.TryGetValue(itemId, out EquipmentInfo equipmentInfo)) { return; }
+        
+        GameManager.Instance.GetPlayer().EntityStatController.DecreaseStat(StatType.Damage, equipmentInfo.ItemValue);
+
         base.UnEquipSummonItem(itemId);
 
         _equipment_Inventory.UnEquipItem();
@@ -46,6 +50,9 @@ public class EquipmentManager : SummonItemManager<EquipmentInfo>
         if (!EquipmentInfoList.TryGetValue(itemId, out EquipmentInfo equipmentInfo)) { return false; }
 
         _equipment_Inventory.EquipItem(equipmentInfo);
+
+        // 무기만 할꺼니까 데미지로 함
+        GameManager.Instance.GetPlayer().EntityStatController.IncreaseStat(StatType.Damage, equipmentInfo.ItemValue);
 
         return base.EquipSummonItem(itemId);
     }
