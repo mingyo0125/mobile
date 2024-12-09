@@ -959,8 +959,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c89b431e24b17d24ebeb926e338bceaf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _allSkillsUI: {fileID: 2128206489544234098}
-  _equipSkillButtonTrm: {fileID: 4338915996316282613}
+  _allSummonItemsUI: {fileID: 2128206489544234098}
+  _equipSummonItemButtonTrm: {fileID: 4338915996316282613}
 --- !u!1 &2697435007140208282
 GameObject:
   m_ObjectHideFlags: 0
@@ -1655,7 +1655,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6026158677710721837}
   - component: {fileID: 6502560305763019904}
-  - component: {fileID: 4165642451221767442}
+  - component: {fileID: 1074596143313601596}
   m_Layer: 5
   m_Name: ItemIcons
   m_TagString: Untagged
@@ -1706,7 +1706,7 @@ MonoBehaviour:
   m_Spacing: {x: 15, y: 20}
   m_Constraint: 1
   m_ConstraintCount: 4
---- !u!114 &4165642451221767442
+--- !u!114 &1074596143313601596
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1718,7 +1718,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e37364100c508c419b12bfc9567d4f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _spawnEntityTypes: 4
+  _spawnEntityTypes: 3
   _skillListSO: {fileID: 11400000, guid: 5201373617cf3ea4a8e5504766089d08, type: 2}
 --- !u!1 &6729983446727760613
 GameObject:
