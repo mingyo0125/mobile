@@ -17,7 +17,6 @@ public abstract class SummonItemIconFactory : ObjectFactory<InventoryItem_Icon>
             InventoryItem_Icon icon = UIManager.Instance.CreateUI(InventoryItemIcon, Vector2.zero, transform) as InventoryItem_Icon;
             icon.SetSummonItem(item);
             icon.SetSiblingIndex(i);
-            Debug.Log(item.ItemId);
             _inventoryItems.Add(item.ItemId, icon);
         }
     }

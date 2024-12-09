@@ -1686,8 +1686,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c89b431e24b17d24ebeb926e338bceaf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _allSummonItemsUI: {fileID: 0}
-  _equipSummonItemButtonTrm: {fileID: 0}
+  _allSummonItemsUI: {fileID: 3038837703923360808}
+  _equipSummonItemButtonTrm: {fileID: 4462372897190403321}
 --- !u!1 &5553087632098185024
 GameObject:
   m_ObjectHideFlags: 0
@@ -2065,7 +2065,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EquipItemCount: 1
-  _itemType: 1
 --- !u!1 &7825676381845149601
 GameObject:
   m_ObjectHideFlags: 0

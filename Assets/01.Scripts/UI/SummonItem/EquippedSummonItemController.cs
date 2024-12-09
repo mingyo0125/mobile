@@ -13,9 +13,6 @@ public class EquippedSummonItemController : MonoBehaviour
     [SerializeField]
     private int EquipItemCount;
 
-    [SerializeField]
-    private ItemType _itemType;
-
     private void Start()
     {
         for (int i = 0; i < EquipItemCount; i++)
@@ -25,7 +22,6 @@ public class EquippedSummonItemController : MonoBehaviour
                                                                         transform,
                                                                         UIGenerateType.NONE,
                                                                         UIGenerateSortType.NONE) as EquipItem_Icon;
-            equipItem_Icon.SetEquipItem_Icon(_itemType);
             _summonItemIcons.Add(equipItem_Icon);
         }
     }

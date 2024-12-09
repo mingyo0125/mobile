@@ -6,5 +6,6 @@ public class CloseButton : UI_Button
         base.ButtonEvent();
 
         UIManager.Instance.RemoveTopUGUI();
+        Signalhub.OnReplaceSkillEvent?.Invoke();
     }
 }

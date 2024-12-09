@@ -186,8 +186,8 @@ MonoBehaviour:
   - {fileID: 4149719722705921605}
   - {fileID: 3451063375542499728}
   - {fileID: 1659346976268837801}
-  _replaceSkillButtonIcon: {fileID: 2055673519567092557}
-  _replaceSkillButtonBG: {fileID: 7000643391488885607}
+  _replaceSummonItemButtonIcon: {fileID: 2055673519567092557}
+  _replaceSummonItemButtonBG: {fileID: 7000643391488885607}
   _replaceSkillButton: {fileID: 2136989977174055794}
 --- !u!1 &1200619072429630195
 GameObject:
