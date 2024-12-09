@@ -37,6 +37,8 @@ public class EquipmentManager : SummonItemManager<EquipmentInfo>
     public override void UnEquipSummonItem(string itemId)
     {
         base.UnEquipSummonItem(itemId);
+
+        _equipment_Inventory.UnEquipItem();
     }
 
     public override bool EquipSummonItem(string itemId)

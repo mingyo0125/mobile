@@ -18,9 +18,23 @@ public class Equipment_Inventory : SummonItem_Inventory
     {
         if(_equipItem_Icon.IsEquipped)
         {
+            InventoryManager.Instance.UnEquipItem(_equipItem_Icon.ItemInfo.ItemType, _equipItem_Icon.ItemInfo.ItemId);
+
             _equipItem_Icon.ReSetSummonItem();
         }
 
         _equipItem_Icon.SetSummonItem(summonItemInfo);
+
+    }
+
+    public void UnEquipItem()
+    {
+        if (!_equipItem_Icon.IsEquipped)
+        {
+            Debug.LogError($"Equipment is null");
+            return;
+        }
+
+        _equipItem_Icon.ReSetSummonItem();
     }
 }
