@@ -92,7 +92,6 @@ public class SummonItemInfo : ISummonItem
 
     public virtual bool EquipItem()
     {
-
         return false;
     }
 

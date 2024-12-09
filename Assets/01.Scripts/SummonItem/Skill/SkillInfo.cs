@@ -19,6 +19,7 @@ public class SkillInfo : SummonItemInfo
 
     public SkillInfo(SkillInfo skillInfo) : base(skillInfo)
     {
+        Debug.Log("A");
         this.Description = skillInfo.Description;
         this.Cooldown = skillInfo.Cooldown;
         this.DamagePercent = skillInfo.DamagePercent;

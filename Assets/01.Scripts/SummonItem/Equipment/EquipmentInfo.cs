@@ -9,25 +9,27 @@ public class EquipmentInfo : SummonItemInfo
 
     public EquipmentInfo(EquipmentInfo summonItemInfo) : base(summonItemInfo)
     {
+        Debug.Log(this.IsLock);
+        Debug.Log("B");
         this.ItemValue = summonItemInfo.ItemValue;
     }
 
-    public override bool EquipItem()
-    {
-        base.EquipItem();
-        return SkillManager.Instance.EquipSummonItem(ItemId);
-    }
+    //public override bool EquipItem()
+    //{
+    //    base.EquipItem();
+    //    //return SkillManager.Instance.EquipSummonItem(ItemId);
+    //}
 
     public override void UnEquipItem()
     {
         base.UnEquipItem();
-        SkillManager.Instance.UnEquipSummonItem(ItemId);
+        //SkillManager.Instance.UnEquipSummonItem(ItemId);
     }
 
     public override void GetItem()
     {
         Debug.Log($"GetItem {ItemId}");
-        SkillManager.Instance.AddSummonItem(ItemId);
+        //SkillManager.Instance.AddSummonItem(ItemId);
         base.GetItem();
     }
 

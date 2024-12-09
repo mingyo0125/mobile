@@ -1263,7 +1263,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _equippingSkillUI: {fileID: 649180764220319355}
-  _summonItem_IconFactory: {fileID: 0}
+  _summonItem_IconFactory: {fileID: 1421427983605919707}
 --- !u!1 &4519972213702176174
 GameObject:
   m_ObjectHideFlags: 0

@@ -25,14 +25,14 @@ public class InventoryItem_Icon : SummonItem_Icon
     [SerializeField]
     private EquipItemButton _equipButton;
 
-    public int siblingIndex = 999;
+    private int siblingIndex = 999;
 
     public override void SetSummonItem(SummonItemInfo summonItem)
     {
         base.SetSummonItem(summonItem);
 
         _equipButton.SetSummonItem(ItemInfo);
-
+        Debug.Log($"{summonItem.ItemName}");
         UnLockItem();
     }
 

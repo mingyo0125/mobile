@@ -13,7 +13,8 @@ public class EquipmentManager : SummonItemManager<EquipmentInfo>
     {
         foreach (EquipmentInfoSO equipmentInfoSO in _equipmentInfoListSO.EquipmentInfoList)
         {
-            EquipmentInfoList.Add(equipmentInfoSO.EquipmentInfo);
+            EquipmentInfo equipmentInfo = new EquipmentInfo(equipmentInfoSO.EquipmentInfo);
+            EquipmentInfoList.Add(equipmentInfo);
         }
 
         base.Awake();
