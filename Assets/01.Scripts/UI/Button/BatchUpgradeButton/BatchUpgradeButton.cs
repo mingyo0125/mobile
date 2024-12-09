@@ -3,16 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class BatchUpgradeButton : UI_Button
+public class BatchUpgradeButton<T> : UI_Button where T : SummonItemInfo
 {
     [SerializeField]
     private GameObject CanUpgradeIcon_Image;
 
     private void Start()
     {
-        foreach (SummonItemInfo skillInfo in SummonItemManager<SkillInfo>.Instance.Items.Values)
+        foreach (T skillInfo in SummonItemManager<T>.Instance.Items.Values)
         {
-            if(skillInfo is SkillInfo)
+            if(skillInfo is T)
             {
                 skillInfo.OnItemGetEvent += OnCanUpgradeIcon_Image;
                 skillInfo.OnItemLevelUpEvent += OnCanUpgradeIcon_Image;
@@ -23,9 +23,9 @@ public class BatchUpgradeButton : UI_Button
     private void OnCanUpgradeIcon_Image()
     {
         bool canUpgrade = false;
-        foreach (SummonItemInfo skillInfo in SummonItemManager<SkillInfo>.Instance.Items.Values)
+        foreach (T skillInfo in SummonItemManager<T>.Instance.Items.Values)
         {
-            if (skillInfo is SkillInfo)
+            if (skillInfo is T)
             {
                 if (skillInfo.CanUpgrade)
                 {
@@ -42,9 +42,9 @@ public class BatchUpgradeButton : UI_Button
     {
         base.ButtonEvent();
 
-        foreach (SummonItemInfo skillInfo in SummonItemManager<SkillInfo>.Instance.Items.Values)
+        foreach (T skillInfo in SummonItemManager<T>.Instance.Items.Values)
         {
-            if (skillInfo is SkillInfo)
+            if (skillInfo is T)
             {
                 while (skillInfo.CanUpgrade)
                 {
