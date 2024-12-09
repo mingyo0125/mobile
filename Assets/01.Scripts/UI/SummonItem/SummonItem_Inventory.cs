@@ -7,19 +7,10 @@ public class SummonItem_Inventory : UI_Component
     [SerializeField]
     private EquippingSummonItemUI _equippingSkillUI;
 
+    [SerializeField]
     private SummonItemIconFactory _summonItem_IconFactory;
 
-    private void Awake()
-    {
-        _summonItem_IconFactory = FindAnyObjectByType<SummonItemIconFactory>();
-    }
-
-    private void Start()
-    {
-        Signalhub.OnSelectChnageSkillEvent += GenerateEquippingSkillUI;
-    }
-
-    private void GenerateEquippingSkillUI(SkillInfo skillInfo)
+    protected void GenerateEquippingSkillUI(SummonItemInfo skillInfo)
     {
         _equippingSkillUI.SetItemInfo(_summonItem_IconFactory.GetInventoryItemIcon(skillInfo));
         _equippingSkillUI.UpdateUI();

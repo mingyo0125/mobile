@@ -1073,7 +1073,7 @@ GameObject:
   m_Component:
   - component: {fileID: 743126612646982080}
   - component: {fileID: 7066760833901847900}
-  - component: {fileID: 859041174972396969}
+  - component: {fileID: 1421427983605919707}
   m_Layer: 5
   m_Name: ItemIcons
   m_TagString: Untagged
@@ -1124,7 +1124,7 @@ MonoBehaviour:
   m_Spacing: {x: 15, y: 20}
   m_Constraint: 1
   m_ConstraintCount: 4
---- !u!114 &859041174972396969
+--- !u!114 &1421427983605919707
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1133,11 +1133,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 4096704138134849902}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8e37364100c508c419b12bfc9567d4f2, type: 3}
+  m_Script: {fileID: 11500000, guid: 160b12dcd3e1516439121fd241f063bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _spawnEntityTypes: 4
-  _skillListSO: {fileID: 11400000, guid: 5201373617cf3ea4a8e5504766089d08, type: 2}
+  _spawnEntityTypes: 5
 --- !u!1 &4187771571128383467
 GameObject:
   m_ObjectHideFlags: 0
@@ -1264,6 +1263,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _equippingSkillUI: {fileID: 649180764220319355}
+  _summonItem_IconFactory: {fileID: 0}
 --- !u!1 &4519972213702176174
 GameObject:
   m_ObjectHideFlags: 0
@@ -1686,8 +1686,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c89b431e24b17d24ebeb926e338bceaf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _allSkillsUI: {fileID: 3038837703923360808}
-  _equipSkillButtonTrm: {fileID: 4462372897190403321}
+  _allSummonItemsUI: {fileID: 0}
+  _equipSummonItemButtonTrm: {fileID: 0}
 --- !u!1 &5553087632098185024
 GameObject:
   m_ObjectHideFlags: 0
