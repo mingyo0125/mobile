@@ -21,6 +21,8 @@ public class SummonItem_Icon : UI_Button, ISummonItemUI
 
     private const string Skill_InfoName = "Skill_Info";
 
+    private const string Equipment_InfoName = "Equipment_Info";
+
     public virtual void SetSummonItem(SummonItemInfo summonItem)
     {
         ItemInfo = summonItem;
@@ -61,15 +63,23 @@ public class SummonItem_Icon : UI_Button, ISummonItemUI
         switch (ItemInfo.ItemType)
         {
             case ItemType.Skill:
-                Skill_InfoUI itemInfoUI = UIManager.Instance.CreateUI(Skill_InfoName,
-                                                                      Vector2.zero, 
+                Skill_InfoUI skill_InfoUI = UIManager.Instance.CreateUI(Skill_InfoName,
+                                                                      Vector2.zero,
                                                                       null,
                                                                       UIGenerateType.STACKING,
                                                                       UIGenerateSortType.TOP,
                                                                       UIGenerateTweenType.Up) as Skill_InfoUI;
-                itemInfoUI.SetSkillInfo(ItemInfo as SkillInfo);
+                skill_InfoUI.SetSkillInfo(ItemInfo as SkillInfo);
                 break;
-
+            case ItemType.Equipment:
+                Equipment_InfoUI equipment_InfoUI = UIManager.Instance.CreateUI(Equipment_InfoName,
+                                                                      Vector2.zero,
+                                                                      null,
+                                                                      UIGenerateType.STACKING,
+                                                                      UIGenerateSortType.TOP,
+                                                                      UIGenerateTweenType.Up) as Equipment_InfoUI;
+                equipment_InfoUI.SetSkillInfo(ItemInfo as EquipmentInfo);
+                break;
             default:
                 break;
         }
