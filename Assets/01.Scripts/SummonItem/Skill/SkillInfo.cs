@@ -14,12 +14,8 @@ public class SkillInfo : SummonItemInfo
     [field: SerializeField]
     public FeedbackEffect HitFeedbackEffect { get; private set; }
 
-    //[field: SerializeField]
-    //public SummonItemInfo SummonItemInfo;
-
     public SkillInfo(SkillInfo skillInfo) : base(skillInfo)
     {
-        Debug.Log("A");
         this.Description = skillInfo.Description;
         this.Cooldown = skillInfo.Cooldown;
         this.DamagePercent = skillInfo.DamagePercent;

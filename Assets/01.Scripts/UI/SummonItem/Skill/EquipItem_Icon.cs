@@ -20,9 +20,16 @@ public class EquipItem_Icon : SummonItem_Icon
     {
         _originBGColor = transform.Find("BG_Image/IconBG_Image").GetComponent<Image>().color;
         OnOffPanels(false);
+    }
 
-        Signalhub.OnSelectChnageSkillEvent += ChangeButtonEvent;
-        Signalhub.OnReplaceSkillEvent += EndReplace;
+    public void SetEquipItem_Icon(ItemType itemType)
+    {
+        if (itemType == ItemType.Skill)
+        {
+            Signalhub.OnSelectChnageSkillEvent += ChangeButtonEvent;
+            Signalhub.OnReplaceSkillEvent += EndReplace;
+        }
+
     }
 
     public override void SetSummonItem(SummonItemInfo summonItem)

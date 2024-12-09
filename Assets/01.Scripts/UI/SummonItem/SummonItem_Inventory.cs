@@ -12,6 +12,7 @@ public class SummonItem_Inventory : UI_Component
 
     protected void GenerateEquippingSkillUI(SummonItemInfo skillInfo)
     {
+        Debug.Log(name);
         _equippingSkillUI.SetItemInfo(_summonItem_IconFactory.GetInventoryItemIcon(skillInfo));
         _equippingSkillUI.UpdateUI();
     }

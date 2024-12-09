@@ -9,8 +9,6 @@ public class EquipmentInfo : SummonItemInfo
 
     public EquipmentInfo(EquipmentInfo summonItemInfo) : base(summonItemInfo)
     {
-        Debug.Log(this.IsLock);
-        Debug.Log("B");
         this.ItemValue = summonItemInfo.ItemValue;
     }
 

@@ -32,7 +32,6 @@ public class InventoryItem_Icon : SummonItem_Icon
         base.SetSummonItem(summonItem);
 
         _equipButton.SetSummonItem(ItemInfo);
-        Debug.Log($"{summonItem.ItemName}");
         UnLockItem();
     }
 

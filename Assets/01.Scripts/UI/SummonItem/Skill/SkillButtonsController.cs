@@ -10,14 +10,14 @@ public class SkillButtonsController : MonoBehaviour
 
     private Dictionary<BaseSkill, SkillButton> _usingSkillButtons = new Dictionary<BaseSkill, SkillButton>();
 
-    private EquippedSkillsController _equippedSkillsController;
-    private EquippedSkillsController EquippedSkillsController
+    private EquippedSummonItemController _equippedSkillsController;
+    private EquippedSummonItemController EquippedSkillsController
     {
         get
         {
             if(_equippedSkillsController == null)
             {
-                _equippedSkillsController = FindAnyObjectByType<EquippedSkillsController>();
+                _equippedSkillsController = FindAnyObjectByType<EquippedSummonItemController>();
             }
             return _equippedSkillsController;
         }
@@ -42,7 +42,7 @@ public class SkillButtonsController : MonoBehaviour
 
             _usingSkillButtons.Add(skill, skillButton);
 
-            EquippedSkillsController.EquippedSkill(skill.SkillInfo);
+            EquippedSkillsController.EquippedSummonItem(skill.SkillInfo);
             return true;
         }
 
@@ -58,7 +58,7 @@ public class SkillButtonsController : MonoBehaviour
         button.UnSubscribeSkill();
 
         _usingSkillButtons.Remove(skill);
-        EquippedSkillsController.UnEquippedSkill(skill.SkillInfo);
+        EquippedSkillsController.UnEquippedSummonItem(skill.SkillInfo);
 
         return;
     }

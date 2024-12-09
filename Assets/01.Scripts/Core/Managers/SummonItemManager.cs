@@ -41,7 +41,7 @@ public abstract class SummonItemManager<T> : MonoSingleTon<SummonItemManager<T>>
         if (!Items.TryGetValue(itemId, out T item)) { return false; }
 
         
-        return false;
+        return true;
     }
 
     public virtual void UnEquipSummonItem(string itemId)
