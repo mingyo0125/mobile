@@ -37,10 +37,14 @@ public class EquipmentInfo : SummonItemInfo
     {
         if (!base.ItemLevelUp()) { return false; }
 
-        ItemValue += GradeInfo.UpgradeIncreaseValue;
-
         Debug.Log($"{ItemName}DamagePercent: {ItemValue}");
 
         return true;
+    }
+
+    protected override void ItemLevelUpEvent()
+    {
+        ItemValue += GradeInfo.UpgradeIncreaseValue;
+        base.ItemLevelUpEvent();
     }
 }

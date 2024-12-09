@@ -77,6 +77,13 @@ public class SummonItemInfo : ISummonItem
         if (!CanUpgrade) { return false; }
         // 부족하다고 알리기 later
 
+        ItemLevelUpEvent();
+
+        return true;
+    }
+
+    protected virtual void ItemLevelUpEvent()
+    {
         ItemLevel++;
 
         ElementsCount -= UpgradableCount;
@@ -86,8 +93,6 @@ public class SummonItemInfo : ISummonItem
         Debug.Log($"{ItemName}: {ItemLevel}");
 
         OnItemLevelUpEvent?.Invoke();
-
-        return true;
     }
 
     public virtual bool EquipItem()

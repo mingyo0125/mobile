@@ -48,10 +48,14 @@ public class SkillInfo : SummonItemInfo
     {
         if (!base.ItemLevelUp()) { return false; }
 
-        DamagePercent += GradeInfo.UpgradeIncreaseValue;
-
         Debug.Log($"{ItemName}DamagePercent: {DamagePercent}");
 
         return true;
+    }
+
+    protected override void ItemLevelUpEvent()
+    {
+        DamagePercent += GradeInfo.UpgradeIncreaseValue;
+        base.ItemLevelUpEvent();
     }
 }
