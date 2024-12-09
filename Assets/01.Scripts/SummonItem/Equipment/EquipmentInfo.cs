@@ -14,22 +14,22 @@ public class EquipmentInfo : SummonItemInfo
         this.ItemValue = summonItemInfo.ItemValue;
     }
 
-    //public override bool EquipItem()
-    //{
-    //    base.EquipItem();
-    //    //return SkillManager.Instance.EquipSummonItem(ItemId);
-    //}
+    public override bool EquipItem()
+    {
+        base.EquipItem();
+        return EquipmentManager.Instance.EquipSummonItem(ItemId);
+    }
 
     public override void UnEquipItem()
     {
         base.UnEquipItem();
-        //SkillManager.Instance.UnEquipSummonItem(ItemId);
+        EquipmentManager.Instance.UnEquipSummonItem(ItemId);
     }
 
     public override void GetItem()
     {
         Debug.Log($"GetItem {ItemId}");
-        //SkillManager.Instance.AddSummonItem(ItemId);
+        EquipmentManager.Instance.AddSummonItem(ItemId);
         base.GetItem();
     }
 
