@@ -68,9 +68,6 @@ public class PlayerStat_InfoUI : UI_Component
 
             Debug.Log(skill.ItemName);
         }
-
-        Debug.Log(idx);
-        
     }
 
     private string BuildStatString()

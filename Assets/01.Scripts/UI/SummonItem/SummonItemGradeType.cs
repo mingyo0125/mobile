@@ -21,5 +21,8 @@ public struct ItemGradeInfo
     public Color ColorByGrade { get; private set; }
 
     [field: SerializeField]
-    public float UpgradeIncreaseValue { get; private set; }
+    public float Upgrade_Equipped_IncreaseValue { get; private set; }
+
+    [field: SerializeField]
+    public float Upgrade_Passive_IncreaseValue { get; private set; }
 }

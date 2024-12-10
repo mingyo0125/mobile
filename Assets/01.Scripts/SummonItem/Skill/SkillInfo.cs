@@ -51,7 +51,7 @@ public class SkillInfo : SummonItemInfo
 
     protected override void ItemLevelUpEvent()
     {
-        DamagePercent += GradeInfo.UpgradeIncreaseValue;
+        DamagePercent += GradeInfo.Upgrade_Equipped_IncreaseValue;
         base.ItemLevelUpEvent();
     }
 }
