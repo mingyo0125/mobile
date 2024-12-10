@@ -3,14 +3,9 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class StatUpgradeUIGenerater : ObjectFactory<UI_Component>, IScrollHandler
+public class StatUpgradeUIGenerater : ObjectFactory<UI_Component>
 {
     private readonly string statUpgradeUIContatinerbaseName = "UpgradeStatContainer_v";
-
-    public void OnScroll(PointerEventData eventData)
-    {
-        
-    }
 
     private void Start()
     {
