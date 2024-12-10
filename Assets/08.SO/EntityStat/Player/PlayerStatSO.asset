@@ -25,6 +25,12 @@ MonoBehaviour:
       <StatUIInfo>k__BackingField:
         Name: "\uCD5C\uB300\uCCB4\uB825"
         StatSprite: {fileID: 21300000, guid: 6eb0a2d56fc687d4f826cd81cf0bf5df, type: 3}
+    <HPRegeneration>k__BackingField:
+      Level: 1
+      Value: 1
+      <StatUIInfo>k__BackingField:
+        Name: "\uCCB4\uB825 \uC7AC\uC0DD"
+        StatSprite: {fileID: 21300000, guid: 6b19a3681162d8a4fa01577e72e7a0a7, type: 3}
     <Speed>k__BackingField:
       Level: 1
       Value: 1

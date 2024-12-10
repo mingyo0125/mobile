@@ -6,6 +6,7 @@ public enum StatType
 {
     Speed,
     MaxHp,
+    HPRegeneration,
     AttackRange,
     AttackDelay,
     Damage,
@@ -35,6 +36,9 @@ public class BaseStat
     public StatInfo MaxHP { get; private set; }
 
     [field: SerializeField]
+    public StatInfo HPRegeneration { get; private set; }
+
+    [field: SerializeField]
     public StatInfo Speed { get; private set; }
 
     [field: SerializeField]
@@ -56,6 +60,7 @@ public class BaseStat
     {
         this.Speed = new StatInfo(stat.Speed.Level, stat.Speed.Value, stat.Speed.StatUIInfo);
         this.MaxHP = new StatInfo(stat.MaxHP.Level, stat.MaxHP.Value, stat.MaxHP.StatUIInfo);
+        this.HPRegeneration = new StatInfo(stat.HPRegeneration.Level, stat.HPRegeneration.Value, stat.HPRegeneration.StatUIInfo);
         this.AttackRange = new StatInfo(stat.AttackRange.Level, stat.AttackRange.Value, stat.AttackRange.StatUIInfo);
         this.AttackSpeed = new StatInfo(stat.AttackSpeed.Level, stat.AttackSpeed.Value, stat.AttackSpeed.StatUIInfo);
         this.Damage = new StatInfo(stat.Damage.Level, stat.Damage.Value, stat.Damage.StatUIInfo);
@@ -67,6 +72,7 @@ public class BaseStat
         {
             { StatType.Damage, Damage },
             { StatType.MaxHp, MaxHP },
+            { StatType.HPRegeneration, HPRegeneration },
             { StatType.Speed, Speed },
             { StatType.AttackRange, AttackRange },
             { StatType.AttackDelay, AttackSpeed },
