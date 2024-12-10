@@ -24,9 +24,12 @@ public struct StatUIInfo
     public string Name;
     public Sprite StatSprite;
 
-    public StatUIInfo(string name, Sprite statSprite)
+    public bool isCanUpgrade;
+
+    public StatUIInfo(string name, Sprite statSprite, bool isCanUpgrade)
     {
         this.Name = name;
         this.StatSprite = statSprite;
+        this.isCanUpgrade = isCanUpgrade;
     }
 }

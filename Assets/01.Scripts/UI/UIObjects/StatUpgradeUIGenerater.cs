@@ -13,6 +13,8 @@ public class StatUpgradeUIGenerater : ObjectFactory<UI_Component>
         float height = 0;
         foreach(var item in GameManager.Instance.GetPlayerStat().Stats)
         {
+            if (!item.Value.StatUIInfo.isCanUpgrade) { continue; } // 업그레이드 가능한것만 상점에서 업그레이드 되도록
+
             StatUpgradeUIContainer statUpgradeUIContainer =
                 SpawnObject($"{statUpgradeUIContatinerbaseName}{idx % 2 + 1}",
                             transform.position) as StatUpgradeUIContainer; // v1이랑 v2만 있으니까

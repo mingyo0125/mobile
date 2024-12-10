@@ -82,7 +82,6 @@ public class PlayerStat_InfoUI : UI_Component
         _stringBuilder.AppendLine($"{playerStat.Damage.Value:F1}");
         _stringBuilder.AppendLine($"{playerStat.MaxHP.Value:F1}");
         _stringBuilder.AppendLine($"{playerStat.HPRegeneration.Value:F1}%");
-        _stringBuilder.AppendLine($"{playerStat.AttackSpeed.Value:F1}");
         _stringBuilder.AppendLine($"{playerStat.CriticalProbability.Value:F1}%");
         _stringBuilder.AppendLine($"{playerStat.CriticalDamageIncreasePercent.Value:F1}%");
         _stringBuilder.AppendLine($"{playerStat.ItemDropRate.Value:F1}%");

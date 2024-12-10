@@ -19,63 +19,74 @@ MonoBehaviour:
       <StatUIInfo>k__BackingField:
         Name: "\uACF5\uACA9\uB825"
         StatSprite: {fileID: 21300000, guid: 49a48244258261b45a1127dbf6ed958c, type: 3}
+        isCanUpgrade: 1
     <MaxHP>k__BackingField:
       Level: 1
       Value: 100
       <StatUIInfo>k__BackingField:
         Name: "\uCD5C\uB300\uCCB4\uB825"
         StatSprite: {fileID: 21300000, guid: 6eb0a2d56fc687d4f826cd81cf0bf5df, type: 3}
+        isCanUpgrade: 1
     <HPRegeneration>k__BackingField:
       Level: 1
       Value: 1
       <StatUIInfo>k__BackingField:
         Name: "\uCCB4\uB825 \uC7AC\uC0DD"
         StatSprite: {fileID: 21300000, guid: 6b19a3681162d8a4fa01577e72e7a0a7, type: 3}
+        isCanUpgrade: 1
     <Speed>k__BackingField:
       Level: 1
       Value: 1
       <StatUIInfo>k__BackingField:
         Name: "\uC774\uB3D9\uC18D\uB3C4"
         StatSprite: {fileID: 21300000, guid: 15618fc4a6a294143abf8ada0e863971, type: 3}
+        isCanUpgrade: 0
     <AttackSpeed>k__BackingField:
       Level: 0
       Value: 0
       <StatUIInfo>k__BackingField:
         Name: 
         StatSprite: {fileID: 0}
+        isCanUpgrade: 1
     <AttackRange>k__BackingField:
       Level: 1
       Value: 2
       <StatUIInfo>k__BackingField:
         Name: "\uACF5\uACA9 \uC0AC\uAC70\uB9AC"
         StatSprite: {fileID: 21300000, guid: 7f6fcdd3dd72b5c47acb89b34306c566, type: 3}
+        isCanUpgrade: 0
     <CriticalProbability>k__BackingField:
       Level: 1
       Value: 1
       <StatUIInfo>k__BackingField:
         Name: "\uD06C\uB9AC\uD2F0\uCEEC \uD655\uB960"
         StatSprite: {fileID: 21300000, guid: f4a68a2697d43954e9c907e9e3c808df, type: 3}
+        isCanUpgrade: 1
     <CriticalDamageIncreasePercent>k__BackingField:
       Level: 1
       Value: 1
       <StatUIInfo>k__BackingField:
         Name: "\uD06C\uB9AC\uD2F0\uCEEC \uB370\uBBF8\uC9C0"
         StatSprite: {fileID: 21300000, guid: d33df21446e8c174e916a5a6c259ccf0, type: 3}
+        isCanUpgrade: 1
     <ResistancePercent>k__BackingField:
       Level: 1
       Value: 1
       <StatUIInfo>k__BackingField:
         Name: "\uC800\uD56D"
         StatSprite: {fileID: 21300000, guid: fe7939aec0291eb48b433c4afb339de0, type: 3}
+        isCanUpgrade: 0
     <ItemDropRate>k__BackingField:
       Level: 1
       Value: 100
       <StatUIInfo>k__BackingField:
         Name: "\uC544\uC774\uD15C \uD68D\uB4DD \uD655\uB960"
         StatSprite: {fileID: 21300000, guid: 1bceb719e4016214d82c35dfc23d0787, type: 3}
+        isCanUpgrade: 1
     <DropCoinValue>k__BackingField:
       Level: 1
       Value: 1
       <StatUIInfo>k__BackingField:
         Name: "\uCF54\uC778 \uD68D\uB4DD\uB7C9"
         StatSprite: {fileID: 21300000, guid: bf6317702b8af734e978ca0d29bf81c5, type: 3}
+        isCanUpgrade: 1

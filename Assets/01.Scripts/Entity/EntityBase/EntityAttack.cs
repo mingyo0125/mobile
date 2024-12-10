@@ -114,7 +114,7 @@ public abstract partial class Entity<T, G>
 
     public float GetAttackDelay()
     {
-        return DefualtAttackSpeed + EntityStatController.GetStatValue(StatType.AttackDelay);
+        return DefualtAttackSpeed;
     }
 
     public void SetCanAttack(bool canAttack)
