@@ -42,6 +42,8 @@ public class StatUpgradeUIContainer : UI_Component
     private void Awake()
     {
         _upgradeButton.onClick.AddListener(Upgrade);
+
+        Signalhub.OnChangeStatValueEvent += UpdateUI;
     }
 
     public void Upgrade()
@@ -54,7 +56,6 @@ public class StatUpgradeUIContainer : UI_Component
         }
 
         _playerStatController.StatLevelUp(_statType);
-        UpdateUI();
     }
 
     public void SetStatType(StatType statType)

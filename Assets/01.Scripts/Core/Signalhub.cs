@@ -5,6 +5,8 @@ public delegate void StageClearEvent(bool isClear);
 
 public delegate void SpawnEnemiesEvent();
 
+public delegate void ChangeStatValueEvent();
+
 public static class Signalhub
 {
     public static SkillChangingEvent OnSelectChnageSkillEvent;
@@ -13,4 +15,6 @@ public static class Signalhub
     public static SpawnEnemiesEvent OnSpawnEnemiesEvent;
 
     public static StageClearEvent OnStageClearEvent;
+
+    public static ChangeStatValueEvent OnChangeStatValueEvent;
 }

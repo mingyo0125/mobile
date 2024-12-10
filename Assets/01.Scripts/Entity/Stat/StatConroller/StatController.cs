@@ -73,6 +73,8 @@ public class StatController
     public void UpdateStatValue(StatType statType, float value)
     {
         EntityStat.SetStatValue(statType, value);
+
+        Signalhub.OnChangeStatValueEvent?.Invoke();
     }
 
     public StatUpgradeUIInfo GetStatUpgradeUIInfo(StatType statType)
