@@ -63,10 +63,10 @@ public class StatController
         UpdateStatValue(statType, value);
     }
 
-    public void DecreaseStat(StatType statType, float decreasePercent)
+    public void DecreaseStat(StatType statType, float decreaseValue)
     {
         //float value = GetStatValue(statType) - Utils.CalculatePercent(GetStatValue(statType), decreasePercent);
-        float value = GetStatValue(statType) - decreasePercent;
+        float value = GetStatValue(statType) - decreaseValue;
         UpdateStatValue(statType, value);
     }
 

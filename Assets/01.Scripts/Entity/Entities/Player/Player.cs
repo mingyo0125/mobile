@@ -11,6 +11,9 @@ public class Player : Entity<PlayerStateType, Player>
 
     public PlayerSkillHolder SkillHolder { get; private set; }
 
+    private Coroutine _hpRegenCoroutine;
+    private WaitForSeconds _regenTime = new WaitForSeconds(1f);
+
     protected override void Awake()
     {
         base.Awake();
@@ -28,6 +31,11 @@ public class Player : Entity<PlayerStateType, Player>
         base.TakedDamage(takeDamageInfo);
 
         StateMachine.ChangeState(PlayerStateType.Idle);
+
+        if (!IsDead && _hpRegenCoroutine == null)
+        {
+            _hpRegenCoroutine = StartCoroutine(RegenerationCorou());
+        }
     }
 
     public void GetItem(Item item)
@@ -58,5 +66,19 @@ public class Player : Entity<PlayerStateType, Player>
     protected override string GetHudTextValue(float value)
     {
         return value.ToString();
+    }
+
+    // Àç»ý
+    private IEnumerator RegenerationCorou()
+    {
+        while (HP < MaxHP)
+        {
+            float regenPercent = EntityStatController.GetStatValue(StatType.HPRegeneration);
+            SetHp(Utils.CalculatePercent(MaxHP, regenPercent), Color.green);
+
+            yield return _regenTime;
+        }
+
+        _hpRegenCoroutine = null;
     }
 }

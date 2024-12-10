@@ -1,4 +1,6 @@
 using System;
+using System.Collections;
+using Unity.Mathematics;
 using UnityEngine;
 
 public abstract partial class Entity<T, G> : IDamageable
@@ -68,11 +70,17 @@ public abstract partial class Entity<T, G> : IDamageable
 
         _entityHpBar.SetHpbarValue(HP);
 
-        if (HP <= 0) { IsDead = true; Die(); }
+        if (HP <= 0)
+        {
+            IsDead = true;
+            Die();
+        }
         else
         {
 			EntityAnimatorCompo.SetFloat("Speed", -1f);
             EntityAnimatorCompo.SetTrigger("HitTrigger");
+
+            
         }
     }
 

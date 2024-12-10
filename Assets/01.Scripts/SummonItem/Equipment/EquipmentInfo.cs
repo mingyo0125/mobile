@@ -42,7 +42,17 @@ public class EquipmentInfo : SummonItemInfo
 
     protected override void ItemLevelUpEvent()
     {
-        ItemValue += GradeInfo.UpgradeIncreaseValue;
+        if(isEquipped)
+        {
+            GameManager.Instance.GetPlayer().EntityStatController.DecreaseStat(StatType.Damage, ItemValue);
+            ItemValue += GradeInfo.UpgradeIncreaseValue;
+            GameManager.Instance.GetPlayer().EntityStatController.IncreaseStat(StatType.Damage, ItemValue);
+        }
+        else
+        {
+            ItemValue += GradeInfo.UpgradeIncreaseValue;
+        }
+
         base.ItemLevelUpEvent();
     }
 }
