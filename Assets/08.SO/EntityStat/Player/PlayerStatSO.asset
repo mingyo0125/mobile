@@ -41,13 +41,6 @@ MonoBehaviour:
         Name: "\uC774\uB3D9\uC18D\uB3C4"
         StatSprite: {fileID: 21300000, guid: 15618fc4a6a294143abf8ada0e863971, type: 3}
         isCanUpgrade: 0
-    <AttackSpeed>k__BackingField:
-      Level: 0
-      Value: 0
-      <StatUIInfo>k__BackingField:
-        Name: 
-        StatSprite: {fileID: 0}
-        isCanUpgrade: 1
     <AttackRange>k__BackingField:
       Level: 1
       Value: 2
