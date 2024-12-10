@@ -1,6 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Text;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerStat_InfoUI : UI_Component
@@ -12,7 +15,14 @@ public class PlayerStat_InfoUI : UI_Component
     private EquipItem_Icon _equippedItem_Icon;
 
     [SerializeField]
-    private EquipItem_Icon[] _equippedSkills;  // 이게 맞나
+    private EquipItem_Icon[] _equippedSkills;
+
+    private StringBuilder _stringBuilder;
+
+    private void Awake()
+    {
+        _stringBuilder = new StringBuilder();
+    }
 
     private void Update()
     {
@@ -26,6 +36,12 @@ public class PlayerStat_InfoUI : UI_Component
     {
         UpdateEquippedEquipment();
         UpdateEquippedSkill();
+        UpdateStatDescription();
+    }
+
+    private void UpdateStatDescription()
+    {
+        _statText.SetText(BuildStatString());
     }
 
     private void UpdateEquippedEquipment()
@@ -56,5 +72,21 @@ public class PlayerStat_InfoUI : UI_Component
 
         Debug.Log(idx);
         
+    }
+
+    private string BuildStatString()
+    {
+        _stringBuilder.Clear();
+
+        PlayerStat playerStat = GameManager.Instance.GetPlayerStat();
+
+        _stringBuilder.AppendLine($"공격력: {playerStat.Damage.Value:F1}");
+        _stringBuilder.AppendLine($"체력: {playerStat.MaxHP.Value:F1}");
+        _stringBuilder.AppendLine($"속도: {playerStat.Speed.Value:F1}");
+        _stringBuilder.AppendLine($"치명타 확률: {playerStat.CriticalProbability.Value:F1}%");
+        _stringBuilder.AppendLine($"치명타 데미지 증가: {playerStat.CriticalDamageIncreasePercent.Value:F1}%");
+        _stringBuilder.AppendLine($"스탠스: {playerStat.ResistancePercent.Value:F1}%");
+
+        return _stringBuilder.ToString();
     }
 }
