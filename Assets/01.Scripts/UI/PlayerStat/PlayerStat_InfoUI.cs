@@ -24,12 +24,11 @@ public class PlayerStat_InfoUI : UI_Component
         _stringBuilder = new StringBuilder();
     }
 
-    private void Update()
+    public override void Initialize()
     {
-        if (Input.GetKeyDown(KeyCode.S))
-        {
-            UpdateUI();
-        }
+        base.Initialize();
+
+        UpdateUI();
     }
 
     public override void UpdateUI()

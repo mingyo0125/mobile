@@ -103,6 +103,7 @@ public class SummonItemInfo : ISummonItem
     public virtual void UnEquipItem()
     {
         isEquipped = false;
+
         OnItemUnEquipEvent?.Invoke();
     }
 
