@@ -61,6 +61,12 @@ public abstract partial class Entity<T, G> : PoolableMono, IEntity
 
     protected virtual void Update()
     {
+        if (IsDead)
+        {
+            StopImmediatetly();
+            return;
+        }
+
         StateMachine.CurrentState?.UpdateState();
     }
 

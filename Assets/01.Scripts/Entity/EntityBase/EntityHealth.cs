@@ -91,7 +91,7 @@ public abstract partial class Entity<T, G> : IDamageable
         FeedbackPlayerCompo.PlayFeedback<T, G>(FeedbackTypes.Die);
         EntityAnimatorCompo.SetFloat("Speed", -1f);
 		EntityAnimatorCompo.SetTrigger("DieTrigger");
-
+        Debug.Log("Die");
         StopImmediatetly();
     }
 

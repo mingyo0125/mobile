@@ -47,8 +47,8 @@ public class Enemy : Entity<EnemyStateType, Enemy>
 
     protected override void OnDisable()
     {
-        base.OnDisable();
         EntityStatController.ResetStat();
+        base.OnDisable();
 
     }
 }
