@@ -44,4 +44,11 @@ public class Enemy : Entity<EnemyStateType, Enemy>
     {
         return $"{-value}";
     }
+
+    protected override void OnDisable()
+    {
+        base.OnDisable();
+        EntityStatController.ResetStat();
+
+    }
 }
