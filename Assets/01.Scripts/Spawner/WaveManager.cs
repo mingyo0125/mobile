@@ -45,6 +45,19 @@ public class WaveManager : MonoSingleTon<WaveManager>
         }
     }
 
+    public void ReSetEnemies()
+    {
+        Object[] enemies = FindObjectsByType(typeof(Enemy), FindObjectsSortMode.None);
+        foreach (var enemy in enemies)
+        {
+            PoolManager.Instance.DestroyObject(enemy as Enemy);
+        }
+
+        deadEnmiesCount = 0;
+
+        _enemyFactory.SpawnEnemy(spawnedEnmiesCount);
+    }
+
     public void StageClear()
     {
         CurStageCount++;

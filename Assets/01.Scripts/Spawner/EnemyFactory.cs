@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class EnemyFactory : ObjectFactory<Enemy>
 {
-    [SerializeField]
     private Transform _minBound, _maxBound;
 
     private ItemFactory _itemFactory;
@@ -22,6 +21,12 @@ public class EnemyFactory : ObjectFactory<Enemy>
         _itemFactory = FindAnyObjectByType<ItemFactory>();
         _coinFactory = FindAnyObjectByType<CoinFactory>();
         _waveUI = FindAnyObjectByType<WaveUI>();
+
+
+        Transform playerTrm = GameManager.Instance.GetPlayerTrm();
+
+        _minBound = playerTrm.Find("PlayerFollowPoint/EnemySpawnBounds/MinBounds");
+        _maxBound = playerTrm.Find("PlayerFollowPoint/EnemySpawnBounds/MaxBounds");
 
         Vector3 middleRight = Camera.main.ViewportToWorldPoint(new Vector3(2f, 0.55f, Camera.main.nearClipPlane));
 

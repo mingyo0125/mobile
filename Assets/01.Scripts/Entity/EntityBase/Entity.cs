@@ -13,7 +13,7 @@ public abstract partial class Entity<T, G> : PoolableMono, IEntity
     //[Header("Stat")]
     //[SerializeField]
     //private EntityStatSO _entityStatSO;
-    private SpriteRenderer _spriteRenderer;
+    protected SpriteRenderer _spriteRenderer;
     private Material _material;
 
     public StatController EntityStatController { get; private set;}
@@ -77,7 +77,7 @@ public abstract partial class Entity<T, G> : PoolableMono, IEntity
         HealthDisable();
 	}
 
-    private void FadeOut()
+    protected virtual void FadeOut()
     {
         _spriteRenderer.DOFade(0f, 0.2f)
             .OnComplete(() => PoolManager.Instance.DestroyObject(this));

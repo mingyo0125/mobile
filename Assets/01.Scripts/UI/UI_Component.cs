@@ -1,7 +1,7 @@
 using DG.Tweening;
 using UnityEngine;
 
-public abstract class UI_Component : PoolableMono, IGUI
+public class UI_Component : PoolableMono, IGUI
 {
     public Transform Parent { get; private set; }
     public UIGenerateType GenerateType { get; private set; }
@@ -61,5 +61,8 @@ public abstract class UI_Component : PoolableMono, IGUI
         }
     }
 
-    public abstract void UpdateUI();
+    public virtual void UpdateUI()
+    {
+
+    }
 }

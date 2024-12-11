@@ -1,7 +1,9 @@
+using DG.Tweening;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class Player : Entity<PlayerStateType, Player>
 {
@@ -26,6 +28,13 @@ public class Player : Entity<PlayerStateType, Player>
         base.Initialize();
     }
 
+    public override void Initialize()
+    {
+        base.Initialize();
+
+        Debug.Log("Init");
+    }
+
     public override void TakedDamage(TakeDamageInfo takeDamageInfo)
     {
         base.TakedDamage(takeDamageInfo);
@@ -36,6 +45,23 @@ public class Player : Entity<PlayerStateType, Player>
         {
             _hpRegenCoroutine = StartCoroutine(RegenerationCorou());
         }
+    }
+
+    private void Defeat()
+    {
+        GameManager.Instance.SetLastPlayerPos(transform.position);
+        UIManager.Instance.CreateUI("DefeatedUI", Vector2.zero, null, UIGenerateType.STACKING, UIGenerateSortType.TOP, UIGenerateTweenType.Up, 0.3f);
+
+    }
+
+    protected override void FadeOut()
+    {
+        _spriteRenderer.DOFade(0f, 0.2f)
+            .OnComplete(() =>
+            {
+                Defeat();
+                gameObject.SetActive(false);
+            });
     }
 
     public void GetItem(Item item)

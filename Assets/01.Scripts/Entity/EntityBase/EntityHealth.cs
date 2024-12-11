@@ -39,12 +39,13 @@ public abstract partial class Entity<T, G> : IDamageable
 
         EntityCollider = GetComponent<Collider2D>();
 
-        _entityHpBar.UpdateMaxHp(MaxHP);
     }
 
     private void InitializeHealth()
     {
 		HP = MaxHP;
+        
+        _entityHpBar.UpdateMaxHp(MaxHP);
         _entityHpBar.ReserFillAmount();
         IsDead = false;
 
