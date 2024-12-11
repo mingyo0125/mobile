@@ -70,8 +70,10 @@ public abstract class BaseSkill : PoolableMono
 
     protected virtual bool TakeDamage()
     {
-        RaycastHit2D hit = Physics2D.CircleCast(_viusal.transform.position, castRadius, _viusal.transform.position, 0, _enemyLayer);
-        if (hit)
+        bool isHit = false;
+
+        RaycastHit2D[] hits = Physics2D.CircleCastAll(_viusal.transform.position, castRadius, _viusal.transform.position, 0, _enemyLayer);
+        foreach (RaycastHit2D hit in hits)
         {
             bool isEnemy = hit.collider.TryGetComponent(out IDamageable damageable) && damageable is Enemy;
             if (!isEnemy) { return false; }
@@ -80,10 +82,10 @@ public abstract class BaseSkill : PoolableMono
 
             damageable.TakedDamage(GameManager.Instance.GetPlayer().GetSkillDamageInfo(SkillInfo, hitPoint));
 
-            return true;
+            isHit = true;
         }
 
-        return false;
+        return isHit;
     }
 
     private void OnDrawGizmos()

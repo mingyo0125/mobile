@@ -79,8 +79,6 @@ public abstract partial class Entity<T, G> : IDamageable
         {
 			EntityAnimatorCompo.SetFloat("Speed", -1f);
             EntityAnimatorCompo.SetTrigger("HitTrigger");
-
-            
         }
     }
 
