@@ -21,6 +21,8 @@ public class Player : Entity<PlayerStateType, Player>
         base.Awake();
 
         SkillHolder = transform.Find("SkillHolder").GetComponent<PlayerSkillHolder>();
+
+        Signalhub.OnChangeStatValueEvent += SetMaxHp;
     }
 
     private void Start()
@@ -31,7 +33,22 @@ public class Player : Entity<PlayerStateType, Player>
     public override void Initialize()
     {
         base.Initialize();
+
         _hpRegenCoroutine = null;
+    }
+
+    private void SetMaxHp(StatType statType)
+    {
+        if(statType != StatType.MaxHp) { return; }
+
+        float maxHp = EntityStatController.GetStatValue(StatType.MaxHp);
+        float increaseValue = maxHp - MaxHP;
+
+        _entityHpBar.UpdateMaxHp(MaxHP);
+
+        MaxHP = maxHp;
+
+        SetHp(increaseValue, new Color(0,0,0,0));
     }
 
     public override void TakedDamage(TakeDamageInfo takeDamageInfo)

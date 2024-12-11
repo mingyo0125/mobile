@@ -56,14 +56,8 @@ public class EntityAnimator : MonoBehaviour
 
         if (!isAnimationPlaying)
         {
-            Debug.Log("Play");
             PlayAttackAnimation();
         }
-        else
-        {
-            Debug.Log("Cant");
-        }
-
     }
 
     private void PlayAttackAnimation()

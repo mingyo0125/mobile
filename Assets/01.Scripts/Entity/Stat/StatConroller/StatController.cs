@@ -58,6 +58,8 @@ public class StatController
 
     public void IncreaseStat(StatType statType, float increaseValue)
     {
+        Debug.Log($"Increase: {statType}");
+
         //float value = GetStatValue(statType) + Utils.CalculatePercent(GetStatValue(statType), increasePercent);
         float value = GetStatValue(statType) + increaseValue;
         UpdateStatValue(statType, value);
@@ -74,7 +76,7 @@ public class StatController
     {
         EntityStat.SetStatValue(statType, value);
 
-        Signalhub.OnChangeStatValueEvent?.Invoke();
+        Signalhub.OnChangeStatValueEvent?.Invoke(statType);
     }
 
     public StatUpgradeUIInfo GetStatUpgradeUIInfo(StatType statType)

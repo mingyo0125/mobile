@@ -31,7 +31,7 @@ public abstract partial class Entity<T, G> : IDamageable
 
     [Header("HpUI")]
     [SerializeField]
-    private EntityHpBar _entityHpBar;
+    protected EntityHpBar _entityHpBar;
 
     private void HealthAwake()
     {
@@ -46,7 +46,7 @@ public abstract partial class Entity<T, G> : IDamageable
 		HP = MaxHP;
         
         _entityHpBar.UpdateMaxHp(MaxHP);
-        _entityHpBar.ReserFillAmount();
+        _entityHpBar.ResetFillAmount();
         IsDead = false;
 
         EnableCollider();
@@ -98,7 +98,6 @@ public abstract partial class Entity<T, G> : IDamageable
     public void SetHp(float value, Color hudTextColor)
     {
         HP += value;
-
         OnHpChangedEvent?.Invoke((Vector2)transform.position + new Vector2(0, 0.1f), GetHudTextValue(value), hudTextColor);
     }
 

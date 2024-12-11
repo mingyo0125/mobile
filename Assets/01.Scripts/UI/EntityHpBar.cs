@@ -16,7 +16,7 @@ public class EntityHpBar : MonoBehaviour
         this.maxHp = maxHp;
     }
 
-    public void ReserFillAmount()
+    public void ResetFillAmount()
     {
         _hpBar.fillAmount = 1;
     }

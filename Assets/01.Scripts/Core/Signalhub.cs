@@ -5,7 +5,7 @@ public delegate void StageClearEvent(bool isClear);
 
 public delegate void SpawnEnemiesEvent();
 
-public delegate void ChangeStatValueEvent();
+public delegate void ChangeStatValueEvent(StatType statType);
 
 public static class Signalhub
 {

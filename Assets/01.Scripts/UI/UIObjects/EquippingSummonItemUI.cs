@@ -31,7 +31,11 @@ public class EquippingSummonItemUI : UI_Component
 
     public void CloseEquippingSkillUI()
     {
-        _equippingItem_Icon.ChangeParent(_prevequippingItemParentTrm);
+        if (_prevequippingItemParentTrm != null)
+        {
+            _equippingItem_Icon?.ChangeParent(_prevequippingItemParentTrm);
+        }
+
         _equippingItem_Icon = null;
 
         _allSummonItemsUI.SetActive(true);

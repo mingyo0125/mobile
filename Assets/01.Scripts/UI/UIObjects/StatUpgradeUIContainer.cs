@@ -43,7 +43,7 @@ public class StatUpgradeUIContainer : UI_Component
     {
         _upgradeButton.onClick.AddListener(Upgrade);
 
-        Signalhub.OnChangeStatValueEvent += UpdateUI;
+        Signalhub.OnChangeStatValueEvent += UpdateStatUpgradeUI;
     }
 
     public void Upgrade()
@@ -61,11 +61,13 @@ public class StatUpgradeUIContainer : UI_Component
     public void SetStatType(StatType statType)
     {
         _statType = statType;
-        UpdateUI();
+        UpdateStatUpgradeUI(statType);
     }
 
-    public override void UpdateUI()
+    private void UpdateStatUpgradeUI(StatType statType)
     {
+        if (statType != _statType) { return; }
+
         StatUpgradeUIInfo statUpgradeUIInfo = _playerStatController.GetStatUpgradeUIInfo(_statType);
 
         //_level.SetText(palyerStat.GetStatLevel(_statType).ToString());
@@ -79,4 +81,5 @@ public class StatUpgradeUIContainer : UI_Component
 
         _statImage.sprite = statUpgradeUIInfo.StatSprite;
     }
+
 }
