@@ -31,8 +31,7 @@ public class Player : Entity<PlayerStateType, Player>
     public override void Initialize()
     {
         base.Initialize();
-
-        Debug.Log("Init");
+        _hpRegenCoroutine = null;
     }
 
     public override void TakedDamage(TakeDamageInfo takeDamageInfo)

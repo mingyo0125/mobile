@@ -22,15 +22,18 @@ public abstract partial class Entity<T, G>
 
     private const float DefualtAttackSpeed = 0.5f;
 
-    private bool canAttack;
+    private bool isAttacking;
     public bool CanAttack
     {
         get
         {
-            Debug.Log($"GetAttackable: {StateMachine.CurrentState.GetAttackable()}");
-            Debug.Log($"CanAttack: {canAttack}");
-            return StateMachine.CurrentState.GetAttackable() && !canAttack;
+            return StateMachine.CurrentState.GetAttackable() && !isAttacking;
         }
+    }
+
+    private void InitializedAttack()
+    {
+        isAttacking = false;
     }
 
     private void OnDrawGizmos()
@@ -117,8 +120,8 @@ public abstract partial class Entity<T, G>
         return DefualtAttackSpeed;
     }
 
-    public void SetCanAttack(bool canAttack)
+    public void SetIsAttacking(bool canAttack)
     {
-        this.canAttack = canAttack;
+        this.isAttacking = canAttack;
     }
 }

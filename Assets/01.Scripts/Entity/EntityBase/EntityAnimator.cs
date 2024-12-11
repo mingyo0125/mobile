@@ -51,12 +51,19 @@ public class EntityAnimator : MonoBehaviour
         {
             _attackAnimationEvents.Add(key, action);
         }
+
         _animator.SetFloat("AttackSpeed", 1f / speed);
 
         if (!isAnimationPlaying)
         {
+            Debug.Log("Play");
             PlayAttackAnimation();
         }
+        else
+        {
+            Debug.Log("Cant");
+        }
+
     }
 
     private void PlayAttackAnimation()
@@ -106,5 +113,12 @@ public class EntityAnimator : MonoBehaviour
         }
 
         OnAttackAnimationEvent?.Invoke();
+    }
+
+    private void OnDisable()
+    {
+        _attackAnimationEvents.Clear();
+        _attackAnimationTriggerQueue.Clear();
+        isAnimationPlaying = false;
     }
 }

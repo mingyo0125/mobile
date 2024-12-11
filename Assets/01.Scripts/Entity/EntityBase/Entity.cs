@@ -46,6 +46,7 @@ public abstract partial class Entity<T, G> : PoolableMono, IEntity
     {
 		InitializeHealth();
 		InitializeMovement();
+        InitializedAttack();
 
         _spriteRenderer.color = Color.white;
 

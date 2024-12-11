@@ -92,6 +92,7 @@ public class SkillButtonsController : MonoBehaviour
             {
                 if (button.Button.interactable && GameManager.Instance.GetPlayer().CanAttack)
                 {
+                    Debug.Log("Play");
                     button.Button.onClick?.Invoke();
                 }
 
