@@ -9,7 +9,20 @@ public class PlayerAttackState : EntityAttackState<PlayerStateType, Player>
     public PlayerAttackState(Player player, EntityStateMachine<PlayerStateType, Player> entityStateMachine):
                              base(player, entityStateMachine)
     {
+    }
 
+    public override void ExitState()
+    {
+        base.ExitState();
+
+        //Debug.Log("Exit AttackState");
+    }
+
+    public override void EnterState()
+    {
+        base.EnterState();
+
+        //Debug.Log("Enter AttackState");
     }
 
     protected override void Attack()

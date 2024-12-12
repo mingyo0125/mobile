@@ -32,6 +32,7 @@ public abstract class EntityAnimator : MonoBehaviour
 
     public void SetTrigger(string animationName, float speed = 1)
     {
+        isAnimationPlaying = true;
         _animator.SetFloat("AttackSpeed", speed);
         _animator.SetTrigger(animationName);
     }

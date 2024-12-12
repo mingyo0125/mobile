@@ -29,8 +29,6 @@ public class PlayerAnimator : EntityAnimator
 
     public override void EndAttackEventTrigger()
     {
-        base.EndAttackEventTrigger();
-
         if (_attackAnimationTriggerQueue.Count > 0) // 큐에 값이 있다면
         {
             PlayAttackAnimation(); // 다음 애니메이션 실행
@@ -45,7 +43,6 @@ public class PlayerAnimator : EntityAnimator
     {
         base.EndAttack();
 
-        Debug.Log("EndAttack");
         _owner.GetEntity<PlayerStateType, Player>().StateMachine.ChangeState(PlayerStateType.Idle);
     }
 

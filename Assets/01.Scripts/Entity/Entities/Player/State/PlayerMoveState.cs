@@ -11,18 +11,14 @@ public class PlayerMoveState : EntityMoveState<PlayerStateType, Player>
     {
     }
 
-    public override void EnterState()
+    public override void UpdateState()
     {
-        base.EnterState();
+        base.UpdateState();
 
-        Debug.Log("Enter Move");
-    }
-
-    public override void ExitState()
-    {
-        base.ExitState();
-
-        Debug.Log("Exit Move");
+        if (GetAttackable())
+        {
+            _stateMachine.ChangeState(PlayerStateType.Idle);
+        }
     }
 
     public override void FixedUpdateState()
