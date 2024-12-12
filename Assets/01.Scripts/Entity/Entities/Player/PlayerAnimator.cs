@@ -8,6 +8,7 @@ public class PlayerAnimator : EntityAnimator
     {
         base.EndAttack();
 
+        Debug.Log("EndAttack");
         _owner.GetEntity<PlayerStateType, Player>().StateMachine.ChangeState(PlayerStateType.Idle);
     }
 }

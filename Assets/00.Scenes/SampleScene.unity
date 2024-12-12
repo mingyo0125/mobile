@@ -5010,7 +5010,7 @@ SpriteRenderer:
   m_SortingLayerID: 2135481071
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7683567802946276634, guid: 5fe983ca41edc8f48bc8db866e542e20, type: 3}
+  m_Sprite: {fileID: -1817706105750108133, guid: 5fe983ca41edc8f48bc8db866e542e20, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -5033,8 +5033,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed8b1ae4e4e52b34ea557c1c11e076fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_CategoryHash: 1.0429618e-14
-  m_labelHash: 0.00000040954276
+  m_CategoryHash: 4.7221487e-14
+  m_labelHash: 1.2985474e-36
   m_SpriteKey: 0
   m_SpriteHash: 383030750
 --- !u!114 &1205628179

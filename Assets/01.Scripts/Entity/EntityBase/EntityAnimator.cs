@@ -5,7 +5,6 @@ using UnityEngine;
 public class EntityAnimator : MonoBehaviour
 {
     public Action OnDieAnimationEndEvent = null;
-    public Action OnAttackAnimationEvent = null;
 
     private Animator _animator;
     public Animator AnimatorCompo => _animator;
@@ -65,8 +64,17 @@ public class EntityAnimator : MonoBehaviour
         _animator.SetTrigger(AttackTrigger); // 다음 애니메이션 실행
     }
 
+    int i = 1;
+    public void ASD()
+    {
+        Debug.Log(i);
+    }
+
     public void EndAttackEventTrigger()
     {
+        Debug.Log("EndAttack");
+        Debug.Log(_attackAnimationTriggerQueue.Count);
+
         if (_attackAnimationTriggerQueue.Count > 0) // 큐에 값이 있다면
         {
             PlayAttackAnimation(); // 다음 애니메이션 실행
@@ -92,14 +100,11 @@ public class EntityAnimator : MonoBehaviour
     public void AttackEventTrigger()
     {
         nextAniamtionName = _attackAnimationTriggerQueue.Dequeue();
-
-        if(_attackAnimationEvents.TryGetValue(nextAniamtionName, out Action action))
+        if (_attackAnimationEvents.TryGetValue(nextAniamtionName, out Action action))
         {
             action?.Invoke();
             _attackAnimationEvents.Remove(nextAniamtionName);
         }
-
-        OnAttackAnimationEvent?.Invoke();
     }
 
     private void OnDisable()
