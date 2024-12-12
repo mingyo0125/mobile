@@ -12,20 +12,6 @@ public class PlayerAttackState : EntityAttackState<PlayerStateType, Player>
 
     }
 
-    public override void EnterState()
-    {
-        base.EnterState();
-
-        Debug.Log("Enter Attack");
-    }
-
-    public override void ExitState()
-    {
-        base.ExitState();
-
-        Debug.Log("Exit Attack");
-    }
-
     protected override void Attack()
     {
         //_owner.SkillHolder.PlaySkill("Fireball");

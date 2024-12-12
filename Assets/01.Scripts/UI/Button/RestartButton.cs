@@ -14,6 +14,12 @@ public class RestartButton : UI_Button
         GameManager.Instance.GetPlayer().gameObject.SetActive(true);
         GameManager.Instance.GetPlayer().Initialize();
 
+        Object[] skills = FindObjectsByType(typeof(BaseSkill), FindObjectsSortMode.None);
+        foreach (var skill in skills)
+        {
+            PoolManager.Instance.DestroyObject(skill as BaseSkill);
+        }
+
         WaveManager.Instance.ReSetEnemies();
     }
 }
