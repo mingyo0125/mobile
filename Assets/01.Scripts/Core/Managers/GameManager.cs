@@ -30,8 +30,6 @@ public class GameManager : MonoSingleTon<GameManager>
             if (_player == null)
             {
                 Debug.Log("Player is null. Create Player");
-                PoolManager.Instance.CreateObject("MagicPlayer").SetPosition(_startTrm.position);
-                _player = FindAnyObjectByType<Player>();
             }
         }
         return _player;
@@ -46,8 +44,5 @@ public class GameManager : MonoSingleTon<GameManager>
         }
         return _playerStat;
     }
-
-    [SerializeField]
-    private Transform _startTrm;
 
 }
