@@ -2,9 +2,10 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EntityAnimator : MonoBehaviour
+public abstract class EntityAnimator : MonoBehaviour
 {
     public Action OnDieAnimationEndEvent = null;
+    public Action OnAttackEvent = null;
 
     private Animator _animator;
     public Animator AnimatorCompo => _animator;
@@ -13,12 +14,7 @@ public class EntityAnimator : MonoBehaviour
 
     private const string AttackTrigger = "AttackTrigger";
 
-    private Queue<string> _attackAnimationTriggerQueue = new Queue<string>();
-    private Dictionary<string, Action> _attackAnimationEvents =
-            new Dictionary<string, Action>();
-
-    private bool isAnimationPlaying = false; // 현재 애니메이션 실행 여부 확인용
-    private string nextAniamtionName;
+    protected bool isAnimationPlaying = false; // 현재 애니메이션 실행 여부 확인용
 
     protected IEntity _owner;
 
@@ -40,49 +36,15 @@ public class EntityAnimator : MonoBehaviour
         _animator.SetTrigger(animationName);
     }
 
-    public void QueueSkillAnimationTrigger(string key, float speed = 1, Action action = null)
-    {
-        _attackAnimationTriggerQueue.Enqueue(key);
-
-        if(action != null &&
-           !_attackAnimationEvents.ContainsKey(key))
-        {
-            _attackAnimationEvents.Add(key, action);
-        }
-
-        _animator.SetFloat("AttackSpeed", 1f / speed);
-
-        if (!isAnimationPlaying)
-        {
-            PlayAttackAnimation();
-        }
-    }
-
-    private void PlayAttackAnimation()
+    protected void PlayAttackAnimation()
     {
         isAnimationPlaying = true;
         _animator.SetTrigger(AttackTrigger); // 다음 애니메이션 실행
     }
 
-    int i = 1;
-    public void ASD()
+    public virtual void EndAttackEventTrigger()
     {
-        Debug.Log(i);
-    }
-
-    public void EndAttackEventTrigger()
-    {
-        Debug.Log("EndAttack");
-        Debug.Log(_attackAnimationTriggerQueue.Count);
-
-        if (_attackAnimationTriggerQueue.Count > 0) // 큐에 값이 있다면
-        {
-            PlayAttackAnimation(); // 다음 애니메이션 실행
-        }
-        else
-        {
-            EndAttack();
-        }
+        EndAttack();
     }
 
     protected virtual void EndAttack()
@@ -97,20 +59,13 @@ public class EntityAnimator : MonoBehaviour
 	}
 
 
-    public void AttackEventTrigger()
+    public virtual void AttackEventTrigger()
     {
-        nextAniamtionName = _attackAnimationTriggerQueue.Dequeue();
-        if (_attackAnimationEvents.TryGetValue(nextAniamtionName, out Action action))
-        {
-            action?.Invoke();
-            _attackAnimationEvents.Remove(nextAniamtionName);
-        }
+        OnAttackEvent?.Invoke();
     }
 
-    private void OnDisable()
+    protected virtual void OnDisable()
     {
-        _attackAnimationEvents.Clear();
-        _attackAnimationTriggerQueue.Clear();
         isAnimationPlaying = false;
     }
 }

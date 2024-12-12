@@ -5,15 +5,16 @@ public class EnemyAttackState : EntityAttackState<EnemyStateType, Enemy>
     public EnemyAttackState(Enemy enemy, EntityStateMachine<EnemyStateType, Enemy> entityStateMachine):
                             base(enemy, entityStateMachine)
     {
-        
+        EnemyAnimator enemyAnimator = enemy.EntityAnimatorCompo as EnemyAnimator;
+
+        enemyAnimator.OnAttackEvent += Attack;
     }
 
     public override void EnterState()
     {
         base.EnterState();
 
-        // Attack Animation이 없어서 일단이걸로 함 later
-        CoroutineUtil.CallWaitForSeconds(_owner.GetAttackDelay(), () => _owner.StateMachine.ChangeState(EnemyStateType.Move));
+        _owner.EntityAnimatorCompo.SetTrigger("AttackTrigger", _owner.GetAttackDelay());
     }
 
     protected override void Attack()
