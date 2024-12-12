@@ -57,8 +57,5 @@ public class PlayerSkillHolder : MonoBehaviour
 
         _lastUsedTimes[id] = Time.time;
         skillInstance.Execute(GameManager.Instance.GetPlayer(), (Vector2)transform.position + skillInstance.SpawnDir);
-
-        Player player = _owner.GetEntity<PlayerStateType, Player>() as Player;
-        player.SetMove();
     }
 }

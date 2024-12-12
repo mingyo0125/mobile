@@ -44,5 +44,4 @@ public class GameManager : MonoSingleTon<GameManager>
         }
         return _playerStat;
     }
-
 }

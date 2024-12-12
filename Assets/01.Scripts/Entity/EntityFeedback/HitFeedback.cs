@@ -42,6 +42,7 @@ public class HitFeedback : Feedback
         if(entity.HP > 0)
         {
             entity.SetMove();
+            entity.EnableCollider();
         }
     }
 }

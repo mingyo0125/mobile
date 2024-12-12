@@ -11,6 +11,20 @@ public class PlayerMoveState : EntityMoveState<PlayerStateType, Player>
     {
     }
 
+    public override void EnterState()
+    {
+        base.EnterState();
+
+        Debug.Log("Enter Move");
+    }
+
+    public override void ExitState()
+    {
+        base.ExitState();
+
+        Debug.Log("Exit Move");
+    }
+
     public override void FixedUpdateState()
     {
         _owner.Move(Vector2.right);

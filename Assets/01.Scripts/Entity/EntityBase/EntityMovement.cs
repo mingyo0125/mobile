@@ -24,7 +24,6 @@ public abstract partial class Entity<T, G> : IMoveable
 	private void InitializeMovement()
     {
 		Speed = EntityStatController.GetStatValue(StatType.Speed);
-        EntityAnimatorCompo.OnHitAnimationEndEvent += SetMove;
         SetMove();
 	}
 

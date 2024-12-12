@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class EntityAnimator : MonoBehaviour
 {
-    public Action OnHitAnimationEndEvent = null;
     public Action OnDieAnimationEndEvent = null;
     public Action OnAttackAnimationEvent = null;
 
@@ -82,12 +81,6 @@ public class EntityAnimator : MonoBehaviour
     {
         isAnimationPlaying = false;
     }
-
-    public void EndHitEventTrigger()
-    {
-        _animator.speed = originSpeed;
-        OnHitAnimationEndEvent?.Invoke();
-	}
 
 	public void EndDieEventTrigger()
 	{

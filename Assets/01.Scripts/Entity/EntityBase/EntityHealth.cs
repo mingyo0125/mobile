@@ -54,8 +54,6 @@ public abstract partial class Entity<T, G> : IDamageable
         OnHpChangedEvent += UIManager.Instance.SpawnDamageText;
         OnDieAnimationEndEvent += FadeOut;
         EntityAnimatorCompo.OnDieAnimationEndEvent += OnDieAnimationEndEvent;
-        EntityAnimatorCompo.OnHitAnimationEndEvent += EnableCollider;
-
     }
 
     public virtual void TakedDamage(TakeDamageInfo takeDamageInfo)
@@ -79,7 +77,6 @@ public abstract partial class Entity<T, G> : IDamageable
         else
         {
 			EntityAnimatorCompo.SetFloat("Speed", -1f);
-            EntityAnimatorCompo.SetTrigger("HitTrigger");
         }
     }
 
@@ -103,7 +100,7 @@ public abstract partial class Entity<T, G> : IDamageable
 
     protected abstract string GetHudTextValue(float value);
 
-    private void EnableCollider()
+    public void EnableCollider()
     {
         EntityCollider.enabled = true;
         IsInvincibility = false;
@@ -116,6 +113,5 @@ public abstract partial class Entity<T, G> : IDamageable
        // OnDieEvent = null;
 
         EntityAnimatorCompo.OnDieAnimationEndEvent = null;
-        EntityAnimatorCompo.OnHitAnimationEndEvent = null;
     }
 }
