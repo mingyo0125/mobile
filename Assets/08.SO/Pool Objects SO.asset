@@ -17,7 +17,7 @@ MonoBehaviour:
     <PoolCount>k__BackingField: 5
     <IsStartCreate>k__BackingField: 0
   <Bosses>k__BackingField:
-  - <PoolObject>k__BackingField: {fileID: 2749154173933537432, guid: 83d10ef39457c8f44a2cc8a6dd948ba5, type: 3}
+  - <PoolObject>k__BackingField: {fileID: 6527612484934499272, guid: 50d9bc35bb0a1514ba17d6599962a054, type: 3}
     <PoolCount>k__BackingField: 1
     <IsStartCreate>k__BackingField: 0
   <Items>k__BackingField:
