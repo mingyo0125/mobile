@@ -2743,7 +2743,7 @@ GameObject:
   - component: {fileID: 500571801}
   - component: {fileID: 500571800}
   m_Layer: 5
-  m_Name: Button (1)
+  m_Name: LeftButton_Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9362,7 +9362,7 @@ GameObject:
   - component: {fileID: 2011573850}
   - component: {fileID: 2011573849}
   m_Layer: 5
-  m_Name: Difficulty_Image
+  m_Name: ApeearBoss_Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9586,8 +9586,8 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 2053325942}
   - {fileID: 500571799}
+  - {fileID: 2053325942}
   m_Father: {fileID: 554844881}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -9608,7 +9608,7 @@ GameObject:
   - component: {fileID: 2053325944}
   - component: {fileID: 2053325943}
   m_Layer: 5
-  m_Name: Button
+  m_Name: RightButton_Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10290,6 +10290,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2099948801}
+  - component: {fileID: 2099948802}
   m_Layer: 5
   m_Name: BossRush
   m_TagString: Untagged
@@ -10318,6 +10319,23 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &2099948802
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2099948800}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bfaf6ccd5bf6a2468607459f971a5e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _rewardText: {fileID: 59542468}
+  _appearBossImage: {fileID: 2011573849}
+  _leftButton: {fileID: 0}
+  _rightButton: {fileID: 0}
+  _enterButton: {fileID: 0}
 --- !u!1 &2109293701
 GameObject:
   m_ObjectHideFlags: 0

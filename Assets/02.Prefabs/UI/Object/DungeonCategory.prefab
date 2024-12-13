@@ -1224,7 +1224,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4077322030693976922, guid: b325314073a9e334eaef6dfeb84bd3a2, type: 3}
       propertyPath: m_Name
-      value: BaseButton
+      value: EnterButton
       objectReference: {fileID: 0}
     - target: {fileID: 5620502900118216843, guid: b325314073a9e334eaef6dfeb84bd3a2, type: 3}
       propertyPath: m_SizeDelta.y
@@ -1322,8 +1322,32 @@ PrefabInstance:
     m_RemovedGameObjects:
     - {fileID: 1145827871501764877, guid: b325314073a9e334eaef6dfeb84bd3a2, type: 3}
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4077322030693976922, guid: b325314073a9e334eaef6dfeb84bd3a2, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5704684367695264680}
   m_SourcePrefab: {fileID: 100100000, guid: b325314073a9e334eaef6dfeb84bd3a2, type: 3}
+--- !u!1 &3568756364511089518 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4077322030693976922, guid: b325314073a9e334eaef6dfeb84bd3a2, type: 3}
+  m_PrefabInstance: {fileID: 653949700495022132}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &5704684367695264680
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3568756364511089518}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11f46d8014c9a0142a360164d8bdc2b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  generateUIName: BossRushUI
+  _uiGenerateType: 2
+  _uiGenerateSortType: 0
+  _uiGenerateTweenType: -1
 --- !u!224 &7969511699577885242 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7460827835751614990, guid: b325314073a9e334eaef6dfeb84bd3a2, type: 3}
