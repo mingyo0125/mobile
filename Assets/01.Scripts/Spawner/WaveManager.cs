@@ -45,7 +45,13 @@ public class WaveManager : MonoSingleTon<WaveManager>
         }
     }
 
-    public void ReSetEnemies()
+    public void ResetWave()
+    {
+        ResetEnemies();
+        ResetSkills();
+    }
+
+    private void ResetEnemies()
     {
         Object[] enemies = FindObjectsByType(typeof(Enemy), FindObjectsSortMode.None);
         foreach (var enemy in enemies)
@@ -55,7 +61,16 @@ public class WaveManager : MonoSingleTon<WaveManager>
 
         deadEnmiesCount = 0;
 
-        _enemyFactory.SpawnEnemy(spawnedEnmiesCount);
+        //_enemyFactory.SpawnEnemy(spawnedEnmiesCount);
+    }
+
+    private void ResetSkills()
+    {
+        Object[] skills = FindObjectsByType(typeof(BaseSkill), FindObjectsSortMode.None);
+        foreach (var skill in skills)
+        {
+            PoolManager.Instance.DestroyObject(skill as BaseSkill);
+        }
     }
 
     public void StageClear()

@@ -8,12 +8,7 @@ public class SpawnBossButton : UI_Button
     {
         base.ButtonEvent();
 
-        Enemy[] enemies = FindObjectsOfType<Enemy>();
-
-        foreach(Enemy enemy in enemies)
-        {
-            PoolManager.Instance.DestroyObject(enemy);
-        }
+        WaveManager.Instance.ResetWave();
 
         WaveManager.Instance.SpawnBossWarningPanel();
         
