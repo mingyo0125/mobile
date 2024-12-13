@@ -89,6 +89,8 @@ public abstract partial class Entity<T, G> : IDamageable
         EntityAnimatorCompo.SetFloat("Speed", -1f);
 		EntityAnimatorCompo.SetTrigger("DieTrigger");
         StopImmediatetly();
+
+        OnDieEvent = null;
     }
 
     
@@ -110,7 +112,6 @@ public abstract partial class Entity<T, G> : IDamageable
     {
         OnHpChangedEvent = null;
         OnDieAnimationEndEvent = null;
-       // OnDieEvent = null;
 
         EntityAnimatorCompo.OnDieAnimationEndEvent = null;
     }

@@ -44,6 +44,14 @@ public class UI_Button : UI_Component
         }
     }
 
+    public void RemoveClickEvent(params UnityAction[] actions)
+    {
+        foreach (UnityAction action in actions)
+        {
+            _actions.Remove(action);
+        }
+    }
+
     public void AddClickEvent(List<UnityAction> actions)
     {
         foreach (UnityAction action in actions)
@@ -52,7 +60,7 @@ public class UI_Button : UI_Component
         }
     }
 
-    public List<UnityAction> RemoveClickEvent()
+    public List<UnityAction> RemoveClickEventAll()
     {
         List<UnityAction> actions = new List<UnityAction>(_actions);
         _actions.Clear();

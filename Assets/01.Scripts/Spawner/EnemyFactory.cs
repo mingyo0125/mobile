@@ -51,8 +51,6 @@ public class EnemyFactory : ObjectFactory<Enemy>
             }
             Enemy spawnedEnemy = SpawnObject(enemyPrefab.name, Utils.GetRandomSpawnPos(_minBound.position, _maxBound.position)) as Enemy;
 
-            spawnedEnemy.OnDieEvent = null;
-
             SubscribeEnemyDieEvent(spawnedEnemy);
 
             foreach (Action<Vector2> action in onDieEvents)

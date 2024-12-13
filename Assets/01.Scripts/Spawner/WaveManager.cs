@@ -16,7 +16,6 @@ public class WaveManager : MonoSingleTon<WaveManager>
     private int deadEnmiesCount;
 
     public int CurStageCount { get; private set; } = 1;
-    public int CurWaveCount { get; private set; }
 
     private const int bossWaveNumber = 2;
 
@@ -24,7 +23,7 @@ public class WaveManager : MonoSingleTon<WaveManager>
 
     private void Start()
     {
-        _enemyFactory.SpawnEnemy(spawnedEnmiesCount);
+        SpawnEnemy();
     }
 
     public void IncreaseDeadEnemyCount()
@@ -34,7 +33,6 @@ public class WaveManager : MonoSingleTon<WaveManager>
         if (deadEnmiesCount == spawnedEnmiesCount)
         {
             deadEnmiesCount = 0;
-            CurWaveCount++;
 
             //if (CurWaveCount % bossWaveNumber == 0)
             //{
@@ -43,6 +41,11 @@ public class WaveManager : MonoSingleTon<WaveManager>
 
             _enemyFactory.SpawnEnemy(spawnedEnmiesCount);
         }
+    }
+
+    public void SpawnEnemy()
+    {
+        _enemyFactory.SpawnEnemy(spawnedEnmiesCount);
     }
 
     public void ResetWave()
@@ -73,17 +76,24 @@ public class WaveManager : MonoSingleTon<WaveManager>
         }
     }
 
-    public void StageClear()
+    public void EndStage(bool isClear)
     {
-        CurStageCount++;
         deadEnmiesCount = 0;
-        CurWaveCount = 1;
 
-        StageClearPanel stageClearPanel = UIManager.Instance.CreateUI(stageClearPanelName, Vector2.zero, null, UIGenerateType.NONE, UIGenerateSortType.TOP) as StageClearPanel;
-        stageClearPanel.UpdateUI();
+        if (isClear)
+        {
+            CurStageCount++;
+            StageClearPanel stageClearPanel = UIManager.Instance.CreateUI(stageClearPanelName, Vector2.zero, null, UIGenerateType.NONE, UIGenerateSortType.TOP) as StageClearPanel;
+            stageClearPanel.UpdateUI();
 
-        Debug.Log("Stage Clear");
+            Debug.Log("Stage Clear");
+        }
+        else
+        {
+            ResetWave();
+        }
     }
+
 
     public void SpawnBossWarningPanel()
     {

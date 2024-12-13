@@ -1,9 +1,7 @@
 using DG.Tweening;
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UIElements;
+using UnityEngine.Events;
 
 public class Player : Entity<PlayerStateType, Player>
 {
@@ -15,6 +13,8 @@ public class Player : Entity<PlayerStateType, Player>
 
     private Coroutine _hpRegenCoroutine;
     private WaitForSeconds _regenTime = new WaitForSeconds(1f);
+
+    public event UnityAction CloseDefeatUIEvent;
 
     protected override void Awake()
     {
@@ -67,7 +67,6 @@ public class Player : Entity<PlayerStateType, Player>
     {
         GameManager.Instance.SetLastPlayerPos(transform.position);
         UIManager.Instance.CreateUI("DefeatedUI", Vector2.zero, null, UIGenerateType.STACKING, UIGenerateSortType.TOP, UIGenerateTweenType.Up, 0.3f);
-
     }
 
     protected override void FadeOut()

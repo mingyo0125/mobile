@@ -39,13 +39,10 @@ public class WaveUI : UI_Component
     {
         gameObject.SetActive(true);
 
-        if(isClear)
-        {
-            enemyCount = 0;
-        }
+        enemyCount = 0;
 
-        _spawnBossButton.SetInteractableButton(!isClear);
-        isButtonEnabled = !isClear;
+        _spawnBossButton.SetInteractableButton(false);
+        isButtonEnabled = false;
 
         _enemyCountText.SetText($"{enemyCount} / {goalCount}");
 

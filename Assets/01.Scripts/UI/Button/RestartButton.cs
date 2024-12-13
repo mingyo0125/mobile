@@ -15,5 +15,6 @@ public class RestartButton : UI_Button
         GameManager.Instance.GetPlayer().Initialize();
 
         WaveManager.Instance.ResetWave();
+        WaveManager.Instance.SpawnEnemy();
     }
 }
