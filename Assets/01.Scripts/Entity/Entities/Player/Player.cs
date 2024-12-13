@@ -14,8 +14,6 @@ public class Player : Entity<PlayerStateType, Player>
     private Coroutine _hpRegenCoroutine;
     private WaitForSeconds _regenTime = new WaitForSeconds(1f);
 
-    public event UnityAction CloseDefeatUIEvent;
-
     protected override void Awake()
     {
         base.Awake();
