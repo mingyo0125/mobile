@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: 3_Boss Rush Info SO
   m_EditorClassIdentifier: 
   <BossRushInfo>k__BackingField:
-    <ApeearBoss>k__BackingField: {fileID: 4723107735738678597, guid: d96ba13b716c442daf768a24fd66c14a, type: 3}
+    <ApeearBoss>k__BackingField: {fileID: 4723107735738678597, guid: b6664af4b73fc144d9a5223e8d2a5a75, type: 3}
     <Level>k__BackingField: 3

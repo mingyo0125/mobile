@@ -13,6 +13,11 @@ public class BossRushController : MonoBehaviour
 
     private int curLevel = 1;
 
+    private void OnEnable()
+    {
+        UpdateBossRushUI(curLevel);
+    }
+
     private void Awake()
     {
         _bossRushUI = GetComponent<BossRushUI>();
@@ -25,14 +30,6 @@ public class BossRushController : MonoBehaviour
         }
 
         _bossRushUI.SetButtonEvents(ChangeLevel, EnterBossRush);
-    }
-
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-            UpdateBossRushUI(curLevel);
-        }
     }
 
     private void ChangeLevel(int level)
@@ -74,8 +71,6 @@ public class BossRushController : MonoBehaviour
         }
 
         curLevel = level;
-
-
         
         _bossRushUI.UpdateBossRushUI(bossRushInfo);
     }

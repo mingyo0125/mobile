@@ -35,7 +35,6 @@ public class BossRushUI : UI_Component
 
         _lockPanel.enabled = CanEnterLevel(_curBossRushInfo.Level);
 
-
         _enterButton.SetCurLevel(_curBossRushInfo.Level);
 
         _leftButton.SetCurLevel(_curBossRushInfo.Level);
@@ -57,6 +56,7 @@ public class BossRushUI : UI_Component
 
     private bool CanEnterLevel(int level)
     {
-        return WaveManager.Instance.CurStageCount >= level;
+
+        return WaveManager.Instance.CurStageCount > level;
     }
 }
