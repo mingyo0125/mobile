@@ -9,34 +9,26 @@ public class DefaultWaveUI : WaveUI
 
     private bool isButtonEnabled = false;
 
-    private CanvasGroup _canvasGroup;
 
     protected override void Awake()
     {
         base.Awake();
-        _canvasGroup = GetComponent<CanvasGroup>();
 
         _spawnBossButton.AddClickEvent(DisableWaveUI);
 
         Signalhub.OnBossRushEnterEvent += DisableWaveUI;
+
+        Signalhub.OnStageClearEvent += _ => EnableWaveUI();
     }
 
-    private void DisableWaveUI()
-    {
-        _canvasGroup.alpha = 0;
-        _canvasGroup.interactable = false;
-    }
+    
 
-    public override void EnableWaveUI(bool isClear)
+    public override void EnableWaveUI()
     {
-        base.EnableWaveUI(isClear);
+        base.EnableWaveUI();
 
         _spawnBossButton.SetInteractableButton(false);
         isButtonEnabled = false;
-
-        _canvasGroup.alpha = 1;
-        _canvasGroup.interactable = true;
-
     }
 
     public override void UpdateUI()
@@ -49,5 +41,10 @@ public class DefaultWaveUI : WaveUI
             isButtonEnabled = enable;
             _spawnBossButton.SetInteractableButton(isButtonEnabled);
         }
+    }
+
+    protected override int SetGoalCount()
+    {
+        return 1;
     }
 }

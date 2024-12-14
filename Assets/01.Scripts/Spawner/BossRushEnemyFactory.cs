@@ -6,9 +6,24 @@ public class BossRushEnemyFactory : EnemyFactory
 {
     private int curLevel;
 
-    public void SetLevel(int level)
+    protected BossRushWaveUI _bossRushWaveUI;
+
+    protected override void Awake()
+    {
+        base.Awake();
+
+        _bossRushWaveUI = FindAnyObjectByType<BossRushWaveUI>();
+    }
+
+
+    public void SetEnter(int level)
     {
         curLevel = level;
+    }
+
+    protected override void SubscribeEnemyDieEvent(Enemy enemy)
+    {
+        enemy.OnDieEvent += _ => _bossRushWaveUI.UpdateUI();
     }
 
     protected override Enemy GetEnemy()

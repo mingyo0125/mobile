@@ -10,7 +10,7 @@ public class EnemyFactory : ObjectFactory<Enemy>
     private ItemFactory _itemFactory;
     private CoinFactory _coinFactory;
 
-    protected WaveUI _waveUI;
+    protected DefaultWaveUI _defaultWaveUI;
 
     protected int curEnemyType => WaveManager.Instance.CurStageCount;
 
@@ -20,7 +20,7 @@ public class EnemyFactory : ObjectFactory<Enemy>
 
         _itemFactory = FindAnyObjectByType<ItemFactory>();
         _coinFactory = FindAnyObjectByType<CoinFactory>();
-        _waveUI = FindAnyObjectByType<DefaultWaveUI>();
+        _defaultWaveUI = FindAnyObjectByType<DefaultWaveUI>();
 
 
         Transform playerTrm = GameManager.Instance.GetPlayerTrm();
@@ -66,7 +66,7 @@ public class EnemyFactory : ObjectFactory<Enemy>
     {
         enemy.OnDieEvent += _itemFactory.SpawnItem;
         enemy.OnDieEvent += _coinFactory.SpawnCoin;
-        enemy.OnDieEvent += _ => _waveUI.UpdateUI();
+        enemy.OnDieEvent += _ => _defaultWaveUI.UpdateUI();
     }
 
     protected virtual Enemy GetEnemy()

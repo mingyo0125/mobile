@@ -4,23 +4,34 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class WaveUI : UI_Component
+public abstract class WaveUI : UI_Component
 {
     [SerializeField]
     private TextMeshProUGUI _enemyCountText;
 
+    private CanvasGroup _canvasGroup;
+
     protected int enemyCount = 0;
 
-    protected const int goalCount = 1;
+    protected int goalCount = 1;
 
     protected virtual void Awake()
     {
-        Signalhub.OnStageClearEvent += EnableWaveUI;
+        goalCount = SetGoalCount();
+
+        _canvasGroup = GetComponent<CanvasGroup>();
     }
 
-    public virtual void EnableWaveUI(bool isClear)
+    protected void DisableWaveUI()
     {
-        gameObject.SetActive(true);
+        _canvasGroup.alpha = 0;
+        _canvasGroup.interactable = false;
+    }
+
+    public virtual void EnableWaveUI()
+    {
+        _canvasGroup.alpha = 1;
+        _canvasGroup.interactable = true;
 
         enemyCount = 0;
 
@@ -33,4 +44,7 @@ public class WaveUI : UI_Component
 
         _enemyCountText.SetText($"{enemyCount} / {goalCount}");
     }
+
+    protected abstract int SetGoalCount();
+
 }
