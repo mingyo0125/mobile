@@ -10,7 +10,7 @@ public class BossRushChangeLevelButton : UI_Button
 
     private int curLevel;
 
-    public Func<int, bool> OnRequestLevelChange;
+    public Action<int> OnRequestLevelChange;
 
     public void SetCurLevel(int level)
     {

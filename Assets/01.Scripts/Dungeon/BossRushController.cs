@@ -33,20 +33,26 @@ public class BossRushController : MonoBehaviour
         }
     }
 
-    private bool ChangeLevel(int level)
+    private void ChangeLevel(int level)
     {
+        bool canChange = false;
+
         if (curLevel > level)
         {
             //바꾸려는 것보다 현재가 더 크면 (-)
             // 2 -> 1
-            return level >= 2;
+            canChange = curLevel >= 2;
         }
         else
         {
             // 바꾸려는 것보다 현재가 더 작으면 (+)
             // 1 -> 2
-            return _bossRushInfoSos.Count > level;
+            canChange = _bossRushInfoSos.Count > curLevel;
+        }
 
+        if (canChange)
+        {
+            UpdateBossRushUI(level);
         }
     }
 
@@ -58,9 +64,9 @@ public class BossRushController : MonoBehaviour
             return;
         }
 
-        _bossRushUI.UpdateBossRushUI(bossRushInfo, ChangeLevel);
-
         curLevel = level;
+        
+        _bossRushUI.UpdateBossRushUI(bossRushInfo, ChangeLevel);
     }
 
 }

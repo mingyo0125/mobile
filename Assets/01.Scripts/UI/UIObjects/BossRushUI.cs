@@ -25,7 +25,7 @@ public class BossRushUI : UI_Component
 
     private BossRushInfo _curBossRushInfo;
 
-    public void UpdateBossRushUI(BossRushInfo bossRussInfo, Func<int, bool> changeLevelEvent)
+    public void UpdateBossRushUI(BossRushInfo bossRussInfo, Action<int> changeLevelEvent)
     {
         _curBossRushInfo = bossRussInfo;
 
