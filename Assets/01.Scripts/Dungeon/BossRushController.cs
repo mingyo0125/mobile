@@ -57,21 +57,24 @@ public class BossRushController : MonoBehaviour
         }
     }
 
-    private void EnterBossRush(int level)
+    private void EnterBossRush()
     {
         UIManager.Instance.RemoveTopUGUI();
         WaveManager.Instance.ResetWave();
 
+        UIManager.Instance.CreateUI("BossRushingUI", Vector2.zero, null, UIGenerateType.CLEAR_PANEL, UIGenerateSortType.TOP, UIGenerateTweenType.None);
+        
         BossWarningPanel bossWarningPanel = UIManager.Instance.CreateUI("BossWarningPanel", Vector2.zero, null, UIGenerateType.NONE, UIGenerateSortType.TOP) as BossWarningPanel;
         bossWarningPanel.UpdateUI();
 
         SpawnEnemy();
 
-        Debug.Log($"Enter {level}");
+        Debug.Log($"Enter {curLevel}");
     }
 
     private void SpawnEnemy()
     {
+        // 원래 있던 WaveUI는 안보이게 하고
         FindAnyObjectByType<BossRushEnemyFactory>().SetLevel(curLevel);
         FindAnyObjectByType<BossRushEnemyFactory>().SpawnEnemy(1);
     }

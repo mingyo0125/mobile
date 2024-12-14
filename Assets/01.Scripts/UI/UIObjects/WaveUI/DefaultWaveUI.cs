@@ -1,32 +1,24 @@
-using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 
-public class WaveUI : UI_Component
+public class DefaultWaveUI : WaveUI
 {
     [SerializeField]
     private SpawnBossButton _spawnBossButton;
 
-    [SerializeField]
-    private TextMeshProUGUI _enemyCountText;
+    private bool isButtonEnabled = false;
 
     private CanvasGroup _canvasGroup;
 
-    private int enemyCount = 0;
-
-    private const int goalCount = 1;
-
-    private bool isButtonEnabled = false;
-
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         _canvasGroup = GetComponent<CanvasGroup>();
 
         _spawnBossButton.AddClickEvent(DisableWaveUI);
 
-        Signalhub.OnStageClearEvent += EnableWaveUI;
+        Signalhub.OnBossRushEnterEvent += DisableWaveUI;
     }
 
     private void DisableWaveUI()
@@ -35,16 +27,12 @@ public class WaveUI : UI_Component
         _canvasGroup.interactable = false;
     }
 
-    public void EnableWaveUI(bool isClear)
+    public override void EnableWaveUI(bool isClear)
     {
-        gameObject.SetActive(true);
-
-        enemyCount = 0;
+        base.EnableWaveUI(isClear);
 
         _spawnBossButton.SetInteractableButton(false);
         isButtonEnabled = false;
-
-        _enemyCountText.SetText($"{enemyCount} / {goalCount}");
 
         _canvasGroup.alpha = 1;
         _canvasGroup.interactable = true;
@@ -53,10 +41,8 @@ public class WaveUI : UI_Component
 
     public override void UpdateUI()
     {
-        enemyCount = Mathf.Clamp(enemyCount + 1, 0, goalCount); 
+        base.UpdateUI();
 
-        _enemyCountText.SetText($"{enemyCount} / {goalCount}");
-        
         bool enable = enemyCount == goalCount;
         if (enable != isButtonEnabled)
         {
@@ -64,6 +50,4 @@ public class WaveUI : UI_Component
             _spawnBossButton.SetInteractableButton(isButtonEnabled);
         }
     }
-
-
 }

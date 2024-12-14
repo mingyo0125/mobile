@@ -20,7 +20,7 @@ public class EnemyFactory : ObjectFactory<Enemy>
 
         _itemFactory = FindAnyObjectByType<ItemFactory>();
         _coinFactory = FindAnyObjectByType<CoinFactory>();
-        _waveUI = FindAnyObjectByType<WaveUI>();
+        _waveUI = FindAnyObjectByType<DefaultWaveUI>();
 
 
         Transform playerTrm = GameManager.Instance.GetPlayerTrm();
