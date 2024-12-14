@@ -41,12 +41,10 @@ public class BossRushUI : UI_Component
         _rightButton.SetCurLevel(_curBossRushInfo.Level);
     }
 
-    public void SetButtonEvents(Action<int> changeLevelEvent, Action<int> bossRushEnterEvent)
+    public void SetButtonEvents(Action<int> changeLevelEvent)
     {
         _leftButton.OnChangeLevelEvent = changeLevelEvent;
         _rightButton.OnChangeLevelEvent = changeLevelEvent;
-
-        _enterButton.OnBossRushEnterEvent = bossRushEnterEvent;
     }
 
     private int GetRewardCount(int level)

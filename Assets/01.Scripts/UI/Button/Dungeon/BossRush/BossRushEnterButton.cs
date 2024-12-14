@@ -1,14 +1,8 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using static UnityEngine.Rendering.DebugUI;
 
 public class BossRushEnterButton : UI_Button
 {
     private int curLevel;
-
-    public Action<int> OnBossRushEnterEvent;
 
     public void SetCurLevel(int level)
     {
@@ -19,7 +13,7 @@ public class BossRushEnterButton : UI_Button
     {
         base.ButtonEvent();
 
-        OnBossRushEnterEvent?.Invoke(curLevel);
+        Signalhub.OnBossRushEnterEvent?.Invoke(curLevel);
     }
 
 

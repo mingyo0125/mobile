@@ -100,6 +100,5 @@ public class WaveManager : MonoSingleTon<WaveManager>
         BossWarningPanel bossWarningPanel = UIManager.Instance.CreateUI("BossWarningPanel", Vector2.zero, null, UIGenerateType.NONE, UIGenerateSortType.TOP) as BossWarningPanel;
         bossWarningPanel.UpdateUI();
         _bossFactory.SpawnEnemy(spawnedEnmiesCount);
-        return;
     }
 }

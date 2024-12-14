@@ -29,7 +29,9 @@ public class BossRushController : MonoBehaviour
             _bossRushInfo.Add(bossRushInfo.Level, bossRushInfo);
         }
 
-        _bossRushUI.SetButtonEvents(ChangeLevel, EnterBossRush);
+        _bossRushUI.SetButtonEvents(ChangeLevel);
+
+        Signalhub.OnBossRushEnterEvent += EnterBossRush;
     }
 
     private void ChangeLevel(int level)
@@ -58,8 +60,20 @@ public class BossRushController : MonoBehaviour
     private void EnterBossRush(int level)
     {
         UIManager.Instance.RemoveTopUGUI();
+        WaveManager.Instance.ResetWave();
+
+        BossWarningPanel bossWarningPanel = UIManager.Instance.CreateUI("BossWarningPanel", Vector2.zero, null, UIGenerateType.NONE, UIGenerateSortType.TOP) as BossWarningPanel;
+        bossWarningPanel.UpdateUI();
+
+        SpawnEnemy();
 
         Debug.Log($"Enter {level}");
+    }
+
+    private void SpawnEnemy()
+    {
+        FindAnyObjectByType<BossRushEnemyFactory>().SetLevel(curLevel);
+        FindAnyObjectByType<BossRushEnemyFactory>().SpawnEnemy(1);
     }
 
     public void UpdateBossRushUI(int level)
