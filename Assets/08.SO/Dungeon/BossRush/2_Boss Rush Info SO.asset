@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 226ea0e8bede21a4a9cff4dcf7532807, type: 3}
-  m_Name: 1_Boss Rush Info SO 1
+  m_Name: 2_Boss Rush Info SO
   m_EditorClassIdentifier: 
   <BossRushInfo>k__BackingField:
-    <ApeearBoss>k__BackingField: {fileID: 4723107735738678597, guid: b5be01063c1c21a4ca4c248883a138f2, type: 3}
-    <Level>k__BackingField: 1
+    <ApeearBoss>k__BackingField: {fileID: 4723107735738678597, guid: 3ceea30f9226772449d33f83617053f2, type: 3}
+    <Level>k__BackingField: 2
