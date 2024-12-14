@@ -11,6 +11,8 @@ public class BossRushController : MonoBehaviour
 
     private BossRushUI _bossRushUI;
 
+    private int curLevel = 1;
+
     private void Awake()
     {
         _bossRushUI = GetComponent<BossRushUI>();
@@ -27,7 +29,24 @@ public class BossRushController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.A))
         {
-            UpdateBossRushUI(1);
+            UpdateBossRushUI(curLevel);
+        }
+    }
+
+    private bool ChangeLevel(int level)
+    {
+        if (curLevel > level)
+        {
+            //바꾸려는 것보다 현재가 더 크면 (-)
+            // 2 -> 1
+            return level >= 2;
+        }
+        else
+        {
+            // 바꾸려는 것보다 현재가 더 작으면 (+)
+            // 1 -> 2
+            return _bossRushInfoSos.Count > level;
+
         }
     }
 
@@ -39,6 +58,9 @@ public class BossRushController : MonoBehaviour
             return;
         }
 
-        _bossRushUI.UpdateBossRushUI(bossRushInfo);
+        _bossRushUI.UpdateBossRushUI(bossRushInfo, ChangeLevel);
+
+        curLevel = level;
     }
+
 }

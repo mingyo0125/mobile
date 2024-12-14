@@ -1,7 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class BossRushUI : UI_Component
@@ -13,7 +15,7 @@ public class BossRushUI : UI_Component
     private Image _appearBossImage;
 
     [SerializeField]
-    private UI_Button _leftButton, _rightButton;
+    private BossRushChangeLevelButton _leftButton, _rightButton;
 
     [SerializeField]
     private UI_Button _enterButton;
@@ -23,7 +25,7 @@ public class BossRushUI : UI_Component
 
     private BossRushInfo _curBossRushInfo;
 
-    public void UpdateBossRushUI(BossRushInfo bossRussInfo)
+    public void UpdateBossRushUI(BossRushInfo bossRussInfo, Func<int, bool> changeLevelEvent)
     {
         _curBossRushInfo = bossRussInfo;
 
@@ -32,6 +34,13 @@ public class BossRushUI : UI_Component
         _appearBossImage.sprite = _curBossRushInfo.ApeearBoss;
 
         _lockPanel.enabled = CanEnterLevel(_curBossRushInfo.Level);
+
+
+        _leftButton.SetCurLevel(_curBossRushInfo.Level);
+        _rightButton.SetCurLevel(_curBossRushInfo.Level);
+
+        _leftButton.OnRequestLevelChange = changeLevelEvent;
+        _rightButton.OnRequestLevelChange = changeLevelEvent;
     }
 
     private int GetRewardCount(int level)
