@@ -23,6 +23,8 @@ public class BossRushController : MonoBehaviour
 
             _bossRushInfo.Add(bossRushInfo.Level, bossRushInfo);
         }
+
+        _bossRushUI.SetButtonEvents(ChangeLevel, EnterBossRush);
     }
 
     private void Update()
@@ -56,6 +58,13 @@ public class BossRushController : MonoBehaviour
         }
     }
 
+    private void EnterBossRush(int level)
+    {
+        UIManager.Instance.RemoveTopUGUI();
+
+        Debug.Log($"Enter {level}");
+    }
+
     public void UpdateBossRushUI(int level)
     {
         if(!_bossRushInfo.TryGetValue(level, out BossRushInfo bossRushInfo))
@@ -65,8 +74,10 @@ public class BossRushController : MonoBehaviour
         }
 
         curLevel = level;
+
+
         
-        _bossRushUI.UpdateBossRushUI(bossRushInfo, ChangeLevel);
+        _bossRushUI.UpdateBossRushUI(bossRushInfo);
     }
 
 }

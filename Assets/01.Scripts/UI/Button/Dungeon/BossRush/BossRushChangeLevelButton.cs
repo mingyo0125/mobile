@@ -10,7 +10,7 @@ public class BossRushChangeLevelButton : UI_Button
 
     private int curLevel;
 
-    public Action<int> OnRequestLevelChange;
+    public Action<int> OnChangeLevelEvent;
 
     public void SetCurLevel(int level)
     {
@@ -21,6 +21,6 @@ public class BossRushChangeLevelButton : UI_Button
     {
         base.ButtonEvent();
 
-        OnRequestLevelChange?.Invoke(curLevel + value);
+        OnChangeLevelEvent?.Invoke(curLevel + value);
     }
 }

@@ -18,14 +18,14 @@ public class BossRushUI : UI_Component
     private BossRushChangeLevelButton _leftButton, _rightButton;
 
     [SerializeField]
-    private UI_Button _enterButton;
+    private BossRushEnterButton _enterButton;
 
     [SerializeField]
     private Image _lockPanel;
 
     private BossRushInfo _curBossRushInfo;
 
-    public void UpdateBossRushUI(BossRushInfo bossRussInfo, Action<int> changeLevelEvent)
+    public void UpdateBossRushUI(BossRushInfo bossRussInfo)
     {
         _curBossRushInfo = bossRussInfo;
 
@@ -36,11 +36,18 @@ public class BossRushUI : UI_Component
         _lockPanel.enabled = CanEnterLevel(_curBossRushInfo.Level);
 
 
+        _enterButton.SetCurLevel(_curBossRushInfo.Level);
+
         _leftButton.SetCurLevel(_curBossRushInfo.Level);
         _rightButton.SetCurLevel(_curBossRushInfo.Level);
+    }
 
-        _leftButton.OnRequestLevelChange = changeLevelEvent;
-        _rightButton.OnRequestLevelChange = changeLevelEvent;
+    public void SetButtonEvents(Action<int> changeLevelEvent, Action<int> bossRushEnterEvent)
+    {
+        _leftButton.OnChangeLevelEvent = changeLevelEvent;
+        _rightButton.OnChangeLevelEvent = changeLevelEvent;
+
+        _enterButton.OnBossRushEnterEvent = bossRushEnterEvent;
     }
 
     private int GetRewardCount(int level)
