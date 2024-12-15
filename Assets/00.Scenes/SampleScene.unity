@@ -2901,6 +2901,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9e7226ae0ef9fe4a8e1c2ad42e23e36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currencyType: 0
 --- !u!4 &701477443
 Transform:
   m_ObjectHideFlags: 0
@@ -4665,7 +4666,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 999
+  m_text: 0
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 71ff5069fb690ee4e929256f87d04354, type: 2}
   m_sharedMaterial: {fileID: 3645778273491880576, guid: 71ff5069fb690ee4e929256f87d04354, type: 2}
@@ -8298,7 +8299,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 999
+  m_text: 0
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 71ff5069fb690ee4e929256f87d04354, type: 2}
   m_sharedMaterial: {fileID: 3645778273491880576, guid: 71ff5069fb690ee4e929256f87d04354, type: 2}
