@@ -7,10 +7,7 @@ public class StageClearPanel : UI_Component
 {
     private const string stageClearParticle = "Flash_ellow";
 
-    [SerializeField]
-    private Transform _clearPanelTrm;
-
-    private CanvasGroup _canvasGroup;
+    protected CanvasGroup _canvasGroup;
 
     private void Awake()
     {
@@ -21,12 +18,7 @@ public class StageClearPanel : UI_Component
     {
         _canvasGroup.alpha = 0;
 
-        DOTween.To(() => _canvasGroup.alpha, a => _canvasGroup.alpha = a, 1, 1f).SetLoops(2, LoopType.Yoyo)
-            .OnComplete(() =>
-            {
-                Signalhub.OnStageClearEvent?.Invoke(true);
-                PoolManager.Instance.DestroyObject(this);
-            });
+        CreateTween();
 
         PoolableMono particle = PoolManager.Instance.CreateObject(stageClearParticle);
         particle.transform.SetParent(GameManager.Instance.GetPlayerTrm());
@@ -34,5 +26,21 @@ public class StageClearPanel : UI_Component
 
         CoroutineUtil.CallWaitForSeconds(3f, () => PoolManager.Instance.DestroyObject(particle));
     }
+
+    protected virtual void CreateTween()
+    {
+        DOTween.To(() => _canvasGroup.alpha, a => _canvasGroup.alpha = a, 1, 1f).SetLoops(2, LoopType.Yoyo)
+            .OnComplete(() =>
+            {
+                ClearEvent();
+            });
+    }
+
+    protected virtual void ClearEvent()
+    {
+        Signalhub.OnStageClearEvent?.Invoke(true);
+        PoolManager.Instance.DestroyObject(this);
+    }
+
 
 }

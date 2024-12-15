@@ -17,9 +17,7 @@ public class BossFactory : EnemyFactory
         enemy.OnDieEvent += _ => _bossTimeLimitUI.StopUpdateTimeLimitUICoroutine();
 
         Player player = GameManager.Instance.GetPlayer();
-        player.OnDieEvent += _ => WaveManager.Instance.EndStage(false);
         player.OnDieEvent += _ => _bossTimeLimitUI.StopUpdateTimeLimitUICoroutine();
-        player.OnDieEvent += _ => Signalhub.OnStageClearEvent?.Invoke(false);
 
         _bossTimeLimitUI.UpdateUI();
     }

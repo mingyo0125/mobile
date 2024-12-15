@@ -21,8 +21,6 @@ public class WaveManager : MonoSingleTon<WaveManager>
 
     public int CurStageCount { get; private set; } = 1;
 
-    private const int bossWaveNumber = 2;
-
     private const string stageClearPanelName = "ClearPanel";
 
     private void Start()
@@ -118,9 +116,11 @@ public class WaveManager : MonoSingleTon<WaveManager>
     {
         deadBossRushEnmiesCount++;
 
-        if (deadBossRushEnmiesCount == 10)
+        if (deadBossRushEnmiesCount == 1)
         {
             Debug.Log("Clear");
+            UIManager.Instance.RemoveTopUGUI();
+            UIManager.Instance.CreateUI("BossRushClearPanel", Vector2.zero, null, UIGenerateType.STACKING);
             return;
         }
 

@@ -21,6 +21,9 @@ public class Player : Entity<PlayerStateType, Player>
         SkillHolder = transform.Find("SkillHolder").GetComponent<PlayerSkillHolder>();
 
         Signalhub.OnChangeStatValueEvent += SetMaxHp;
+
+        OnDieEvent += _ => WaveManager.Instance.EndStage(false);
+        OnDieEvent += _ => Signalhub.OnStageClearEvent?.Invoke(false);
     }
 
     private void Start()

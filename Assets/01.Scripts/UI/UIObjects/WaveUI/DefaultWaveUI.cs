@@ -21,8 +21,6 @@ public class DefaultWaveUI : WaveUI
         Signalhub.OnStageClearEvent += _ => EnableWaveUI();
     }
 
-    
-
     public override void EnableWaveUI()
     {
         base.EnableWaveUI();
