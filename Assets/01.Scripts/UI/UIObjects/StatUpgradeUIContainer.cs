@@ -50,7 +50,7 @@ public class StatUpgradeUIContainer : UI_Component
     {
         StatUpgradeUIInfo statUpgradeUIInfo = _playerStatController.GetStatUpgradeUIInfo(_statType);
         
-        if(!MoneyManager.Instance.SpendMoney(statUpgradeUIInfo.Cost))
+        if(!CurrencyManager.Instance.SpendCurrency(CurrencyType.Money, statUpgradeUIInfo.Cost))
         {
             return;
         }

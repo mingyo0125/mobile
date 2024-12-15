@@ -6,7 +6,7 @@ public class MoneyUI : TextMeshProUGUI
     protected override void OnEnable()
     {
         base.OnEnable();
-        MoneyManager.Instance.OnSetMoneyEvent += UpdateMoneyUI;
+        CurrencyManager.Instance.OnSetMoneyEvent += UpdateMoneyUI;
     }
 
     private void UpdateMoneyUI(int curmoney)

@@ -14,7 +14,7 @@ public class Coin : Item
 
     protected override void GetItem(Player player)
     {
-        MoneyManager.Instance.GetMoney(coinValue);
+        CurrencyManager.Instance.GetCurrency(CurrencyType.Money, coinValue);
         _trailRenderer.enabled = false;
     }
 
