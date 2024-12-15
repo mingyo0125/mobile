@@ -27,7 +27,6 @@ public class PlayerStat_InfoUI : UI_Component
     public override void Initialize()
     {
         base.Initialize();
-
         UpdateUI();
     }
 
