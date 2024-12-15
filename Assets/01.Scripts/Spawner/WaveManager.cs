@@ -8,8 +8,7 @@ public class WaveManager : MonoSingleTon<WaveManager>
     private EnemyFactory _enemyFactory;
     [SerializeField]
     private BossFactory _bossFactory;
-    [SerializeField]
-    private BossRushEnemyFactory _bossRushEnemyFactory;
+    
 
     [SerializeField]
     private int spawnedEnmiesCount;
@@ -17,7 +16,6 @@ public class WaveManager : MonoSingleTon<WaveManager>
     [SerializeField]
     private int deadEnmiesCount;
 
-    private int deadBossRushEnmiesCount;
 
     public int CurStageCount { get; private set; } = 1;
 
@@ -26,8 +24,6 @@ public class WaveManager : MonoSingleTon<WaveManager>
     private void Start()
     {
         SpawnEnemy();
-
-        Signalhub.OnEndBossRushEventEvent += SpawnEnemy;
     }
 
     public void IncreaseDeadEnemyCount()
@@ -98,7 +94,6 @@ public class WaveManager : MonoSingleTon<WaveManager>
         }
     }
 
-
     public void SpawnBossWarningPanel()
     {
         BossWarningPanel bossWarningPanel = UIManager.Instance.CreateUI("BossWarningPanel", Vector2.zero, null, UIGenerateType.NONE, UIGenerateSortType.TOP) as BossWarningPanel;
@@ -106,25 +101,4 @@ public class WaveManager : MonoSingleTon<WaveManager>
         _bossFactory.SpawnEnemy(spawnedEnmiesCount);
     }
 
-
-    public void StartBossRush(int level)
-    {
-        Instance.ResetWave();
-        _bossRushEnemyFactory.SetEnter(level);
-        _bossRushEnemyFactory.SpawnEnemy(1);
-    }
-
-    public void IncreaseBossRushDeadEnemyCount()
-    {
-        deadBossRushEnmiesCount++;
-
-        if (deadBossRushEnmiesCount == 1)
-        {
-            UIManager.Instance.RemoveTopUGUI();
-            UIManager.Instance.CreateUI("BossRushClearPanel", Vector2.zero, null, UIGenerateType.STACKING, UIGenerateSortType.TOP).UpdateUI();
-            return;
-        }
-
-        _bossRushEnemyFactory.SpawnEnemy(1);
-    }
 }

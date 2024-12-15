@@ -11,11 +11,9 @@ public class BossRushController : MonoBehaviour
 
     private BossRushUI _bossRushUI;
 
-    private int curLevel = 1;
-
     private void OnEnable()
     {
-        UpdateBossRushUI(curLevel);
+        UpdateBossRushUI(BossRushManager.Instance.GetCurLevel());
     }
 
     private void Awake()
@@ -37,6 +35,8 @@ public class BossRushController : MonoBehaviour
     private void ChangeLevel(int level)
     {
         bool canChange = false;
+
+        int curLevel = BossRushManager.Instance.GetCurLevel();
 
         if (curLevel > level)
         {
@@ -66,7 +66,7 @@ public class BossRushController : MonoBehaviour
         BossWarningPanel bossWarningPanel = UIManager.Instance.CreateUI("BossWarningPanel", Vector2.zero, null, UIGenerateType.NONE, UIGenerateSortType.TOP) as BossWarningPanel;
         bossWarningPanel.UpdateUI();
 
-        WaveManager.Instance.StartBossRush(curLevel);
+        BossRushManager.Instance.StartBossRush();
     }
 
     public void UpdateBossRushUI(int level)
@@ -77,7 +77,7 @@ public class BossRushController : MonoBehaviour
             return;
         }
 
-        curLevel = level;
+        BossRushManager.Instance.SetCurLevel(level);
         
         _bossRushUI.UpdateBossRushUI(bossRushInfo);
     }

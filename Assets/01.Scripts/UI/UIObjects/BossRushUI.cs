@@ -29,13 +29,11 @@ public class BossRushUI : UI_Component
     {
         _curBossRushInfo = bossRussInfo;
 
-        _rewardText.SetText(GetRewardCount(_curBossRushInfo.Level).ToString());
+        _rewardText.SetText(BossRushManager.Instance.GetRewardCount().ToString());
 
         _appearBossImage.sprite = _curBossRushInfo.ApeearBoss;
 
         _lockPanel.enabled = CanEnterLevel(_curBossRushInfo.Level);
-
-        _enterButton.SetCurLevel(_curBossRushInfo.Level);
 
         _leftButton.SetCurLevel(_curBossRushInfo.Level);
         _rightButton.SetCurLevel(_curBossRushInfo.Level);
@@ -45,11 +43,6 @@ public class BossRushUI : UI_Component
     {
         _leftButton.OnChangeLevelEvent = changeLevelEvent;
         _rightButton.OnChangeLevelEvent = changeLevelEvent;
-    }
-
-    private int GetRewardCount(int level)
-    {
-        return 500 + (level - 1) * 10;
     }
 
     private bool CanEnterLevel(int level)

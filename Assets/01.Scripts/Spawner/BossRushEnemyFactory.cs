@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class BossRushEnemyFactory : EnemyFactory
 {
-    private int curLevel;
-
     protected BossRushWaveUI _bossRushWaveUI;
 
     protected override void Awake()
@@ -16,25 +14,21 @@ public class BossRushEnemyFactory : EnemyFactory
     }
 
 
-    public void SetEnter(int level)
-    {
-        curLevel = level;
-    }
-
     protected override void SubscribeEnemyDieEvent(Enemy enemy)
     {
         enemy.OnDieEvent += _ => _bossRushWaveUI.UpdateUI();
-        enemy.OnDieEvent += _ =>  WaveManager.Instance.IncreaseBossRushDeadEnemyCount();
+        enemy.OnDieEvent += _ =>  BossRushManager.Instance.IncreaseBossRushDeadEnemyCount();
     }
 
     protected override Enemy GetEnemy()
     {
-        if (_spawnEntitys.Length < curLevel)
+        int level = BossRushManager.Instance.GetCurLevel();
+        if (_spawnEntitys.Length < level)
         {
-            Debug.LogError($"{name} doesn't have {curLevel} Stage Enemy");
+            Debug.LogError($"{name} doesn't have {level} Stage Enemy");
             return null;
         }
 
-        return _spawnEntitys[curLevel - 1];
+        return _spawnEntitys[level - 1];
     }
 }
