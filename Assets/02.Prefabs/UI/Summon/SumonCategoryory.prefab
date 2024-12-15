@@ -1355,6 +1355,8 @@ MonoBehaviour:
   _reSummonUI: {fileID: 0}
   summonCount: 10
   _summonItemType: 0
+  _currenciesType: 1
+  cost: 500
 --- !u!1 &5143546255960659662
 GameObject:
   m_ObjectHideFlags: 0
@@ -2169,6 +2171,8 @@ MonoBehaviour:
   _reSummonUI: {fileID: 0}
   summonCount: 10
   _summonItemType: 1
+  _currenciesType: 1
+  cost: 500
 --- !u!1 &5833166846807816636
 GameObject:
   m_ObjectHideFlags: 0
@@ -2824,6 +2828,8 @@ MonoBehaviour:
   _reSummonUI: {fileID: 0}
   summonCount: 35
   _summonItemType: 0
+  _currenciesType: 1
+  cost: 1500
 --- !u!1 &6963208665275806134
 GameObject:
   m_ObjectHideFlags: 0
@@ -2974,6 +2980,8 @@ MonoBehaviour:
   _reSummonUI: {fileID: 0}
   summonCount: 35
   _summonItemType: 1
+  _currenciesType: 1
+  cost: 1500
 --- !u!1 &7359016053247626708
 GameObject:
   m_ObjectHideFlags: 0

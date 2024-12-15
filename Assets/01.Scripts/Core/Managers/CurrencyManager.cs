@@ -26,8 +26,9 @@ public class CurrencyManager : MonoSingleTon<CurrencyManager>
     {
         foreach (CurrencyType currencyType in Enum.GetValues(typeof(CurrencyType)))
         {
-            currencys.Add(currencyType, 0);
+            currencys.Add(currencyType, 500);
         }
+
     }
 
     private void Update()

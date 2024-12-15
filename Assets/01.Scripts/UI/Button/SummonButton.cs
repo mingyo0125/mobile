@@ -13,9 +13,20 @@ public class SummonButton : UI_Button
     [SerializeField]
     private ItemType _summonItemType;
 
+    [SerializeField]
+    private CurrencyType _currenciesType;
+
+    [SerializeField]
+    private int cost;
+
     protected override void ButtonEvent()
     {
         base.ButtonEvent();
+
+        if (!CurrencyManager.Instance.SpendCurrency(_currenciesType, cost))
+        {
+            return;
+        }
 
         if(_reSummonUI != null)
         {
