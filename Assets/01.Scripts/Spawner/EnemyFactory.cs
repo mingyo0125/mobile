@@ -67,6 +67,8 @@ public class EnemyFactory : ObjectFactory<Enemy>
         enemy.OnDieEvent += _itemFactory.SpawnItem;
         enemy.OnDieEvent += _coinFactory.SpawnCoin;
         enemy.OnDieEvent += _ => _defaultWaveUI.UpdateUI();
+
+        enemy.OnDieEvent += _ => WaveManager.Instance.IncreaseDeadEnemyCount();
     }
 
     protected virtual Enemy GetEnemy()

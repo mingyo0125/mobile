@@ -40,7 +40,7 @@ public abstract class WaveUI : UI_Component
 
     public override void UpdateUI()
     {
-        enemyCount = Mathf.Clamp(enemyCount + 1, 0, goalCount); 
+        enemyCount = Mathf.Clamp(enemyCount + 1, 0, goalCount);
 
         _enemyCountText.SetText($"{enemyCount} / {goalCount}");
     }

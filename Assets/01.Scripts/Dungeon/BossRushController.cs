@@ -11,8 +11,6 @@ public class BossRushController : MonoBehaviour
 
     private BossRushUI _bossRushUI;
 
-    private BossRushEnemyFactory _bossRushEnemyFactory;
-
     private int curLevel = 1;
 
     private void OnEnable()
@@ -23,7 +21,6 @@ public class BossRushController : MonoBehaviour
     private void Awake()
     {
         _bossRushUI = GetComponent<BossRushUI>();
-        _bossRushEnemyFactory = FindAnyObjectByType<BossRushEnemyFactory>();
 
         foreach (BossRushInfoSO infoSo in _bossRushInfoSos)
         {
@@ -34,7 +31,7 @@ public class BossRushController : MonoBehaviour
 
         _bossRushUI.SetButtonEvents(ChangeLevel);
 
-        Signalhub.OnBossRushEnterEvent += EnterBossRush;
+        Signalhub.OnEnterBossRushEvent += EnterBossRush;
     }
 
     private void ChangeLevel(int level)
@@ -63,24 +60,13 @@ public class BossRushController : MonoBehaviour
     private void EnterBossRush()
     {
         UIManager.Instance.RemoveTopUGUI();
-        WaveManager.Instance.ResetWave();
 
         UIManager.Instance.CreateUI("BossRushingUI", Vector2.zero, null, UIGenerateType.STACKING, UIGenerateSortType.TOP, UIGenerateTweenType.None);
         
         BossWarningPanel bossWarningPanel = UIManager.Instance.CreateUI("BossWarningPanel", Vector2.zero, null, UIGenerateType.NONE, UIGenerateSortType.TOP) as BossWarningPanel;
         bossWarningPanel.UpdateUI();
 
-        _bossRushEnemyFactory.SetEnter(curLevel);
-
-        SpawnEnemy();
-
-        Debug.Log($"Enter {curLevel}");
-    }
-
-    private void SpawnEnemy()
-    {
-        // 원래 있던 WaveUI는 안보이게 하고
-        _bossRushEnemyFactory.SpawnEnemy(1);
+        WaveManager.Instance.StartBossRush(curLevel);
     }
 
     public void UpdateBossRushUI(int level)

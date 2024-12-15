@@ -7,7 +7,8 @@ public delegate void SpawnEnemiesEvent();
 
 public delegate void ChangeStatValueEvent(StatType statType);
 
-public delegate void BossRushEnterEvent();
+public delegate void EnterBossRushEvent();
+public delegate void EndBossRushEvent();
 
 public static class Signalhub
 {
@@ -20,5 +21,7 @@ public static class Signalhub
 
     public static ChangeStatValueEvent OnChangeStatValueEvent;
 
-    public static BossRushEnterEvent OnBossRushEnterEvent;
+    public static EnterBossRushEvent OnEnterBossRushEvent;
+
+    public static EndBossRushEvent OnEndBossRushEventEvent;
 }

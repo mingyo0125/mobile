@@ -24,6 +24,7 @@ public class BossRushEnemyFactory : EnemyFactory
     protected override void SubscribeEnemyDieEvent(Enemy enemy)
     {
         enemy.OnDieEvent += _ => _bossRushWaveUI.UpdateUI();
+        enemy.OnDieEvent += _ =>  WaveManager.Instance.IncreaseBossRushDeadEnemyCount();
     }
 
     protected override Enemy GetEnemy()

@@ -13,7 +13,7 @@ public class BossRushEnterButton : UI_Button
     {
         base.ButtonEvent();
 
-        Signalhub.OnBossRushEnterEvent?.Invoke();
+        Signalhub.OnEnterBossRushEvent?.Invoke();
     }
 
 

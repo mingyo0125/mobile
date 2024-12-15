@@ -16,7 +16,7 @@ public class DefaultWaveUI : WaveUI
 
         _spawnBossButton.AddClickEvent(DisableWaveUI);
 
-        Signalhub.OnBossRushEnterEvent += DisableWaveUI;
+        Signalhub.OnEnterBossRushEvent += DisableWaveUI;
 
         Signalhub.OnStageClearEvent += _ => EnableWaveUI();
     }

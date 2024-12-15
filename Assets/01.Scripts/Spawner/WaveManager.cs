@@ -8,12 +8,16 @@ public class WaveManager : MonoSingleTon<WaveManager>
     private EnemyFactory _enemyFactory;
     [SerializeField]
     private BossFactory _bossFactory;
+    [SerializeField]
+    private BossRushEnemyFactory _bossRushEnemyFactory;
 
     [SerializeField]
     private int spawnedEnmiesCount;
 
     [SerializeField]
     private int deadEnmiesCount;
+
+    private int deadBossRushEnmiesCount;
 
     public int CurStageCount { get; private set; } = 1;
 
@@ -100,5 +104,26 @@ public class WaveManager : MonoSingleTon<WaveManager>
         BossWarningPanel bossWarningPanel = UIManager.Instance.CreateUI("BossWarningPanel", Vector2.zero, null, UIGenerateType.NONE, UIGenerateSortType.TOP) as BossWarningPanel;
         bossWarningPanel.UpdateUI();
         _bossFactory.SpawnEnemy(spawnedEnmiesCount);
+    }
+
+
+    public void StartBossRush(int level)
+    {
+        Instance.ResetWave();
+        _bossRushEnemyFactory.SetEnter(level);
+        _bossRushEnemyFactory.SpawnEnemy(1);
+    }
+
+    public void IncreaseBossRushDeadEnemyCount()
+    {
+        deadBossRushEnmiesCount++;
+
+        if (deadBossRushEnmiesCount == 10)
+        {
+            Debug.Log("Clear");
+            return;
+        }
+
+        _bossRushEnemyFactory.SpawnEnemy(1);
     }
 }
