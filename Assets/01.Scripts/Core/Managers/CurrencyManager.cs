@@ -12,22 +12,34 @@ public class CurrencyManager : MonoSingleTon<CurrencyManager>
 {
     private Dictionary<CurrencyType, int> currencys = new Dictionary<CurrencyType, int>();
 
-    public event Action<int> OnSetMoneyEvent = null;
+    public event Action<CurrencyType, int> OnCurrencyChangeEvent = null;
 
-    private int money;
-
-    private int jewel;
+    [SerializeField]
+    private CurrencyType currencyType;
 
     public int GetOwnCurrency(CurrencyType currencyType)
     {
         return currencys[currencyType];
     }
 
+    private void Start()
+    {
+        foreach (CurrencyType currencyType in Enum.GetValues(typeof(CurrencyType)))
+        {
+            currencys.Add(currencyType, 0);
+        }
+    }
+
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Escape))
+        if(Input.GetKeyDown(KeyCode.A))
         {
-            //SpendMoney(10);
+            GetCurrency(currencyType, 10);
+        }
+
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+            SpendCurrency(currencyType, 10);
         }
     }
 
@@ -40,7 +52,7 @@ public class CurrencyManager : MonoSingleTon<CurrencyManager>
         }
 
         currencys[currencyType] -= value;
-        OnSetMoneyEvent?.Invoke(currencys[currencyType]);
+        OnCurrencyChangeEvent?.Invoke(currencyType, currencys[currencyType]);
         return true;
 
     }
@@ -48,6 +60,7 @@ public class CurrencyManager : MonoSingleTon<CurrencyManager>
     public void GetCurrency(CurrencyType currencyType, int value)
     {
         currencys[currencyType] += value;
-        OnSetMoneyEvent?.Invoke(currencys[currencyType]);
+
+        OnCurrencyChangeEvent?.Invoke(currencyType, currencys[currencyType]);
     }
 }
