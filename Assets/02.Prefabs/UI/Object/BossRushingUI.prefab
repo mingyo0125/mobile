@@ -491,7 +491,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 544499616580080362}
-  - component: {fileID: 6995280595003436314}
+  - component: {fileID: 3309668570361858325}
   m_Layer: 5
   m_Name: BossRushingUI
   m_TagString: Untagged
@@ -519,7 +519,7 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &6995280595003436314
+--- !u!114 &3309668570361858325
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -528,7 +528,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7919534752951704448}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 52c8c6eb0249a994fb7ff29002604bf5, type: 3}
+  m_Script: {fileID: 11500000, guid: a0e880868b001dc48879e4c82e104837, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &53303553988802127
@@ -677,8 +677,29 @@ PrefabInstance:
     - {fileID: 4040850208562363688, guid: b325314073a9e334eaef6dfeb84bd3a2, type: 3}
     - {fileID: 1145827871501764877, guid: b325314073a9e334eaef6dfeb84bd3a2, type: 3}
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4077322030693976922, guid: b325314073a9e334eaef6dfeb84bd3a2, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4239296652093889346}
   m_SourcePrefab: {fileID: 100100000, guid: b325314073a9e334eaef6dfeb84bd3a2, type: 3}
+--- !u!1 &4046714630102793493 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4077322030693976922, guid: b325314073a9e334eaef6dfeb84bd3a2, type: 3}
+  m_PrefabInstance: {fileID: 53303553988802127}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &4239296652093889346
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4046714630102793493}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48bafeab6bf8c3742a0d73fb68e2d8b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isClear: 0
 --- !u!224 &7437536660962081857 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7460827835751614990, guid: b325314073a9e334eaef6dfeb84bd3a2, type: 3}

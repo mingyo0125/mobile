@@ -17,6 +17,7 @@ public class BossRushManager : MonoSingleTon<BossRushManager>
 
     public void StartBossRush()
     {
+        deadBossRushEnmiesCount = 0;
         WaveManager.Instance.ResetWave();
         _bossRushEnemyFactory.SpawnEnemy(1);
     }
@@ -24,7 +25,7 @@ public class BossRushManager : MonoSingleTon<BossRushManager>
     public void IncreaseBossRushDeadEnemyCount()
     {
         deadBossRushEnmiesCount++;
-
+        
         if (deadBossRushEnmiesCount == 1)
         {
             UIManager.Instance.RemoveTopUGUI();
@@ -35,7 +36,7 @@ public class BossRushManager : MonoSingleTon<BossRushManager>
         _bossRushEnemyFactory.SpawnEnemy(1);
     }
 
-    public int GetRewardCount()
+    public int GetRewardValue()
     {
         return 500 + (GetCurLevel() - 1) * 10;
     }

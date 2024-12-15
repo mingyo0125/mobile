@@ -50,7 +50,7 @@ public class EnemyFactory : ObjectFactory<Enemy>
                 yield break;
             }
             Enemy spawnedEnemy = SpawnObject(enemyPrefab.name, Utils.GetRandomSpawnPos(_minBound.position, _maxBound.position)) as Enemy;
-
+            spawnedEnemy.OnDieEvent = null;
             SubscribeEnemyDieEvent(spawnedEnemy);
 
             foreach (Action<Vector2> action in onDieEvents)

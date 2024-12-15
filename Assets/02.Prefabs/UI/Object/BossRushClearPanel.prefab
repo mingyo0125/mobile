@@ -621,6 +621,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c39084f84cbd734c96bfc2ebe73fcf1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _rewardCountText: {fileID: 85994713656175592}
 --- !u!1 &4445855510083443417
 GameObject:
   m_ObjectHideFlags: 0
@@ -1058,3 +1059,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48bafeab6bf8c3742a0d73fb68e2d8b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isClear: 1

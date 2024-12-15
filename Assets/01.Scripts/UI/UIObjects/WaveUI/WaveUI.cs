@@ -21,10 +21,10 @@ public abstract class WaveUI : UI_Component
 
         _canvasGroup = GetComponent<CanvasGroup>();
 
-        Signalhub.OnStageClearEvent += ResetEnemyCount;
+        Signalhub.OnStageClearEvent += _ => ResetEnemyCount();
     }
 
-    protected void DisableWaveUI()
+    public virtual void DisableWaveUI()
     {
         _canvasGroup.alpha = 0;
         _canvasGroup.interactable = false;
@@ -32,13 +32,14 @@ public abstract class WaveUI : UI_Component
 
     public virtual void EnableWaveUI()
     {
+        gameObject.SetActive(true);
         _canvasGroup.alpha = 1;
         _canvasGroup.interactable = true;
 
         _enemyCountText.SetText($"{enemyCount} / {goalCount}");
     }
 
-    private void ResetEnemyCount(bool isClear)
+    protected void ResetEnemyCount()
     {
         enemyCount = 0;
 

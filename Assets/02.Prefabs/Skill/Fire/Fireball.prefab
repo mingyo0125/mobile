@@ -53,6 +53,7 @@ MonoBehaviour:
     m_Bits: 128
   isCollisionUpdate: 1
   shouldDisappearOnCollision: 1
+  useAnimationEvent: 0
 --- !u!1 &7973862582827409446
 GameObject:
   m_ObjectHideFlags: 0
@@ -173,7 +174,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da69c4b95d253af4dbb85963b588bb61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <Speed>k__BackingField: 2
+  <Speed>k__BackingField: 3
   _moveDir: {x: 1, y: 0}
   isMoving: 1
 --- !u!50 &6462864233962568872

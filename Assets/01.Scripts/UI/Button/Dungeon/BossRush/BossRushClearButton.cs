@@ -4,14 +4,21 @@ using UnityEngine;
 
 public class BossRushClearButton : UI_Button
 {
-    
+    [SerializeField]
+    private bool isClear;
     protected override void ButtonEvent()
     {
         base.ButtonEvent();
 
         Signalhub.OnEndBossRushEventEvent?.Invoke();
-        UIManager.Instance.RemoveTopUGUI();
 
-        CurrencyManager.Instance.GetCurrency(CurrencyType.Jewel, BossRushManager.Instance.GetRewardCount());
+        if(!isClear)
+        {
+            WaveManager.Instance.EndStage(false);
+        }
+        else
+        {
+            CurrencyManager.Instance.GetCurrency(CurrencyType.Jewel, BossRushManager.Instance.GetRewardValue());
+        }
     }
 }

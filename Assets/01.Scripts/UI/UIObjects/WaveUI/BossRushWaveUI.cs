@@ -10,6 +10,14 @@ public class BossRushWaveUI : WaveUI
 
         Signalhub.OnEnterBossRushEvent += EnableWaveUI;
         Signalhub.OnEndBossRushEventEvent += DisableWaveUI;
+        Signalhub.OnEndBossRushEventEvent += ResetEnemyCount;
+    }
+
+    public override void DisableWaveUI()
+    {
+        base.DisableWaveUI();
+
+        enemyCount = 0;
     }
 
     protected override int SetGoalCount()

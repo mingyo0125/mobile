@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Transactions;
 using UnityEngine;
 
 public class DefaultWaveUI : WaveUI
@@ -8,7 +9,6 @@ public class DefaultWaveUI : WaveUI
     private SpawnBossButton _spawnBossButton;
 
     private bool isButtonEnabled = false;
-
 
     protected override void Awake()
     {
@@ -27,7 +27,7 @@ public class DefaultWaveUI : WaveUI
         base.EnableWaveUI();
 
         _spawnBossButton.SetInteractableButton(enemyCount == goalCount);
-        isButtonEnabled = true;
+        isButtonEnabled = enemyCount == goalCount;
     }
 
     public override void UpdateUI()

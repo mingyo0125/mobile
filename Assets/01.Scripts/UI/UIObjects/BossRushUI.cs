@@ -29,7 +29,7 @@ public class BossRushUI : UI_Component
     {
         _curBossRushInfo = bossRussInfo;
 
-        _rewardText.SetText(BossRushManager.Instance.GetRewardCount().ToString());
+        _rewardText.SetText(BossRushManager.Instance.GetRewardValue().ToString());
 
         _appearBossImage.sprite = _curBossRushInfo.ApeearBoss;
 
