@@ -28,26 +28,13 @@ public class CurrencyManager : MonoSingleTon<CurrencyManager>
         {
             currencys.Add(currencyType, 500);
         }
-
-    }
-
-    private void Update()
-    {
-        if(Input.GetKeyDown(KeyCode.A))
-        {
-            GetCurrency(currencyType, 10);
-        }
-
-        if (Input.GetKeyDown(KeyCode.S))
-        {
-            SpendCurrency(currencyType, 10);
-        }
     }
 
     public bool SpendCurrency(CurrencyType currencyType, int value)
     {
         if (currencys[currencyType] < value)
         {
+            UIManager.Instance.CreateUI("IncompleteCurrencyPanel", Vector2.zero);
             // 오류 메시지 무언가
             return false;
         }
