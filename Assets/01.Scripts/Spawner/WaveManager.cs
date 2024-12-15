@@ -26,6 +26,8 @@ public class WaveManager : MonoSingleTon<WaveManager>
     private void Start()
     {
         SpawnEnemy();
+
+        Signalhub.OnEndBossRushEventEvent += SpawnEnemy;
     }
 
     public void IncreaseDeadEnemyCount()
@@ -118,9 +120,8 @@ public class WaveManager : MonoSingleTon<WaveManager>
 
         if (deadBossRushEnmiesCount == 1)
         {
-            Debug.Log("Clear");
             UIManager.Instance.RemoveTopUGUI();
-            UIManager.Instance.CreateUI("BossRushClearPanel", Vector2.zero, null, UIGenerateType.STACKING);
+            UIManager.Instance.CreateUI("BossRushClearPanel", Vector2.zero, null, UIGenerateType.STACKING, UIGenerateSortType.TOP).UpdateUI();
             return;
         }
 

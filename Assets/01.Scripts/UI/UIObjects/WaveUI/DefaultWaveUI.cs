@@ -19,14 +19,15 @@ public class DefaultWaveUI : WaveUI
         Signalhub.OnEnterBossRushEvent += DisableWaveUI;
 
         Signalhub.OnStageClearEvent += _ => EnableWaveUI();
+        Signalhub.OnEndBossRushEventEvent += EnableWaveUI;
     }
 
     public override void EnableWaveUI()
     {
         base.EnableWaveUI();
 
-        _spawnBossButton.SetInteractableButton(false);
-        isButtonEnabled = false;
+        _spawnBossButton.SetInteractableButton(enemyCount == goalCount);
+        isButtonEnabled = true;
     }
 
     public override void UpdateUI()

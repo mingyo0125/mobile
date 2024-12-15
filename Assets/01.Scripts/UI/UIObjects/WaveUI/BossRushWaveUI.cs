@@ -9,6 +9,7 @@ public class BossRushWaveUI : WaveUI
         base.Awake();
 
         Signalhub.OnEnterBossRushEvent += EnableWaveUI;
+        Signalhub.OnEndBossRushEventEvent += DisableWaveUI;
     }
 
     protected override int SetGoalCount()
