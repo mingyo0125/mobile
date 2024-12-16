@@ -42,7 +42,14 @@ public class SkillVisual : MonoBehaviour, IMoveable
     public void StopImmediately()
     {
         if (!isMoving) { return; }
+        isMoving = false;
         Rb.velocity = Vector2.zero;
+    }
+
+    public void SetMove()
+    {
+        isMoving = true;
+        Move(_moveDir);
     }
 
     public void TakeDamageEvent()
