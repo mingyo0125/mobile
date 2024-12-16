@@ -19,6 +19,8 @@ public abstract class SummonItemIconFactory : ObjectFactory<InventoryItem_Icon>
             icon.SetSiblingIndex(i);
             _inventoryItems.Add(item.ItemId, icon);
         }
+
+        ((RectTransform)transform).sizeDelta = new Vector2(0, summonItems.Count * 70);
     }
 
     public InventoryItem_Icon GetInventoryItemIcon(SummonItemInfo summonItemInfo)
