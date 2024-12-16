@@ -25,7 +25,9 @@ MonoBehaviour:
       <Upgrade_Passive_IncreaseValue>k__BackingField: 0
     <Description>k__BackingField: "\uC801\uC5D0\uAC8C \uB2FF\uC73C\uBA74 \uD3ED\uBC1C\uD558\uB294
       \uBB3C \uC5D0\uB108\uC9C0 \uC751\uC9D1\uCCB4\uB97C \uBC1C\uC0AC\uD55C\uB2E4."
+    sadasdasd: "\uC801\uC5D0\uAC8C \uB2FF\uC73C\uBA74 \uD3ED\uBC1C\uD558\uB294\n\uBB3C
+      \uC5D0\uB108\uC9C0 \uC751\uC9D1\uCCB4\uB97C \uBC1C\uC0AC\uD55C\uB2E4."
     <Cooldown>k__BackingField: 1
-    <DamagePercent>k__BackingField: 100
+    <DamagePercent>k__BackingField: 200
     <SpawnCount>k__BackingField: 1
     <HitFeedbackEffect>k__BackingField: {fileID: 0}

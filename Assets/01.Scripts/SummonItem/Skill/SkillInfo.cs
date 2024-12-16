@@ -4,8 +4,9 @@ using UnityEngine;
 [Serializable]
 public class SkillInfo : SummonItemInfo
 {
-    [field: SerializeField]
-    public string Description { get; private set; }
+    [TextArea]
+    public string Description;
+
     [field: SerializeField]
     public float Cooldown { get; private set; }
     [field: SerializeField]
@@ -13,6 +14,7 @@ public class SkillInfo : SummonItemInfo
 
     [field: SerializeField]
     public float SpawnCount { get; private set; } = 1;
+
 
     [field: SerializeField]
     public FeedbackEffect HitFeedbackEffect { get; private set; }

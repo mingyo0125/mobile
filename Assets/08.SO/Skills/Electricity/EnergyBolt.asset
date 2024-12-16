@@ -19,13 +19,15 @@ MonoBehaviour:
     <ItemLevel>k__BackingField: 0
     <ItemType>k__BackingField: 0
     <GradeInfo>k__BackingField:
-      <ItemGradeType>k__BackingField: 100
-      <ColorByGrade>k__BackingField: {r: 0.89019614, g: 0.87843144, b: 0.8117648, a: 1}
+      <ItemGradeType>k__BackingField: 10
+      <ColorByGrade>k__BackingField: {r: 0.92156863, g: 0.15294118, b: 0.9137255, a: 1}
       <Upgrade_Equipped_IncreaseValue>k__BackingField: 0
       <Upgrade_Passive_IncreaseValue>k__BackingField: 0
     <Description>k__BackingField: "\uC801\uC5D0\uAC8C \uB2FF\uC73C\uBA74 \uD3ED\uBC1C\uD558\uB294
       \uC804\uAE30 \uC5D0\uB108\uC9C0 \uC751\uC9D1\uCCB4\uB97C \uBC1C\uC0AC\uD55C\uB2E4."
+    sadasdasd: "\uC801\uC5D0\uAC8C \uB2FF\uC73C\uBA74 \uD3ED\uBC1C\uD558\uB294\n\uC804\uAE30
+      \uC5D0\uB108\uC9C0 \uC751\uC9D1\uCCB4\uB97C \uBC1C\uC0AC\uD55C\uB2E4."
     <Cooldown>k__BackingField: 1
-    <DamagePercent>k__BackingField: 100
+    <DamagePercent>k__BackingField: 300
     <SpawnCount>k__BackingField: 1
     <HitFeedbackEffect>k__BackingField: {fileID: 3344745049780232752, guid: c83bbaf0bb4422247a8c41f8907d879d, type: 3}

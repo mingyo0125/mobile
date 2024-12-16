@@ -23,8 +23,11 @@ MonoBehaviour:
       <ColorByGrade>k__BackingField: {r: 0.9215687, g: 0.15294118, b: 0.91372555, a: 1}
       <Upgrade_Equipped_IncreaseValue>k__BackingField: 0
       <Upgrade_Passive_IncreaseValue>k__BackingField: 0
-    <Description>k__BackingField: "\uBD88\uAF43"
+    <Description>k__BackingField: "\uC138\uCC2C \uBD88\uAF43\uC744 \uC0C1\uB300\uC5D0\uAC8C
+      \uBC1C\uC0AC\uD574\uC11C \uACF5\uACA9\uD55C\uB2E4."
+    sadasdasd: "\uC138\uCC2C \uBD88\uAF43\uC744 \uC0C1\uB300\uC5D0\uAC8C\n\uBC1C\uC0AC\uD574\uC11C
+      \uACF5\uACA9\uD55C\uB2E4."
     <Cooldown>k__BackingField: 10
-    <DamagePercent>k__BackingField: 100
-    <SpawnCount>k__BackingField: 1
+    <DamagePercent>k__BackingField: 60
+    <SpawnCount>k__BackingField: 5
     <HitFeedbackEffect>k__BackingField: {fileID: 7707854994357197448, guid: 647fb1399372ec9439b21d176cd734e5, type: 3}

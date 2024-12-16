@@ -24,7 +24,8 @@ MonoBehaviour:
       <Upgrade_Equipped_IncreaseValue>k__BackingField: 0
       <Upgrade_Passive_IncreaseValue>k__BackingField: 0
     <Description>k__BackingField: "\uBA54\uD14C\uC624\uC774\uB2E4"
+    sadasdasd: "\uBA54\uD14C\uC624\uB97C \uC18C\uD658\uD558\uC5EC\n\uC801\uC744 \uACF5\uACA9\uD55C\uB2E4."
     <Cooldown>k__BackingField: 5
     <DamagePercent>k__BackingField: 200
-    <SpawnCount>k__BackingField: 1
+    <SpawnCount>k__BackingField: 3
     <HitFeedbackEffect>k__BackingField: {fileID: 7707854994357197448, guid: 647fb1399372ec9439b21d176cd734e5, type: 3}
