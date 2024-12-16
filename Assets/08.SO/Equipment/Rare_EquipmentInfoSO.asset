@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3018f54f5022d147a03367f5d09daf2, type: 3}
+  m_Name: Rare_EquipmentInfoSO
+  m_EditorClassIdentifier: 
+  <EquipmentInfo>k__BackingField:
+    <ItemId>k__BackingField: RareEquiment
+    <ItemName>k__BackingField: "\uB808\uC5B4\uC7A5\uBE44"
+    <Icon>k__BackingField: {fileID: 21300000, guid: a4cd51ec882716f45bcff666c7e8b6af, type: 3}
+    <ItemLevel>k__BackingField: 0
+    <ItemType>k__BackingField: 1
+    <GradeInfo>k__BackingField:
+      <ItemGradeType>k__BackingField: 25
+      <ColorByGrade>k__BackingField: {r: 0.15686275, g: 0.7294118, b: 0.92156863, a: 1}
+      <Upgrade_Equipped_IncreaseValue>k__BackingField: 20
+      <Upgrade_Passive_IncreaseValue>k__BackingField: 3
+    <ItemValue>k__BackingField: 30
+    <EquipmentPassiveBonus>k__BackingField:
+      <IncreaseStatType>k__BackingField: 4
+      <IncreaseValue>k__BackingField: 10

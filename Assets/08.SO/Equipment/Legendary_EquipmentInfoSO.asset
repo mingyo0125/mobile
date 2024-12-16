@@ -10,20 +10,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d3018f54f5022d147a03367f5d09daf2, type: 3}
-  m_Name: TestEquipmentInfoSO12
+  m_Name: Legendary_EquipmentInfoSO
   m_EditorClassIdentifier: 
   <EquipmentInfo>k__BackingField:
-    <ItemId>k__BackingField: TestEq2
-    <ItemName>k__BackingField: "\uD14C\uC2A4\uD2B8\uC7A5\uBE442"
+    <ItemId>k__BackingField: LegendaryEquipment
+    <ItemName>k__BackingField: "\uB808\uC804\uB354\uB9AC\uC7A5\uBE44"
     <Icon>k__BackingField: {fileID: 21300000, guid: ecf71879cde63fe4e9c4d52fb0bc038c, type: 3}
     <ItemLevel>k__BackingField: 0
     <ItemType>k__BackingField: 1
     <GradeInfo>k__BackingField:
-      <ItemGradeType>k__BackingField: 100
-      <ColorByGrade>k__BackingField: {r: 1, g: 0, b: 0.8403435, a: 1}
-      <Upgrade_Equipped_IncreaseValue>k__BackingField: 10
-      <Upgrade_Passive_IncreaseValue>k__BackingField: 10
-    <ItemValue>k__BackingField: 110
+      <ItemGradeType>k__BackingField: 1
+      <ColorByGrade>k__BackingField: {r: 0.92156863, g: 0.15294118, b: 0, a: 1}
+      <Upgrade_Equipped_IncreaseValue>k__BackingField: 200
+      <Upgrade_Passive_IncreaseValue>k__BackingField: 30
+    <ItemValue>k__BackingField: 500
     <EquipmentPassiveBonus>k__BackingField:
       <IncreaseStatType>k__BackingField: 4
-      <IncreaseValue>k__BackingField: 15
+      <IncreaseValue>k__BackingField: 30

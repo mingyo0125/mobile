@@ -14,8 +14,11 @@ public class CoinFactory : ObjectFactory<Coin>
         // 나중에 주는 돈에 따라 생긴거 다르게
 
         Coin spawnedCoin = SpawnObject("Coin", spawnPos) as Coin;
-        float coinValue = 10f + Utils.CalculatePercent(10, _playerStat.DropCoinValue.Value); // 기본적으로 10
 
-        spawnedCoin.SetCoinValue((int)coinValue);
+        float dropCoinValue = 100f * WaveManager.Instance.CurStageCount;
+
+        dropCoinValue += Utils.CalculatePercent(dropCoinValue, _playerStat.DropCoinValue.Value);
+
+        spawnedCoin.SetCoinValue((int)dropCoinValue);
     }
 }
