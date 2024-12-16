@@ -13,6 +13,15 @@ MonoBehaviour:
   m_Name: Skeleton
   m_EditorClassIdentifier: 
   m_Labels:
+  - m_Name: Idle
+    m_Hash: 1008081451
+    m_CategoryList:
+    - m_Name: 0
+      m_Hash: 886824737
+      m_Sprite: {fileID: 4723107735738678597, guid: b6664af4b73fc144d9a5223e8d2a5a75, type: 3}
+    - m_Name: 1
+      m_Hash: 64810935
+      m_Sprite: {fileID: -7385789195546760866, guid: b6664af4b73fc144d9a5223e8d2a5a75, type: 3}
   - m_Name: Block
     m_Hash: 47888422
     m_CategoryList:
@@ -67,15 +76,6 @@ MonoBehaviour:
     - m_Name: 1
       m_Hash: 64810935
       m_Sprite: {fileID: 7419590508823533442, guid: b6664af4b73fc144d9a5223e8d2a5a75, type: 3}
-  - m_Name: Idle
-    m_Hash: 1008081451
-    m_CategoryList:
-    - m_Name: 0
-      m_Hash: 886824737
-      m_Sprite: {fileID: 4723107735738678597, guid: b6664af4b73fc144d9a5223e8d2a5a75, type: 3}
-    - m_Name: 1
-      m_Hash: 64810935
-      m_Sprite: {fileID: -7385789195546760866, guid: b6664af4b73fc144d9a5223e8d2a5a75, type: 3}
   - m_Name: Jab
     m_Hash: 488016790
     m_CategoryList:
