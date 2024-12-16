@@ -105,14 +105,12 @@ public abstract partial class Entity<T, G>
     private void UpdateSkillDamageInfo(SkillInfo skillInfo, Vector2 hitPoint)
     {
         var calculateDamage = GetDamage(skillInfo.DamagePercent);
-
         _entityTakeDamageInfo.UpdateTakeDamageInfo(calculateDamage.Item2,
                                                    calculateDamage.Item2 * 0.25f,
                                                    calculateDamage.Item1,
                                                    transform.position,
-                                                   hitPoint);
-
-        _entityTakeDamageInfo.UpdateHitFeedbackEffect(skillInfo.HitFeedbackEffect);
+                                                   hitPoint,
+                                                   skillInfo.HitFeedbackEffect);
     }
 
     public float GetAttackDelay()

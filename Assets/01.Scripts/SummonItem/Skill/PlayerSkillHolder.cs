@@ -12,7 +12,7 @@ public class PlayerSkillHolder : MonoBehaviour
 
     private IEntity _owner;
 
-    private WaitForSeconds _waitForSeconds = new WaitForSeconds(0.1f);
+    private WaitForSeconds _waitForSeconds = new WaitForSeconds(0.25f);
 
     private void Awake()
     {
@@ -68,7 +68,7 @@ public class PlayerSkillHolder : MonoBehaviour
             skillInstance.InitializeSkillInfo(skill.SkillInfo);
 
             _lastUsedTimes[id] = Time.time;
-            skillInstance.Execute(GameManager.Instance.GetPlayer(), (Vector2)transform.position + skillInstance.SpawnDir + new Vector2(0.25f * i, 0));
+            skillInstance.Execute(GameManager.Instance.GetPlayer(), (Vector2)transform.position + skillInstance.SpawnDir + new Vector2(0.5f * i, 0));
 
             yield return _waitForSeconds;
         }

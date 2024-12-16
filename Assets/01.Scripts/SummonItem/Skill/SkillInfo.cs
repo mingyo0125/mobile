@@ -23,6 +23,8 @@ public class SkillInfo : SummonItemInfo
         this.Cooldown = skillInfo.Cooldown;
         this.DamagePercent = skillInfo.DamagePercent;
         this.SpawnCount = skillInfo.SpawnCount;
+
+        this.HitFeedbackEffect = skillInfo.HitFeedbackEffect;
     }
 
     public override bool EquipItem()

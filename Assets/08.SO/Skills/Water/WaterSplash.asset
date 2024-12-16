@@ -28,4 +28,4 @@ MonoBehaviour:
     <Cooldown>k__BackingField: 1
     <DamagePercent>k__BackingField: 100
     <SpawnCount>k__BackingField: 1
-    <HitFeedbackEffect>k__BackingField: {fileID: 7707854994357197448, guid: 647fb1399372ec9439b21d176cd734e5, type: 3}
+    <HitFeedbackEffect>k__BackingField: {fileID: 0}

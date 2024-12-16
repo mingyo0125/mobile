@@ -11,18 +11,14 @@ public class TakeDamageInfo
 
     public FeedbackEffect HitFeedbackEffect { get; private set; }
 
-    public void UpdateTakeDamageInfo(float damage,float knockbackPower, bool isCritical, Vector2 triggerEntityPos, Vector2 hitPos)
+    public void UpdateTakeDamageInfo(float damage,float knockbackPower, bool isCritical, Vector2 triggerEntityPos, Vector2 hitPos, FeedbackEffect hitFeedbackEffect = null)
     {
         this.Damage = damage;
         this.KnockbackPower = knockbackPower;
         this.IsCritical = isCritical;
         this.TriggerEntityPos = triggerEntityPos;
+        this.HitFeedbackEffect = hitFeedbackEffect;
 
         this.HitPos = hitPos;
-    }
-
-    public void UpdateHitFeedbackEffect(FeedbackEffect hitFeedbackEffect)
-    {
-        this.HitFeedbackEffect = hitFeedbackEffect;
     }
 }
