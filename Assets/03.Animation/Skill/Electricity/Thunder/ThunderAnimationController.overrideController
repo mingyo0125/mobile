@@ -1,0 +1,13 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: ThunderAnimationController
+  m_Controller: {fileID: 9100000, guid: 8765cf0d92c357d43a00c8903df8b148, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: f33ea58fd240c9e4ebd9af9f3a3c424b, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 4191398eb2841764fb0e21bdc349fc58, type: 2}
