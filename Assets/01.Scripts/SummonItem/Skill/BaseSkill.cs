@@ -11,6 +11,10 @@ public abstract class BaseSkill : PoolableMono
     [Range(0f, 5f)]
     protected float castRadius;
 
+    [SerializeField]
+    [Range(0f, 5f)]
+    protected float castPosX, castPosY;
+
     public SkillInfo SkillInfo { get; private set; }
 
     protected SkillVisual _viusal;
@@ -72,7 +76,8 @@ public abstract class BaseSkill : PoolableMono
     {
         bool isHit = false;
 
-        RaycastHit2D[] hits = Physics2D.CircleCastAll(_viusal.transform.position, castRadius, _viusal.transform.position, 0, _enemyLayer);
+        Vector2 castPos = (Vector2)_viusal.transform.position + new Vector2(castPosX, castPosY);
+        RaycastHit2D[] hits = Physics2D.CircleCastAll(castPos, castRadius, _viusal.transform.position, 0, _enemyLayer);
         foreach (RaycastHit2D hit in hits)
         {
             bool isEnemy = hit.collider.TryGetComponent(out IDamageable damageable) && damageable is Enemy;
@@ -91,6 +96,7 @@ public abstract class BaseSkill : PoolableMono
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.green;
-        Gizmos.DrawWireSphere(transform.position, castRadius);
+        Vector2 castPos = (Vector2)transform.position + new Vector2(castPosX, castPosY);
+        Gizmos.DrawWireSphere(castPos, castRadius);
     }
 }
