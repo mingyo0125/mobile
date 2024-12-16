@@ -13,13 +13,13 @@ MonoBehaviour:
   m_Name: Pool Objects SO
   m_EditorClassIdentifier: 
   <Enemies>k__BackingField:
-  - <PoolObject>k__BackingField: {fileID: 9198892564653504442, guid: 80c5667251c105d43a7cbe549ca2878e, type: 3}
-    <PoolCount>k__BackingField: 1
-    <IsStartCreate>k__BackingField: 0
   - <PoolObject>k__BackingField: {fileID: 6527612484934499272, guid: bd876e3e69e1fc9488f6adb89939a092, type: 3}
     <PoolCount>k__BackingField: 1
     <IsStartCreate>k__BackingField: 0
   - <PoolObject>k__BackingField: {fileID: 7777957623891732274, guid: f940b26eb319d184c93da5d035153c1b, type: 3}
+    <PoolCount>k__BackingField: 1
+    <IsStartCreate>k__BackingField: 0
+  - <PoolObject>k__BackingField: {fileID: 9198892564653504442, guid: 80c5667251c105d43a7cbe549ca2878e, type: 3}
     <PoolCount>k__BackingField: 1
     <IsStartCreate>k__BackingField: 0
   - <PoolObject>k__BackingField: {fileID: 328841969994635245, guid: 626687cb3f20104429cc9a143ef3ed28, type: 3}
