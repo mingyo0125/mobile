@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: 148688985
   m_SortingLayer: 4
   m_SortingOrder: 0
-  m_Sprite: {fileID: -5564397493214910013, guid: f5246608584596f45a9a22eb0f3cf0a6, type: 3}
+  m_Sprite: {fileID: -671910002, guid: 5d7a5860242f45d468124e31aa4e2a71, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -122,7 +122,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Speed>k__BackingField: 3
   _moveDir: {x: 1, y: 0}
-  isMoving: 1
+  isMovingSKill: 1
 --- !u!50 &8675051646659666091
 Rigidbody2D:
   serializedVersion: 4
@@ -199,7 +199,7 @@ MonoBehaviour:
   castRadius: 0.58
   castPosX: 0
   castPosY: 0
-  <SpawnDir>k__BackingField: {x: 0, y: 0}
+  <SpawnDir>k__BackingField: {x: -0.3, y: 0}
   _enemyLayer:
     serializedVersion: 2
     m_Bits: 128

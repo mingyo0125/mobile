@@ -122,7 +122,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Speed>k__BackingField: 3
   _moveDir: {x: 1, y: 0}
-  isMoving: 1
+  isMovingSKill: 1
 --- !u!50 &1388025002209893206
 Rigidbody2D:
   serializedVersion: 4

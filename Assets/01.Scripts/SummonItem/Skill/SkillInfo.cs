@@ -12,6 +12,9 @@ public class SkillInfo : SummonItemInfo
     public float DamagePercent { get; private set; }
 
     [field: SerializeField]
+    public float SpawnCount { get; private set; } = 1;
+
+    [field: SerializeField]
     public FeedbackEffect HitFeedbackEffect { get; private set; }
 
     public SkillInfo(SkillInfo skillInfo) : base(skillInfo)
@@ -19,6 +22,7 @@ public class SkillInfo : SummonItemInfo
         this.Description = skillInfo.Description;
         this.Cooldown = skillInfo.Cooldown;
         this.DamagePercent = skillInfo.DamagePercent;
+        this.SpawnCount = skillInfo.SpawnCount;
     }
 
     public override bool EquipItem()

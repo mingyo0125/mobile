@@ -21,9 +21,10 @@ MonoBehaviour:
     <GradeInfo>k__BackingField:
       <ItemGradeType>k__BackingField: 25
       <ColorByGrade>k__BackingField: {r: 0.15686275, g: 0.7294118, b: 0.92156863, a: 1}
-      <UpgradeIncreaseValue>k__BackingField: 20
-    <ElementsCount>k__BackingField: 0
+      <Upgrade_Equipped_IncreaseValue>k__BackingField: 0
+      <Upgrade_Passive_IncreaseValue>k__BackingField: 0
     <Description>k__BackingField: "\uBA54\uD14C\uC624\uC774\uB2E4"
     <Cooldown>k__BackingField: 5
     <DamagePercent>k__BackingField: 200
+    <SpawnCount>k__BackingField: 1
     <HitFeedbackEffect>k__BackingField: {fileID: 7707854994357197448, guid: 647fb1399372ec9439b21d176cd734e5, type: 3}

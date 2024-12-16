@@ -101,7 +101,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Speed>k__BackingField: 3
   _moveDir: {x: 1, y: 0}
-  isMoving: 1
+  isMovingSKill: 1
 --- !u!50 &3925475557173777441
 Rigidbody2D:
   serializedVersion: 4
@@ -206,3 +206,6 @@ MonoBehaviour:
   isCollisionUpdate: 1
   shouldDisappearOnCollision: 1
   useAnimationEvent: 0
+  isBoxCast: 0
+  boxCastXValue: 0
+  boxCastYValue: 0

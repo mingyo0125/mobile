@@ -1,5 +1,7 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class PlayerSkillHolder : MonoBehaviour
@@ -9,6 +11,8 @@ public class PlayerSkillHolder : MonoBehaviour
     private Dictionary<string, float> _lastUsedTimes = new Dictionary<string, float>();
 
     private IEntity _owner;
+
+    private WaitForSeconds _waitForSeconds = new WaitForSeconds(0.1f);
 
     private void Awake()
     {
@@ -47,16 +51,26 @@ public class PlayerSkillHolder : MonoBehaviour
 
         PlayerAnimator animator = player.EntityAnimatorCompo as PlayerAnimator;
         animator.QueueSkillAnimationTrigger(id,
-                                                   player.GetAttackDelay(),
-                                                   () => SpawnSkill(id, skill));
+                                            player.GetAttackDelay(),
+                                            () => SpawnSkill(id, skill));
     }
 
     private void SpawnSkill(string id, BaseSkill skill)
     {
-        BaseSkill skillInstance = PoolManager.Instance.CreateObject(id) as BaseSkill;
-        skillInstance.InitializeSkillInfo(skill.SkillInfo);
+        StartCoroutine(SpawnSKillCoutou(id, skill));
+    }
 
-        _lastUsedTimes[id] = Time.time;
-        skillInstance.Execute(GameManager.Instance.GetPlayer(), (Vector2)transform.position + skillInstance.SpawnDir);
+    private IEnumerator SpawnSKillCoutou(string id, BaseSkill skill)
+    {
+        for (int i = 0; i < skill.SkillInfo.SpawnCount; i++)
+        {
+            BaseSkill skillInstance = PoolManager.Instance.CreateObject(id) as BaseSkill;
+            skillInstance.InitializeSkillInfo(skill.SkillInfo);
+
+            _lastUsedTimes[id] = Time.time;
+            skillInstance.Execute(GameManager.Instance.GetPlayer(), (Vector2)transform.position + skillInstance.SpawnDir + new Vector2(0.25f * i, 0));
+
+            yield return _waitForSeconds;
+        }
     }
 }

@@ -27,4 +27,5 @@ MonoBehaviour:
       \uC751\uC9D1\uCCB4\uB97C \uBC1C\uC0AC\uD569\uB2C8\uB2E4."
     <Cooldown>k__BackingField: 1
     <DamagePercent>k__BackingField: 100
+    <SpawnCount>k__BackingField: 1
     <HitFeedbackEffect>k__BackingField: {fileID: 0}

@@ -122,7 +122,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Speed>k__BackingField: 1.5
   _moveDir: {x: 1, y: -1}
-  isMoving: 1
+  isMovingSKill: 1
 --- !u!50 &2223078831577694399
 Rigidbody2D:
   serializedVersion: 4
@@ -196,7 +196,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SkillInfoSO: {fileID: 11400000, guid: bfc489c6181e368498e6d2daede34b32, type: 2}
-  castRadius: 0
+  castRadius: 0.8
   castPosX: 0.39
   castPosY: -0.66
   <SpawnDir>k__BackingField: {x: -0.3, y: 1.3}
@@ -206,6 +206,6 @@ MonoBehaviour:
   isCollisionUpdate: 0
   shouldDisappearOnCollision: 0
   useAnimationEvent: 1
-  isBoxCast: 1
+  isBoxCast: 0
   boxCastXValue: 2.77
   boxCastYValue: 1.5

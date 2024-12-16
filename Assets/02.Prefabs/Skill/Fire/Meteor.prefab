@@ -47,6 +47,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SkillInfoSO: {fileID: 11400000, guid: 1626ba1fd54c7264889f924fc46af93c, type: 2}
   castRadius: 1
+  castPosX: 0
+  castPosY: 0
   <SpawnDir>k__BackingField: {x: -0.3, y: 1.3}
   _enemyLayer:
     serializedVersion: 2
@@ -54,6 +56,9 @@ MonoBehaviour:
   isCollisionUpdate: 0
   shouldDisappearOnCollision: 0
   useAnimationEvent: 1
+  isBoxCast: 0
+  boxCastXValue: 0
+  boxCastYValue: 0
 --- !u!1 &7723339272816996366
 GameObject:
   m_ObjectHideFlags: 0
@@ -203,4 +208,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Speed>k__BackingField: 1.5
   _moveDir: {x: 1, y: -1}
-  isMoving: 1
+  isMovingSKill: 1
