@@ -23,10 +23,8 @@ MonoBehaviour:
       <ColorByGrade>k__BackingField: {r: 1, g: 0.73333335, b: 0, a: 1}
       <Upgrade_Equipped_IncreaseValue>k__BackingField: 0
       <Upgrade_Passive_IncreaseValue>k__BackingField: 0
-    <Description>k__BackingField: "\uC0C8 \uD615\uC0C1\uC758 \uC804\uAE30 \uC5D0\uB108\uC9C0
-      \uC751\uC9D1\uCCB4\uB97C \uBC1C\uC0AC\uD569\uB2C8\uB2E4."
-    sadasdasd: "\uC0C8 \uD615\uC0C1\uC758 \uC804\uAE30 \uC5D0\uB108\uC9C0\n\uC751\uC9D1\uCCB4\uB97C
-      \uBC1C\uC0AC\uD569\uB2C8\uB2E4."
+    Description: "\uC0C8 \uD615\uC0C1\uC758 \uC804\uAE30 \uC5D0\uB108\uC9C0\n\uC751\uC9D1\uCCB4\uB97C
+      \uBC1C\uC0AC\uD55C\uB2E4."
     <Cooldown>k__BackingField: 3
     <DamagePercent>k__BackingField: 400
     <SpawnCount>k__BackingField: 1
