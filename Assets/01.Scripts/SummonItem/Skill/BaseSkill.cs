@@ -68,6 +68,7 @@ public abstract class BaseSkill : PoolableMono
         if(TakeDamage() && shouldDisappearOnCollision)
         {
             isEnd = true;
+            Debug.Log("#@");
             _viusal.StopImmediately();
             _viusal.PlayEndAnimation();
         }
