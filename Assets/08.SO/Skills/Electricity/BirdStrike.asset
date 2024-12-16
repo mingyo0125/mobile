@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b7d94f28dd44a4344b74a4b5a59fe80d, type: 3}
-  m_Name: ThunderSkrike
+  m_Name: BirdStrike
   m_EditorClassIdentifier: 
   <SkillInfo>k__BackingField:
-    <ItemId>k__BackingField: ThunderStrike
-    <ItemName>k__BackingField: "\uC36C\uB354 \uC2A4\uD2B8\uB77C\uC774\uD06C"
-    <Icon>k__BackingField: {fileID: -328960515, guid: e073014cabd6cd44face44153a523645, type: 3}
+    <ItemId>k__BackingField: BirdStrike
+    <ItemName>k__BackingField: "\uBC84\uB4DC \uC2A4\uD2B8\uB77C\uC774\uD06C"
+    <Icon>k__BackingField: {fileID: -190645243, guid: e073014cabd6cd44face44153a523645, type: 3}
     <ItemLevel>k__BackingField: 0
     <ItemType>k__BackingField: 0
     <GradeInfo>k__BackingField:
