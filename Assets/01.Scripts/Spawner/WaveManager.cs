@@ -82,7 +82,6 @@ public class WaveManager : MonoSingleTon<WaveManager>
 
         if (isClear)
         {
-            Debug.Log("?!");
             CurStageCount++;
             StageClearPanel stageClearPanel = UIManager.Instance.CreateUI(stageClearPanelName, Vector2.zero, null, UIGenerateType.NONE, UIGenerateSortType.TOP) as StageClearPanel;
             stageClearPanel.UpdateUI();

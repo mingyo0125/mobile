@@ -3894,13 +3894,13 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 297313039}
   - {fileID: 827869709}
   - {fileID: 1334940541}
   - {fileID: 1220623262}
   - {fileID: 541330023}
   - {fileID: 2208358097215774391}
   - {fileID: 357542298}
+  - {fileID: 297313039}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -3954,7 +3954,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _enemyFactory: {fileID: 1964096600}
   _bossFactory: {fileID: 646062852}
-  spawnedEnmiesCount: 1
+  spawnEnmiesCount: 1
   deadEnmiesCount: 0
 --- !u!1 &862469747
 GameObject:
@@ -4666,7 +4666,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 0
+  m_text: 500
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 71ff5069fb690ee4e929256f87d04354, type: 2}
   m_sharedMaterial: {fileID: 3645778273491880576, guid: 71ff5069fb690ee4e929256f87d04354, type: 2}
@@ -7806,7 +7806,7 @@ GameObject:
   - component: {fileID: 1888772279}
   - component: {fileID: 1888772280}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: BossRushManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8344,7 +8344,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 0
+  m_text: 500
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 71ff5069fb690ee4e929256f87d04354, type: 2}
   m_sharedMaterial: {fileID: 3645778273491880576, guid: 71ff5069fb690ee4e929256f87d04354, type: 2}

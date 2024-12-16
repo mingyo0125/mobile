@@ -16,8 +16,32 @@ MonoBehaviour:
   - <PoolObject>k__BackingField: {fileID: 6527612484934499272, guid: bd876e3e69e1fc9488f6adb89939a092, type: 3}
     <PoolCount>k__BackingField: 1
     <IsStartCreate>k__BackingField: 0
+  - <PoolObject>k__BackingField: {fileID: 7777957623891732274, guid: f940b26eb319d184c93da5d035153c1b, type: 3}
+    <PoolCount>k__BackingField: 1
+    <IsStartCreate>k__BackingField: 0
+  - <PoolObject>k__BackingField: {fileID: 9198892564653504442, guid: 80c5667251c105d43a7cbe549ca2878e, type: 3}
+    <PoolCount>k__BackingField: 1
+    <IsStartCreate>k__BackingField: 0
+  - <PoolObject>k__BackingField: {fileID: 328841969994635245, guid: 626687cb3f20104429cc9a143ef3ed28, type: 3}
+    <PoolCount>k__BackingField: 1
+    <IsStartCreate>k__BackingField: 0
+  - <PoolObject>k__BackingField: {fileID: 3688286674672909666, guid: 8c1184febd2150d4e9eb28f4d9bff732, type: 3}
+    <PoolCount>k__BackingField: 1
+    <IsStartCreate>k__BackingField: 0
   <Bosses>k__BackingField:
   - <PoolObject>k__BackingField: {fileID: 6527612484934499272, guid: 50d9bc35bb0a1514ba17d6599962a054, type: 3}
+    <PoolCount>k__BackingField: 1
+    <IsStartCreate>k__BackingField: 0
+  - <PoolObject>k__BackingField: {fileID: 4678410074424227715, guid: c231b51736ed46047a175bcec25ea5fc, type: 3}
+    <PoolCount>k__BackingField: 1
+    <IsStartCreate>k__BackingField: 0
+  - <PoolObject>k__BackingField: {fileID: 4114688218281974635, guid: 7247e3ad1a9f75040b7ca7e6005c8bec, type: 3}
+    <PoolCount>k__BackingField: 1
+    <IsStartCreate>k__BackingField: 0
+  - <PoolObject>k__BackingField: {fileID: 552835377307732217, guid: a69d98c704be0cf42b956c09c1786b4b, type: 3}
+    <PoolCount>k__BackingField: 1
+    <IsStartCreate>k__BackingField: 0
+  - <PoolObject>k__BackingField: {fileID: 5847781282873101729, guid: cb73c5c1d8078d140b58b8139b9ccc7a, type: 3}
     <PoolCount>k__BackingField: 1
     <IsStartCreate>k__BackingField: 0
   <Items>k__BackingField:
@@ -118,5 +142,8 @@ MonoBehaviour:
     <PoolCount>k__BackingField: 1
     <IsStartCreate>k__BackingField: 0
   - <PoolObject>k__BackingField: {fileID: 2074335012745207790, guid: 0b811f4bc70024c4890ef9092d376606, type: 3}
+    <PoolCount>k__BackingField: 1
+    <IsStartCreate>k__BackingField: 0
+  - <PoolObject>k__BackingField: {fileID: 6263969536965064425, guid: 7b093a4f19656a748849a36708a063f8, type: 3}
     <PoolCount>k__BackingField: 1
     <IsStartCreate>k__BackingField: 0
