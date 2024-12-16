@@ -27,6 +27,13 @@ public class EquipItem_Icon : SummonItem_Icon
         Signalhub.OnReplaceSkillEvent += EndReplace;
     }
 
+    public override void UpdateUI()
+    {
+        base.UpdateUI();
+
+        OnOffPanels(IsEquipped);
+    }
+
     public override void SetSummonItem(SummonItemInfo summonItem)
     {
         base.SetSummonItem(summonItem);
@@ -50,6 +57,8 @@ public class EquipItem_Icon : SummonItem_Icon
 
     private void OnOffPanels(bool isOn)
     {
+        Debug.Log($"On: {isOn}");
+
         foreach (var panel in _usingPanels)
         {
             panel.SetActive(isOn);

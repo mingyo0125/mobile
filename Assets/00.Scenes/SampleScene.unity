@@ -3954,7 +3954,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _enemyFactory: {fileID: 1964096600}
   _bossFactory: {fileID: 646062852}
-  spawnEnmiesCount: 3
+  spawnEnmiesCount: 5
   deadEnmiesCount: 0
 --- !u!1 &862469747
 GameObject:
@@ -4666,7 +4666,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 500
+  m_text: 1000
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 71ff5069fb690ee4e929256f87d04354, type: 2}
   m_sharedMaterial: {fileID: 3645778273491880576, guid: 71ff5069fb690ee4e929256f87d04354, type: 2}
@@ -8344,7 +8344,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 500
+  m_text: 1000
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 71ff5069fb690ee4e929256f87d04354, type: 2}
   m_sharedMaterial: {fileID: 3645778273491880576, guid: 71ff5069fb690ee4e929256f87d04354, type: 2}

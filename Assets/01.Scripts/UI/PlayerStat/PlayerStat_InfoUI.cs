@@ -60,12 +60,16 @@ public class PlayerStat_InfoUI : UI_Component
         }
 
         int idx = 0;
+
+        foreach (EquipItem_Icon equipitemIcon in _equippedSkills)
+        {
+            equipitemIcon.ReSetSummonItem();
+        }
+
         foreach (var skill in values.Values)
         {
             _equippedSkills[idx].SetSummonItem(skill);
             idx++;
-
-            Debug.Log(skill.ItemName);
         }
     }
 

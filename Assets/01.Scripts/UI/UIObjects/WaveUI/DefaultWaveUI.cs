@@ -44,6 +44,6 @@ public class DefaultWaveUI : WaveUI
 
     protected override int SetGoalCount()
     {
-        return 1;
+        return 50;
     }
 }
