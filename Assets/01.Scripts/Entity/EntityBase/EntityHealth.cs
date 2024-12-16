@@ -38,7 +38,6 @@ public abstract partial class Entity<T, G> : IDamageable
         MaxHP = EntityStatController.GetStatValue(StatType.MaxHp);
 
         EntityCollider = GetComponent<Collider2D>();
-
     }
 
     private void InitializeHealth()
@@ -66,7 +65,7 @@ public abstract partial class Entity<T, G> : IDamageable
         OnTakeDamagedEvent?.Invoke(takeDamageInfo);
         FeedbackPlayerCompo.PlayFeedback<T, G>(FeedbackTypes.Hit, takeDamageInfo);
         IsInvincibility = true;
-
+        
         _entityHpBar.SetHpbarValue(HP);
 
         if (HP <= 0)

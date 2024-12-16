@@ -60,6 +60,7 @@ public class Player : Entity<PlayerStateType, Player>
 
         if (!IsDead && _hpRegenCoroutine == null)
         {
+            Debug.Log("½ÇÇà");
             _hpRegenCoroutine = StartCoroutine(RegenerationCorou());
         }
     }
@@ -116,8 +117,9 @@ public class Player : Entity<PlayerStateType, Player>
         while (HP < MaxHP)
         {
             float regenPercent = EntityStatController.GetStatValue(StatType.HPRegeneration);
-            SetHp(Utils.CalculatePercent(MaxHP, regenPercent), Color.green);
-
+            float roundedResult = (float)Mathf.Ceil(Utils.CalculatePercent(MaxHP, regenPercent) * 10) / 10f;
+            SetHp(roundedResult, Color.green);
+            _entityHpBar.SetHpbarValue(HP);
             yield return _regenTime;
         }
 
