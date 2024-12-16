@@ -20,9 +20,12 @@ public class SkillVisual : MonoBehaviour, IMoveable
     [SerializeField]
     private bool isMoving;
 
+    private Animator _animator;
+
     private void Awake()
     {
         _spriteRenderer = GetComponent<SpriteRenderer>();
+        _animator = GetComponent<Animator>();
 
         if (!isMoving) { return; }
         Rb = GetComponent<Rigidbody2D>();
@@ -45,6 +48,11 @@ public class SkillVisual : MonoBehaviour, IMoveable
     public void TakeDamageEvent()
     {
         OnTakeDamageEvent?.Invoke();
+    }
+
+    public void PlayEndAnimation()
+    {
+        _animator.SetTrigger("IsEnd");
     }
 
     public void AnimationEndEvent()

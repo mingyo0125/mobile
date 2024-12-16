@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: WaterBolt_AnimationController
+  m_Controller: {fileID: 9100000, guid: 296d386ca241dc3449a475559d8875e2, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: aad24b58a86dc834fbc7397a4dc9a288, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: d12482fb1ea7fa449b21f5d4ffb097a3, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 5e3c7876ba8dc3a45aa6fc50bad55bec, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: dbd9932faa6eb564ab8b48bbda93d3f5, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 81707656cf265284cbcf19111882ac1e, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 6f1e3013668ff584a8d413ec035486ac, type: 2}

@@ -34,7 +34,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -43,7 +43,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -72,7 +72,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -95,7 +95,448 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: WaterBall - Startup and Infinite_0
+      rect:
+        serializedVersion: 2
+        x: 49
+        y: 285
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 73248d05fe35f474ea72f04db74bd41c
+      internalID: 162379977
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WaterBall - Startup and Infinite_1
+      rect:
+        serializedVersion: 2
+        x: 115
+        y: 281
+        width: 5
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 82b31d5df2237a24c8dd446f1edcd741
+      internalID: -2048396054
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WaterBall - Startup and Infinite_2
+      rect:
+        serializedVersion: 2
+        x: 170
+        y: 280
+        width: 14
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 60131417a4b664547bf9b72b293f3796
+      internalID: 2001266869
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WaterBall - Startup and Infinite_3
+      rect:
+        serializedVersion: 2
+        x: 216
+        y: 274
+        width: 32
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b22312d867159d64db0bf89dfd88964a
+      internalID: -885624057
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WaterBall - Startup and Infinite_4
+      rect:
+        serializedVersion: 2
+        x: 262
+        y: 275
+        width: 50
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dc53c92606c05b54d84e63eee2990f52
+      internalID: -301057098
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WaterBall - Startup and Infinite_5
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 207
+        width: 53
+        height: 37
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ceac6f9a2a0444742aa81913dbedec4e
+      internalID: 53714857
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WaterBall - Startup and Infinite_6
+      rect:
+        serializedVersion: 2
+        x: 67
+        y: 207
+        width: 53
+        height: 37
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bb1cd0e70e7efba4698910e75ba035fc
+      internalID: -176591372
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WaterBall - Startup and Infinite_7
+      rect:
+        serializedVersion: 2
+        x: 131
+        y: 207
+        width: 53
+        height: 37
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bc430553d8cf7e04ca425e5736430688
+      internalID: 685081885
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WaterBall - Startup and Infinite_14
+      rect:
+        serializedVersion: 2
+        x: 197
+        y: 207
+        width: 51
+        height: 37
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a77a396abb683584d87e7376ccba3657
+      internalID: 1827394132
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WaterBall - Startup and Infinite_16
+      rect:
+        serializedVersion: 2
+        x: 259
+        y: 207
+        width: 53
+        height: 37
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c0f1da210a6cac14d937f0d8e2ab709e
+      internalID: 364589555
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WaterBall - Startup and Infinite_22
+      rect:
+        serializedVersion: 2
+        x: 257
+        y: 143
+        width: 55
+        height: 37
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e5de9c559965ec44d8907b4528dec845
+      internalID: 1766157252
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WaterBall - Startup and Infinite_24
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 143
+        width: 54
+        height: 37
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 578e5dd2ca970a34f873f6725cbf1dac
+      internalID: 1899861883
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WaterBall - Startup and Infinite_26
+      rect:
+        serializedVersion: 2
+        x: 65
+        y: 143
+        width: 55
+        height: 37
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3fde70ad96a50b945939b3f2ec8142bf
+      internalID: 731723225
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WaterBall - Startup and Infinite_28
+      rect:
+        serializedVersion: 2
+        x: 129
+        y: 143
+        width: 55
+        height: 37
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 151c2a2ac92555b44b55c236c789d750
+      internalID: -779826151
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WaterBall - Startup and Infinite_29
+      rect:
+        serializedVersion: 2
+        x: 196
+        y: 143
+        width: 52
+        height: 37
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6ba793541e6056e4980a4d54c80aafd0
+      internalID: -50714082
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WaterBall - Startup and Infinite_37
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 83
+        width: 56
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d16177dfaf53ae24295279c9caeaf80e
+      internalID: -1251847523
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WaterBall - Startup and Infinite_39
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 83
+        width: 56
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e02b552af31fd1f44ad14e7a967e1713
+      internalID: 410560628
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WaterBall - Startup and Infinite_40
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 83
+        width: 56
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c84718080738b4343b76728a7bb8cf68
+      internalID: 1408592052
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WaterBall - Startup and Infinite_41
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 83
+        width: 56
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 40dc6ed6e5833264d855913bfffbb0cd
+      internalID: 347847516
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WaterBall - Startup and Infinite_42
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 83
+        width: 56
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c314b4870a105d643b1b86c8964102b7
+      internalID: -400266454
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WaterBall - Startup and Infinite_45
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 22
+        width: 54
+        height: 26
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3b0ad3c3dd266a645a5028c737a9802c
+      internalID: -157905464
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -106,7 +547,53 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      WaterBall - Startup and Infinite_0: 162379977
+      WaterBall - Startup and Infinite_1: -2048396054
+      WaterBall - Startup and Infinite_10: -51608812
+      WaterBall - Startup and Infinite_11: -528681499
+      WaterBall - Startup and Infinite_12: -1657858565
+      WaterBall - Startup and Infinite_13: 1249191054
+      WaterBall - Startup and Infinite_14: 1827394132
+      WaterBall - Startup and Infinite_15: 1961212352
+      WaterBall - Startup and Infinite_16: 364589555
+      WaterBall - Startup and Infinite_17: 2034128118
+      WaterBall - Startup and Infinite_18: 1186181726
+      WaterBall - Startup and Infinite_19: -2073699165
+      WaterBall - Startup and Infinite_2: 2001266869
+      WaterBall - Startup and Infinite_20: 820609278
+      WaterBall - Startup and Infinite_21: 587321464
+      WaterBall - Startup and Infinite_22: 1766157252
+      WaterBall - Startup and Infinite_23: -2011729876
+      WaterBall - Startup and Infinite_24: 1899861883
+      WaterBall - Startup and Infinite_25: -800423561
+      WaterBall - Startup and Infinite_26: 731723225
+      WaterBall - Startup and Infinite_27: 578753977
+      WaterBall - Startup and Infinite_28: -779826151
+      WaterBall - Startup and Infinite_29: -50714082
+      WaterBall - Startup and Infinite_3: -885624057
+      WaterBall - Startup and Infinite_30: -2132629978
+      WaterBall - Startup and Infinite_31: -1915423453
+      WaterBall - Startup and Infinite_32: 1449484400
+      WaterBall - Startup and Infinite_33: -613497565
+      WaterBall - Startup and Infinite_34: -1577039938
+      WaterBall - Startup and Infinite_35: -1473393182
+      WaterBall - Startup and Infinite_36: -1280337057
+      WaterBall - Startup and Infinite_37: -1251847523
+      WaterBall - Startup and Infinite_38: -2128332861
+      WaterBall - Startup and Infinite_39: 410560628
+      WaterBall - Startup and Infinite_4: -301057098
+      WaterBall - Startup and Infinite_40: 1408592052
+      WaterBall - Startup and Infinite_41: 347847516
+      WaterBall - Startup and Infinite_42: -400266454
+      WaterBall - Startup and Infinite_43: 384781256
+      WaterBall - Startup and Infinite_44: -1347007335
+      WaterBall - Startup and Infinite_45: -157905464
+      WaterBall - Startup and Infinite_5: 53714857
+      WaterBall - Startup and Infinite_6: -176591372
+      WaterBall - Startup and Infinite_7: 685081885
+      WaterBall - Startup and Infinite_8: 1742070785
+      WaterBall - Startup and Infinite_9: -1164107082
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

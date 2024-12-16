@@ -28,6 +28,8 @@ public abstract class BaseSkill : PoolableMono
     [SerializeField]
     private bool isCollisionUpdate, shouldDisappearOnCollision, useAnimationEvent;
 
+    private bool isEnd = false;
+
     protected virtual void Awake()
     {
         _viusal = transform.Find("Visual").GetComponent<SkillVisual>();
@@ -49,16 +51,18 @@ public abstract class BaseSkill : PoolableMono
     {
         base.Initialize();
         _viusal.Initialize();
+        isEnd = false;
     }
 
     private void Update()
     {
-        if (!isCollisionUpdate) { return; }
+        if (!isCollisionUpdate || isEnd) { return; }
 
         if(TakeDamage() && shouldDisappearOnCollision)
         {
+            isEnd = true;
             _viusal.StopImmediately();
-            _viusal.AnimationEndEvent();
+            _viusal.PlayEndAnimation();
         }
     }
 
