@@ -1097,7 +1097,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &8883727239818977140
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2033,7 +2033,7 @@ MonoBehaviour:
   _leftButton: {fileID: 5729138110880355700}
   _rightButton: {fileID: 5577402066147344634}
   _enterButton: {fileID: 7850234868274981320}
-  _lockPanel: {fileID: 8159990609263233493}
+  _lockPanel: {fileID: 4902025261335643815}
 --- !u!114 &4894957195042267703
 MonoBehaviour:
   m_ObjectHideFlags: 0

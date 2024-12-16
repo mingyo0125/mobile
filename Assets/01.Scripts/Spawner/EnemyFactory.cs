@@ -22,7 +22,6 @@ public class EnemyFactory : ObjectFactory<Enemy>
         _coinFactory = FindAnyObjectByType<CoinFactory>();
         _defaultWaveUI = FindAnyObjectByType<DefaultWaveUI>();
 
-
         Transform playerTrm = GameManager.Instance.GetPlayerTrm();
 
         _minBound = playerTrm.Find("PlayerFollowPoint/EnemySpawnBounds/MinBounds");

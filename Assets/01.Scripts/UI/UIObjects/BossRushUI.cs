@@ -21,7 +21,7 @@ public class BossRushUI : UI_Component
     private BossRushEnterButton _enterButton;
 
     [SerializeField]
-    private Image _lockPanel;
+    private GameObject _lockPanel;
 
     private BossRushInfo _curBossRushInfo;
 
@@ -33,7 +33,7 @@ public class BossRushUI : UI_Component
 
         _appearBossImage.sprite = _curBossRushInfo.ApeearBoss;
 
-        _lockPanel.enabled = CanEnterLevel(_curBossRushInfo.Level);
+        _lockPanel.SetActive(!CanEnterLevel(_curBossRushInfo.Level));
 
         _leftButton.SetCurLevel(_curBossRushInfo.Level);
         _rightButton.SetCurLevel(_curBossRushInfo.Level);
@@ -47,7 +47,6 @@ public class BossRushUI : UI_Component
 
     private bool CanEnterLevel(int level)
     {
-
         return WaveManager.Instance.CurStageCount > level;
     }
 }

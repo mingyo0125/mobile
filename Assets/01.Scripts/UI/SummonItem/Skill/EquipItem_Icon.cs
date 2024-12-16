@@ -57,8 +57,6 @@ public class EquipItem_Icon : SummonItem_Icon
 
     private void OnOffPanels(bool isOn)
     {
-        Debug.Log($"On: {isOn}");
-
         foreach (var panel in _usingPanels)
         {
             panel.SetActive(isOn);
