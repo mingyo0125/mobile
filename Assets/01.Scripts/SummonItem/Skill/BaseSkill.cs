@@ -12,7 +12,7 @@ public abstract class BaseSkill : PoolableMono
     protected float castRadius;
 
     [SerializeField]
-    [Range(0f, 5f)]
+    [Range(-5f, 5f)]
     protected float castPosX, castPosY;
 
     public SkillInfo SkillInfo { get; private set; }
@@ -29,6 +29,13 @@ public abstract class BaseSkill : PoolableMono
     private bool isCollisionUpdate, shouldDisappearOnCollision, useAnimationEvent;
 
     private bool isEnd = false;
+
+    [Header("BoxCast")]
+    [SerializeField]
+    private bool isBoxCast;
+    [SerializeField]
+    [Range(0f, 5f)]
+    protected float boxCastXValue, boxCastYValue;
 
     protected virtual void Awake()
     {
@@ -79,9 +86,18 @@ public abstract class BaseSkill : PoolableMono
     protected virtual bool TakeDamage()
     {
         bool isHit = false;
-
         Vector2 castPos = (Vector2)_viusal.transform.position + new Vector2(castPosX, castPosY);
-        RaycastHit2D[] hits = Physics2D.CircleCastAll(castPos, castRadius, _viusal.transform.position, 0, _enemyLayer);
+        RaycastHit2D[] hits = null;
+
+        if(isBoxCast)
+        {
+            hits = Physics2D.BoxCastAll(castPos, new Vector2(boxCastXValue, boxCastYValue), 0, _viusal.transform.position, _enemyLayer);
+        }
+        else
+        {
+            hits = Physics2D.CircleCastAll(castPos, castRadius, _viusal.transform.position, 0, _enemyLayer);
+        }
+
         foreach (RaycastHit2D hit in hits)
         {
             bool isEnemy = hit.collider.TryGetComponent(out IDamageable damageable) && damageable is Enemy;
@@ -101,6 +117,14 @@ public abstract class BaseSkill : PoolableMono
     {
         Gizmos.color = Color.green;
         Vector2 castPos = (Vector2)transform.position + new Vector2(castPosX, castPosY);
-        Gizmos.DrawWireSphere(castPos, castRadius);
+
+        if (isBoxCast)
+        {
+            Gizmos.DrawWireCube(castPos, new Vector2(boxCastXValue, boxCastYValue));
+        }
+        else
+        {
+            Gizmos.DrawWireSphere(castPos, castRadius);
+        }
     }
 }

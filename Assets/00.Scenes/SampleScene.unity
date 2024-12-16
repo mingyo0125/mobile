@@ -3954,7 +3954,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _enemyFactory: {fileID: 1964096600}
   _bossFactory: {fileID: 646062852}
-  spawnEnmiesCount: 1
+  spawnEnmiesCount: 3
   deadEnmiesCount: 0
 --- !u!1 &862469747
 GameObject:

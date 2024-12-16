@@ -95,7 +95,175 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: Water Blast - End_0
+      rect:
+        serializedVersion: 2
+        x: 37
+        y: 272
+        width: 59
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e2ad7486bcc3f704eb65caef16c00a6c
+      internalID: 243073786
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Water Blast - End_1
+      rect:
+        serializedVersion: 2
+        x: 166
+        y: 272
+        width: 59
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 53045c8c7fc4eb54d84402a940a0ca0d
+      internalID: -444436957
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Water Blast - End_2
+      rect:
+        serializedVersion: 2
+        x: 295
+        y: 272
+        width: 59
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d5deb8e95e8526441bc6ae00105906a6
+      internalID: -1177912200
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Water Blast - End_3
+      rect:
+        serializedVersion: 2
+        x: 37
+        y: 144
+        width: 59
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ce923473e0b65674492200a01a1084c7
+      internalID: -1902317593
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Water Blast - End_4
+      rect:
+        serializedVersion: 2
+        x: 166
+        y: 144
+        width: 59
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 238917a9a31b6fe46849361438f447a9
+      internalID: 1150589309
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Water Blast - End_5
+      rect:
+        serializedVersion: 2
+        x: 295
+        y: 144
+        width: 59
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 977982791b348944eacd88d66befcc87
+      internalID: 1811205396
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Water Blast - End_6
+      rect:
+        serializedVersion: 2
+        x: 37
+        y: 16
+        width: 59
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c5a0ac93c8f95784cb45982e33c4f49f
+      internalID: -1822816417
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Water Blast - End_7
+      rect:
+        serializedVersion: 2
+        x: 166
+        y: 16
+        width: 59
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 21ec7a4259d2fce43a91b72743f86f45
+      internalID: -722387420
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -106,7 +274,15 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Water Blast - End_0: 243073786
+      Water Blast - End_1: -444436957
+      Water Blast - End_2: -1177912200
+      Water Blast - End_3: -1902317593
+      Water Blast - End_4: 1150589309
+      Water Blast - End_5: 1811205396
+      Water Blast - End_6: -1822816417
+      Water Blast - End_7: -722387420
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
