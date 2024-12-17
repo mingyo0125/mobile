@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [Serializable]
-public class PlayerStat : BaseStat
+public class PlayerStat : BaseStat, ISavable
 {
     [field: SerializeField]
     public StatInfo ItemDropRate { get; private set; }
@@ -12,13 +12,15 @@ public class PlayerStat : BaseStat
     [field: SerializeField]
     public StatInfo DropCoinValue { get; private set; }
 
-    public PlayerStat(PlayerStat stat) : base(stat)
+    public string FilePath => "PlayerData.json";
+
+    public PlayerStat(PlayerStat stat) : base(stat, true)
     {
         this.ItemDropRate = new StatInfo(stat.ItemDropRate.Level, stat.ItemDropRate.Value, stat.ItemDropRate.StatUIInfo);
         this.DropCoinValue = new StatInfo(stat.DropCoinValue.Level, stat.DropCoinValue.Value, stat.DropCoinValue.StatUIInfo);
 
-        Stats.Add(StatType.ItemDropRate, ItemDropRate);
-        Stats.Add(StatType.DropCoinValue, DropCoinValue);
+        // PlayerStat에서 명시적으로 호출
+        InitializeStats();
     }
 
     protected override void InitializeOwnStats()
@@ -27,5 +29,15 @@ public class PlayerStat : BaseStat
 
         Stats.Add(StatType.ItemDropRate, ItemDropRate);
         Stats.Add(StatType.DropCoinValue, DropCoinValue);
+    }
+
+    public ISavable GetSavableData()
+    {
+        return this;
+    }
+
+    public T GetSavableData<T>() where T : class, ISavable
+    {
+        return this as T;
     }
 }

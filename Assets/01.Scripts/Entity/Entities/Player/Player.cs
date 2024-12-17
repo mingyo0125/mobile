@@ -95,7 +95,7 @@ public class Player : Entity<PlayerStateType, Player>
         //PlayerStat playerStat = new PlayerStat(_playerStatSO.PlayerStat);
         //EntityStatController.Initialize(playerStat);
 
-        PlayerStat playerStat = DataManager.Instance.LoadPlayerData(_playerStatSO.PlayerStat).PlayerStats;
+        PlayerStat playerStat = DataManager.Instance.LoadData<PlayerStat, PlayerData>(_playerStatSO.PlayerStat).PlayerStats;
         EntityStatController.Initialize(playerStat);
     }
 

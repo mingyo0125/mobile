@@ -2,16 +2,27 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Data
+public interface ISavable
 {
-    [System.Serializable]
-    public class PlayerData
-    {
-        public PlayerStat PlayerStats;
+    public string FilePath { get; }
 
-        public PlayerData(PlayerStat stat)
-        {
-            PlayerStats = new PlayerStat(stat);
-        }
+    public T GetSavableData<T>() where T : class, ISavable;
+}
+
+public interface IData
+{
+    public string FilePath { get; }
+}
+
+[System.Serializable]
+public class PlayerData : IData
+{
+    public PlayerStat PlayerStats;
+
+    public PlayerData(PlayerStat savable)
+    {
+        PlayerStats = new PlayerStat(savable);
     }
+
+    public string FilePath => PlayerStats.FilePath;
 }
