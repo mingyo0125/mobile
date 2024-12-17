@@ -31,6 +31,7 @@ public class DataManager : MonoSingleTon<DataManager>
     // 게임 데이터 불러오기
     public PlayerData LoadPlayerData(PlayerStat playerStat)
     {
+        Debug.Log(File.Exists(FilePath));
         if (File.Exists(FilePath))
         {
             string json = File.ReadAllText(FilePath);

@@ -12,7 +12,8 @@ public class StatController
 
     public void Initialize<T>(T stat) where T : BaseStat
     {
-        EntityStat = Activator.CreateInstance(typeof(T), stat) as T;
+        //EntityStat = Activator.CreateInstance(typeof(T), stat) as T;
+        EntityStat = stat;
     }
 
     public float GetStatValue(StatType statType)

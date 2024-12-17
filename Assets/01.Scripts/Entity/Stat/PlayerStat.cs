@@ -20,4 +20,12 @@ public class PlayerStat : BaseStat
         Stats.Add(StatType.ItemDropRate, ItemDropRate);
         Stats.Add(StatType.DropCoinValue, DropCoinValue);
     }
+
+    protected override void InitializeOwnStats()
+    {
+        base.InitializeOwnStats();
+
+        Stats.Add(StatType.ItemDropRate, ItemDropRate);
+        Stats.Add(StatType.DropCoinValue, DropCoinValue);
+    }
 }

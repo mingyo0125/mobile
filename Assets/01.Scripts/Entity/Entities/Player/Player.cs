@@ -60,7 +60,6 @@ public class Player : Entity<PlayerStateType, Player>
 
         if (!IsDead && _hpRegenCoroutine == null)
         {
-            Debug.Log("½ÇÇà");
             _hpRegenCoroutine = StartCoroutine(RegenerationCorou());
         }
     }
@@ -93,7 +92,10 @@ public class Player : Entity<PlayerStateType, Player>
 
     protected override void SetStat()
     {
-        PlayerStat playerStat = new PlayerStat(_playerStatSO.PlayerStat);
+        //PlayerStat playerStat = new PlayerStat(_playerStatSO.PlayerStat);
+        //EntityStatController.Initialize(playerStat);
+
+        PlayerStat playerStat = DataManager.Instance.LoadPlayerData(_playerStatSO.PlayerStat).PlayerStats;
         EntityStatController.Initialize(playerStat);
     }
 

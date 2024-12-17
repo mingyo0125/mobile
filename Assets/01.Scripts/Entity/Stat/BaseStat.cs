@@ -23,7 +23,7 @@ public enum StatType
 }
 
 [Serializable]
-public class BaseStat
+public class BaseStat : ISerializationCallbackReceiver
 {
     public Dictionary<StatType, StatInfo> Stats { get; private set; }
     private Dictionary<StatType, StatInfo> _initialStats;
@@ -63,23 +63,7 @@ public class BaseStat
         this.CriticalDamageIncreasePercent = new StatInfo(stat.CriticalDamageIncreasePercent.Level, stat.CriticalDamageIncreasePercent.Value, stat.CriticalDamageIncreasePercent.StatUIInfo);
         this.ResistancePercent = new StatInfo(stat.ResistancePercent.Level, stat.ResistancePercent.Value, stat.ResistancePercent.StatUIInfo);
 
-        Stats = new Dictionary<StatType, StatInfo>()
-        {
-            { StatType.Damage, Damage },
-            { StatType.MaxHp, MaxHP },
-            { StatType.HPRegeneration, HPRegeneration },
-            { StatType.Speed, Speed },
-            { StatType.AttackRange, AttackRange },
-            { StatType.CriticalProbability, CriticalProbability },
-            { StatType.CriticalDamageIncreasePercent, CriticalDamageIncreasePercent },
-            { StatType.ResistancePercent, ResistancePercent },
-        };
-
-        _initialStats = new Dictionary<StatType, StatInfo>();
-        foreach (var pair in Stats)
-        {
-            _initialStats[pair.Key] = new StatInfo(pair.Value.Level, pair.Value.Value, pair.Value.StatUIInfo);
-        }
+        InitializeStats();
     }
 
     public void SetStatValue(StatType statType, float value)
@@ -116,5 +100,42 @@ public class BaseStat
                 statInfo.Value = pair.Value.Value;
             }
         }
+    }
+
+    public void OnBeforeSerialize()
+    {
+    }
+
+    private void InitializeStats()
+    {
+        Stats = new Dictionary<StatType, StatInfo>()
+        {
+            { StatType.Damage, Damage },
+            { StatType.MaxHp, MaxHP },
+            { StatType.HPRegeneration, HPRegeneration },
+            { StatType.Speed, Speed },
+            { StatType.AttackRange, AttackRange },
+            { StatType.CriticalProbability, CriticalProbability },
+            { StatType.CriticalDamageIncreasePercent, CriticalDamageIncreasePercent },
+            { StatType.ResistancePercent, ResistancePercent },
+        };
+
+        InitializeOwnStats();
+
+        _initialStats = new Dictionary<StatType, StatInfo>();
+        foreach (var pair in Stats)
+        {
+            _initialStats[pair.Key] = new StatInfo(pair.Value.Level, pair.Value.Value, pair.Value.StatUIInfo);
+        }
+    }
+
+    protected virtual void InitializeOwnStats()
+    {
+
+    }
+
+    public void OnAfterDeserialize()
+    {
+        InitializeStats();
     }
 }

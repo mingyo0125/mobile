@@ -30,6 +30,6 @@ public class StatUpgradeUIGenerater : ObjectFactory<UI_Component>
             idx++;
         }
 
-        ((RectTransform)transform).sizeDelta = new Vector2(100, height);
+        ((RectTransform)transform).sizeDelta = new Vector2(100, height + 100);
     }
 }
