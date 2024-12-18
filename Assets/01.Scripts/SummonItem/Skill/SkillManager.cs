@@ -25,6 +25,7 @@ public class SkillManager : SummonItemManager<SkillInfo>
             SkillInfo skillInfo = DataManager.Instance.LoadData<SkillInfo, SummonItemData<SkillInfo>>(skill.SkillInfoSO.SkillInfo).ItemInfo;
             _skills.Add(skillInfo.ItemId, skill);
             _skillInfos.Add(skillInfo);
+
             skill.InitializeSkillInfo(skillInfo);
         }
 

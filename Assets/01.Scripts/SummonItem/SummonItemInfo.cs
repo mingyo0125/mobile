@@ -78,7 +78,6 @@ public abstract class SummonItemInfo : ISummonItem, ISavable
     public void AddElementsCount()
     {
         ElementsCount++;
-        Debug.Log($"{ItemName}: {ElementsCount}");
     }
 
     public virtual bool ItemLevelUp()

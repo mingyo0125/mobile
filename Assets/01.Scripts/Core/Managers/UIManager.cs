@@ -53,6 +53,8 @@ public class UIManager : MonoSingleTon<UIManager>
         {
             UI_Component top = _uiComponentsStack.Pop();
 
+            Debug.Log(top.name);
+
             if (tweenType != UIGenerateTweenType.None)
             {
                 Vector2 endPos = ((RectTransform)top.transform).anchoredPosition + new Vector2(0, (int)tweenType * 2000f);

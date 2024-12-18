@@ -1345,7 +1345,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   generateUIName: BossRushUI
-  _uiGenerateType: 2
+  _uiGenerateType: 1
   _uiGenerateSortType: 0
   _uiGenerateTweenType: -1
 --- !u!224 &7969511699577885242 stripped
