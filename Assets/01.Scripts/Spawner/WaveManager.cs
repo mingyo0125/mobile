@@ -79,7 +79,7 @@ public class WaveManager : MonoSingleTon<WaveManager>
     public void EndStage(bool isClear)
     {
         deadEnmiesCount = 0;
-
+        
         if (isClear)
         {
             CurStageCount++;
