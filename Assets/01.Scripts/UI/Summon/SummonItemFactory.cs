@@ -38,7 +38,7 @@ public abstract class SummonItemFactory<T> : ObjectFactory<SummonItem>, ISummonF
             summonItem.SetBGImage(item.GradeInfo.ColorByGrade);
             summonItem.UpdateImage(item.Icon);
 
-            item.GetItem();
+            SummonItemManager<T>.Instance.AddSummonItem(item.ItemId);
 
             _prevSpawnItems.Add(summonItem);
         }

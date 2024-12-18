@@ -43,7 +43,6 @@ public class SkillInfo : SummonItemInfo
 
     public override void GetItem()
     {
-        SkillManager.Instance.AddSummonItem(ItemId);
         base.GetItem();
     }
 

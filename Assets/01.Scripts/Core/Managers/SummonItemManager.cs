@@ -51,6 +51,8 @@ public abstract class SummonItemManager<T> : MonoSingleTon<SummonItemManager<T>>
         {
             Items[itemId].AddElementsCount();
         }
+
+        Items[itemId].GetItem();
     }
 
     public virtual bool EquipSummonItem(string itemId)
