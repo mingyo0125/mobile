@@ -105,9 +105,9 @@ public abstract class SummonItemInfo : ISummonItem, ISavable
         OnItemLevelUpEvent?.Invoke();
     }
 
-    public virtual bool EquipItem()
+    public virtual void EquipItem()
     {
-        return false;
+        OnItemEquipEvent?.Invoke();
     }
 
     public virtual void UnEquipItem()

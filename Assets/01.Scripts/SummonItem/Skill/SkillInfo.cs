@@ -29,21 +29,10 @@ public class SkillInfo : SummonItemInfo
         this.HitFeedbackEffect = skillInfo.HitFeedbackEffect;
     }
 
-    public override bool EquipItem()
-    {
-        base.EquipItem();
-        return SkillManager.Instance.EquipSummonItem(ItemId);
-    }
-
     public override void UnEquipItem()
     {
         base.UnEquipItem();
         SkillManager.Instance.UnEquipSummonItem(ItemId);
-    }
-
-    public override void GetItem()
-    {
-        base.GetItem();
     }
 
     public override bool ItemLevelUp()

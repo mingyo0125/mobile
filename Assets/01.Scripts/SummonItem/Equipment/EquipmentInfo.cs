@@ -17,10 +17,10 @@ public class EquipmentInfo : SummonItemInfo
         this.EquipmentPassiveBonus = summonItemInfo.EquipmentPassiveBonus;
     }
 
-    public override bool EquipItem()
+    public override void EquipItem()
     {
         base.EquipItem();
-        return EquipmentManager.Instance.EquipSummonItem(ItemId);
+        //return EquipmentManager.Instance.EquipSummonItem(ItemId);
     }
 
     public override void UnEquipItem()

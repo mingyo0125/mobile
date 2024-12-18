@@ -21,13 +21,13 @@ public class InventoryManager : MonoSingleTon<InventoryManager>
         }
     }
 
-    public bool EquipItem(SummonItemInfo summonItem)
+    public bool EquipItem<T>(T summonItem) where T : SummonItemInfo
     {
         ItemType itemType = summonItem.ItemType;
 
-        if (!summonItem.EquipItem()) { return false; }
+        if (!SummonItemManager<T>.Instance.EquipSummonItem(summonItem.ItemId)) { return false; }
 
-        summonItem.OnItemEquipEvent?.Invoke();
+        summonItem.EquipItem();
 
         EquippedInventory[itemType].Add(summonItem.ItemId, summonItem);
 

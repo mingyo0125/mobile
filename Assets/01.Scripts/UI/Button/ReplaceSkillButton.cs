@@ -20,8 +20,6 @@ public class ReplaceSkillButton : UI_Button
 
     private void ReplaceSkill()
     {
-        Debug.Log("dkd");
-
         InventoryManager.Instance.UnEquipItem(_curSummonItemInfo.ItemType, _curSummonItemInfo.ItemId);
 
         InventoryManager.Instance.EquipItem(_changeSummonItemInfo);
