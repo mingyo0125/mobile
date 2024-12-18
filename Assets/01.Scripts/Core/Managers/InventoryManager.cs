@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEditor.Progress;
 
 [Serializable]
 public enum ItemType
@@ -37,18 +38,20 @@ public class InventoryManager : MonoSingleTon<InventoryManager>
 
     }
 
-    public void UnEquipItem(ItemType itemType, string summonItemName)
+    public void UnEquipItem<T>(ItemType itemType, string summonItemId) where T : SummonItemInfo
     {
-        if (!EquippedInventory[itemType].TryGetValue(summonItemName, out SummonItemInfo summonItem))
+        if (!EquippedInventory[itemType].TryGetValue(summonItemId, out SummonItemInfo summonItem))
         {
-            Debug.Log($"{itemType}인벤토리에 {summonItemName} 없어서 장착 해제 불가능");
+            Debug.Log($"{itemType}인벤토리에 {summonItemId} 없어서 장착 해제 불가능");
             return;
         }
 
-        summonItem.UnEquipItem();
-        EquippedInventory[itemType].Remove(summonItemName);
+        SummonItemManager<T>.Instance.UnEquipSummonItem(summonItemId);
 
-        Debug.Log($"{itemType}인벤토리에 {summonItemName} 장착 해제");
+        summonItem.UnEquipItem();
+        EquippedInventory[itemType].Remove(summonItemId);
+
+        Debug.Log($"{itemType}인벤토리에 {summonItemId} 장착 해제");
     }
 
 }

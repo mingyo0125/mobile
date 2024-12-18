@@ -113,7 +113,7 @@ public class ItemInfoUI<T> : UI_Image where T : SummonItemInfo
 
         _unEquipButton.gameObject.SetActive(false);
 
-        if (_itemInfo.isEquipped)
+        if (_itemInfo.IsEquipped)
         {
             OnUnEquipButton();
         }

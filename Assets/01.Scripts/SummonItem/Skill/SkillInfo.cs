@@ -29,12 +29,6 @@ public class SkillInfo : SummonItemInfo
         this.HitFeedbackEffect = skillInfo.HitFeedbackEffect;
     }
 
-    public override void UnEquipItem()
-    {
-        base.UnEquipItem();
-        SkillManager.Instance.UnEquipSummonItem(ItemId);
-    }
-
     public override bool ItemLevelUp()
     {
         if (!base.ItemLevelUp()) { return false; }

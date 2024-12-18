@@ -65,7 +65,7 @@ public class EquipmentInfo : SummonItemInfo
                 .IncreaseStat(EquipmentPassiveBonus.IncreaseStatType, EquipmentPassiveBonus.IncreaseValue);
 
 
-        if (isEquipped)
+        if (IsEquipped)
         {
             GameManager.Instance.GetPlayer().EntityStatController.DecreaseStat(StatType.Damage, ItemValue);
             ItemValue += GradeInfo.Upgrade_Equipped_IncreaseValue;

@@ -18,7 +18,7 @@ public class Equipment_Inventory : SummonItem_Inventory<EquipmentInfo>
     {
         if(_equipItem_Icon.IsEquipped)
         {
-            InventoryManager.Instance.UnEquipItem(_equipItem_Icon.ItemInfo.ItemType, _equipItem_Icon.ItemInfo.ItemId);
+            InventoryManager.Instance.UnEquipItem<EquipmentInfo>(_equipItem_Icon.ItemInfo.ItemType, _equipItem_Icon.ItemInfo.ItemId);
 
             _equipItem_Icon.ReSetSummonItem();
         }

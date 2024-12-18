@@ -20,7 +20,7 @@ public class ReplaceSkillButton : UI_Button
 
     private void ReplaceSkill()
     {
-        InventoryManager.Instance.UnEquipItem(_curSummonItemInfo.ItemType, _curSummonItemInfo.ItemId);
+        InventoryManager.Instance.UnEquipItem<SkillInfo>(_curSummonItemInfo.ItemType, _curSummonItemInfo.ItemId);
 
         InventoryManager.Instance.EquipItem(_changeSummonItemInfo);
 

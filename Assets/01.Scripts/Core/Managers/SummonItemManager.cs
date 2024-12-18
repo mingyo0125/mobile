@@ -30,7 +30,7 @@ public abstract class SummonItemManager<T> : MonoSingleTon<SummonItemManager<T>>
                 AddSummonItem(item.ItemId, count);
             }
 
-            if (item.isEquipped)
+            if (item.IsEquipped)
             {
                 EquipSummonItem(item.ItemId);
             }

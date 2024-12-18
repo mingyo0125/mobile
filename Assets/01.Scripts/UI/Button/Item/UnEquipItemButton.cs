@@ -29,6 +29,15 @@ public class UnEquipItemButton : UI_Button, ISummonItemUI
     {
         base.ButtonEvent();
         if (isCloseTopUI) { UIManager.Instance.RemoveTopUGUI(); }
-        InventoryManager.Instance.UnEquipItem(ItemInfo.ItemType, ItemInfo.ItemId);
+
+        if (ItemInfo.ItemType == ItemType.Skill)
+        {
+            InventoryManager.Instance.UnEquipItem<SkillInfo>(ItemInfo.ItemType, ItemInfo.ItemId);
+        }
+
+        if (ItemInfo.ItemType == ItemType.Equipment)
+        {
+            InventoryManager.Instance.UnEquipItem<EquipmentInfo>(ItemInfo.ItemType, ItemInfo.ItemId);
+        }
     }
 }

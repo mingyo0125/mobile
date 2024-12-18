@@ -46,7 +46,7 @@ public abstract class SummonItemInfo : ISummonItem, ISavable
 
     [HideInInspector]
     [field: SerializeField]
-    public bool isEquipped { get; private set; }
+    public bool IsEquipped { get; private set; }
 
     [HideInInspector]
     [SerializeField]
@@ -73,7 +73,6 @@ public abstract class SummonItemInfo : ISummonItem, ISavable
         UpgradableCount = 2;
 
         IsLock = true;
-        OnItemEquipEvent += () => isEquipped = true;
     }
 
     public void AddElementsCount()
@@ -108,11 +107,13 @@ public abstract class SummonItemInfo : ISummonItem, ISavable
     public virtual void EquipItem()
     {
         OnItemEquipEvent?.Invoke();
+
+        IsEquipped = true;
     }
 
     public virtual void UnEquipItem()
     {
-        isEquipped = false;
+        IsEquipped = false;
 
         OnItemUnEquipEvent?.Invoke();
     }
