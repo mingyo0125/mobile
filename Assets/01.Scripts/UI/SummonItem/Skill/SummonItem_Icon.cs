@@ -89,8 +89,8 @@ public class SummonItem_Icon : UI_Button, ISummonItemUI
     {
         base.UpdateUI();
         _unEquipItemButton.SetSummonItem(ItemInfo);
-
-
+        
+        
         UpdateLevelText();
         UpdateBGColor();
         Init();

@@ -78,4 +78,9 @@ public class EquipmentInfo : SummonItemInfo
 
         base.ItemLevelUpEvent();
     }
+
+    protected override string GetFilePath()
+    {
+        return $"Equipment/{ItemId} EquipmentData.json";
+    }
 }

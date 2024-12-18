@@ -32,6 +32,7 @@ public class InventoryItem_Icon : SummonItem_Icon
         base.SetSummonItem(summonItem);
 
         _equipButton.SetSummonItem(ItemInfo);
+
         UnLockItem();
     }
 
@@ -50,11 +51,16 @@ public class InventoryItem_Icon : SummonItem_Icon
         UnLockItem();
         SetCanUpgrade(ItemInfo.CanUpgrade);
 
+        if (ItemInfo.UpgradableCount <= 0)
+        {
+            return;
+        }
+
         //int로만 하면 int의 나눗셈을 해서 소수점을 버림
         float fillAmount = Mathf.Clamp((float)ItemInfo.ElementsCount / ItemInfo.UpgradableCount,
                                        0,
                                        1);
-
+        
         _itemCountFillAmountImage.fillAmount = fillAmount;
         _itemCountText.SetText($"{ItemInfo.ElementsCount}/{ItemInfo.UpgradableCount}");
     }

@@ -3,12 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class Equipment_IconFactory : SummonItemIconFactory
+public class Equipment_IconFactory : SummonItemIconFactory<EquipmentInfo>
 {
-    protected override List<SummonItemInfo> GetSummonItems()
+    protected override List<EquipmentInfo> GetSummonItems()
     {
         var equipmentManager = SummonItemManager<EquipmentInfo>.Instance as EquipmentManager;
-        List<SummonItemInfo> list = new List<SummonItemInfo>(equipmentManager.EquipmentInfoList.Values.ToList());
-        return list;
+        return equipmentManager.GetSummonItems();
     }
 }

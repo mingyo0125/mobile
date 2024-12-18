@@ -30,14 +30,4 @@ public class PlayerStat : BaseStat, ISavable
         Stats.Add(StatType.ItemDropRate, ItemDropRate);
         Stats.Add(StatType.DropCoinValue, DropCoinValue);
     }
-
-    public ISavable GetSavableData()
-    {
-        return this;
-    }
-
-    public T GetSavableData<T>() where T : class, ISavable
-    {
-        return this as T;
-    }
 }

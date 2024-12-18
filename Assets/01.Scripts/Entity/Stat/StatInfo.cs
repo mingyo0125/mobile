@@ -22,6 +22,7 @@ public class StatInfo
 public struct StatUIInfo
 {
     public string Name;
+    [SerializeField]
     public Sprite StatSprite;
 
     public bool isCanUpgrade;

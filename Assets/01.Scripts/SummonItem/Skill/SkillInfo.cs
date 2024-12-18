@@ -5,6 +5,7 @@ using UnityEngine;
 public class SkillInfo : SummonItemInfo
 {
     [TextArea]
+    [SerializeField]
     public string Description;
 
     [field: SerializeField]
@@ -14,7 +15,6 @@ public class SkillInfo : SummonItemInfo
 
     [field: SerializeField]
     public float SpawnCount { get; private set; } = 1;
-
 
     [field: SerializeField]
     public FeedbackEffect HitFeedbackEffect { get; private set; }
@@ -43,7 +43,6 @@ public class SkillInfo : SummonItemInfo
 
     public override void GetItem()
     {
-        Debug.Log($"GetItem {ItemId}");
         SkillManager.Instance.AddSummonItem(ItemId);
         base.GetItem();
     }
@@ -61,5 +60,10 @@ public class SkillInfo : SummonItemInfo
     {
         DamagePercent += GradeInfo.Upgrade_Equipped_IncreaseValue;
         base.ItemLevelUpEvent();
+    }
+
+    protected override string GetFilePath()
+    {
+        return $"Skills/{ItemId} SkillData.json";
     }
 }

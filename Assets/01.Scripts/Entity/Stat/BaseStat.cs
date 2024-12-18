@@ -52,8 +52,6 @@ public class BaseStat : ISerializationCallbackReceiver
     [field: SerializeField]
     public StatInfo ResistancePercent { get; private set; }
 
-    public string FilePath => "asd";
-
     public BaseStat(BaseStat stat, bool deferInitialization = false)
     {
         this.Speed = new StatInfo(stat.Speed.Level, stat.Speed.Value, stat.Speed.StatUIInfo);
@@ -64,7 +62,7 @@ public class BaseStat : ISerializationCallbackReceiver
         this.CriticalProbability = new StatInfo(stat.CriticalProbability.Level, stat.CriticalProbability.Value, stat.CriticalProbability.StatUIInfo);
         this.CriticalDamageIncreasePercent = new StatInfo(stat.CriticalDamageIncreasePercent.Level, stat.CriticalDamageIncreasePercent.Value, stat.CriticalDamageIncreasePercent.StatUIInfo);
         this.ResistancePercent = new StatInfo(stat.ResistancePercent.Level, stat.ResistancePercent.Value, stat.ResistancePercent.StatUIInfo);
-
+        
         if (!deferInitialization)
         {
             InitializeStats();

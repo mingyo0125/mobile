@@ -22,7 +22,7 @@ public class SkillManager : SummonItemManager<SkillInfo>
 
         foreach (BaseSkill skill in _skillListSO.SkillLists)
         {
-            SkillInfo skillInfo = new SkillInfo(skill.SkillInfoSO.SkillInfo);
+            SkillInfo skillInfo = DataManager.Instance.LoadData<SkillInfo, SummonItemData<SkillInfo>>(skill.SkillInfoSO.SkillInfo).ItemInfo;
             _skills.Add(skillInfo.ItemId, skill);
             _skillInfos.Add(skillInfo);
             skill.InitializeSkillInfo(skillInfo);
@@ -57,7 +57,7 @@ public class SkillManager : SummonItemManager<SkillInfo>
         return false;
     }
 
-    protected override List<SkillInfo> GetSummonItems()
+    public override List<SkillInfo> GetSummonItems()
     {
         return _skillInfos;
     }

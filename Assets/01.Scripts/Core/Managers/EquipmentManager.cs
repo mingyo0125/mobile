@@ -7,7 +7,7 @@ public class EquipmentManager : SummonItemManager<EquipmentInfo>
     [SerializeField]
     private EquipmentInfoListSO _equipmentInfoListSO;
 
-    public Dictionary<string, EquipmentInfo> EquipmentInfoList { get; private set; } = new Dictionary<string, EquipmentInfo>();
+    private Dictionary<string, EquipmentInfo> EquipmentInfoList = new Dictionary<string, EquipmentInfo>();
 
     private Equipment_Inventory _equipment_Inventory;
 
@@ -30,7 +30,7 @@ public class EquipmentManager : SummonItemManager<EquipmentInfo>
 
     }
 
-    protected override List<EquipmentInfo> GetSummonItems()
+    public override List<EquipmentInfo> GetSummonItems()
     {
         return EquipmentInfoList.Values.ToList();
     }

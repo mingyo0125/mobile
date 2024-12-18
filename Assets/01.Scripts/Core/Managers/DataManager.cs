@@ -8,7 +8,16 @@ public class DataManager : MonoSingleTon<DataManager>
 {
     private string GetFilePath(string path)
     {
-        return Path.Combine(Application.persistentDataPath, path);
+        string fullPath = Path.Combine(Application.persistentDataPath, path);
+
+        string directory = Path.GetDirectoryName(fullPath);
+
+        if (!Directory.Exists(directory))
+        {
+            Directory.CreateDirectory(directory);
+        }
+
+        return fullPath;
     }
 
     private List<IData> _datas = new List<IData>();
@@ -36,27 +45,50 @@ public class DataManager : MonoSingleTon<DataManager>
             {
                 _datas.Add(data);
             }
-            Debug.Log("게임 데이터 불러오기 성공");
         }
         else
         {
-            Debug.Log("저장된 데이터 없음. 새로운 데이터 생성");
-            Debug.Log(savable.GetType());
-            PlayerData playerData = new PlayerData(savable.GetSavableData<PlayerStat>());
-            Debug.Log(typeof(G) == playerData.GetType());
-            Debug.Log(playerData.PlayerStats.GetType() == savable.GetType());
-
-
             data = Activator.CreateInstance(typeof(G), savable) as G;
             if (!_datas.Contains(data))
             {
-                Debug.Log("FUck");
                 _datas.Add(data);
             }
             SaveData();
         }
 
         return data;
+    }
+
+    public List<G> LoadDatas<T, G>(List<T> savables) where T : class, ISavable where G : class, IData
+    {
+        List<G> datas = new List<G>();
+
+        foreach (T savable in savables)
+        {
+            G data;
+
+            if (File.Exists(GetFilePath(savable.FilePath)))
+            {
+                string json = File.ReadAllText(GetFilePath(savable.FilePath));
+                data = JsonUtility.FromJson<G>(json);
+                if (!_datas.Contains(data))
+                {
+                    _datas.Add(data);
+                }
+            }
+            else
+            {
+                data = Activator.CreateInstance(typeof(G), savable) as G;
+                if (!_datas.Contains(data))
+                {
+                    _datas.Add(data);
+                }
+                SaveData();
+            }
+            datas.Add(data);
+        }
+
+        return datas;
     }
 
     private void OnApplicationQuit()

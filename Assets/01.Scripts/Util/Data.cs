@@ -1,12 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 
 public interface ISavable
 {
     public string FilePath { get; }
-
-    public T GetSavableData<T>() where T : class, ISavable;
 }
 
 public interface IData
@@ -14,7 +11,7 @@ public interface IData
     public string FilePath { get; }
 }
 
-[System.Serializable]
+[Serializable]
 public class PlayerData : IData
 {
     public PlayerStat PlayerStats;
@@ -25,4 +22,17 @@ public class PlayerData : IData
     }
 
     public string FilePath => PlayerStats.FilePath;
+}
+
+[Serializable]
+public class SummonItemData<T> : IData where T : SummonItemInfo
+{
+    public T ItemInfo;
+
+    public SummonItemData(T savable)
+    {
+        ItemInfo = Activator.CreateInstance(typeof(T), savable) as T;
+    }
+
+    public string FilePath => ItemInfo.FilePath;
 }

@@ -3,19 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class Skill_IconFactory : SummonItemIconFactory
+public class Skill_IconFactory : SummonItemIconFactory<SkillInfo>
 {
-    [SerializeField]
-    private SkillListSO _skillListSO;
-
-    protected override List<SummonItemInfo> GetSummonItems()
+    protected override List<SkillInfo> GetSummonItems()
     {
-        SummonItemInfo[] summonItemInfos = new SummonItemInfo[_skillListSO.SkillLists.Count];
-        for (int i = 0; i < _skillListSO.SkillLists.Count; i++)
-        {
-            summonItemInfos[i] = _skillListSO.SkillLists[i].SkillInfo;
-        }
-
-        return summonItemInfos.ToList();
+        var equipmentManager = SummonItemManager<SkillInfo>.Instance as SkillManager;
+        return equipmentManager.GetSummonItems();
     }
 }

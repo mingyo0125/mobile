@@ -22,11 +22,6 @@ public class UI_Component : PoolableMono, IGUI
 
     public void GenerateUI(Transform parent, UIGenerateType generateType)
     {
-        if (generateType == UIGenerateType.CLEAR_PANEL)
-        {
-            UIManager.Instance.ClearPanel();
-        }
-
         transform.SetParent(parent);
 
         transform.localPosition = Vector2.zero;

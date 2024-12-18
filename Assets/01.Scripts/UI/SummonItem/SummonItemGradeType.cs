@@ -2,6 +2,7 @@
 using System;
 using UnityEngine;
 
+[Serializable]
 public enum SummonItemGradeType
 {
     Common = 100,
